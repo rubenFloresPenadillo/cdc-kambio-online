@@ -1,0 +1,40 @@
+
+#transferencias{
+	background: #f7f9ff;
+	text-align: center;
+	padding: 20px;
+}
+
+
+#transferencias h2{
+	margin-top: 30px;
+	color: #003885 !important;
+    font-weight: 500;
+    font-size: 45px;
+}
+
+#transferencias h3{
+	margin-top: 30px;
+	color: #003885 !important;
+}
+
+#transferencias .contenedor{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.transf-item{
+	margin: 20px;
+}
+
+.line-shape {
+    margin-left: calc(50% - 50px);
+}
+.line-shape, .line-shape-white {
+    width: 100px;
+    height: 4px;
+    background-color: #01b6ed;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
