@@ -36,7 +36,7 @@ public class NotificacionUtil {
     public static final String EMAIL_SERVICIO = "casadecambioelalfarero.portal@gmail.com"; // propietario de cuenta
     public static final String NOMBRE_SERVICIO = "Kambio Online"; // nombre de propietario
     public static final String PASSWORD= "D4nielD4niel123456"; // password de propietario
-    public static final String EMAIL_CONTACTO_COMERCIO = "ventas@kambio.online"; // propietario de cuenta
+    public static final String EMAIL_CONTACTO_COMERCIO = "pagos@kambio.online"; // propietario de cuenta
     
 
 	public static String freemarkerDo(Map<String, String> datamodel, String basePath, String template) throws IOException, TemplateException {

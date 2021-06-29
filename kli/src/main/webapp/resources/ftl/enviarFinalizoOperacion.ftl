@@ -42,7 +42,7 @@
 											
 											<tr>
 												<td style="padding-top: 20px; text-align: justify;">
-													Te informamos que tu operaci&oacute;n con c&oacute;digo <strong>${parametroCodigoOperacion}</strong> ha sido verificada con &eacute;xito por lo que hemos procedido a realizarte la transferencia del monto pactado a tu cuenta registrada, Kamio Online te agradece por la confianza y se compromete a seguir trabajando para brindarte soluciones agiles y sobretodo seguras.									
+													Te informamos que tu operaci&oacute;n con c&oacute;digo <strong>${parametroCodigoOperacion}</strong> ha sido verificada con &eacute;xito por lo que hemos procedido a realizarte la transferencia del monto pactado a tu cuenta registrada, Kambio Online te agradece por la confianza y se compromete a seguir trabajando para brindarte soluciones agiles y sobretodo seguras.									
 												</td>
 												
 											</tr>

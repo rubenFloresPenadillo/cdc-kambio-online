@@ -40,7 +40,7 @@
 											
 											<tr>
 												<td style="padding-top: 20px; text-align: justify;" >
-													Kamio Online te da la bienvenida, estamos muy felices de que formes parte de esta grandiosa familia. Solo necesitas activar tu cuenta para empezar a cambiar tus divisas.
+													Kambio Online te da la bienvenida, estamos muy felices de que formes parte de esta grandiosa familia. Solo necesitas activar tu cuenta para empezar a cambiar tus divisas.
 												</td>
 												
 											</tr>

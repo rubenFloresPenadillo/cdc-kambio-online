@@ -47,17 +47,23 @@
 
 		<div class="row setup-content justify-content-center" id="step-1">
 			<div class="column col-xs-12 col-sm-9 col-md-7 col-lg-5">
+				
 				<div class="form-group">
 
-					<p:outputLabel value="¿Desde que banco nos envias tu dinero?"
+					<p:outputLabel value="¿Desde que cuenta nos envias tu dinero?"
 						styleClass="clasesCamposFormulario" />
 
-					<h:selectOneMenu id="idComboBancoEnvio" styleClass="custom-select form-control" 
-							value="#{mAlias.operacionClienteFormulario.tpBanco.codBanc}">
+					<h:selectOneMenu id="idComboCuentaBancariaE" styleClass="custom-select form-control" 
+							value="#{mAlias.operacionClienteFormulario.tpCuentBancoByCodCuenBancClieOrig.codCuenBanc}">
 						<f:selectItem itemLabel="Seleccione..." itemValue="-1" />
-						<f:selectItems value="#{mAlias.listaComboBancosEnvioDinero}" />
+						<f:selectItems value="#{mAlias.listaComboCuentasBancariasEnvi}" />
 					</h:selectOneMenu>
-					<div id="idMensajeResultadoBancoEnvio" > </div>
+					<div id="idMensajeResultadoCuentaBancariaE" > </div>
+					
+				</div>
+				
+				<div class="form-group contenerdorEnlaceCuentas">
+					<h:link styleClass="enlaceCuentas btn-link" value="Añade una cuenta aquí" outcome="cuentaItem.xhtml" />
 				</div>
 
 				<div class="form-group">
@@ -65,14 +71,14 @@
 					<p:outputLabel value="¿A que cuenta te enviamos tu dinero?"
 						styleClass="clasesCamposFormulario" />
 
-					<h:selectOneMenu id="idComboCuentaBancaria" styleClass="custom-select form-control" 
+					<h:selectOneMenu id="idComboCuentaBancariaR" styleClass="custom-select form-control" 
 							value="#{mAlias.operacionClienteFormulario.tpCuentBancoByCodCuenBancClieReci.codCuenBanc}">
 						<f:selectItem itemLabel="Seleccione..." itemValue="-1"/>
-						<f:selectItems value="#{mAlias.listaComboCuentasBancarias}" />
+						<f:selectItems value="#{mAlias.listaComboCuentasBancariasReci}" />
 						<p:ajax update="idContenedorMensajeCCI" event="change" listener="#{mAlias.validarMensajeCCI}" />
 					</h:selectOneMenu>
 					
-					<div id="idMensajeResultadoCuentaBancaria"> </div>
+					<div id="idMensajeResultadoCuentaBancariaR"> </div>
 
 				</div>
 
@@ -204,5 +210,23 @@
 <!-- 		<ui:include src="../../../estatus.xhtml" /> -->
 	</h:form>
 
+
+	<!-- Modal -->
+	<div class="modal fade" id="modalSelecionarCuentaError" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title mensajeTituloError">¡ Mensaje del Sistema - ERROR !</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body mensajeCuerpoError"><strong>#{mAlias.resultadoProcesoError}</strong> Comuníquese con el área de Soporte.</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 </ui:composition>
 

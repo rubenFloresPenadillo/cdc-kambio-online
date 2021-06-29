@@ -73,7 +73,7 @@ public class IngresoBean {
 		temp = serviceUsuario.getUsuario(temp);
 
 		if (temp == null) {
-			resultadoProcesoError = "Su correo o contraseÃ±a son incorrectos.";
+			resultadoProcesoError = "Su correo o contraseña son incorrectos.";
 		} else {
 			
 			HttpSession sesion = ConeccionSesion.getSession();

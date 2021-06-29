@@ -95,14 +95,18 @@ public class OperacionesControlItemBean {
 				indMostrarVistaFinalizar = Boolean.FALSE;
 			}
 			
-			
-        	ServiceCliente serviceClienteEnvi = new ServiceClienteImpl();
-        	TpCuentBancoDto cuentaBancoClienEnvi = serviceClienteEnvi.getCuentaBanco(operacionControlItem.getTpCuentBancoByCodCuenBancClieEnvi());
-        	operacionControlItem.setTpCuentBancoByCodCuenBancClieEnvi(cuentaBancoClienEnvi);      	
+			ServiceCliente serviceClienteDesde = new ServiceClienteImpl();
+        	TpCuentBancoDto cuentaBancoClienDesde= serviceClienteDesde.getCuentaBanco(operacionControlItem.getTpCuentBancoByCodCuenBancClieOrig());
+        	operacionControlItem.setTpCuentBancoByCodCuenBancClieOrig(cuentaBancoClienDesde);
+        	
+        	ServiceCliente serviceClienteCome = new ServiceClienteImpl();
+        	TpCuentBancoDto cuentaBancoClienEnvi = serviceClienteCome.getCuentaBanco(operacionControlItem.getTpCuentBancoByCodCuenBancCome());
+        	operacionControlItem.setTpCuentBancoByCodCuenBancCome(cuentaBancoClienEnvi);      	
         	
         	ServiceCliente serviceClienteReci = new ServiceClienteImpl();
         	TpCuentBancoDto cuentaBancoClienReci = serviceClienteReci.getCuentaBanco(operacionControlItem.getTpCuentBancoByCodCuenBancClieReci());
         	operacionControlItem.setTpCuentBancoByCodCuenBancClieReci(cuentaBancoClienReci);
+        	
 		} 
 		
     	valorNombre = (String) sesion.getAttribute("valorNombre");

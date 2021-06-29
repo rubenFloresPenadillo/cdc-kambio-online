@@ -20,6 +20,11 @@ function operacionVerificacionError(){
 	$('#modalVerificacionError').modal('show');
 }
 
+function operacionSeleccionarCuentaError(){
+	$('#modalSelecionarCuentaError').modal({backdrop: 'static', keyboard: false})  
+	$('#modalSelecionarCuentaError').modal('show');
+}
+
 function seleccionarTabCompra() {
 	document.getElementById("idFormIniciaOperacion:idIndicadorCompraVenta").value = "0";
 	$("#idTabCompra").addClass( "activoVisual" );
@@ -48,15 +53,15 @@ function enviar(event) {
 //	$("#idMensajeResultado").removeClass( "alert alert-danger" )
 //    $("#idMensajeResultado").addClass( "hidden" );
 
-	$("#idMensajeResultadoBancoEnvio").empty();
-	$("#idMensajeResultadoBancoEnvio").removeClass( "alert alert-danger claseMensajeResultado" )
-    $("#idMensajeResultadoBancoEnvio").addClass( "hidden" );
-	$("#idMensajeResultadoBancoEnvio").css("display","block");
+	$("#idMensajeResultadoCuentaBancariaE").empty();
+	$("#idMensajeResultadoCuentaBancariaE").removeClass( "alert alert-danger claseMensajeResultado" )
+    $("#idMensajeResultadoCuentaBancariaE").addClass( "hidden" );
+	$("#idMensajeResultadoCuentaBancariaE").css("display","block");
 	
-	$("#idMensajeResultadoCuentaBancaria").empty();
-	$("#idMensajeResultadoCuentaBancaria").removeClass( "alert alert-danger claseMensajeResultado" )
-    $("#idMensajeResultadoCuentaBancaria").addClass( "hidden" );
-	$("#idMensajeResultadoCuentaBancaria").css("display","block");
+	$("#idMensajeResultadoCuentaBancariaR").empty();
+	$("#idMensajeResultadoCuentaBancariaR").removeClass( "alert alert-danger claseMensajeResultado" )
+    $("#idMensajeResultadoCuentaBancariaR").addClass( "hidden" );
+	$("#idMensajeResultadoCuentaBancariaR").css("display","block");
 	
 	$("#idMensajeResultadoOrigenFondos").empty();
 	$("#idMensajeResultadoOrigenFondos").removeClass( "alert alert-danger claseMensajeResultado" )
@@ -66,31 +71,31 @@ function enviar(event) {
 	
 	/*Remueves los errores si es que hubieran*/
 	
-	$("[id='idFormIniciaOperacion:idComboBancoEnvio']").removeClass( "claseErrorFormulario");
-	$("[id='idFormIniciaOperacion:idComboCuentaBancaria']").removeClass( "claseErrorFormulario");
+	$("[id='idFormIniciaOperacion:idComboCuentaBancariaE']").removeClass( "claseErrorFormulario");
+	$("[id='idFormIniciaOperacion:idComboCuentaBancariaR']").removeClass( "claseErrorFormulario");
 	$("[id='idFormIniciaOperacion:idComboOrigenFondo']").removeClass( "claseErrorFormulario");
 	
 	/*Captura valores*/
 	
-    var idComboBancoEnvio = $("[id='idFormIniciaOperacion:idComboBancoEnvio']").val();
-    var idComboCuentaBancaria = $("[id='idFormIniciaOperacion:idComboCuentaBancaria']").val();
+    var idComboCuentaBancariaE = $("[id='idFormIniciaOperacion:idComboCuentaBancariaE']").val();
+    var idComboCuentaBancariaR = $("[id='idFormIniciaOperacion:idComboCuentaBancariaR']").val();
     var idComboOrigenFondo = $("[id='idFormIniciaOperacion:idComboOrigenFondo']").val();
 	
-    if (idComboBancoEnvio == null || idComboBancoEnvio == '-1'){
-    	$("#idMensajeResultadoBancoEnvio").text("Debes seleccionar el banco.");
-    	$("#idMensajeResultadoBancoEnvio").addClass( "alert alert-danger claseMensajeResultado")
-        $("#idMensajeResultadoBancoEnvio").removeClass( "hidden" );
-    	$("#idMensajeResultadoBancoEnvio").fadeOut(6000);
-    	$("[id='idFormIniciaOperacion:idComboBancoEnvio']").focus().select();;
-    	$("[id='idFormIniciaOperacion:idComboBancoEnvio']").addClass( "claseErrorFormulario");
+    if (idComboCuentaBancariaE == null || idComboCuentaBancariaE == '-1'){ 
+    	$("#idMensajeResultadoCuentaBancariaE").text("Debes seleccionar la cuenta de donde nos enviaras tu dinero.");
+    	$("#idMensajeResultadoCuentaBancariaE").addClass( "alert alert-danger claseMensajeResultado")
+        $("#idMensajeResultadoCuentaBancariaE").removeClass( "hidden" );
+    	$("#idMensajeResultadoCuentaBancariaE").fadeOut(6000);
+    	$("[id='idFormIniciaOperacion:idComboCuentaBancariaE']").focus().select();
+    	$("[id='idFormIniciaOperacion:idComboCuentaBancariaE']").addClass( "claseErrorFormulario");
     	event.preventDefault();
-    } else if (idComboCuentaBancaria == null || idComboCuentaBancaria == '-1'){ 
-    	$("#idMensajeResultadoCuentaBancaria").text("Debes seleccionar una cuenta.");
-    	$("#idMensajeResultadoCuentaBancaria").addClass( "alert alert-danger claseMensajeResultado")
-        $("#idMensajeResultadoCuentaBancaria").removeClass( "hidden" );
-    	$("#idMensajeResultadoCuentaBancaria").fadeOut(6000);
-    	$("[id='idFormIniciaOperacion:idComboCuentaBancaria']").focus().select();
-    	$("[id='idFormIniciaOperacion:idComboCuentaBancaria']").addClass( "claseErrorFormulario");
+    } else if (idComboCuentaBancariaR == null || idComboCuentaBancariaR == '-1'){ 
+    	$("#idMensajeResultadoCuentaBancariaR").text("Debes seleccionar la cuenta a donde te enviaremos tu dinero.");
+    	$("#idMensajeResultadoCuentaBancariaR").addClass( "alert alert-danger claseMensajeResultado")
+        $("#idMensajeResultadoCuentaBancariaR").removeClass( "hidden" );
+    	$("#idMensajeResultadoCuentaBancariaR").fadeOut(6000);
+    	$("[id='idFormIniciaOperacion:idComboCuentaBancariaR']").focus().select();
+    	$("[id='idFormIniciaOperacion:idComboCuentaBancariaR']").addClass( "claseErrorFormulario");
     	event.preventDefault();
     } else if (idComboOrigenFondo !== undefined && (idComboOrigenFondo == null || idComboOrigenFondo == '-1') ){ 
     	$("#idMensajeResultadoOrigenFondos").text("Debes seleccionar un origen de fondos.");

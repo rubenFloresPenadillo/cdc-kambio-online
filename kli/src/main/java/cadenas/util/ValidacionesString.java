@@ -13,7 +13,7 @@ public class ValidacionesString implements Serializable{
 	private static final long serialVersionUID = -1243061952367522395L;
 	
 	private static Pattern REGEX_EMAIL = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
-    private static final String ORIGINAL  = "√Å√°√â√©√ç√≠√ì√≥√ö√∫√ë√±√ú√º";
+    private static final String ORIGINAL  = "¡·…ÈÕÌ”Û⁄˙—Ò‹¸";
     private static final String REPLACEMENT  = "AaEeIiOoUuNnUu";
 
 	public static Boolean esNuloOVacio(String valorClaseString){

@@ -1,8 +1,9 @@
 package hibernate.entidades;
-// Generated 01/04/2021 11:33:35 PM by Hibernate Tools 5.2.10.Final
+// Generated 26 jun. 2021 03:16:16 by Hibernate Tools 5.2.12.Final
 
 import java.math.BigDecimal;
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,10 +25,10 @@ import javax.persistence.UniqueConstraint;
 public class TpOperaClien implements java.io.Serializable {
 
 	private Integer codOperClie;
-	private TpBanco tpBanco;
 	private TpClien tpClien;
 	private TpCuentBanco tpCuentBancoByCodCuenBancClieReci;
-	private TpCuentBanco tpCuentBancoByCodCuenBancClieEnvi;
+	private TpCuentBanco tpCuentBancoByCodCuenBancCome;
+	private TpCuentBanco tpCuentBancoByCodCuenBancClieOrig;
 	private TpDivis tpDivisByCodDiviEnvi;
 	private TpDivis tpDivisByCodDiviReci;
 	private TpEstadOpera tpEstadOpera;
@@ -53,10 +54,10 @@ public class TpOperaClien implements java.io.Serializable {
 	private Date fecModiRegi;
 
 	public TpOperaClien() {
-		tpBanco = new TpBanco();
 		tpClien = new TpClien();
 		tpCuentBancoByCodCuenBancClieReci = new TpCuentBanco();
-		tpCuentBancoByCodCuenBancClieEnvi = new TpCuentBanco();
+		tpCuentBancoByCodCuenBancCome = new TpCuentBanco();
+		tpCuentBancoByCodCuenBancClieOrig = new TpCuentBanco();
 		tpDivisByCodDiviReci = new TpDivis();
 		tpDivisByCodDiviEnvi = new TpDivis();
 		tpEstadOpera = new TpEstadOpera();
@@ -64,16 +65,16 @@ public class TpOperaClien implements java.io.Serializable {
 		tpOrigeFondo = new TpOrigeFondo();
 	}
 
-	public TpOperaClien(Integer codOperClie, TpBanco tpBanco, TpClien tpClien,
-			TpCuentBanco tpCuentBancoByCodCuenBancClieReci, TpCuentBanco tpCuentBancoByCodCuenBancClieEnvi,
+	public TpOperaClien(Integer codOperClie, TpClien tpClien, TpCuentBanco tpCuentBancoByCodCuenBancClieReci,
+			TpCuentBanco tpCuentBancoByCodCuenBancCome, TpCuentBanco tpCuentBancoByCodCuenBancClieOrig,
 			TpDivis tpDivisByCodDiviEnvi, TpDivis tpDivisByCodDiviReci, TpEstadOpera tpEstadOpera,
 			TpTipoCambi tpTipoCambi, BigDecimal monEnvi, BigDecimal monReci, Integer indCompVent,
 			Double valTipoCambUsad, Integer indEsta, String usuApliCrea, Date fecCreaRegi) {
 		this.codOperClie = codOperClie;
-		this.tpBanco = tpBanco;
 		this.tpClien = tpClien;
 		this.tpCuentBancoByCodCuenBancClieReci = tpCuentBancoByCodCuenBancClieReci;
-		this.tpCuentBancoByCodCuenBancClieEnvi = tpCuentBancoByCodCuenBancClieEnvi;
+		this.tpCuentBancoByCodCuenBancCome = tpCuentBancoByCodCuenBancCome;
+		this.tpCuentBancoByCodCuenBancClieOrig = tpCuentBancoByCodCuenBancClieOrig;
 		this.tpDivisByCodDiviEnvi = tpDivisByCodDiviEnvi;
 		this.tpDivisByCodDiviReci = tpDivisByCodDiviReci;
 		this.tpEstadOpera = tpEstadOpera;
@@ -87,8 +88,8 @@ public class TpOperaClien implements java.io.Serializable {
 		this.fecCreaRegi = fecCreaRegi;
 	}
 
-	public TpOperaClien(Integer codOperClie, TpBanco tpBanco, TpClien tpClien,
-			TpCuentBanco tpCuentBancoByCodCuenBancClieReci, TpCuentBanco tpCuentBancoByCodCuenBancClieEnvi,
+	public TpOperaClien(Integer codOperClie, TpClien tpClien, TpCuentBanco tpCuentBancoByCodCuenBancClieReci,
+			TpCuentBanco tpCuentBancoByCodCuenBancCome, TpCuentBanco tpCuentBancoByCodCuenBancClieOrig,
 			TpDivis tpDivisByCodDiviEnvi, TpDivis tpDivisByCodDiviReci, TpEstadOpera tpEstadOpera,
 			TpOrigeFondo tpOrigeFondo, TpTipoCambi tpTipoCambi, String codUnicOperClie, BigDecimal monEnvi,
 			BigDecimal monReci, Integer indCompVent, Double valTipoCambUsad, String codTranBanc, Date fecInicOper,
@@ -96,10 +97,10 @@ public class TpOperaClien implements java.io.Serializable {
 			String valTextComeCanc, Integer indEsta, String usuApliCrea, Date fecCreaRegi, String usuApliModi,
 			Date fecModiRegi) {
 		this.codOperClie = codOperClie;
-		this.tpBanco = tpBanco;
 		this.tpClien = tpClien;
 		this.tpCuentBancoByCodCuenBancClieReci = tpCuentBancoByCodCuenBancClieReci;
-		this.tpCuentBancoByCodCuenBancClieEnvi = tpCuentBancoByCodCuenBancClieEnvi;
+		this.tpCuentBancoByCodCuenBancCome = tpCuentBancoByCodCuenBancCome;
+		this.tpCuentBancoByCodCuenBancClieOrig = tpCuentBancoByCodCuenBancClieOrig;
 		this.tpDivisByCodDiviEnvi = tpDivisByCodDiviEnvi;
 		this.tpDivisByCodDiviReci = tpDivisByCodDiviReci;
 		this.tpEstadOpera = tpEstadOpera;
@@ -137,16 +138,6 @@ public class TpOperaClien implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "cod_banc_orig_envi_clie", nullable = false)
-	public TpBanco getTpBanco() {
-		return this.tpBanco;
-	}
-
-	public void setTpBanco(TpBanco tpBanco) {
-		this.tpBanco = tpBanco;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cod_clie", nullable = false)
 	public TpClien getTpClien() {
 		return this.tpClien;
@@ -167,13 +158,23 @@ public class TpOperaClien implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "cod_cuen_banc_clie_envi", nullable = false)
-	public TpCuentBanco getTpCuentBancoByCodCuenBancClieEnvi() {
-		return this.tpCuentBancoByCodCuenBancClieEnvi;
+	@JoinColumn(name = "cod_cuen_banc_come", nullable = false)
+	public TpCuentBanco getTpCuentBancoByCodCuenBancCome() {
+		return this.tpCuentBancoByCodCuenBancCome;
 	}
 
-	public void setTpCuentBancoByCodCuenBancClieEnvi(TpCuentBanco tpCuentBancoByCodCuenBancClieEnvi) {
-		this.tpCuentBancoByCodCuenBancClieEnvi = tpCuentBancoByCodCuenBancClieEnvi;
+	public void setTpCuentBancoByCodCuenBancCome(TpCuentBanco tpCuentBancoByCodCuenBancCome) {
+		this.tpCuentBancoByCodCuenBancCome = tpCuentBancoByCodCuenBancCome;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "cod_cuen_banc_clie_orig", nullable = false)
+	public TpCuentBanco getTpCuentBancoByCodCuenBancClieOrig() {
+		return this.tpCuentBancoByCodCuenBancClieOrig;
+	}
+
+	public void setTpCuentBancoByCodCuenBancClieOrig(TpCuentBanco tpCuentBancoByCodCuenBancClieOrig) {
+		this.tpCuentBancoByCodCuenBancClieOrig = tpCuentBancoByCodCuenBancClieOrig;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)

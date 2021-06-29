@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generated 08/05/2021 04:15:02 AM by Hibernate Tools 5.2.10.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26 jun. 2021 03:12:10 by Hibernate Tools 5.2.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
     <class dynamic-insert="false" dynamic-update="false" mutable="true" name="hibernate.xml.TpUsuar" optimistic-lock="version" polymorphism="implicit" schema="public" select-before-update="false" table="tp_usuar">
         <comment>TABLA MAESTRO DE USUARIOS</comment>
@@ -13,7 +13,7 @@
             </column>
         </many-to-one>
         <property generated="never" lazy="false" name="ideUsuaEmai" optimistic-lock="true" type="string" unique="false">
-            <column length="100" name="ide_usua_emai"  unique="true">
+            <column length="100" name="ide_usua_emai" unique="true">
                 <comment>CAMPO PARA EL USUARIO DE LOS CLIENTES Y LOS EMPLEADOS DE LA EMPRESA</comment>
             </column>
         </property>
@@ -23,7 +23,7 @@
             </column>
         </property>
         <property generated="never" lazy="false" name="codClav" optimistic-lock="true" type="string" unique="false">
-            <column length="32" name="cod_clav" >
+            <column length="32" name="cod_clav">
                 <comment>CLAVE DE LOS USUARIOS, SE ENCRIPTA EN MD5</comment>
             </column>
         </property>
@@ -92,6 +92,16 @@
                 <comment>FECHA DE CREACION DEL TOKEN QUE SERVIRA PARA RESTABLECER LA CUENTA</comment>
             </column>
         </property>
+        <property generated="never" lazy="false" name="valNombRegi" optimistic-lock="true" type="string" unique="false">
+            <column length="200" name="val_nomb_regi">
+                <comment>NOMBRE QUE SE GUARDA AL MOMENTO DEL REGISTRO DE LA CUENTA</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="codUsuaPadr" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="cod_usua_padr">
+                <comment>VALOR NUMERICO PARA EL CODIGO USUARIO PADRE, SOLO SI TIENE</comment>
+            </column>
+        </property>
         <property generated="never" lazy="false" name="indEsta" optimistic-lock="true" type="java.lang.Integer" unique="false">
             <column name="ind_esta" not-null="true">
                 <comment>ESTADO EN EL QUE SE ENCUENTRA EL REGISTRO, ACTIVO = 1 E INACTIVO = 0</comment>
@@ -115,16 +125,6 @@
         <property generated="never" lazy="false" name="fecModiRegi" optimistic-lock="true" type="timestamp" unique="false">
             <column length="29" name="fec_modi_regi">
                 <comment>FECHA DE MODIFICACION DEL REGISTRO</comment>
-            </column>
-        </property>
-        <property generated="never" lazy="false" name="valNombRegi" optimistic-lock="true" type="string" unique="false">
-            <column length="200" name="val_nomb_regi">
-                <comment>NOMBRE QUE SE GUARDA AL MOMENTO DEL REGISTRO DE LA CUENTA</comment>
-            </column>
-        </property>
-        <property generated="never" lazy="false" name="codUsuaPadr" optimistic-lock="true" type="java.lang.Integer" unique="false">
-            <column name="cod_usua_padr">
-                <comment>VALOR NUMERICO PARA EL CODIGO USUARIO PADRE, SOLO SI TIENE</comment>
             </column>
         </property>
     </class>

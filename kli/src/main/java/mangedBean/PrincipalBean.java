@@ -109,7 +109,7 @@ public class PrincipalBean {
 		mostrarCompra = Boolean.TRUE;
 		tipoCambioUsado = new Double(tipoCambioCompraDolar);
 		cantidadEnvio = new BigDecimal(CANTIDAD_ENVIO_INICIAL);
-		textoDolarSolSuperior = "DÃ“LARES";
+		textoDolarSolSuperior = "DÓLARES";
 		textoDolarSolInferior = "  SOLES";
 		cargarValoresEnvioReciboA();
 		
@@ -168,12 +168,12 @@ public class PrincipalBean {
     	mostrarCompra = !mostrarCompra;
     	if(mostrarCompra) {
     		tipoCambioUsado = new Double(tipoCambioCompraDolar);
-    		textoDolarSolSuperior = "DÃ“LARES";
+    		textoDolarSolSuperior = "DÓLARES";
     		textoDolarSolInferior = "  SOLES";
     	}else {
     		tipoCambioUsado = new Double(tipoCambioVentaDolar);
     		textoDolarSolSuperior = "  SOLES";
-    		textoDolarSolInferior = "DÃ“LARES";
+    		textoDolarSolInferior = "DÓLARES";
     	}
     	
     	cargarValoresEnvioReciboA();

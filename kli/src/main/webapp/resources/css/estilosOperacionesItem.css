@@ -441,3 +441,29 @@ table.dataTable {
 	margin-bottom: 5px;
 	margin-top: 15px; 
 }
+
+.cursorPointer{
+	cursor: pointer;
+	font-weight: bold !important;
+	color: #003885 !important;
+}
+
+.botonIniciarOperacionPerfil{
+	color: #fff !important;
+	display: initial !important;
+	padding: 0.14rem 0.60rem !important;
+    font-size: 0.9rem !important;
+}
+
+.botonIniciarOperacionPerfil:before {
+    margin-left: 0em;
+}
+
+.botonIniciarOperacionPerfil span {
+    display: inline-block !important;
+    padding: .3em 0em .3em 0.5em !important;
+}
+
+.botonIniciarOperacionPerfil:hover {
+    border-bottom: none !important;
+}

@@ -111,7 +111,7 @@ public class CorreoEnvioHilo implements Runnable {
     	datamodel.put("token", token );
     	datamodel.put("usuaEmail", emailDestino );
     	LoggerUtil.getInstance().getLogger().info("token "+token);
-    	String asunto = "Solicitud de restablecimiento de contraseÃ±a - Kambio Online.";
+    	String asunto = "Solicitud de restablecimiento de contraseña - Kambio Online.";
     	NotificacionUtil.enviarCorreo(datamodel, PlantillasType.PLANTILLA_ENVIAR_ENLACE_RESTABLECER_CUENTA.getNombre(), asunto, emailDestino);
     }
     

@@ -4,8 +4,8 @@
 
 <Configuration>
 	<Properties>
-<!--          <Property name="BASE_DIR">C:/kambioOnlineBase/log</Property> -->
-         <Property name="BASE_DIR">/etc/kambioOnlineBase/log</Property>
+         <Property name="BASE_DIR">D:/cdcBases/kambioOnlineBase/log</Property>
+<!--          <Property name="BASE_DIR">/etc/kambioOnlineBase/log</Property> -->
     </Properties>
     <Appenders>
     	<Console name="console" >

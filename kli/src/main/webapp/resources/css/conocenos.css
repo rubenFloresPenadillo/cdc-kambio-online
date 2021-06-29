@@ -24,14 +24,6 @@
 	margin: auto;
 }
 
-@media (max-width:768px) {
-	#conocenos{
-		margin-top: 640px;
-	}
-}
-
-
-
 
 .conocenos-item{
 	margin: 30px;

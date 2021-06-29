@@ -3,17 +3,15 @@ package dto;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import hibernate.entidades.TpOrigeFondo;
-
 public class TpOperaClienDto implements java.io.Serializable {
 
 	private static final long serialVersionUID = 6339639927481055428L;
 	
 	private Integer codOperClie;
-	private TpBancoDto tpBanco;
 	private TpClienDto tpClien;
 	private TpCuentBancoDto tpCuentBancoByCodCuenBancClieReci;
-	private TpCuentBancoDto tpCuentBancoByCodCuenBancClieEnvi;
+	private TpCuentBancoDto tpCuentBancoByCodCuenBancCome;
+	private TpCuentBancoDto tpCuentBancoByCodCuenBancClieOrig;
 	private TpDivisDto tpDivisByCodDiviEnvi;
 	private TpDivisDto tpDivisByCodDiviReci;
 	private TpEstadOperaDto tpEstadOpera;
@@ -39,10 +37,10 @@ public class TpOperaClienDto implements java.io.Serializable {
 	private Date fecModiRegi;
 	
 	public TpOperaClienDto() {
-		tpBanco = new TpBancoDto();
 		tpClien = new TpClienDto();
 		tpCuentBancoByCodCuenBancClieReci = new TpCuentBancoDto();
-		tpCuentBancoByCodCuenBancClieEnvi = new TpCuentBancoDto();
+		tpCuentBancoByCodCuenBancCome = new TpCuentBancoDto();
+		tpCuentBancoByCodCuenBancClieOrig = new TpCuentBancoDto();
 		tpDivisByCodDiviReci = new TpDivisDto();
 		tpDivisByCodDiviEnvi = new TpDivisDto();
 		tpEstadOpera = new TpEstadOperaDto();
@@ -56,14 +54,6 @@ public class TpOperaClienDto implements java.io.Serializable {
 	public void setCodOperClie(Integer codOperClie) {
 		this.codOperClie = codOperClie;
 	}
-	public TpBancoDto getTpBanco() {
-		return tpBanco;
-	}
-	public void setTpBanco(TpBancoDto tpBanco) {
-		this.tpBanco = tpBanco;
-	}
-
-	
 	
 	public TpClienDto getTpClien() {
 		return tpClien;
@@ -79,15 +69,18 @@ public class TpOperaClienDto implements java.io.Serializable {
 	public void setTpCuentBancoByCodCuenBancClieReci(TpCuentBancoDto tpCuentBancoByCodCuenBancClieReci) {
 		this.tpCuentBancoByCodCuenBancClieReci = tpCuentBancoByCodCuenBancClieReci;
 	}
-	public TpCuentBancoDto getTpCuentBancoByCodCuenBancClieEnvi() {
-		return tpCuentBancoByCodCuenBancClieEnvi;
-	}
-	public void setTpCuentBancoByCodCuenBancClieEnvi(TpCuentBancoDto tpCuentBancoByCodCuenBancClieEnvi) {
-		this.tpCuentBancoByCodCuenBancClieEnvi = tpCuentBancoByCodCuenBancClieEnvi;
-	}
+	
 	public TpDivisDto getTpDivisByCodDiviEnvi() {
 		return tpDivisByCodDiviEnvi;
 	}
+	public TpCuentBancoDto getTpCuentBancoByCodCuenBancCome() {
+		return tpCuentBancoByCodCuenBancCome;
+	}
+
+	public void setTpCuentBancoByCodCuenBancCome(TpCuentBancoDto tpCuentBancoByCodCuenBancCome) {
+		this.tpCuentBancoByCodCuenBancCome = tpCuentBancoByCodCuenBancCome;
+	}
+
 	public void setTpDivisByCodDiviEnvi(TpDivisDto tpDivisByCodDiviEnvi) {
 		this.tpDivisByCodDiviEnvi = tpDivisByCodDiviEnvi;
 	}
@@ -225,6 +218,13 @@ public class TpOperaClienDto implements java.io.Serializable {
 	public void setTpOrigeFondo(TpOrigeFondoDto tpOrigeFondo) {
 		this.tpOrigeFondo = tpOrigeFondo;
 	}
-	
+
+	public TpCuentBancoDto getTpCuentBancoByCodCuenBancClieOrig() {
+		return tpCuentBancoByCodCuenBancClieOrig;
+	}
+
+	public void setTpCuentBancoByCodCuenBancClieOrig(TpCuentBancoDto tpCuentBancoByCodCuenBancClieOrig) {
+		this.tpCuentBancoByCodCuenBancClieOrig = tpCuentBancoByCodCuenBancClieOrig;
+	}
 	
 }
