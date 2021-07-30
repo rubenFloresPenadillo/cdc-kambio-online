@@ -64,7 +64,7 @@
 											
 											<tr>
 												<td style="padding-top: 20px; padding-bottom: 20px;text-align: justify;" >
-													<strong>Recuerde que mientras m&aacute;s r&aacute;pido demos respuesta a este reclamo o queja tendremos mayor aceptación por el usuario.</strong>
+													<strong>Recuerde que mientras m&aacute;s r&aacute;pido demos respuesta a este reclamo o queja tendremos mayor aceptaci&oacute;n por el usuario.</strong>
 												</td>
 												
 											</tr>

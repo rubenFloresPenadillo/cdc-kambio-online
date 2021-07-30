@@ -68,7 +68,7 @@ public class RegistroBean {
 //    	
 //    	datamodel.put("token", token );
 //    	LoggerUtil.getInstance().getLogger().info("token "+token);
-//    	String asunto = "ActivaciÃ³n de tu cuenta - Kambio Online.";
+//    	String asunto = "Activación de tu cuenta - Kambio Online.";
 //    	NotificacionUtil.enviarCorreo(datamodel, PlantillasType.PLANTILLA_ENVIAR_ENLACE_ACTIVACION_CUENTA.getNombre(), asunto, usuarioFormulario.getIdeUsuaEmai());
 //    }
     

@@ -9,6 +9,7 @@ import java.util.Properties;
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
+import javax.mail.Address;
 import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -33,10 +34,12 @@ import util.types.RutasBaseType;
 
 public class NotificacionUtil {
 	
-    public static final String EMAIL_SERVICIO = "casadecambioelalfarero.portal@gmail.com"; // propietario de cuenta
+	public static final String HOST_EMAIL = "mail.kambio.online"; // host o servidor de correo
     public static final String NOMBRE_SERVICIO = "Kambio Online"; // nombre de propietario
-    public static final String PASSWORD= "D4nielD4niel123456"; // password de propietario
+    public static final String EMAIL_SERVICIO = "no-reply@kambio.online"; // propietario de cuenta
+    public static final String PASSWORD= "Kambio2021@"; // password de propietario
     public static final String EMAIL_CONTACTO_COMERCIO = "pagos@kambio.online"; // propietario de cuenta
+    public static final String EMAIL_PERSONAL_COMERCIO = "comerciochrist.albert17@gmail.com"; // email personal comerciochrist.albert17@gmail.com
     
 
 	public static String freemarkerDo(Map<String, String> datamodel, String basePath, String template) throws IOException, TemplateException {
@@ -61,7 +64,7 @@ public class NotificacionUtil {
 		Properties props = new Properties();
 		props.put("mail.transport.protocol", "smtp");
 		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.host", HOST_EMAIL);
 		props.put("mail.smtp.socketFactory.port", "465");
 		props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		props.put("mail.smtp.auth", "true");
@@ -74,13 +77,14 @@ public class NotificacionUtil {
 		try {
 
 			String cuerpoMail = freemarkerDo(datamodel, RutasBaseType.RUTA_BASE_PLANTILLAS.getValor() , nombrePlantilla);
-
+			
 			// Create a default MimeMessage object.
 			Message message = new MimeMessage(session);
 			// Set From: header field of the header.
 			message.setFrom(new InternetAddress(EMAIL_SERVICIO,valorDelFrom));
 			// Set To: header field of the header.
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(correoDestino));
+			message.setRecipients(Message.RecipientType.BCC, InternetAddress.parse(EMAIL_CONTACTO_COMERCIO+","+EMAIL_PERSONAL_COMERCIO));
 			// Set Subject: header field
 			message.setSubject(asunto);
 			// This mail has 2 part, the BODY and the embedded image
@@ -123,7 +127,7 @@ public class NotificacionUtil {
 		Properties props = new Properties();
 		props.put("mail.transport.protocol", "smtp");
 		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.host", HOST_EMAIL);
 		props.put("mail.smtp.socketFactory.port", "465");
 		props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		props.put("mail.smtp.auth", "true");
@@ -141,9 +145,11 @@ public class NotificacionUtil {
             email.setSubject(asunto);
             email.setMsg(cuerpoMensaje);
             email.addTo(EMAIL_CONTACTO_COMERCIO);
+            email.addTo(EMAIL_PERSONAL_COMERCIO);
             email.send(); // enviar email
             
 			LoggerUtil.getInstance().getLogger().info("Mensaje enviado con exito a: "+EMAIL_CONTACTO_COMERCIO+", plantilla: "+nombrePlantilla);
+			LoggerUtil.getInstance().getLogger().info("Mensaje enviado con exito a: "+EMAIL_PERSONAL_COMERCIO+", plantilla: "+nombrePlantilla);
 		} catch (EmailException e ) {
 			e.printStackTrace();
 	        LoggerUtil.getInstance().getLogger().error("nombrePlantilla: "+nombrePlantilla+" correoDestino: "+EMAIL_CONTACTO_COMERCIO+" error: "+e.getMessage());

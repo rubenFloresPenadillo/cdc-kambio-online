@@ -120,7 +120,7 @@ public class CorreoEnvioHilo implements Runnable {
     	Map<String, String> datamodel = new HashMap<String, String>();
     	datamodel.put("parametroNombre", nombreCliente);
     	datamodel.put("parametroCodigoOperacion", codigoUnicoOperacion);
-    	String asunto = "OperaciÃ³n con cÃ³digo "+codigoUnicoOperacion+ " registrada, pendiente de verificaciÃ³n.";
+    	String asunto = "Operación con código "+codigoUnicoOperacion+ " registrada, pendiente de verificación.";
     	NotificacionUtil.enviarCorreo(datamodel, PlantillasType.PLANTILLA_ENVIAR_REGISTRO_OPERACION.getNombre(), asunto, emailDestino);
 	}
 	
@@ -128,7 +128,7 @@ public class CorreoEnvioHilo implements Runnable {
     	Map<String, String> datamodel = new HashMap<String, String>();
     	datamodel.put("parametroNombre", nombreCliente);
     	datamodel.put("parametroCodigoOperacion", codigoUnicoOperacion);
-    	String asunto = "OperaciÃ³n con cÃ³digo "+codigoUnicoOperacion+ " finalizada con Ã©xito.";
+    	String asunto = "Operación con código "+codigoUnicoOperacion+ " finalizada con éxito.";
     	NotificacionUtil.enviarCorreo(datamodel, PlantillasType.PLANTILLA_ENVIAR_FINALIZO_OPERACION.getNombre(), asunto, emailDestino);
     }
 	
@@ -138,10 +138,10 @@ public class CorreoEnvioHilo implements Runnable {
     	String asunto = null;
     	if(ValidacionesString.esNuloOVacio(codigoUnicoOperacion)) {
         	datamodel.put("parametroCodigoOperacion", "No procesado");
-        	asunto = "OperaciÃ³n cancelada.";	
+        	asunto = "Operación cancelada.";	
     	}else {
         	datamodel.put("parametroCodigoOperacion", codigoUnicoOperacion);
-        	asunto = "OperaciÃ³n con cÃ³digo "+codigoUnicoOperacion+ " ha sido cancelada.";
+        	asunto = "Operación con código "+codigoUnicoOperacion+ " ha sido cancelada.";
     	}
     	NotificacionUtil.enviarCorreo(datamodel, PlantillasType.PLANTILLA_ENVIAR_CANCELA_OPERACION.getNombre(), asunto, emailDestino);
 
@@ -152,7 +152,7 @@ public class CorreoEnvioHilo implements Runnable {
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append("Correo: "+datoCorreoElectronico);
-		sb.append("\nTelÃ©fono: "+datoTelefonoCelular);
+		sb.append("\nTeléfono: "+datoTelefonoCelular);
 		sb.append("\nNombre: "+datoNombreCompleto);
 		sb.append("\nMensaje: "+datoMensaje);
 		
@@ -212,7 +212,7 @@ public class CorreoEnvioHilo implements Runnable {
     	
     	datamodel.put("paramFechaCreacion", fechaDeRegistro);
     	
-    	String asunto = "Se registrÃ³ una Queja o Reclamo- Kambio Online.";
+    	String asunto = "Se registró una Queja o Reclamo- Kambio Online.";
     	NotificacionUtil.enviarCorreo(datamodel, PlantillasType.PLANTILLA_ENVIAR_REGISTRO_RECLAMO_ADMIN.getNombre(), asunto, emailDestino);
     	
 	}

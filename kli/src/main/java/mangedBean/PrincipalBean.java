@@ -218,7 +218,6 @@ public class PrincipalBean {
 
  
     	modeloTipoCambio = inicializarDataModelo();
-//        lineModel2.setTitle("Variación TC");
     	modeloTipoCambio.setAnimate(true);
     	modeloTipoCambio.setLegendPosition("se");
 //        lineModel2.setShowDatatip(false);

@@ -6,7 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /*Como demora mucho al generar el archivo del logger entonces se comenta las llamadas a la clase LoggerUtil, esto el día 8/12/2017
- * Solo teniamos 3 regisros , Ingreso al sistema , Cerró sesión y MENSAJE_SISTEMA_ERROR_LOGIN_CREDENCIALES("Credenciales invalidas."), 
+ * Solo teniamos 3 regisros , Ingreso al sistema , Cerrar sesi�n y MENSAJE_SISTEMA_ERROR_LOGIN_CREDENCIALES("Credenciales invalidas."), 
  * esto en las clases AccesoBean, PedidoVentaBean y ProductoMantenimientoBean
  * 
  */

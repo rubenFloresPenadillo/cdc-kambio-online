@@ -56,7 +56,7 @@ public class IngresoBean {
 //    	Map<String, String> datamodel = new HashMap<String, String>();
 //    	datamodel.put("token", token );
 //    	LoggerUtil.getInstance().getLogger().info("token "+token);
-//    	String asunto = "Activaci贸n de tu cuenta - Kambio Online.";
+//    	String asunto = "Activaci髇 de tu cuenta - Kambio Online.";
 //    	NotificacionUtil.enviarCorreo(datamodel, PlantillasType.PLANTILLA_ENVIAR_ENLACE_ACTIVACION_CUENTA.getNombre(), asunto, usuarioFormulario.getIdeUsuaEmai());
 //    }
     
@@ -173,9 +173,9 @@ public class IngresoBean {
 	        
 					
 				} else if (EstadosCuentaUsuarioType.ESTADO_CUENTA_USUARIO_BLOQUEADA.getIdElemento().equals(temp.getCodEstaCuenUsua())) {
-					resultadoProcesoError = "Su cuenta se encuentra bloqueada, ponganse en contacto con atenci贸n al cliente";
+					resultadoProcesoError = "Su cuenta se encuentra bloqueada, ponganse en contacto con atenci髇 al cliente";
 				} else if (EstadosCuentaUsuarioType.ESTADO_CUENTA_USUARIO_ELIMINADA.getIdElemento().equals(temp.getCodEstaCuenUsua())) {
-					resultadoProcesoError = "Su cuenta se encuentra eliminada, para mayor informaci贸n ponganse en contacto con atenci贸n al cliente";
+					resultadoProcesoError = "Su cuenta se encuentra eliminada, para mayor informaci髇 ponganse en contacto con atenci髇 al cliente";
 				} else {
 					//Cuenta activa
 					if (temp.getIndCompDato().equals(NumerosType.NUMERO_MINIMO_CERO.getValor())) {

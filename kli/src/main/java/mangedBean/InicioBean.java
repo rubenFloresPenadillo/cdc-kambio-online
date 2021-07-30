@@ -823,7 +823,7 @@ public class InicioBean {
 //    	
 //    	
 //    	
-//    	String asunto = "OperaciÃ³n con cÃ³digo "+operacionClienteFormulario.getCodUnicOperClie()+ " registrada, pendiente de verificaciÃ³n.";
+//    	String asunto = "Operación con código "+operacionClienteFormulario.getCodUnicOperClie()+ " registrada, pendiente de verificación.";
 //    	NotificacionUtil.enviarCorreo(datamodel, PlantillasType.PLANTILLA_ENVIAR_REGISTRO_OPERACION.getNombre(), asunto, usuario);
 //    	LoggerUtil.getInstance().getLogger().info("Fin enviarCorreoRegistroOperacion");
 //	}

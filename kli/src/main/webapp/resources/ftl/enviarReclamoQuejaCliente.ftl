@@ -64,7 +64,7 @@
 											
 											<tr>
 												<td style="padding-top: 20px; padding-bottom: 20px;text-align: justify;" >
-													<strong>Estamos analizando la informaciÃ³n registrada, en cuanto culminemos te responderemos, lo haremos lo mas r&aacute;pido posible. Muchas gracias por tu comprensi&oacute;n.</strong>
+													<strong>Estamos analizando la información registrada, en cuanto culminemos te responderemos, lo haremos lo mas r&aacute;pido posible. Muchas gracias por tu comprensi&oacute;n.</strong>
 												</td>
 												
 											</tr>
