@@ -98,9 +98,6 @@
 	 <foreign-key constraint-name="fk_tp_opera_clien_8">
 	 	<set exclude="true"/>
 	 </foreign-key>
-	 <foreign-key constraint-name="fk_tp_opera_clien_9">
-	 	<set exclude="true"/>
-	 </foreign-key>	 
 </table>
 
 <table name="tp_tipo_cambi">

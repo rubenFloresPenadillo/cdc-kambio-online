@@ -1,0 +1,448 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
+@import url(menuUsuario.css);
+
+* {
+	margin: 0;
+	padding: 0;
+	/*El width y el height incluyen el padding y el border, pero no el margin. */
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+	font-size: 0.85rem;
+	background-image: rgba(87,99,235,1);
+	background-image: -moz-linear-gradient(left, rgba(87,99,235,1) 0%, rgba(50,164,199,1) 95%, rgba(50,164,199,1) 100%);
+	background-image: -webkit-gradient(left top, right top, color-stop(0%, rgba(87,99,235,1)), color-stop(95%, rgba(50,164,199,1)), color-stop(100%, rgba(50,164,199,1)));
+	background-image: -webkit-linear-gradient(left, rgba(87,99,235,1) 0%, rgba(50,164,199,1) 95%, rgba(50,164,199,1) 100%);
+	background-image: -o-linear-gradient(left, rgba(87,99,235,1) 0%, rgba(50,164,199,1) 95%, rgba(50,164,199,1) 100%);
+	background-image: -ms-linear-gradient(left, rgba(87,99,235,1) 0%, rgba(50,164,199,1) 95%, rgba(50,164,199,1) 100%);
+	background-image: linear-gradient(to right, rgba(87,99,235,1) 0%, rgba(50,164,199,1) 95%, rgba(50,164,199,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5763eb', endColorstr='#32a4c7', GradientType=1 );
+}
+
+section{
+	width: 88%;
+	margin: auto;
+	padding-left: 2%; 
+	padding-right: 2%;
+	background: #fff;
+}
+
+header{
+	width: 100%;
+	height: 65px;
+	background: #EFEFEF;
+	color: #5763eb;
+	font-weight: bold;
+	border-top: 1px solid #5763eb;
+	border-bottom: 1px solid #5763eb;
+	
+	
+	/*Para que se quede fijo*/
+	position: fixed;
+	top: 0;
+	left: 0;
+	/*Para que este siempre por delante de los demas elementos, el tape a los demas*/
+	z-index: 100;
+}
+
+.contenedor{
+	width: 98%;
+	margin: auto;
+}
+
+img{
+	float: left;
+	width: 211.25px;
+	height: 65px;
+}
+
+
+@media (min-width: 1024px){
+	.contenedor {
+		width: 90%;
+	}
+}
+
+
+#idSeccionUsuarioCliente {
+    margin-top: 65px;
+	min-height: 90vh;
+}
+
+#idSeccionUsuarioItem {
+    margin-top: 65px;
+	min-height: 90vh;
+}
+
+#idFormUsuario{
+	display: inline-block;
+	width: 100%;
+	margin-top: 1rem;
+/* 	margin: auto; */
+}
+
+#idFormUsuarioItem{
+	display: inline-block;
+	width: 100%;
+	margin-top: 1rem;
+/* 	margin: auto; */
+}
+
+.column {
+    float: left;
+}
+
+.table th {
+    border: green 2px solid !important;
+    background: #5763eb;
+    color: white;
+}
+
+.table td {
+    border: green 1px solid !important;
+}
+
+.claseCeldaOperacionCurso{
+	padding-top: 1.5em !important;
+}
+
+.claseTitulo{
+	color: #5763eb;
+	font-weight: bold;
+	font-size: 1rem;
+}
+
+.botonIniciarOperacionGeneral{
+	color: #fff;
+	font-weight: bold;
+	background: #FF7400;
+}
+
+table.dataTable {
+    border-collapse: collapse !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    color: #5763eb !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+    color: #5763eb !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    color: #fff !important;
+    border: 1px solid #5763eb !important;
+    background-color: white !important;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #5763eb), color-stop(100%, #5763eb)) !important;
+    background: -webkit-linear-gradient(top, #5763eb 0%, #5763eb 100%) !important;
+    background: -moz-linear-gradient(top, #5763eb 0%, #5763eb 100%) !important;
+    background: -ms-linear-gradient(top, #5763eb 0%, #5763eb 100%) !important;
+    background: -o-linear-gradient(top, #5763eb 0%, #5763eb 100%) !important;
+    background: linear-gradient(to bottom, #5763eb 0%, #5763eb 100%) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    color: white !important;
+    border: 1px solid #5763eb;
+    background-color: #5763eb;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #5763eb), color-stop(100%, #5763eb));
+    background: -webkit-linear-gradient(top, #5763eb 0%, #5763eb 100%);
+    background: -moz-linear-gradient(top, #5763eb 0%, #5763eb 100%);
+    background: -ms-linear-gradient(top, #5763eb 0%, #5763eb 100%);
+    background: -o-linear-gradient(top, #5763eb 0%, #5763eb 100%);
+    background: linear-gradient(to bottom, #5763eb 0%, #5763eb 100%);
+}
+
+.dataTables_paginate{
+	margin-top: 10px;
+}
+
+.botonCancelar {
+    font-weight: bold;
+	padding: 0px !important;
+    float: left !important;
+    color: #FF0000;
+    background-color: #ffffff;
+    border: 1.5px solid #FF0000;
+    width: 30px;
+}
+
+.botonCancelar:before {
+	margin-left: 0em !important;
+	margin-right: 0em !important;
+}
+
+.botonCancelar:hover{
+	color: #ffffff;
+	background-color: #FF0000;
+}
+
+.botonCheck {
+    font-weight: bold;
+	padding: 0px !important;
+    float: left !important;
+    color: #28a745;
+    background-color: #ffffff;
+    border: 1.5px solid #28a745;
+    width: 30px;
+}
+
+.botonCheck:before {
+	margin-left: 0em !important;
+	margin-right: 0em !important;
+}
+
+.botonCheck:hover{
+	color: #fff;
+	background-color: #218838;
+    border-color: #1e7e34;
+}
+
+
+.botonDetalle {
+    font-weight: bold;
+	padding: 0px !important;
+    float: left !important;
+    color: #2299FB;
+    background-color: #ffffff;
+    border: 1.5px solid #2299FB;
+    width: 30px;
+}
+
+.botonDetalle:before {
+	margin-left: 0em !important;
+	margin-right: 0em !important;
+}
+
+.botonDetalle:hover{
+	color: #fff;
+	background-color: #2299FB;
+    border-color: #2299FB;
+}
+
+
+.botonEditar {
+    font-weight: bold;
+	padding: 0px !important;
+    float: left !important;
+    color: #6F4D00;
+    background-color: #ffffff;
+    border: 1.5px solid #6F4D00;
+    width: 30px;
+}
+
+.botonEditar:before {
+	margin-left: 0em !important;
+	margin-right: 0em !important;
+}
+
+.botonEditar:hover{
+	color: #fff;
+	background-color: #6F4D00;
+    border-color: #6F4D00;
+}
+
+
+.botonRegresar {
+	color: #fff;
+	border: 1.5px solid #FD6507;
+	background: #FD6507;
+	font-weight: bold !important;
+	padding: 0px !important;
+	width: 30px;
+	height: 28px;
+}
+
+.botonRegresar:before {
+	margin-left: 0em !important;
+	margin-right: 0em !important;
+}
+
+.botonRegresar:hover{
+	color: #FD6507;
+	background-color: #fff;
+}
+
+
+
+.botonNuevo {
+	color: #fff;
+	border: 1.5px solid #00CA23;
+	background: #00CA23;
+	font-weight: bold !important;
+	padding: 0px !important;
+	width: 30px;
+	height: 28px;
+}
+
+.botonNuevo:before {
+	margin-left: 0em !important;
+	margin-right: 0em !important;
+}
+
+.botonNuevo:hover{
+	color: #00CA23;
+	background-color: #fff;
+}
+
+.botonRefrescar {
+	color: #fff;
+	border: 1.5px solid #0900E2;
+	background: #0900E2;
+	font-weight: bold !important;
+	padding: 0px !important;
+	width: 30px;
+	height: 28px;
+}
+
+.botonRefrescar:before {
+	margin-left: 0em !important;
+	margin-right: 0em !important;
+}
+
+.botonRefrescar:hover{
+	color: #0900E2;
+	background-color: #fff;
+}
+
+.claseTituloIzquierda{
+	padding-left: 0 !important;
+}
+
+.claseTituloDerecha{
+	text-align: right;
+    padding-right: 0 !important;
+}
+
+.claseOperacionIniciada{
+	color: orange;
+	font-weight: bold;
+}
+
+.claseOperacionVerificacion{
+	color: #2299FB;
+	font-weight: bold;
+}
+
+
+.claseOperacionFinalizada{
+	color: green;
+	font-weight: bold;
+}
+
+.claseOperacionCancelada{
+	color: red;
+	font-weight: bold;
+}
+
+.modal-title{
+    color: #5763eb !important;
+	font-weight: bold !important;
+}
+
+.modal-content{
+	margin-top: 70px !important;
+}
+
+.claseCampoObligatorios{
+	color: red;
+	font-weight: bold;
+/* 	margin-top: 10px; */
+	margin-bottom: 0 !important;
+	padding: 10px 0 !important;
+}
+
+.form-group label{
+	color: #5763eb;
+	font-weight: bold;
+}
+
+.form-control{
+	font-size: 0.85rem !important;
+}
+
+.claseMensajeResultado{
+	margin-top: 10px !important;	
+}
+
+.claseComboFormulario{
+	height: 34px !important;
+}
+
+.claseErrorFormulario{
+	border-color: red !important;
+	box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.4) !important;
+}
+
+.btn-guardar-datos{
+	width: 60%;
+	margin-top: 10px;
+}
+
+@media (max-width: 400px){
+	.btn-guardar-datos{
+		width: 100%;
+	}
+}
+
+.mensajeTituloError{
+    color: #c82333 !important;
+}
+
+.mensajeCuerpoError{
+	color: #dc3545 !important;
+}
+
+.claseIndicadorActivo{
+	color: green !important;
+	font-weight: bold;
+}
+
+.claseIndicadorInactivo{
+	color: red !important;
+	font-weight: bold;
+}
+
+.claseIndicadorRegistrado{
+	color: orange !important;
+	font-weight: bold;
+}
+
+.claseIconoReporte{
+	text-decoration:none !important;
+    background-color: transparent;
+   -webkit-text-decoration-skip: objects;
+}
+.claseIconoReporte img{
+	float: none !important;
+    width: 34px !important;
+    height: auto !important;
+}
+
+.imagenBotonIconoExcel256x256 {
+	background-image: url(../../resources/imagenes/iconoExcel30x30.png) !important;
+	background-repeat: no-repeat !important;
+	background-position: center !important;
+	width: 30px;
+	height: 28px;
+}
+
+.claseBotonReporte{
+	width: 30px;
+	height: 28px;
+	cursor: pointer;
+	border: none !important;
+/* 	background-color: #EFEFEF; Color al fondo de los botones con imagen   */
+	/*Para hacer los botones circulares*/
+/* 	border-radius: 18px 18px 18px 18px; */
+/* 	-moz-border-radius: 18px 18px 18px 18px; */
+/* 	-webkit-border-radius: 18px 18px 18px 18px; */
+	/*Para las sombras*/
+/* 	-webkit-box-shadow: 3px 3px 11px 0px rgba(0,139,17,0.73); */
+/* 	-moz-box-shadow: 3px 3px 11px 0px rgba(0,139,17,0.73); */
+/* 	box-shadow: 3px 3px 11px 0px rgba(0,139,17,0.73); */
+}

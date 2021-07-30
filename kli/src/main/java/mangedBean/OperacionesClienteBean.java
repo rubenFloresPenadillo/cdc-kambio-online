@@ -39,6 +39,9 @@ public class OperacionesClienteBean {
 	private Integer codPerfUsua;
 	private String valorNombre;
 	private Integer indFueraDeHorario;
+	private Boolean indDatosEmpresa;
+	private Integer codigoUsuario;
+	private Integer codigoUsuarioPadre;	
 	
 	private static final String MOTIVO_CANCELACION_CLIENTE_BAND_OPERACION = "Desistio desde su bandeja de operaciones";
 	
@@ -47,6 +50,7 @@ public class OperacionesClienteBean {
 		operacionEnProceso = new TpOperaClienDto();
 		resultadoProcesoError = CadenasType.VACIO.getValor();
 		System.out.println("Entro al constructor OperacionesClienteBean");
+		indDatosEmpresa = Boolean.FALSE;
 		
 	}
 	
@@ -65,6 +69,12 @@ public class OperacionesClienteBean {
     	codigoCliente = (Integer) sesion.getAttribute("codigoCliente");
     	codPerfUsua = (Integer) sesion.getAttribute("codPerfUsua");
     	indCompleDatos = (Integer) sesion.getAttribute("indCompleDatos");
+    	codigoUsuario = (Integer) sesion.getAttribute("codigoUsuario");
+    	codigoUsuarioPadre = (Integer) sesion.getAttribute("codigoUsuarioPadre");
+    	
+    	if(codigoUsuario.intValue() != codigoUsuarioPadre.intValue()) {
+    		indDatosEmpresa = Boolean.TRUE;
+    	}
     	
     	if(indCompleDatos.equals(NumerosType.NUMERO_MINIMO_CERO.getValor())) {
 			try {
@@ -201,6 +211,14 @@ public class OperacionesClienteBean {
 
 	public void setIndFueraDeHorario(Integer indFueraDeHorario) {
 		this.indFueraDeHorario = indFueraDeHorario;
+	}
+
+	public Boolean getIndDatosEmpresa() {
+		return indDatosEmpresa;
+	}
+
+	public void setIndDatosEmpresa(Boolean indDatosEmpresa) {
+		this.indDatosEmpresa = indDatosEmpresa;
 	}
 	
 	

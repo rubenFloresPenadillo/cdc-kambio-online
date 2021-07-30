@@ -114,8 +114,8 @@ public class InicioBean {
 	private Integer codPerfUsua;
 	private String ideUsuaEmai;
 	private Integer indRegistroCuentaBancaria;
-	private Integer indExisteBancoEnNegocio;
 	private Boolean mostrarMensajeCCI;
+	private Boolean mostrarMensajeClienteCCI;
 	private String mensajeHorarioAtencion;
 	private Boolean indHabilitarOrigenFondo;
 	private Boolean indDatosEmpresa;
@@ -129,8 +129,8 @@ public class InicioBean {
 		resultadoProcesoError = CadenasType.VACIO.getValor();
 		indRegistroCuentaBancaria = NumerosType.INDICADOR_NEGATIVO_UNO.getValor();
 		indFueraDeHorario = NumerosType.NUMERO_MINIMO_CERO.getValor();
-		indExisteBancoEnNegocio = NumerosType.NUMERO_MINIMO_CERO.getValor();
 		mostrarMensajeCCI = Boolean.FALSE;
+		mostrarMensajeClienteCCI = Boolean.FALSE;
 		indDatosEmpresa = Boolean.FALSE;
 	}
 	
@@ -375,8 +375,15 @@ public class InicioBean {
     				
     	        	ServiceCliente serviceCliente = new ServiceClienteImpl();
     	        	
-    	        	indRegistroCuentaBancaria = serviceCliente.getExisteCuentaBancariaCliente(codigoCliente);
-    				
+    	        	Integer cantidadCuentas = serviceCliente.getExisteCuentaBancariaCliente(codigoCliente);
+    	        	
+    	        	// Tiene minimo 1 cuenta en USD y PEN registradas
+    	        	if (cantidadCuentas > NumerosType.INDICADOR_POSITIVO_UNO.getValor()) {
+    	        		indRegistroCuentaBancaria = NumerosType.INDICADOR_POSITIVO_UNO.getValor();
+    	        	}else {
+    	        		indRegistroCuentaBancaria = NumerosType.NUMERO_MINIMO_CERO.getValor();
+					}
+    	        	
     				vistaInicialCalculadora();
     				mostrarCompra = Boolean.TRUE;
     				tipoCambioUsado = new Double(tipoCambioCompraDolar);
@@ -882,8 +889,24 @@ public class InicioBean {
 		mostrarVerificacion = Boolean.FALSE;
     }
     
+    public void validarMensajeClienteCCI() {
+    	ServiceCliente serviceCliente = new ServiceClienteImpl();
+    	
+    	Integer indExisteBancoEnNegocio = NumerosType.NUMERO_MINIMO_CERO.getValor();
+    	
+    	indExisteBancoEnNegocio = serviceCliente.getExisteBancoEnNegocio(operacionClienteFormulario.getTpCuentBancoByCodCuenBancClieOrig());
+    	
+    	if(indExisteBancoEnNegocio.equals(NumerosType.INDICADOR_POSITIVO_UNO.getValor())) {
+    		mostrarMensajeClienteCCI = Boolean.FALSE;
+    	}else {
+    		mostrarMensajeClienteCCI = Boolean.TRUE;
+    	}
+    }
+    
     public void validarMensajeCCI() {
     	ServiceCliente serviceCliente = new ServiceClienteImpl();
+    	
+    	Integer indExisteBancoEnNegocio = NumerosType.NUMERO_MINIMO_CERO.getValor();
     	
     	indExisteBancoEnNegocio = serviceCliente.getExisteBancoEnNegocio(operacionClienteFormulario.getTpCuentBancoByCodCuenBancClieReci());
     	
@@ -893,6 +916,8 @@ public class InicioBean {
     		mostrarMensajeCCI = Boolean.TRUE;
     	}
     }
+    
+    
     
     public void procesarCerrarSesion() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
@@ -1121,6 +1146,14 @@ public class InicioBean {
 
 	public void setMostrarMensajeCCI(Boolean mostrarMensajeCCI) {
 		this.mostrarMensajeCCI = mostrarMensajeCCI;
+	}
+
+	public Boolean getMostrarMensajeClienteCCI() {
+		return mostrarMensajeClienteCCI;
+	}
+
+	public void setMostrarMensajeClienteCCI(Boolean mostrarMensajeClienteCCI) {
+		this.mostrarMensajeClienteCCI = mostrarMensajeClienteCCI;
 	}
 
 	public List<SelectItem> getListaComboOrigenFondo() {

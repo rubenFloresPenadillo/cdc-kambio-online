@@ -47,22 +47,22 @@
 
 			<nav class="menu">
 				<ul>
-					<li>
+					<li onclick="window.location.href='inicio.xhtml'">
 						<a class="claseInicio" href="inicio.xhtml">Inicia Operacion</a> 
 					</li>
-					<li>	
+					<li onclick="window.location.href='datos.xhtml'">	
 						<a class="claseDatos" href="datos.xhtml">Mis Datos</a> 
 					</li>	
-					<li>	
+					<li onclick="window.location.href='cuenta.xhtml'">	
 						<a class="claseCuentas" href="cuenta.xhtml">Mis Cuentas Bancarias</a> 
 					</li>	
-					<li>	
+					<li onclick="window.location.href='operaciones.xhtml'">	
 						<a class="claseOperaciones" href="operaciones.xhtml">Mis Operaciones</a> 
 					</li>	
-					<li > 
+					<li onclick="window.location.href='elegirPerfil.xhtml'"> 
 						<a href="elegirPerfil.xhtml" id="idEnlaceElegirPerfil" class="claseElegirPerfil btn btn-info botonIniciarOperacionPerfil icon-user">Elegir Perfil</a> 
 					</li>
-					<li id="idEnlaceCerrarSesion">	
+					<li id="idEnlaceCerrarSesion" onclick="mostrarPopupCerrarSesion();">	
 						<a href="#" onclick="mostrarPopupCerrarSesion();">Cerrar Sesion</a>
 					</li>	
 				</ul>
@@ -358,7 +358,7 @@
 						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
 							<div class="form-group">
 								<p:outputLabel value="RUC del Titular" styleClass="claseTituloCuentaClienteEnvia"/>
-								<p:inputText id="idTxtRucTitularEnvia" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancCome.tpClien.valDocuEmpr}" disabled="true"/>
+								<p:inputText id="idTxtRucTitularEnvia" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancCome.tpClien.valDocuPers}" disabled="true"/>
 							</div>
 						</div>
 	

@@ -93,7 +93,7 @@ public class CorreoEnvioHilo implements Runnable {
     	Map<String, String> datamodel = new HashMap<String, String>();
     	datamodel.put("token", token );
     	LoggerUtil.getInstance().getLogger().info("token "+token);
-    	String asunto = "Activaci贸n de tu cuenta - Kambio Online.";
+    	String asunto = "Activaci髇 de tu cuenta - Kambio Online.";
     	NotificacionUtil.enviarCorreo(datamodel, PlantillasType.PLANTILLA_ENVIAR_ENLACE_ACTIVACION_CUENTA.getNombre(), asunto, emailDestino);
     }
 	
@@ -102,7 +102,7 @@ public class CorreoEnvioHilo implements Runnable {
     	datamodel.put("codigoVerifiacion", token );
     	datamodel.put("nombreCliente", nombreCliente);
     	LoggerUtil.getInstance().getLogger().info("codigoVerifiacion "+token);
-    	String asunto = "Activaci贸n de tu cuenta - C贸digo de Verificaci贸n | Kambio Online.";
+    	String asunto = "Activaci髇 de tu cuenta - C骴igo de Verificaci髇 | Kambio Online.";
     	NotificacionUtil.enviarCorreo(datamodel, PlantillasType.PLANTILLA_ENVIAR_ENLACE_ACTIVACION_CUENTA_CODIGO.getNombre(), asunto, emailDestino);
     }
 	
@@ -148,7 +148,7 @@ public class CorreoEnvioHilo implements Runnable {
     }
     
 	public void enviarCorreoAComercioDesdeContacto() {
-//    	String asunto = "Activaci贸n de tu cuenta - Kambio Online.";
+//    	String asunto = "Activaci髇 de tu cuenta - Kambio Online.";
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append("Correo: "+datoCorreoElectronico);

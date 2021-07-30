@@ -49,6 +49,9 @@ public class OperacionesClienteItemBean {
 //	private List<SelectItem> listaComboTipoCuentas;
 //	private List<SelectItem> listaComboIndiTransfeBancarias;
 //	private List<SelectItem> listaComboIndiCuentaPropia;
+	private Boolean indDatosEmpresa;
+	private Integer codigoUsuario;
+	private Integer codigoUsuarioPadre;	
 	
 	private List<SelectItem> listaComboNuevoEstado;
 	
@@ -62,6 +65,7 @@ public class OperacionesClienteItemBean {
 		indicadorModoConsulta = Boolean.FALSE;
 		resultadoProcesoExito = CadenasType.VACIO.getValor();
 		resultadoProcesoError = CadenasType.VACIO.getValor();
+		indDatosEmpresa = Boolean.FALSE;
 		System.out.println("Entro al constructor OperacionesControlItemBean");
 	}
 	
@@ -77,6 +81,13 @@ public class OperacionesClienteItemBean {
 //		sesion.removeAttribute("operacionItemSeleccionado");
 //		sesion.removeAttribute("indicadorModoConsulta");
 		
+    	codigoUsuario = (Integer) sesion.getAttribute("codigoUsuario");
+    	codigoUsuarioPadre = (Integer) sesion.getAttribute("codigoUsuarioPadre");
+    	
+    	if(codigoUsuario.intValue() != codigoUsuarioPadre.intValue()) {
+    		indDatosEmpresa = Boolean.TRUE;
+    	}
+    	
 		indMostrarVistaFinalizar = Boolean.TRUE;
 		indMostrarListaCambiarEstado = Boolean.TRUE;
 	
@@ -114,6 +125,7 @@ public class OperacionesClienteItemBean {
     	if(ValidacionesString.esNuloOVacio(valorNombre)) {
     		valorNombre = CadenasType.CADENA_USUARIO.getValor();
     	}
+    	
     	
     	getListaCargarListaComboEstadosNuevos();
     	asignarValoresDinamicos();
@@ -426,6 +438,14 @@ public class OperacionesClienteItemBean {
 
 	public void setIndMostrarListaCambiarEstado(Boolean indMostrarListaCambiarEstado) {
 		this.indMostrarListaCambiarEstado = indMostrarListaCambiarEstado;
+	}
+
+	public Boolean getIndDatosEmpresa() {
+		return indDatosEmpresa;
+	}
+
+	public void setIndDatosEmpresa(Boolean indDatosEmpresa) {
+		this.indDatosEmpresa = indDatosEmpresa;
 	}
     
 	

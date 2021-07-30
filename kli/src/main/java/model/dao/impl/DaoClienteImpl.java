@@ -1,5 +1,6 @@
 package model.dao.impl;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -18,6 +19,7 @@ import loggerUtil.LoggerUtil;
 import model.dao.DaoCliente;
 import numeros.util.ValidacionesNumeros;
 import util.types.CadenasType;
+import util.types.DivisaType;
 import util.types.NumerosType;
 import util.types.RegistroActivoType;
 
@@ -255,11 +257,15 @@ public class DaoClienteImpl implements DaoCliente {
 		StringBuilder sb = new StringBuilder();
         sb.append("select count(*) from TpCuentBanco tcba") ;
         sb.append(" where tcba.indEsta = :indEsta ");
+        sb.append(" and tcba.tpDivis.codIsoDivi IN (:listCodIsoDivi) ");
         sb.append(" and tcba.tpClien.codClie = :codClie ");
 
         Query query = session.createQuery(sb.toString());
         
+        List<String> listCodIsoDivi =  Arrays.asList(DivisaType.DOLAR.getCodIsoDivi(),DivisaType.SOL.getCodIsoDivi());
+        
         query.setParameter("indEsta", RegistroActivoType.ACTIVO.getLlave());
+        query.setParameter("listCodIsoDivi", listCodIsoDivi);
         query.setParameter("codClie", codClie);
         
         resultado = (int) (long) query.uniqueResult();

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<link rel="shortcut icon" href="../../resources/imagenes/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.css" />
+
+	<script type="text/javascript" src="../../resources/js/popper.min.js"></script>
+	<script type="text/javascript" src="../../resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../resources/js/principalBanco.js"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="../../resources/css/fontello.css" />
+	<link rel="stylesheet" type="text/css" href="../../resources/css/datatables.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../resources/css/estilosBanco.css"/> 
+	
+
+ 
+	<script type="text/javascript" src="../../resources/js/datatables.min.js"></script>
+
+
+
+	<title>Administración de Bancos</title>
+	
+</h:head>
+<h:body>
+
+	<ui:param name="mAlias" value="#{bancoBean}" />
+
+	<header>
+		<div class="contenedor">
+			
+			<a  href="../../mda/index.xhtml">
+				<img src="../../resources/imagenes/logoHorizontal390x120.png" alt="Logo Hmafg"/>
+			</a>
+
+			<h:selectBooleanCheckbox  id="menu-bar"/>
+			<label class="icon-down-dir" for="menu-bar" id="idFlechaAbajo" ></label> 
+			<h:outputLabel id="idSeccionUsuario" class="icon-user-circle" for="menu-bar" value="#{mAlias.valorNombre}"/>
+			
+
+			<nav class="menu">
+				<a class="claseControl" href="../panelPrincipal.xhtml">Panel de Control</a>
+				<a class="claseReportes" href="#" >Reportes</a>
+				<a href="#" id="idEnlaceCerrarSesion" onclick="mostrarPopupCerrarSesion();" >Cerrar Sesion</a>
+			</nav>
+
+			<a id="idBotonCerrarSesion"  class="btn botonCerrarSesion icon-power" href="#" title="Cerrar sesión" onclick="mostrarPopupCerrarSesion();" />
+
+		</div>
+	</header>
+
+	<main>
+	<section id="idSeccionBanco">
+		
+		<!-- Modal cerrar sesion-->
+		<div class="modal fade" id="idModalConfirmacionCerrarSesion" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body"> ¿Estás seguro de cerrar sesión?</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal" onclick="ejecutarCerrarSesionRemoto();">Aceptar</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" >Cancelar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<h:form id="idFormBanco" method="post" role="form"
+			class="form-horizontal">
+			
+			<p:remoteCommand name="ejecutarCerrarSesionRemoto" actionListener="#{mAlias.procesarCerrarSesion()}"/>
+			<p:remoteCommand name="ejecutarRefrescarBanco" actionListener="#{mAlias.procesarRefrescarBanco()}" update="idFormBanco" oncomplete="iniciarTablaYBotones();"/>
+			
+			<div class="row mx-auto">
+				
+				<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 claseTituloIzquierda" >
+					<p class="claseTitulo">Panel de Control → Administración de Bancos</p>
+				</div>
+				
+				<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 claseTituloDerecha">
+					<a class="btn botonRefrescar icon-arrows-cw" href="#" title="Refrescar" onclick="ejecutarRefrescarBanco();" />
+					<a class="btn botonNuevo icon-plus" href="bancoItem.xhtml" title="Nuevo Banco"/>
+					<a class="btn botonRegresar icon-undo" href="../panelPrincipal.xhtml" title="Regresar al Panel de Control"/>
+				</div>
+				
+			</div>
+			
+			<p:outputPanel id="idPanelListaPrincipal">
+			<div class="table-responsive">
+				<table id="idTablaPrincipal" class="table" data-page-length='10' onload="funcionCargaEstiloActividad();">
+
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Coódigo corto de banco</th>
+							<th scope="col">Nombre banco</th>
+							<th scope="col">Ind. vista cliente</th>
+							<th scope="col">Ind. vista administración</th>
+							<th scope="col">Ind. cuenta negocio</th>
+							<th scope="col">Estado de registro</th>
+							<th scope="col">Fec. creación</th>
+							<th scope="col">Usu. creación</th>
+							<th scope="col">Fec. ult modificación</th>
+							<th scope="col">Usu. ult modificación</th>
+							<th scope="col">Acciones</th>
+						</tr>
+					</thead>
+					<tbody>
+
+							<ui:repeat value="#{mAlias.listaBancos}" var="item"  varStatus="status" >
+								<tr>
+									<td>#{status.index + 1}</td>
+									<td>#{item.codCortBanc}</td>
+									<td>#{item.nomBanc}</td>
+									<td>#{item.indVistClie == 1 ? 'Activo' : 'Inactivo'}</td>
+									<td>#{item.indVistAdmi == 1 ? 'Activo' : 'Inactivo'}</td>
+									<td>#{item.indTienCuenNego == 1 ? 'Activo' : 'Inactivo'}</td>
+									<td>#{item.indEsta == 1 ? 'Activo' : 'Inactivo'}</td>
+									<td>
+										<h:outputText value="#{item.fecCreaRegi}">
+										  <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" timeZone="America/Lima"/>
+										</h:outputText>
+									</td>
+									<td>#{item.usuApliCrea}</td>
+									<td>
+										<h:outputText value="#{item.fecModiRegi}">
+										  <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" timeZone="America/Lima"/>
+										</h:outputText>
+									</td>
+									<td>#{item.usuApliModi}</td>
+									<td> 
+										<p:commandButton class="btn botonDetalle icon-search" title="Detalle"
+											action="#{mAlias.seleccionarBancoDetalle(item)}"/>
+										
+										<p:commandButton class="btn botonEditar icon-pencil" title="Editar" 
+											action="#{mAlias.seleccionarBancoEditar(item)}"/>
+										
+									</td>
+								</tr>
+
+							</ui:repeat>
+
+					</tbody>
+
+				</table>
+			</div>
+
+		</p:outputPanel>
+
+		</h:form>
+	
+	
+		<!-- Modal Error-->
+		<div class="modal fade" id="idModalErrorSistema" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title mensajeTituloError">¡ Mensaje del Sistema - ERROR !</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body mensajeCuerpoError">#{mAlias.resultadoProcesoError} <strong>Comuníquese con el área de Soporte.</strong></div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+
+	</main>
+
+	<footer>
+		<div class="contenedor"></div>
+	</footer>
+
+</h:body>
+
+</html>

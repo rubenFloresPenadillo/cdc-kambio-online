@@ -57,10 +57,17 @@
 							value="#{mAlias.operacionClienteFormulario.tpCuentBancoByCodCuenBancClieOrig.codCuenBanc}">
 						<f:selectItem itemLabel="Seleccione..." itemValue="-1" />
 						<f:selectItems value="#{mAlias.listaComboCuentasBancariasEnvi}" />
+						<p:ajax update="idContenedorMensajeClienteCCI" event="change" listener="#{mAlias.validarMensajeClienteCCI}" />
 					</h:selectOneMenu>
 					<div id="idMensajeResultadoCuentaBancariaE" > </div>
 					
 				</div>
+				
+				<p:outputPanel id="idContenedorMensajeClienteCCI">
+					<p:outputPanel styleClass="claseMensajeCCI"  rendered="#{mAlias.mostrarMensajeClienteCCI}">
+						<p:outputLabel value="(Deberás realizar una operación interbancaria)" />
+					</p:outputPanel>
+				</p:outputPanel>
 				
 				<div class="form-group contenerdorEnlaceCuentas">
 					<h:link styleClass="enlaceCuentas btn-link" value="Añade una cuenta aquí" outcome="cuentaItem.xhtml" />

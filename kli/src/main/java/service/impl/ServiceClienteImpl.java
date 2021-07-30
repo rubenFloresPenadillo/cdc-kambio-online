@@ -14,6 +14,7 @@ import dto.TpDistrDto;
 import dto.TpProviDto;
 import dto.TpSectoEconoDto;
 import dto.TpUsuarDto;
+import hibernate.entidades.TpActivEcono;
 import hibernate.entidades.TpClien;
 import hibernate.entidades.TpCuentBanco;
 import hibernate.entidades.TpDepar;
@@ -118,6 +119,19 @@ public class ServiceClienteImpl  implements ServiceCliente{
 			tpClienDto.setValSeguApelPers(tpClienEntidad.getValSeguApelPers());
 			tpClienDto.getTpTipoDocumPerso().setCodTipoDocuPers(tpClienEntidad.getTpTipoDocumPerso().getCodTipoDocuPers());
 			tpClienDto.setValDocuPers(tpClienEntidad.getValDocuPers());
+			tpClienDto.setValDocuEmpr(tpClienEntidad.getValDocuEmpr());
+			tpClienDto.setValRazoSociPers(tpClienEntidad.getValRazoSociPers());
+			tpClienDto.setValNombPerf(tpClienEntidad.getValNombPerf());
+			
+			TpActivEconoDto actividadEconomica = new TpActivEconoDto();
+			
+			TpActivEcono actividadEconomicaEntidad = tpClienEntidad.getTpActivEcono();
+			
+//			actividadEconomica.setDesActiEcon(actividadEconomicaEntidad.getDesActiEcon());
+			actividadEconomica.setCodActiEcon(actividadEconomicaEntidad.getCodActiEcon());
+			
+			
+			tpClienDto.setTpActivEcono(actividadEconomica);
 			tpClienDto.setFecNaci(tpClienEntidad.getFecNaci());
 			tpClienDto.setValTelePers(tpClienEntidad.getValTelePers());
 			tpClienDto.getTpPaisByCodPaisNaci().setCodPais(tpClienEntidad.getTpPaisByCodPaisNaci().getCodPais());

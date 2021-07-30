@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+		<!-- Required meta tags -->
+		<title>Blog</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+			
+		<link rel="shortcut icon" href="../../resources/imagenes/favicon.ico" />	
+		<link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.css" />
+
+
+		<script type="text/javascript"   src="../../resources/js/popper.min.js"></script>
+		<script type="text/javascript"   src="../../resources/js/bootstrap.min.js"></script>
+		<script type="text/javascript"   src="../../resources/js/principalBlog.js"></script>
+		
+		
+		<link rel="stylesheet" type="text/css" href="../../resources/css/all.css"/>
+		
+		<link rel="stylesheet" type="text/css" href="../../resources/css/fontello.css"/> 
+		<link rel="stylesheet" type="text/css" href="../../resources/css/estilosBlog.css"/> 
+		
+</h:head>
+<h:body>
+<!-- <div id="fb-root"></div> -->
+<!-- <script async="async" defer="defer" crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&amp;autoLogAppEvents=1&amp;version=v3.3&amp;appId=220028422228389"></script> -->
+<header>
+
+		<ui:param name="mAlias" value="#{blogBean}" />
+				
+		<div class="cabeceraInfo">
+			<div class="contenedorInfo">
+				<a class="icon-whatsapp" href="">992951162</a>
+				<a class="icon-mail" href="">ventas@hmafg.com</a>
+			</div>
+		</div>
+		<div class="contenedor">
+			<a  href="../../index.xhtml">
+				<img class="imagenLogo" src="../../resources/imagenes/logoHorizontal390x120.png" alt="Logo Hmafg"/>
+			</a>
+			
+			<h:selectBooleanCheckbox  id="menu-bar"/>
+			<label class="icon-menu" for="menu-bar"></label> 
+
+			<nav class="menu">
+				<ul>
+					<li>
+						<a href="nosotros.xhtml">Nosotros</a> 
+					</li>
+					<li>
+						<a href="#"  class="claseBlogMarcado"  >Blog</a>
+					</li>
+					<li>
+						<a href="contacto.xhtml" >Contacto</a> 
+					</li>
+					<li>
+						<a href="#">Ayuda</a> 
+					</li>
+					<li>
+						<a class="btn btn-warning botonIniciarOperacionGeneral icon-user" href="../../paginas/privado/ingreso.xhtml">INICIAR SESIÓN</a> 
+					</li>
+				</ul>
+			</nav>
+
+		</div>
+</header>
+
+		<main>
+			<section>
+				<div class="contenedor contenedorTitulo ">
+					<h3>Nuestro Blog</h3>
+					
+					<div class="row text-center text-lg-left" >
+							<ui:repeat value="#{mAlias.listaEntradas}" var="item"  varStatus="status" >
+<!-- 									<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-3  contenedorObjetoBlog"> -->
+<!-- 										<h:graphicImage styleClass="claseObjetoBlog" value="#{item.imaEntrCont}" /> -->
+<!-- 									</div> -->
+									<div class="col-xs-12 col-sm-6 col-lg-4 col-md-4 contenedorObjetoBlog">
+										<div class="col-lg-12 col-md-12 col-12 contenedorObjetoBlogInterno">
+										  <div class="claseEntradaParteSUperior">
+										  	  <p:outputLabel value="Publicado: #{item.fecCreaFormPrev}" styleClass="claseFechaEntrada"></p:outputLabel> <br></br>
+											  <p:outputLabel value="#{item.catEntr}" styleClass="claseCategoriaEntrada" ></p:outputLabel> <br></br>
+											  <a href="blogItem.xhtml?param=#{item.enlEntr}" class="d-block mb-4 h-100">
+											  	<p:outputLabel value="#{item.titEntr}" styleClass="claseTituloEntrada" ></p:outputLabel>
+											  </a>
+										  </div>
+									      <a href="blogItem.xhtml?param=#{item.enlEntr}" class="d-block mb-4 h-100">
+									      		<figure class="flow-image">
+									            	<h:graphicImage value="#{item.imaEntrPrev}" />
+									            </figure>
+									       </a>
+									    </div>   
+									    
+<!-- 									    <div class="fb-share-button" data-href="https://www.hmafg.com/paginas/privado/contacto.xhtml" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.hmafg.com%2Fpaginas%2Fprivado%2Fcontacto.xhtml&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></div> -->
+									    
+								    </div>
+							</ui:repeat>
+					</div>
+				</div>
+			</section>
+		</main>
+		
+		<!-- Footer -->
+		<ui:include src="/footer.xhtml" />
+		  
+		  <ui:include src="/estatus.xhtml" />
+
+<button onclick="enlaceWhatsapp();" id="myBtn" title="Escribenos" />
+</h:body>
+</html>
