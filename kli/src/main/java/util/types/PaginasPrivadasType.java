@@ -35,7 +35,9 @@ public enum PaginasPrivadasType {
 	PAGINA_OPERACIONES_CONTROL("/mda/opciones/operacionesControl.xhtml"),
 	PAGINA_OPERACIONES_CONTROL_ITEM("/mda/opciones/operacionesControlItem.xhtml"),
 	PAGINA_ENTRADA_GENERAL("/mda/opciones/blogGeneral.xhtml"),
-	PAGINA_ENTRADA_GENERAL_ITEM("/mda/opciones/blogGeneralItem.xhtml");
+	PAGINA_ENTRADA_GENERAL_ITEM("/mda/opciones/blogGeneralItem.xhtml"),
+	PAGINA_AYUDA_CONNFIGURACION("/mda/opciones/ayudaConfiguracion.xhtml"),
+	PAGINA_AYUDA_CONNFIGURACION_ITEM("/mda/opciones/preguntaItem.xhtml");
 	
 
 	private String valor;

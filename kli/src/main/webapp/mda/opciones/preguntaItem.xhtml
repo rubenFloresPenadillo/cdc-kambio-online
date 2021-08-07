@@ -13,24 +13,24 @@
 
 	<script type="text/javascript" src="../../resources/js/popper.min.js"></script>
 	<script type="text/javascript" src="../../resources/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../../resources/js/principalDivisas.js"></script>
+	<script type="text/javascript" src="../../resources/js/principalAyudaConfiguracion.js"></script>
 
 
 	<link rel="stylesheet" type="text/css" href="../../resources/css/fontello.css" />
 	<link rel="stylesheet" type="text/css" href="../../resources/css/datatables.min.css"/>
-	<link rel="stylesheet" type="text/css" href="../../resources/css/estilosDivisas.css"/> 
+	<link rel="stylesheet" type="text/css" href="../../resources/css/estilosAyudaConfiguracion.css"/> 
 	
 
  
 	<script type="text/javascript" src="../../resources/js/datatables.min.js"></script>
 
 
-	<title>Divisa - Detalle</title>
+	<title>Pregunta - Detalle</title>
 	
 </h:head>
 <h:body>
 
-	<ui:param name="mAlias" value="#{divisaItemBean}" />
+	<ui:param name="mAlias" value="#{preguntaItemBean}" />
 
 	<header>
 		<div class="contenedor">
@@ -63,7 +63,7 @@
 	</header>
 
 	<main>
-	<section id="idSeccionDivisaItem">
+	<section id="idSeccionPreguntaItem">
 		
 		<!-- Modal cerrar sesion-->
 		<div class="modal fade" id="idModalConfirmacionCerrarSesion" tabindex="-1" role="dialog">
@@ -84,7 +84,7 @@
 		</div>
 
 		<!-- Modal Confirmacion-->
-		<div class="modal fade" id="idModalConfirmacionGuardaDivisa" tabindex="-1" role="dialog">
+		<div class="modal fade" id="idModalConfirmacionGuardaPregunta" tabindex="-1" role="dialog">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -94,28 +94,28 @@
 					</div>
 					<div class="modal-body"> ¿Está seguro de los datos a guardar?</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-success" data-dismiss="modal" onclick="ejecutarGuardarDivisa();">Aceptar</button>
+						<button type="button" class="btn btn-success" data-dismiss="modal" onclick="ejecutarGuardarPregunta();">Aceptar</button>
 						<button type="button" class="btn btn-danger" data-dismiss="modal" >Cancelar</button>
 					</div>
 				</div>
 			</div>
 		</div>
 		
-		<h:form id="idFormDivisaItem" method="post" role="form"
+		<h:form id="idFormPreguntaItem" method="post" role="form"
 			class="form-horizontal">
 			
 			<p:remoteCommand name="ejecutarCerrarSesionRemoto" actionListener="#{mAlias.procesarCerrarSesion()}"/>
-			<p:remoteCommand name="ejecutarGuardarDivisa" actionListener="#{mAlias.procesarGuardarDivisa()}" update="idFormDivisaItem"/>
+			<p:remoteCommand name="ejecutarGuardarPregunta" actionListener="#{mAlias.procesarGuardarPregunta()}" update="idFormPreguntaItem"/>
 			<p:remoteCommand name="ejecutarRegresar" actionListener="#{mAlias.regresar()}"/>
 			
 			<div class="row mx-auto">
 				
 				<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 claseTituloIzquierda" >
-					<p class="claseTitulo">Panel de Control → Administración de Divisas → Nueva Divisa</p>
+					<p class="claseTitulo">Panel de Control → Administración de Ayuda → Nueva Pregunta</p>
 				</div>
 				
 				<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 claseTituloDerecha">
-					<a class="btn botonRegresar icon-undo" href="divisas.xhtml" title="Regresar a Administración de Divisas"/>
+					<a class="btn botonRegresar icon-undo" href="ayudaConfiguracion.xhtml" title="Regresar a Administración de Ayuda"/>
 				</div>
 				
 			</div>
@@ -134,73 +134,59 @@
 			</div>
 			
 			<div class="row">
+			       <div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="form-group">
+						    <p:outputLabel value="Tipo de Pregunta *" />
+							<h:selectOneMenu id="idComboTipoPregunta" styleClass="custom-select form-control" 
+								value="#{mAlias.preguntaItem.tpTipoPregu.codTipoPreg}">
+								<f:selectItem itemLabel="Seleccione..." itemValue="-1"/>
+								<f:selectItems value="#{mAlias.listaComboTipoPregunta}" />
+							</h:selectOneMenu>
+							
+							<div id="idMensajeTipoPregunta"> </div>
+						</div>
+					</div>	
 					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
 						<div class="form-group">
-							<p:outputLabel value="Código ISO *" />
-							<p:inputText id="idTxtCodigoIso" styleClass="form-control" value="#{mAlias.divisaItem.codIsoDivi}" disabled="#{mAlias.indicadorModoConsulta}"/>
-							<div id="idMensajeCodigoISO" > </div>
+							<p:outputLabel value="Posición *" />
+							<p:inputText id="idTxtPosicion" styleClass="form-control" value="#{mAlias.preguntaItem.valNumePosi}" />
+							<div id="idMensajePosicion" > </div>
 						</div>
 					</div>
 					
 					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
 						<div class="form-group">
-							<p:outputLabel value="Nombre Singular *" />
-							<p:inputText id="idTxtNombreSingular" styleClass="form-control" value="#{mAlias.divisaItem.nomDiviSing}" disabled="#{mAlias.indicadorModoConsulta}"/>
-							<div id="idMensajeNombreSingular" > </div>
+							<p:outputLabel value="Pregunta *" />
+							<p:inputText id="idTxtPregunta" styleClass="form-control" value="#{mAlias.preguntaItem.valPreg}" />
+							<div id="idMensajePregunta" > </div>
 						</div>
 					</div>
 	
-					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							
+			</div>
+			
+			<div class="row">
+					
+					<div class="column col-xs-12 col-sm-12 col-md-10 col-lg-10">
 						<div class="form-group">
-							<p:outputLabel value="Nombre Plural *" />
-							<p:inputText id="idTxtNombrePlural" styleClass="form-control" value="#{mAlias.divisaItem.nomDiviPlur}" disabled="#{mAlias.indicadorModoConsulta}"/>
-							<div id="idMensajeNombrePural" > </div>
+							<p:outputLabel value="Respuesta *" />
+							
+							<p:textEditor  widgetVar="idTxtRespuesta" value="#{mAlias.preguntaItem.valResp}" height="300" placeholder="Ingrese la respuesta" secure="false" requiredMessage="true" /> 
+					            
+					        <div id="idMensajeRespuesta" > </div>
+					        
 						</div>
 					</div>			
 			</div>
 				
-			<div class="row" >
-					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
-						<div class="form-group">
-							<p:outputLabel value="Símbolo *" />
-							<p:inputText id="idTxtSimbolo" styleClass="form-control" value="#{mAlias.divisaItem.simDivi}" disabled="#{mAlias.indicadorModoConsulta}"/>
-							<div id="idMensajeSimbolo" > </div>
-						</div>
-					</div>
-					
-					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
-						<div class="form-group">
-							<p:outputLabel value="Ind. Aplica Cuentas Bancarias *" />
-
-							<h:selectOneMenu id="idComboAplicaCuenBanca" styleClass="custom-select form-control claseComboFormulario"
-								value="#{mAlias.divisaItem.indApliCuenBanc}"  disabled="#{mAlias.indicadorModoConsulta}">
-								<f:selectItem itemLabel="Seleccione..." itemValue="-1"/> 
-								<f:selectItems value="#{mAlias.listaComboIndAplicaCuentasBancarias}" />
-							</h:selectOneMenu>
-							<div id="idMensajeIndAplicaCuenBanca" > </div>
-						</div>
-					</div>
-	
-					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
-						<div class="form-group">
-							<p:outputLabel value="Estado de Divisa *" />
-
-							<h:selectOneMenu id="idComboEstadoDivisa" styleClass="custom-select form-control claseComboFormulario"
-								value="#{mAlias.divisaItem.indEsta}"  disabled="#{mAlias.indicadorModoConsulta}">
-								<f:selectItem itemLabel="Seleccione..." itemValue="-1"/> 
-								<f:selectItems value="#{mAlias.listaComboEstadoDivisa}" />
-							</h:selectOneMenu>
-							<div id="idMensajeEstadoDivisa" > </div>
-						</div>
-					</div>			
-			</div>
 			
-			<p:outputPanel rendered="#{mAlias.indicadorModoConsulta}">
+			
+			<p:outputPanel >
 				<div class="row">
 						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
 							<div class="form-group">
 								<p:outputLabel value="Fec. de creación" />
-								<h:inputText styleClass="form-control" value="#{mAlias.divisaItem.fecCreaRegi}" disabled="true">
+								<h:inputText styleClass="form-control" value="#{mAlias.preguntaItem.fecCreaRegi}" disabled="true">
 									<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" timeZone="America/Lima"/>
 								</h:inputText>
 							</div>
@@ -209,14 +195,14 @@
 						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
 							<div class="form-group">
 								<p:outputLabel value="Usu. de creación" />
-								<p:inputText styleClass="form-control" value="#{mAlias.divisaItem.usuApliCrea}" disabled="true"/>
+								<p:inputText styleClass="form-control" value="#{mAlias.preguntaItem.usuApliCrea}" disabled="true"/>
 							</div>
 						</div>
 						
 						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
 							<div class="form-group">
 								<p:outputLabel value="Fec. de modificación" />
-								<h:inputText styleClass="form-control" value="#{mAlias.divisaItem.fecModiRegi}" disabled="true">
+								<h:inputText styleClass="form-control" value="#{mAlias.preguntaItem.fecModiRegi}" disabled="true">
 										<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" timeZone="America/Lima"/>
 								</h:inputText>
 							</div>
@@ -229,13 +215,14 @@
 						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
 							<div class="form-group">
 								<p:outputLabel value="Usu. de modificación" />
-								<p:inputText styleClass="form-control" value="#{mAlias.divisaItem.usuApliModi}" disabled="true"/>
+								<p:inputText styleClass="form-control" value="#{mAlias.preguntaItem.usuApliModi}" disabled="true"/>
 							</div>
 						</div>
 	
 				</div>
 			
 			</p:outputPanel>
+			
 			<div class="row">
 				<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6">
 
@@ -243,15 +230,15 @@
 				
 				<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6 text-right">
 					<div class="form-group">
-							<p:commandButton  onclick="enviar(event);" styleClass="btn btn-success btn-guardar-datos"  value="Guardar Datos" rendered="#{!mAlias.indicadorModoConsulta}"/>
+							<p:commandButton  onclick="enviar(event);" styleClass="btn btn-success btn-guardar-datos"  value="Guardar Datos" />
 					</div>
 				</div>
 			
 			</div>
 			
 			
-			<!-- Modal Guardar Divisa Exitosa -->
-			<div class="modal fade" id="idModalGuardarDivisaExito" tabindex="-1" role="dialog">
+			<!-- Modal Guardar Pregunta Exitosa -->
+			<div class="modal fade" id="idModalGuardarPreguntaExito" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -259,7 +246,7 @@
 							<button type="button" class="close" data-dismiss="modal"
 								aria-label="Close"></button>
 						</div>
-						<div class="modal-body">La divisa se guardó exitosamente.</div>
+						<div class="modal-body">La pregunta se guardó exitosamente.</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-success" data-dismiss="modal"  onclick="ejecutarRegresar();">Regresar</button>
 							<button type="button" class="btn btn-success" data-dismiss="modal">Agregar</button>

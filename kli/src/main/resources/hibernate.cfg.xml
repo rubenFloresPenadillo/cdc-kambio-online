@@ -32,5 +32,7 @@
 		<mapping class="hibernate.entidades.TpOrigeFondo" /> 
 		<mapping class="hibernate.entidades.TpSectoEcono" /> 
 		<mapping class="hibernate.entidades.TpActivEcono" /> 
+		<mapping class="hibernate.entidades.TpTipoPregu" /> 
+		<mapping class="hibernate.entidades.TpAyudaPregu" /> 
     </session-factory>
 </hibernate-configuration>

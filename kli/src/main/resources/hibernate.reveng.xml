@@ -32,7 +32,8 @@
 <table-filter match-schema="public" match-name="tp_orige_fondo"/>
 <table-filter match-schema="public" match-name="tp_secto_econo"/>
 <table-filter match-schema="public" match-name="tp_activ_econo"/>
-
+<table-filter match-schema="public" match-name="tp_tipo_pregu"/>
+<table-filter match-schema="public" match-name="tp_ayuda_pregu"/>
 
 <table name="tp_fact_docum_detal">
 	 <foreign-key constraint-name="fk_tp_fact_docum_detal_1">
@@ -157,6 +158,10 @@
 	 </foreign-key>
 </table>
 
-
+<table name="tp_ayuda_pregu">
+	 <foreign-key constraint-name="fk_tp_ayuda_pregu_1">
+	 	<set exclude="true"/>
+	 </foreign-key>
+</table>
 
 </hibernate-reverse-engineering>
