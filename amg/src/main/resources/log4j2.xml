@@ -4,8 +4,8 @@
 
 <Configuration>
 	<Properties>
-		 <Property name="BASE_DIR">D:/cdcBases/hmafgBase/log</Property>
-<!--          <Property name="BASE_DIR">/etc/hmafgBase/log</Property> -->
+<!-- 		 <Property name="BASE_DIR">D:/cdcBases/hmafgBase/log</Property> -->
+         <Property name="BASE_DIR">/etc/hmafgBase/log</Property>
     </Properties>
     <Appenders>
     	<Console name="console" >

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<link rel="shortcut icon" href="../../../resources/imagenes/favicon.ico" />	
+	
+	<link rel="stylesheet" type="text/css" href="../../../resources/css/bootstrap.css" />
+
+<!-- 	<script type="text/javascript" src="../../../resources/js/jquery-3.2.1.min.js"></script> -->
+	<script type="text/javascript" src="../../../resources/js/popper.min.js"></script>
+	<script type="text/javascript" src="../../../resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../../resources/js/principalOperaciones.js"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="../../../resources/css/fontello.css" />
+	<link rel="stylesheet" type="text/css" href="../../../resources/css/datatables.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../resources/css/estilosOperaciones.css"/> 
+
+	<script type="text/javascript" src="../../../resources/js/datatables.min.js"></script>
+
+	<title>Mis Operaciones</title>
+
+	
+</h:head>
+<h:body>
+
+	<ui:param name="mAlias" value="#{operacionesClienteBean}" />
+
+	<header>
+		<div class="contenedor">
+			
+			<a  href="../../../index.xhtml">
+				<img  class="claseImagenLogoHorizontal" src="../../../resources/imagenes/logoHorizontal390x120.png" alt="Logo Kambio Online"/>
+			</a>
+
+			<h:selectBooleanCheckbox  id="menu-bar"/>
+			<label class="icon-down-dir" for="menu-bar" id="idFlechaAbajo"></label> 
+			<h:outputLabel id="idSeccionUsuario" class="icon-user-circle" for="menu-bar" value="#{mAlias.valorNombre}"/>
+<!-- 			<label class="icon-user-circle" for="menu-bar">#{valorNombre == null ? 'U' : valorNombre}</label> -->
+			
+
+			<nav class="menu">
+				<ul>
+					<li onclick="window.location.href='inicio.xhtml'">
+						<a class="claseInicio" href="inicio.xhtml">Inicia Operacion</a> 
+					</li>
+					<li onclick="window.location.href='#{mAlias.indDatosEmpresa ? 'datosEmpresa.xhtml' : 'datos.xhtml'}'">	
+						<a class="claseDatos" href="#{mAlias.indDatosEmpresa ? 'datosEmpresa.xhtml' : 'datos.xhtml'}">Mis Datos</a> 
+					</li>	
+					<li onclick="window.location.href='cuenta.xhtml'">	
+						<a class="claseCuentas" href="cuenta.xhtml">Mis Cuentas Bancarias</a> 
+					</li>	
+					<li onclick="window.location.href='operaciones.xhtml'">	
+						<a class="claseOperaciones" href="operaciones.xhtml">Mis Operaciones</a> 
+					</li>	
+					<li onclick="window.location.href='elegirPerfil.xhtml'"> 
+						<a href="elegirPerfil.xhtml" id="idEnlaceElegirPerfil" class="claseElegirPerfil btn btn-info botonIniciarOperacionPerfil icon-user">Elegir Perfil</a> 
+					</li>
+					<li id="idEnlaceCerrarSesion" onclick="mostrarPopupCerrarSesion();">	
+						<a href="#" onclick="mostrarPopupCerrarSesion();">Cerrar Sesion</a>
+					</li>	
+				</ul>
+			</nav>
+
+			<a id="idBotonCerrarSesion"  class="btn botonCerrarSesion icon-power" href="#" title="Cerrar sesión" onclick="mostrarPopupCerrarSesion();" />
+		</div>
+	</header>
+
+	<main>
+	<section id="operacionesHistoricas">
+		
+		<!-- Modal cerrar sesion-->
+		<div class="modal fade" id="idModalConfirmacionCerrarSesion" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body"> ¿Estás seguro de cerrar sesión?</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal" onclick="ejecutarCerrarSesionRemoto();">Aceptar</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" >Cancelar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="idModalConfirmacionCancelarCliente" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body"> ¿Estás seguro de cancelar tu operación en curso?</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal" onclick="ejecutarCancelarOperacionCliente();">Aceptar</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" >Cancelar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<h:form id="idFormOperacionesHistoricas" method="post" role="form"
+			class="form-horizontal">
+			
+			<p:remoteCommand name="ejecutarCerrarSesionRemoto" actionListener="#{mAlias.procesarCerrarSesion()}"/>
+			<p:remoteCommand name="ejecutarCancelarOperacionCliente" actionListener="#{mAlias.procesarCancelarOperacionCliente()}" update="idFormOperacionesHistoricas"/>
+			
+			<p:outputPanel rendered="#{mAlias.operacionEnProceso eq null}">
+				<div class="row mx-auto">
+					<div class="col text-right claseContenedorBotonOperacionGeneral">
+						<p:commandButton class="btn btn-warning botonIniciarOperacionGeneral icon-right-dir" value="INICIAR OPERACIÓN" 
+							action="inicio?faces-redirect=true" />
+					</div>
+					
+				</div>
+			</p:outputPanel>
+			
+			
+			<p:outputPanel rendered="#{mAlias.operacionEnProceso.tpEstadOpera.codEstaOper == 1}">
+				<div class="row mx-auto">
+					<div class="col text-right claseContenedorBotonOperacionGeneral">
+						<p:commandButton class="btn btn-warning botonIniciarOperacionGeneral icon-right-dir" value="COMPLETAR OPERACIÓN" 
+							action="inicio?faces-redirect=true"/>
+					</div>
+					
+				</div>
+			</p:outputPanel>
+
+			<p:outputPanel rendered="#{mAlias.operacionEnProceso ne null}">
+				<div class="row mx-auto">
+					<p class="claseTituloOperaciones">Mi operación en curso</p>
+				</div>
+			
+				<div class="table-responsive">
+					<table id="idTablaOperacionActual" class="table" >
+	
+						<thead>
+							<tr>
+								<th scope="col">Codigo</th>
+								<th scope="col">Fecha</th>
+								<th scope="col">A enviar</th>
+								<th scope="col">A recibir</th>
+								<th scope="col">Operación</th>
+								<th scope="col">Tipo de Cambio</th>
+								<th scope="col">Estado</th>
+								<th scope="col">Acción</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><strong>#{mAlias.operacionEnProceso.codUnicOperClie ne null ? mAlias.operacionEnProceso.codUnicOperClie : 'Por definir' }</strong></td>
+								<td>
+									<h:outputText value="#{mAlias.operacionEnProceso.fecCreaRegi}">
+										<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" timeZone="America/Lima"/>
+									</h:outputText>
+								</td>
+								<td>#{mAlias.operacionEnProceso.monEnvi} #{mAlias.operacionEnProceso.indCompVent == 0 ? 'Dolares' : 'Soles'}</td>
+								<td>#{mAlias.operacionEnProceso.monReci} #{mAlias.operacionEnProceso.indCompVent == 1 ? 'Dolares' : 'Soles'}</td>
+								<td>#{mAlias.operacionEnProceso.indCompVent == 0 ? 'COMPRA' :
+									'VENTA'}</td>
+								<td>#{mAlias.operacionEnProceso.valTipoCambUsad}</td>
+								<td class="#{mAlias.operacionEnProceso.tpEstadOpera.codEstaOper == 1 ? 'claseOperacionIniciada' : 'claseOperacionVerificacion'}">#{mAlias.operacionEnProceso.tpEstadOpera.desEstaOper}</td>
+								<td>
+									<p:commandButton class="btn botonDetalle icon-search" value="Detalle" 
+									rendered="#{mAlias.operacionEnProceso.tpEstadOpera.codEstaOper == 2}" 
+										action="#{mAlias.seleccionarOperacionConsultar()}"/>
+								
+											
+									<p:commandButton class="btn botonCancelar icon-cancel" title="Cancelar" 
+											rendered="#{mAlias.operacionEnProceso.tpEstadOpera.codEstaOper == 1}" action="#{mAlias.mostrarDialogConfirmacionCancelarOperacionCliente()}"/>
+								</td>
+							</tr>
+						</tbody>
+	
+					</table>
+				</div>
+			</p:outputPanel>
+			
+			<p:outputPanel rendered="#{mAlias.operacionEnProceso.tpEstadOpera.codEstaOper == 2}">
+				<div class="row mx-auto">
+					<div class="col text-right">
+						<div >
+							<p > <strong> Puedes pedir información de tu operación al   <a class="icon-whatsapp cursorPointer"  onclick="enlaceWhatsappVerificacion('#{mAlias.operacionEnProceso.codUnicOperClie}');" >981319152</a>  </strong> </p> 
+						</div>
+					</div>
+					
+				</div>
+			</p:outputPanel>
+			
+			<div class="row mx-auto">
+				<p class="claseTituloOperaciones">Mis Operaciones Historicas</p>
+			</div>
+			<div class="table-responsive">
+				<table id="idTablaOperacionesHistoricas" class="table" data-page-length='4'>
+
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Codigo</th>
+							<th scope="col">Fecha</th>
+							<th scope="col">A enviar</th>
+							<th scope="col">A recibir</th>
+							<th scope="col">Operación</th>
+							<th scope="col">Tipo de Cambio</th>
+							<th scope="col">Estado</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						<p:outputPanel id="idPanelListaOperaciones">
+
+							<ui:repeat value="#{mAlias.listaOperacionesHistoricas}" var="oc"  varStatus="status" >
+								<tr>
+									<td>#{status.index + 1}</td>
+									<td><strong>#{oc.codUnicOperClie ne null ? oc.codUnicOperClie : 'No procesado' }</strong></td>
+									<td>
+									
+									<h:outputText value="#{oc.fecCreaRegi}">
+									  <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" timeZone="America/Lima"/>
+									</h:outputText>
+									</td>
+									<td>#{oc.monEnvi} #{oc.indCompVent == 0 ? 'Dolares' : 'Soles'}</td>
+									<td>#{oc.monReci} #{oc.indCompVent == 1 ? 'Dolares' : 'Soles'}</td>
+									<td>#{oc.indCompVent == 0 ? 'COMPRA' : 'VENTA'}</td>
+									<td>#{oc.valTipoCambUsad}</td>
+									
+									<td class="#{oc.tpEstadOpera.codEstaOper == 1 ? 'claseOperacionIniciada' :  (oc.tpEstadOpera.codEstaOper == 2 ? 'claseOperacionVerificacion' : (oc.tpEstadOpera.codEstaOper == 3 ? 'claseOperacionFinalizada' : 'claseOperacionCancelada') )  }" >#{oc.tpEstadOpera.desEstaOper}</td>
+								</tr>
+
+							</ui:repeat>
+							
+						</p:outputPanel>
+
+					</tbody>
+
+				</table>
+			</div>
+
+
+
+		</h:form>
+
+		<!-- Modal Operacion Cancelada Exitosa-->
+		<div class="modal fade" id="idModalOperacionCancelada" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body">La operación ha sido cancelada de forma satisfactoria.</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<p:outputPanel rendered="#{mAlias.operacionEnProceso ne null}">
+			<!-- Modal Operacion Recuerda Operacion en Curso-->
+			<div class="modal fade" id="idModalOperacionEnCurso" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">Recuerda que para iniciar una nueva operación, tienes que finalizar la que tienes en curso.</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</p:outputPanel>
+		
+		<!-- Modal Error-->
+		<div class="modal fade" id="idModalErrorSistema" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title mensajeTituloError">¡ Mensaje del Sistema - ERROR !</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body mensajeCuerpoError"><strong>#{mAlias.resultadoProcesoError}</strong> Comuníquese con el área de Soporte.</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	</main>
+
+	<footer>
+		<div class="contenedor"></div>
+	</footer>
+
+</h:body>
+
+</html>

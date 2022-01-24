@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 7 ago. 2021 06:38:33 by Hibernate Tools 5.2.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="hibernate.xml.TpClien" optimistic-lock="version" polymorphism="implicit" schema="public" select-before-update="false" table="tp_clien">
+        <comment>TABLA MAESTRO DE CLIENTES</comment>
+        <id name="codClie" type="java.lang.Integer">
+            <column name="cod_clie"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="hibernate.xml.TpActivEcono" embed-xml="true" fetch="select" insert="true" name="tpActivEcono" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="cod_acti_econ">
+                <comment>VALOR NUMERICO PARA EL CODIGO QUE IDENTIFICA A LA ACTIVIDAD ECONOMICA</comment>
+            </column>
+        </many-to-one>
+        <many-to-one class="hibernate.xml.TpDepar" embed-xml="true" fetch="select" insert="true" name="tpDepar" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="cod_depa_resi">
+                <comment>CODIGO DEL DEPARTAMENTO DE RESIDENCIA, REFERENCIA A LA TABLA TP_DEPAR</comment>
+            </column>
+        </many-to-one>
+        <many-to-one class="hibernate.xml.TpDistr" embed-xml="true" fetch="select" insert="true" name="tpDistr" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="cod_dist_resi">
+                <comment>CODIGO DEL DISTRITO DE RESIDENCIA, REFERENCIA A LA TABLA TP_DISTR</comment>
+            </column>
+        </many-to-one>
+        <many-to-one class="hibernate.xml.TpPais" embed-xml="true" fetch="select" insert="true" name="tpPaisByCodPaisNaci" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="cod_pais_naci" not-null="true">
+                <comment>CODIGO DEL PAIS DE NACIMIENTO, REFERENCIA A LA TABLA TP_PAIS</comment>
+            </column>
+        </many-to-one>
+        <many-to-one class="hibernate.xml.TpPais" embed-xml="true" fetch="select" insert="true" name="tpPaisByCodPaisResi" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="cod_pais_resi" not-null="true">
+                <comment>CODIGO DEL PAIS DE RESIDENCIA, REFERENCIA A LA TABLA TP_PAIS</comment>
+            </column>
+        </many-to-one>
+        <many-to-one class="hibernate.xml.TpProvi" embed-xml="true" fetch="select" insert="true" name="tpProvi" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="cod_prov_resi">
+                <comment>CODIGO DE LA PROVINCIA DE RESIDENCIA, REFERENCIA A LA TABLA TP_PROVI</comment>
+            </column>
+        </many-to-one>
+        <many-to-one class="hibernate.xml.TpTipoDocumPerso" embed-xml="true" fetch="select" insert="true" name="tpTipoDocumPerso" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="cod_tipo_docu_pers" not-null="true">
+                <comment>TIPO DEL DOCUMENTO</comment>
+            </column>
+        </many-to-one>
+        <many-to-one class="hibernate.xml.TpUsuar" embed-xml="true" fetch="select" insert="true" name="tpUsuar" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="cod_usua" not-null="true" unique="true">
+                <comment>CODIGO DE USUARIO, REFERENCIA A LA TABLA TP_USUAR</comment>
+            </column>
+        </many-to-one>
+        <property generated="never" lazy="false" name="valDocuPers" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="val_docu_pers">
+                <comment>VALOR DEL DOCUMENTO DE LA PERSONA</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="fecNaci" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="29" name="fec_naci">
+                <comment>FECHA DE NACIMIENTO</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="valPrimNombPers" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="val_prim_nomb_pers">
+                <comment>PRIMER NOMBRE DE LA PERSONA</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="valSeguNombPers" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="val_segu_nomb_pers">
+                <comment>SEGUNDO NOMBRE DE LA PERSONA</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="valPrimApelPers" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="val_prim_apel_pers">
+                <comment>PRIMER APELLIDO DE LA PERSONA</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="valSeguApelPers" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="val_segu_apel_pers">
+                <comment>SEGUNDO APELLIDO DE LA PERSONA</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="valRazoSociPers" optimistic-lock="true" type="string" unique="false">
+            <column length="200" name="val_razo_soci_pers">
+                <comment>RAZON SOCIAL DE LA EMPRESA</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="valDocuEmpr" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="val_docu_empr">
+                <comment>VALOR DEL DOCUMENTO DE LA EMPRESA</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="valTelePers" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="val_tele_pers">
+                <comment>TELEFONO DE LA PERSONA</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="valDirePers" optimistic-lock="true" type="string" unique="false">
+            <column length="200" name="val_dire_pers">
+                <comment>VALOR DE LA DIRECCION DE LA PERSONA</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="valCiud" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="val_ciud">
+                <comment>VALOR DE LA CIUDAD</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="indPepo" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="ind_pepo" not-null="true">
+                <comment>INDICADOR DE PERSONA EXPUESTA POLITICAMENTE (PEP)</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="valPepoInst" optimistic-lock="true" type="string" unique="false">
+            <column length="250" name="val_pepo_inst">
+                <comment>INSTITUCION PARA PERSONA EXPUESTA POLITICAMENTE (PEP)</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="valPepoRol" optimistic-lock="true" type="string" unique="false">
+            <column length="250" name="val_pepo_rol">
+                <comment>ROL PARA PERSONA EXPUESTA POLITICAMENTE (PEP)</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="valNombPerf" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="val_nomb_perf">
+                <comment>TEXTO PARA REGISTRAR UNA DESCRIPCION AL PERFIL</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="indEsta" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="ind_esta" not-null="true">
+                <comment>ESTADO EN EL QUE SE ENCUENTRA EL REGISTRO, ACTIVO = 1 E INACTIVO = 0</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="usuApliCrea" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="usu_apli_crea" not-null="true">
+                <comment>USUARIO DE APLICACION QUE REALIZO LA CREACION DEL REGISTRO</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="fecCreaRegi" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="29" name="fec_crea_regi" not-null="true">
+                <comment>FECHA DE CREACION DEL REGISTRO</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="usuApliModi" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="usu_apli_modi">
+                <comment>USUARIO DE APLICACION QUE REALIZO LA ACTUALIZACION DEL REGISTRO</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="fecModiRegi" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="29" name="fec_modi_regi">
+                <comment>FECHA DE MODIFICACION DEL REGISTRO</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

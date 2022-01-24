@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.password">D4nielD4niel</property>
+        <property name="hibernate.connection.provider_class">org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/bdrhaak</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.search.autoregister_listeners">true</property>
+        <property name="hibernate.validator.apply_to_ddl">false</property>
+        <property name="show_sql">false</property>
+        <property name="format_sql">false</property>
+        <mapping class="hibernate.xml.TpProvi"/>
+        <mapping class="hibernate.xml.TpClien"/>
+        <mapping class="hibernate.xml.TpOperaClien"/>
+        <mapping class="hibernate.xml.TpTipoDocumPerso"/>
+        <mapping class="hibernate.xml.TpUsuar"/>
+        <mapping class="hibernate.xml.TpTipoPerso"/>
+        <mapping class="hibernate.xml.TpBanco"/>
+        <mapping class="hibernate.xml.TpDivis"/>
+        <mapping class="hibernate.xml.TpPais"/>
+        <mapping class="hibernate.xml.TpSuscr"/>
+        <mapping class="hibernate.xml.TpDepar"/>
+        <mapping class="hibernate.xml.TpTipoCambi"/>
+        <mapping class="hibernate.xml.AudiTpTipoCambi"/>
+        <mapping class="hibernate.xml.TpTipoCuent"/>
+        <mapping class="hibernate.xml.TpCuentBanco"/>
+        <mapping class="hibernate.xml.TpDistr"/>
+        <mapping class="hibernate.xml.TpEntra"/>
+        <mapping class="hibernate.xml.TpParamGener"/>
+        <mapping class="hibernate.xml.TpEstadOpera"/>
+    </session-factory>
+</hibernate-configuration>

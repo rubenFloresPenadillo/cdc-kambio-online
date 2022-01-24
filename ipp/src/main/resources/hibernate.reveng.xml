@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+<type-mapping>
+	<sql-type jdbc-type="INTEGER" hibernate-type="java.lang.Integer"></sql-type>
+	<sql-type jdbc-type="DOUBLE" hibernate-type="java.lang.Double"></sql-type>
+</type-mapping>
+
+<table-filter match-schema="public" match-name="tp_param_gener"/>
+<table-filter match-schema="public" match-name="tp_pais"/>
+<table-filter match-schema="public" match-name="tp_depar"/>
+<table-filter match-schema="public" match-name="tp_provi"/>
+<table-filter match-schema="public" match-name="tp_distr"/>
+<table-filter match-schema="public" match-name="tp_banco"/>
+<table-filter match-schema="public" match-name="tp_usuar"/>
+<table-filter match-schema="public" match-name="tp_clien"/>
+<table-filter match-schema="public" match-name="tp_tipo_cuent"/>
+<table-filter match-schema="public" match-name="tp_cuent_banco"/>
+<table-filter match-schema="public" match-name="tp_divis"/>
+<table-filter match-schema="public" match-name="tp_tipo_docum_perso"/>
+<table-filter match-schema="public" match-name="tp_tipo_perso"/>
+<table-filter match-schema="public" match-name="tp_estad_opera"/>
+<table-filter match-schema="public" match-name="tp_tipo_cambi"/>
+<table-filter match-schema="public" match-name="tp_opera_clien"/>
+<table-filter match-schema="public" match-name="audi_tp_tipo_cambi"/>
+<table-filter match-schema="public" match-name="tp_entra"/>
+<table-filter match-schema="public" match-name="tp_suscr"/>
+<table-filter match-schema="public" match-name="tp_recla_queja"/>
+<table-filter match-schema="public" match-name="tp_orige_fondo"/>
+<table-filter match-schema="public" match-name="tp_secto_econo"/>
+<table-filter match-schema="public" match-name="tp_activ_econo"/>
+<table-filter match-schema="public" match-name="tp_tipo_pregu"/>
+<table-filter match-schema="public" match-name="tp_ayuda_pregu"/>
+
+<table name="tp_usuar">
+	 <foreign-key constraint-name="fk_tp_usuar_1">
+	 	<set exclude="true"/>
+	 </foreign-key>
+</table>
+
+<table name="tp_clien">
+	 <foreign-key constraint-name="fk_tp_clien_1">
+	 	<set exclude="true"/>
+	 </foreign-key>
+	 <foreign-key constraint-name="fk_tp_clien_2">
+	 	<set exclude="true"/>
+	 </foreign-key>
+	 <foreign-key constraint-name="fk_tp_clien_3">
+	 	<set exclude="true"/>
+	 </foreign-key>
+	 <foreign-key constraint-name="fk_tp_clien_4">
+	 	<set exclude="true"/>
+	 </foreign-key>
+	 <foreign-key constraint-name="fk_tp_clien_5">
+	 	<set exclude="true"/>
+	 </foreign-key>
+	 <foreign-key constraint-name="fk_tp_clien_6">
+	 	<set exclude="true"/>
+	 </foreign-key>
+	 <foreign-key constraint-name="fk_tp_clien_7">
+	 	<set exclude="true"/>
+	 </foreign-key>
+	 <foreign-key constraint-name="fk_tp_clien_8">
+	 	<set exclude="true"/>
+	 </foreign-key>	 
+</table>
+
+<table name="tp_opera_clien">
+	 <foreign-key constraint-name="fk_tp_opera_clien_1">
+	 	<set exclude="true"/>
+	 </foreign-key>
+	 <foreign-key constraint-name="fk_tp_opera_clien_2">
+	 	<set exclude="true"/>
+	 </foreign-key>
+	 <foreign-key constraint-name="fk_tp_opera_clien_3">
+	 	<set exclude="true"/>
+	 </foreign-key>
+	 <foreign-key constraint-name="fk_tp_opera_clien_4">
+	 	<set exclude="true"/>
+	 </foreign-key>
+	 <foreign-key constraint-name="fk_tp_opera_clien_5">
+	 	<set exclude="true"/>
+	 </foreign-key>
+	 <foreign-key constraint-name="fk_tp_opera_clien_6">
+	 	<set exclude="true"/>
+	 </foreign-key>
+	 <foreign-key constraint-name="fk_tp_opera_clien_7">
+	 	<set exclude="true"/>
+	 </foreign-key>
+	 <foreign-key constraint-name="fk_tp_opera_clien_8">
+	 	<set exclude="true"/>
+	 </foreign-key>
+</table>
+
+<table name="tp_tipo_cambi">
+	 <foreign-key constraint-name="fk_tp_tipo_cambi_1">
+	 	<set exclude="true"/>
+	 </foreign-key>
+	 <foreign-key constraint-name="fk_tp_tipo_cambi_2">
+	 	<set exclude="true"/>
+	 </foreign-key>
+</table>
+
+<table name="tp_cuent_banco">
+	 <foreign-key constraint-name="fk_tp_cuent_banco_1">
+	 	<set exclude="true"/>
+	 </foreign-key>
+	 <foreign-key constraint-name="fk_tp_cuent_banco_2">
+	 	<set exclude="true"/>
+	 </foreign-key>
+	 <foreign-key constraint-name="fk_tp_cuent_banco_3">
+	 	<set exclude="true"/>
+	 </foreign-key>
+	 <foreign-key constraint-name="fk_tp_cuent_banco_4">
+	 	<set exclude="true"/>
+	 </foreign-key>
+</table>
+
+<table name="tp_tipo_docum_perso">
+	 <foreign-key constraint-name="fk_tp_tipo_docum_perso_1">
+	 	<set exclude="true"/>
+	 </foreign-key>
+</table>
+
+<table name="tp_provi">
+	 <foreign-key constraint-name="fk_tp_provi_1">
+	 	<set exclude="true"/>
+	 </foreign-key>
+</table>
+
+<table name="tp_distr">
+	 <foreign-key constraint-name="fk_tp_distr_1">
+	 	<set exclude="true"/>
+	 </foreign-key>
+</table>
+
+<table name="tp_recla_queja">
+	 <foreign-key constraint-name="fk_tp_recla_queja_1">
+	 	<set exclude="true"/>
+	 </foreign-key>
+	 <foreign-key constraint-name="fk_tp_recla_queja_2">
+	 	<set exclude="true"/>
+	 </foreign-key>	 
+</table>
+
+<table name="tp_activ_econo">
+	 <foreign-key constraint-name="fk_tp_activ_econo_1">
+	 	<set exclude="true"/>
+	 </foreign-key>
+</table>
+
+<table name="tp_ayuda_pregu">
+	 <foreign-key constraint-name="fk_tp_ayuda_pregu_1">
+	 	<set exclude="true"/>
+	 </foreign-key>
+</table>
+
+</hibernate-reverse-engineering>

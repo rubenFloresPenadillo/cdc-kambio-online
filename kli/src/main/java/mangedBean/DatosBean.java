@@ -21,7 +21,6 @@ import org.primefaces.PrimeFaces;
 
 import cadenas.util.ValidacionesString;
 import dto.TpClienDto;
-import dto.TpCuentBancoDto;
 import dto.TpDeparDto;
 import dto.TpDistrDto;
 import dto.TpPaisDto;

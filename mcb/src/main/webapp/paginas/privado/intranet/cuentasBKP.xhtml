@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<link rel="shortcut icon" href="../../../resources/imagenes/favicon.ico" />	
+	<link rel="stylesheet" type="text/css" href="../../../resources/css/bootstrap.css" />
+
+<!-- 	<script type="text/javascript" src="../../../resources/js/jquery-3.2.1.min.js"></script> -->
+	<script type="text/javascript" src="../../../resources/js/popper.min.js"></script>
+	<script type="text/javascript" src="../../../resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../../resources/js/principalCuentas.js"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="../../../resources/css/fontello.css" />
+	<link rel="stylesheet" type="text/css" href="../../../resources/css/estilosCuentas.css"/> 
+
+
+
+	<title>Cuentas Bancarias</title>
+	
+</h:head>
+<h:body>
+
+	<ui:param name="mAlias" value="#{cuentasBean}" />
+
+	<header>
+		<div class="contenedor">
+			
+			<a  href="../../../index.xhtml">
+				<img src="../../../resources/imagenes/logoHorizontal390x120.png" alt="Logo Multicambio"/>
+			</a>
+
+			<h:selectBooleanCheckbox  id="menu-bar"/>
+			<label class="icon-down-dir" for="menu-bar" id="idFlechaAbajo"></label> 
+			<h:outputLabel id="idSeccionUsuario" class="icon-user-circle" for="menu-bar" value="#{mAlias.valorNombre}"/>
+			
+
+			<nav class="menu">
+				<a class="claseInicio" href="inicio.xhtml">Inicia Operacion</a> 
+				<a class="claseDatos" href="datos.xhtml">Mis Datos</a> 
+				<a class="claseCuentas" href="cuenta.xhtml">Mis Cuentas Bancarias</a> 
+				<a class="claseOperaciones" href="operaciones.xhtml">Mis Operaciones</a> 
+				<a href="#" id="idEnlaceCerrarSesion" onclick="mostrarPopupCerrarSesion();">Cerrar Sesion</a>
+			</nav>
+
+			<a id="idBotonCerrarSesion"  class="btn botonCerrarSesion icon-power" href="#" title="Cerrar sesión" onclick="mostrarPopupCerrarSesion();" />
+
+		</div>
+	</header>
+
+	<main>
+	<section id="cuentasPersonales">
+		
+		<!-- Modal cerrar sesion-->
+		<div class="modal fade" id="idModalConfirmacionCerrarSesion" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body"> ¿Estás seguro de cerrar sesión?</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal" onclick="ejecutarCerrarSesionRemoto();">Aceptar</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" >Cancelar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<h:form id="idFormCuentasPersonales" method="post" role="form"
+			class="form-horizontal">
+			
+			<p:remoteCommand name="ejecutarCerrarSesionRemoto" actionListener="#{mAlias.procesarCerrarSesion()}"/>
+			<p:remoteCommand name="irAiniciarOperacion" actionListener="#{mAlias.irAiniciarOperacion()}"/>
+			
+			<p:outputPanel id="idSeccionDatosCuenta">
+				<p:outputPanel id="idFilaBotonAgregarCuenta" styleClass="row"
+					rendered="#{!mAlias.booleanAgregandoCuenta}">
+					<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6 text-left">
+						<div class="form-group">
+							<div
+								class="column col-xs-12 col-sm-12 col-md-12 col-lg-6 contenedor-boton-muestra-datos">
+								<p:commandButton styleClass="btn btn-success btn-cuentas"
+									value="+ Añadir cuenta" action="#{mAlias.mostrarDatosCuenta}"
+									update="idSeccionDatosCuenta" />
+							</div>
+						</div>
+					</div>
+					<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+				</p:outputPanel>
+
+
+
+				<p:outputPanel id="idFilaDatosCuenta" styleClass="row" rendered="#{mAlias.booleanAgregandoCuenta}">
+				
+					<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<div class="form-group">
+							<p:outputPanel styleClass="alert claseCampoObligatorios"> 
+								Los campos con * son obligatorios.
+							</p:outputPanel>
+						</div>
+					</div>
+					
+					<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6">
+						<div class="form-group">
+
+							<p:outputLabel value="Banco" styleClass="clasesCamposFormulario" />
+
+							<h:selectOneMenu id="idComboBancoCuenta" styleClass="custom-select form-control claseComboFormulario"
+								value="#{mAlias.cuentaBancoFormulario.tpBanco.codBanc}">
+								<f:selectItem itemLabel="Seleccione..." itemValue="-1"/>
+								<f:selectItems value="#{mAlias.listaComboBancosCuentas}" />
+							</h:selectOneMenu>
+							<div id="idMensajeResultadoBancoCuenta" > </div>
+						</div>
+
+						<div class="form-group">
+
+							<p:outputLabel value="Moneda" styleClass="clasesCamposFormulario" />
+
+							<h:selectOneMenu id="idComboMoneda" styleClass="custom-select form-control claseComboFormulario"
+								value="#{mAlias.cuentaBancoFormulario.tpDivis.codDivi}">
+								<f:selectItem itemLabel="Seleccione..." itemValue="-1"/> 
+								<f:selectItems value="#{mAlias.listaComboDivisaCuentas}" />
+							</h:selectOneMenu>
+							<div id="idMensajeResultadoMoneda" > </div>
+						</div>
+
+						<div class="form-group">
+
+							<p:outputLabel value="¿Es cuenta propia?" styleClass="clasesCamposFormulario" />
+
+							<h:selectOneMenu id="idComboCuentaPropia" styleClass="custom-select form-control claseComboFormulario"
+								value="#{mAlias.cuentaBancoFormulario.indCuenProp}"  >
+								<f:selectItem itemLabel="Seleccione..." itemValue="-1"/> 
+								<f:selectItems value="#{mAlias.listaComboEsCuentaPropia}" />
+							</h:selectOneMenu>
+							<div id="idMensajeResultadoCuentaPropia" > </div>
+						</div>
+
+					</div>
+
+					<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					
+						<div class="form-group">
+
+							<p:outputLabel value="Tipo de cuenta" styleClass="clasesCamposFormulario" />
+
+							<h:selectOneMenu id="idComboTipoCuenta" styleClass="custom-select form-control claseComboFormulario"
+								value="#{mAlias.cuentaBancoFormulario.tpTipoCuent.codTipoCuen}">
+								<f:selectItem itemLabel="Seleccione..." itemValue="-1"/> 
+								<f:selectItems value="#{mAlias.listaComboTipoCuentasBancarias}" />
+							</h:selectOneMenu>
+							<div id="idMensajeResultadoTipoCuenta" > </div>
+							
+						</div>
+						
+						<div class="form-group">
+							<p:outputLabel value="Numero de cuenta" styleClass="clasesCamposFormulario" />
+							<p:inputText id="idTxtNroCuenta" styleClass="form-control" value="#{mAlias.cuentaBancoFormulario.valCuenBanc}" />
+							<div id="idMensajeResultadoNroCuenta" > </div>
+						</div>
+
+						<div class="form-group">
+							<p:outputLabel value="Alias" styleClass="clasesCamposFormulario" />
+							<p:inputText id="idTxtAlias" styleClass="form-control" value="#{mAlias.cuentaBancoFormulario.aliCuen}" />
+							<div id="idMensajeResultadoAlias" > </div>
+						</div>
+					</div>
+
+					<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						<div class="form-group">
+							
+								<div id="idMensajeResultado" > </div>
+								
+								<p:outputPanel id="idMensajeResultadoProceso" >
+									<p:outputPanel styleClass="alert alert-success" rendered="#{not empty mAlias.resultadoProcesoExito}"> 
+										<p:outputLabel value="#{mAlias.resultadoProcesoExito}" />
+									</p:outputPanel>
+										
+									<p:outputPanel styleClass="alert alert-danger" rendered="#{not empty mAlias.resultadoProcesoError}"> 
+										<p:outputLabel value="#{mAlias.resultadoProcesoError}" />
+									</p:outputPanel>
+								</p:outputPanel>
+						</div>
+					</div>
+
+					<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 text-right">
+						<div class="form-group">
+							<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 contenedor-boton-cuenta">
+								
+								<p:remoteCommand name="metodoRemotoEnviarFormulario"  actionListener="#{mAlias.validar()}"  />
+								<p:commandButton  onclick="enviar(event);" styleClass="btn btn-success btn-cuentas" value="Agregar" />
+							</div>
+							<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 contenedor-boton-cuenta">
+								<p:commandButton styleClass="btn btn-danger btn-cuentas" value="Cancelar" action="#{mAlias.ocultarDatosCuenta}"
+									update="idSeccionDatosCuenta" />
+							</div>
+
+						</div>
+					</div>
+
+				</p:outputPanel>
+			</p:outputPanel>
+
+
+			<p:outputPanel id="idPanelListaCuentas">
+				<ui:repeat value="#{mAlias.listaCuentasBancarias}" var="cb" >
+	
+					<div id="accordion" class="claseAcordion">
+						<div class="card">
+							<div class="card-header" id="headingOne">
+								<h5 class="mb-0">
+									<button class="btn btn-link btn-acordion" data-toggle="collapse"
+										data-target="#collapseOne_#{cb.codCuenBanc}" aria-expanded="true"
+										aria-controls="collapseOne_#{cb.codCuenBanc}" type="button">
+										#{cb.aliCuen}</button>
+								</h5>
+							</div>
+	
+							<div id="collapseOne_#{cb.codCuenBanc}" class="collapse"
+								aria-labelledby="headingOne" data-parent="#accordion">
+								<div class="card-body">
+	
+									<p:outputPanel id="idFilaDatosCuenta" styleClass="row">
+										<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6">
+											<div class="form-group">
+	
+												<p:outputLabel value="Banco"
+													styleClass="clasesCamposFormulario" />
+												<p:outputLabel value="BCP - Banco de Credito" />
+	
+											</div>
+	
+											<div class="form-group">
+												<p:outputLabel value="Moneda"
+													styleClass="clasesCamposFormulario" />
+												<p:outputLabel value="Soles (S/)" />
+											</div>
+	
+											<div class="form-group">
+	
+												<p:outputLabel value="¿Es cuenta propia?"
+													styleClass="clasesCamposFormulario" />
+												<p:outputLabel value="Sí" />
+	
+											</div>
+	
+										</div>
+	
+										<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6">
+											<div class="form-group">
+												<p:outputLabel value="Numero de cuenta"
+													styleClass="clasesCamposFormulario" />
+												<p:outputLabel value="#{cb.valCuenBanc}" />
+											</div>
+	
+											<div class="form-group">
+												<p:outputLabel value="Alias"
+													styleClass="clasesCamposFormulario" />
+												<p:outputLabel value="#{cb.aliCuen}" />
+											</div>
+										</div>
+	
+										<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6">
+										</div>
+	
+										<div
+											class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 text-right">
+											<div class="form-group">
+												<div
+													class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 contenedor-boton-cuenta">
+													<p:commandButton styleClass="btn btn-success btn-cuentas"
+														value="Editar" />
+												</div>
+												<div
+													class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 contenedor-boton-cuenta">
+													<p:commandButton styleClass="btn btn-danger btn-cuentas"
+														value="Eliminar" />
+												</div>
+											</div>
+										</div>
+	
+									</p:outputPanel>
+	
+	
+								</div>
+							</div>
+						</div>
+	
+					</div>
+				</ui:repeat>
+			</p:outputPanel>
+
+			<!-- Modal Guardar Divisa Exitosa -->
+			<div class="modal fade" id="idModalGuardarCuentaBancariaExito" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">El tipo de cambio se guardó exitosamente.</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-success" data-dismiss="modal"  onclick="irAiniciarOperacion();">Iniciar operación</button>
+							<button type="button" class="btn btn-success" data-dismiss="modal">Agregar otra cuenta</button>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		
+			<!-- Modal Error-->
+			<div class="modal fade" id="idModalErrorSistema" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title mensajeTituloError">¡ Mensaje del Sistema - ERROR !</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body mensajeCuerpoError"><strong>#{mAlias.resultadoProcesoError}</strong> Comuníquese con el área de Soporte.</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</h:form>
+
+	</section>
+
+
+	</main>
+
+	<footer>
+		<div class="contenedor"></div>
+	</footer>
+
+</h:body>
+
+</html>

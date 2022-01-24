@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<div class="container">
+		
+		<div class="row">
+		
+			<div class="text-center column col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<p:outputLabel styleClass="claseTituloPaso" value="REALIZA LA TRANSFERENCIA"/>
+			</div>
+				
+			<div class="f1-steps column col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="f1-progress">
+					<div class="f1-progress-line" data-now-value="16.66"
+						data-number-of-steps="3" style="width: 49.99333333333334%;"></div>
+				</div>
+				<div class="f1-step activated">
+					<div class="f1-step-icon">
+						<i class="fas fa-calculator"></i> 
+					</div>
+					<p>1</p>
+				</div>
+				<div class="f1-step active">
+					<div class="f1-step-icon">
+						<i class="fas fa-location-arrow"></i> 
+					</div>
+					<p>2</p>
+				</div>
+				<div class="f1-step">
+					<div class="f1-step-icon">
+						<i class="fas fa-check"></i> 
+					</div>
+					<p>3</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h:form id="idFormTransferencia" method="post" role="form" class="form-horizontal">
+		
+		<div class="row col-xs-12 col-sm-12 col-md-10 col-lg-10 mx-auto">	
+			<div id="idDetalleOperacionGrande" class="d-none d-sm-block d-sm-none d-md-block mx-auto">
+			  <table class="table">
+				<thead>
+				    <tr>
+				      <th scope="col">Tipo de Operación</th>
+				      <th scope="col">Tipo de Cambio</th>
+				      <th scope="col">Cliente Envía</th>
+				      <th scope="col">Cliente Recibirá</th>
+				    </tr>
+				 </thead>
+				 <tbody>
+				    <tr>
+				      <td>#{mAlias.operacionClienteFormulario.indCompVent == 0 ? 'COMPRA' : 'VENTA'}</td>
+				      <td>#{mAlias.tipoCambioUsado}</td>
+				      <td>#{mAlias.cadenaDivisaCantidadEnvioInformacion}</td>
+				      <td>#{mAlias.cadenaDivisaCantidadReciboInformacion}</td>
+				    </tr>
+				 </tbody>
+			  </table>
+			</div>
+		</div>
+		
+		<div class="row col-xs-12 col-sm-12 col-md-10 col-lg-10 mx-auto">	
+			
+			<div  id="idDetalleOperacionPeque"  class="d-block d-sm-none mx-auto">
+			  <table class="table">
+				<thead>
+				    <tr>
+				      <th scope="col">Tipo de Operación</th>
+				      <th scope="col">Tipo de Cambio</th>
+				    </tr>
+				 </thead>
+				 <tbody>
+				    <tr>
+				      <td>#{mAlias.operacionClienteFormulario.indCompVent == 0 ? 'COMPRA' : 'VENTA'}</td>
+				      <td>#{mAlias.tipoCambioUsado}</td>
+				    </tr>
+				 </tbody>
+			  </table>
+			  <table class="table">
+				<thead>
+				    <tr>
+				      <th scope="col">Cliente Envía</th>
+				      <th scope="col">Cliente Recibirá</th>
+				    </tr>
+				 </thead>
+				 <tbody>
+				    <tr>
+				      <td>#{mAlias.cadenaDivisaCantidadEnvioInformacion}</td>
+				      <td>#{mAlias.cadenaDivisaCantidadReciboInformacion}</td>
+				    </tr>
+				 </tbody>
+			  </table>
+			</div>
+		</div>
+		
+		<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-9 mx-auto">
+			<p align="justify">Ahora desde la plataforma de <strong>tu banco</strong> realiza una transferencia de <strong>#{mAlias.cadenaDivisaCantidadEnvio}</strong>  a la cuenta indicada lineas abajo.
+								Deberás realizar la transferencia en un máximo de <strong>#{mAlias.valorTiempoLimite} minutos</strong> para mantener el tipo de cambio acordado.</p>
+			
+		</div>
+		
+		<div class="row col-xs-12 col-sm-12 col-md-9 col-lg-7 mx-auto">	
+			<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 claseContenedorCuenta">
+				<div class="form-group margenCuenta">
+					<p class="clasesCamposFormulario claseEtiquetaFormulario" >Banco</p>
+					<p:outputLabel value="#{mAlias.cuentaBancoAdminDetalle.tpBanco.nomBanc}" />
+				</div>
+
+				<div class="form-group margenCuenta">
+					<p class="clasesCamposFormulario claseEtiquetaFormulario" >Tipo de cuenta</p>
+					<p:outputLabel value="#{mAlias.cuentaBancoAdminDetalle.tpTipoCuent.desTipoCuen} - #{mAlias.cuentaBancoAdminDetalle.tpDivis.codIsoDivi}"/>
+				</div>
+
+				<div class="form-group margenCuenta">
+					<p class="clasesCamposFormulario claseEtiquetaFormulario" >Número de cuenta</p>
+					<p:outputLabel value="#{mAlias.cuentaBancoAdminDetalle.valCuenBanc}"/>
+				</div>
+				
+				<p:outputPanel rendered="#{not empty mAlias.cuentaBancoAdminDetalle.valCuenInte}">
+					<div class="form-group margenCuenta">
+						<p class="clasesCamposFormulario claseEtiquetaFormulario" >Código interbancario</p>
+						<p:outputLabel value="#{mAlias.cuentaBancoAdminDetalle.valCuenInte}"/>
+					</div>
+				</p:outputPanel>
+				
+				<div class="form-group margenCuenta">
+					<p class="clasesCamposFormulario claseEtiquetaFormulario" >Titular de la cuenta</p>
+					<p:outputLabel value="#{mAlias.cuentaBancoAdminDetalle.nombreTitularVista}"/>
+				</div>
+				
+				<div class="form-group margenCuenta">
+					<p class="clasesCamposFormulario claseEtiquetaFormulario" >RUC del titular</p>
+					<p:outputLabel value="#{mAlias.cuentaBancoAdminDetalle.tpClien.valDocuPers}"/>
+				</div>
+			</div>
+
+			<div
+				class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 contenedorImagenTransferencia">
+				<div>
+					<div class ="contenedorImagenRegistroSBS">
+						<img class="imagenRegistroSBS"
+						src="../../../resources/imagenes/registroSBS300x900.png" alt="Registro SBS"/> 
+					</div>
+					<div class ="contenedorclaseTextoRegistroSBS">
+						<a class="claseTextoRegistroSBS" href="../../../resources/files/registroSBS.pdf" target="_blank"
+						rel="noopener noreferrer">Ver registro</a>
+					</div>
+				</div>
+				<div>
+					<img class="imagenLogoTransferencia"
+						src="../../../resources/imagenes/hombreTrabajandoTransferencia.png" alt="Trabajando con Multicambio" />
+				</div>
+
+			</div>
+
+		</div>
+		
+		<div class="row col-xs-12 col-sm-12 col-md-11 col-lg-11 mx-auto">
+		
+			<div class="col text-left col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<p:commandButton class="btn botonRetornoOperacion icon-cancel" value="Cancelar Operación"
+					 actionListener="#{mAlias.cancelarOperacion}"  update="idPanelGeneral" onclick="window.scrollTo(0,0)"/>
+			</div>
+			
+			<div class="col text-right col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<p:commandButton class="btn btn-success botonIniciaOperacion icon-ok" value="Ya envie el dinero"  
+					actionListener="#{mAlias.validarTransferencia}" update="idPanelGeneral" onclick="window.scrollTo(0,0)"/>
+			</div>
+			
+		</div>
+
+<!-- 		<ui:include src="../../../estatus.xhtml" /> -->
+		
+	</h:form>
+
+</ui:composition>
+

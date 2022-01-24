@@ -1,0 +1,144 @@
+
+#menu-bar {
+	display: none;
+}
+
+header label {
+	float: right;
+	font-size: 16px;
+	margin: 20px 0;  
+	cursor: pointer;
+}
+
+.menu {
+	position: absolute;
+	/*Para que comience despues del header*/
+	top: 65px; 
+	left: 0;
+	width: 90%;
+	height: 100vh;
+/* 	background: rgba(51,51,51,0.9); */
+	/*Para el efecto del menu*/
+	transition: all 0.5s;
+	transform: translateX(-100%);
+}
+
+.menu a{
+	display: block;
+	color: #ffdd00;
+	height: 63px;
+	 /*Quita los subrayados*/
+	text-decoration: none;
+	padding: 20px;
+	border-bottom: 1px solid #ffdd00;
+	
+}
+
+.menu a:hover{
+/* 	background: rgba(255,255,255,0.3); */
+	background: #ffdd00;
+	color: #fff;
+}
+
+.claseDatos{
+	background: #ffdd00;
+	color: #fff !important;
+}
+
+#menu-bar:checked ~ .menu{
+	transform: translateX(0%);
+}
+
+/*Cuando sea para escritorio*/
+@media (min-width:1120px) {
+	.menu{
+		position: static;
+		width: auto;
+		height: auto;
+		transform: translateX(0%);
+		float: left;
+		display: flex;
+	}
+	
+	#idEnlaceCerrarSesion{
+		display: none;
+	}
+	
+	#idFlechaAbajo{
+		display: none;
+	}
+	
+	/*Quitamos las lineas del borde del menu*/
+	.menu a{
+		border: none;
+	}
+	
+	/*Ocultamos el icono del menu*/
+	header label{
+/* 		display: none; */
+	}
+	
+}
+
+@media (max-width:1119px) {
+	#idBotonCerrarSesion{
+		display: none;
+	}
+	
+	#idEnlaceElefirPerfil{
+		display: none;
+	}
+}
+
+@media (min-width:670px) {
+/* 	.menu{ */
+/* 		width: 30vw !important; */
+/* 	} */
+}	
+
+.botonCerrarSesion{
+    font-weight: bold;
+	padding: 0px !important;
+    color: #ffffff;
+    background-color: #FF0000;
+    border: 1.5px solid #FF0000;
+    width: 30px;
+    margin-right: 10px !important;
+}
+
+.botonCerrarSesion:before {
+	margin-left: 0em !important;
+	margin-right: 0em !important;
+}
+
+.botonCerrarSesion:hover{
+	color: #ffffff;
+	background-color: #C80000;
+	border: 1.5px solid #C80000;
+}
+
+#idBotonCerrarSesion{
+	float: right;
+    margin: 20px 0;
+}
+
+#idEnlaceElefirPerfil{
+	float: right;
+    margin: 20px 0;
+}
+
+
+.claseElegirPerfil {
+	margin-right: 15px !important;
+	color: #A95205;
+}
+
+.claseElegirPerfil:hover {
+	color: #A95205;
+}
+
+
+#idSeccionUsuario{
+   margin: 20.5 0;
+/*    font-size: 1em !important; */
+}

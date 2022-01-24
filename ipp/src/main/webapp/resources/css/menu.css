@@ -1,0 +1,159 @@
+
+#menu-bar {
+	display: none;
+}
+
+header label {
+	float: right;
+	font-size: 28px;
+	margin: 12px 0;  
+	cursor: pointer;
+}
+
+.menu {
+	position: absolute;
+	/*Para que comience despues del header*/
+	top: 65px; 
+	left: 0;
+	width: 100%;
+	height: 100vh;
+/* 	background: #EFEFEF; */
+	background: rgba(255,255,255,1);
+	background: -moz-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(235,232,235,1) 47%, rgba(207,207,207,1) 100%);
+	background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(47%, rgba(235,232,235,1)), color-stop(100%, rgba(207,207,207,1)));
+	background: -webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(235,232,235,1) 47%, rgba(207,207,207,1) 100%);
+	background: -o-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(235,232,235,1) 47%, rgba(207,207,207,1) 100%);
+	background: -ms-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(235,232,235,1) 47%, rgba(207,207,207,1) 100%);
+	background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(235,232,235,1) 47%, rgba(207,207,207,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#cfcfcf', GradientType=1 );
+	/*Para el efecto del menu*/
+	transition: all 0.5s;
+	transform: translateX(-100%);
+}
+
+.menu ul{
+	margin-bottom: 0 !important;
+}
+
+.menu li{
+	display: block;
+	color: #00089F;
+	height: 60px;
+	width: 100%;
+	 /*Quita los subrayados*/
+/* 	text-decoration: none; */
+    padding: 20px;
+    float: left;
+	border-bottom: 1px solid #00089F;
+}
+
+.menu li:hover > a{
+/* 	background: #00089F; */
+	 color: white;
+	 cursor: pointer;
+}
+
+.menu li:hover{
+	background: #00089F;
+	 color: white;
+	 cursor: pointer;
+}
+
+.menu a{
+	color: #00089F;
+}
+
+.menu a:hover{
+	border-bottom: 3px solid #00089F;
+    text-decoration: none;
+    color: white;
+}
+
+/* .claseDatos{ */
+/* 	background: #008B11; */
+/* 	color: #fff !important; */
+/* } */
+
+#menu-bar:checked ~ .menu{
+	transform: translateX(0%);
+}
+
+
+.botonIniciarOperacionGeneral{
+	color: #fff !important;
+	font-weight: bold !important;
+/* 	background: #FF7400 !important; */
+	padding-right: 20px;
+    padding-left: 20px;
+	padding-bottom: 10px !important;
+	padding-top: 10px !important;
+	display: initial !important;
+}
+
+.botonIniciarOperacionGeneral:before {
+    margin-left: 0em;
+}
+
+.botonIniciarOperacionGeneral span {
+    display: inline-block !important;
+    padding: .3em 0em .3em 0.5em !important;
+}
+
+.botonIniciarOperacionGeneral:hover {
+/*     color: #ffffff !important; */
+/*     background-color: #ff920a !important; */
+/*     border-color: #ff920a !important; */
+    border-bottom: none !important;
+}
+
+/*Cuando sea para escritorio*/
+@media (min-width:1024px) {
+	.menu{
+		position: static;
+		width: auto;
+		height: auto;
+		transform: translateX(0%);
+		float: right;
+		display: flex;
+		background: none;
+
+	}
+	
+	
+	.menu li{
+		width: auto;
+		color: #00089F; 
+		border-bottom: none;
+		height: 64px;
+	}
+	
+	.menu li:hover > a{
+		 color: #00089F;
+	}
+
+	.menu li:hover{
+		background: none;
+	}
+
+	.menu a{
+		color: #00089F;
+	}
+
+	.menu a:hover{
+		border-bottom: 3px solid #00089F;
+	    text-decoration: none;
+	}
+	/*Ocultamos el icono del menu*/
+	header label{
+		display: none;
+	}
+	
+}
+
+
+
+
+
+
+
+

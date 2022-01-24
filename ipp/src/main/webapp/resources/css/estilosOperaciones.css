@@ -1,0 +1,314 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;500;600&display=swap');
+@import url(menuOperaciones.css);
+
+* {
+	margin: 0;
+	padding: 0;
+	/*El width y el height incluyen el padding y el border, pero no el margin. */
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 0.85rem;
+	background: rgba(0,148,50,1);
+	background: -moz-linear-gradient(left, rgba(0,148,50,1) 0%, rgba(0,97,179,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,148,50,1)), color-stop(100%, rgba(0,97,179,1)));
+	background: -webkit-linear-gradient(left, rgba(0,148,50,1) 0%, rgba(0,97,179,1) 100%);
+	background: -o-linear-gradient(left, rgba(0,148,50,1) 0%, rgba(0,97,179,1) 100%);
+	background: -ms-linear-gradient(left, rgba(0,148,50,1) 0%, rgba(0,97,179,1) 100%);
+	background: linear-gradient(to right, rgba(0,148,50,1) 0%, rgba(0,97,179,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#009432', endColorstr='#0061b3', GradientType=1 );
+}
+
+section{
+	width: 88%;
+	margin: auto;
+	padding-left: 2%; 
+	padding-right: 2%;
+	background: #fff;
+}
+
+header {
+    width: 100%;
+    height: 65px;
+    color: #003885;
+    font-weight: 500;
+    /*Para que se quede fijo*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    /*Para que este siempre por delante de los demas elementos, el tape a los demas*/
+    z-index: 100;
+	background: rgba(255,255,255,1);
+	background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(100%, rgba(255,255,255,1)));
+	background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%);
+	background: -o-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%);
+	background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%);
+	background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff', GradientType=1 );
+	padding: .5rem 1.25rem;
+    box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+}
+
+@media (min-width: 1024px){
+	header {
+	    height: 90px !important;
+	}
+}
+
+.contenedor{
+	width: 98%;
+	margin: auto;
+}
+
+.claseImagenLogoHorizontal{
+	float: left;
+	width: 211.25px;
+	margin-top: 2px;
+}
+
+@media (max-width:1023px) {
+	.claseImagenLogoHorizontal{
+		width: 150px !important;
+	}
+}
+
+.modal-title{
+    color: #003885 !important;
+	font-weight: bold !important;
+}
+
+.modal-content{
+	margin-top: 70px !important;
+}
+
+@media (min-width: 1024px){
+	.contenedor {
+		width: 90%;
+	}
+}
+
+
+#operacionesHistoricas {
+    margin-top: 65px;
+/*     position: relative; */
+/* 	height: auto !important; */
+	min-height: 90vh;
+}
+
+
+#idFormOperacionesHistoricas{
+	display: inline-block;
+	width: 100%;
+	margin-top: 3rem;
+/* 	margin: auto; */
+}
+
+.column {
+    float: left;
+}
+
+.table th {
+    border: #d2e3f1 2px solid !important;
+    background: #003885;
+    color: white;
+}
+
+.table td {
+    border: #d2e3f1 1px solid !important;
+}
+
+.claseCeldaOperacionCurso{
+	padding-top: 1.5em !important;
+}
+
+.claseTituloOperaciones{
+	color: #003885;
+	font-weight: bold;
+	font-size: 1rem;
+}
+
+.claseContenedorBotonOperacionGeneral{
+	padding-right: 0 !important;
+}
+
+
+.botonIniciarOperacionGeneral{
+	color: #fff;
+	font-weight: bold;
+	background: #FF7400;
+}
+
+.botonIniciarOperacionGeneral:before {
+    margin-left: 0em;
+}
+
+.botonIniciarOperacionGeneral span {
+    display: inline-block !important;
+    padding: .3em 0em .3em 0.5em !important;
+}
+
+.botonIniciarOperacionGeneral:hover {
+    color: #ffffff;
+    background-color: #ff920a;
+    border-color: #ff920a;
+}
+
+table.dataTable {
+    border-collapse: collapse !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    color: #003885 !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+    color: #003885 !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    color: #fff !important;
+    border: 1px solid #003885 !important;
+    background-color: white !important;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #003885), color-stop(100%, #003885)) !important;
+    background: -webkit-linear-gradient(top, #003885 0%, #003885 100%) !important;
+    background: -moz-linear-gradient(top, #003885 0%, #003885 100%) !important;
+    background: -ms-linear-gradient(top, #003885 0%, #003885 100%) !important;
+    background: -o-linear-gradient(top, #003885 0%, #003885 100%) !important;
+    background: linear-gradient(to bottom, #003885 0%, #003885 100%) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    color: white !important;
+    border: 1px solid #003885;
+    background-color: #003885;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #003885), color-stop(100%, #003885));
+    background: -webkit-linear-gradient(top, #003885 0%, #003885 100%);
+    background: -moz-linear-gradient(top, #003885 0%, #003885 100%);
+    background: -ms-linear-gradient(top, #003885 0%, #003885 100%);
+    background: -o-linear-gradient(top, #003885 0%, #003885 100%);
+    background: linear-gradient(to bottom, #003885 0%, #003885 100%);
+}
+
+.dataTables_paginate{
+	margin-top: 10px;
+}
+
+.botonCancelar {
+    font-weight: bold;
+	padding: 0px !important;
+    float: left !important;
+    color: #FF0000;
+    background-color: #ffffff;
+    border: 1.5px solid #FF0000;
+    width: 150px;
+}
+
+.botonCancelar:before {
+	margin-left: 0em;
+}
+
+.botonCancelar span{
+	display: inline-block !important;
+	padding: .3em 0em .3em 0.5em !important;
+}
+
+.botonCancelar:hover{
+	color: #ffffff;
+	background-color: #FF0000;
+}
+
+.botonDetalle {
+    font-weight: bold;
+	padding: 0px !important;
+    float: left !important;
+    color: #2299FB;
+    background-color: #ffffff;
+    border: 1.5px solid #2299FB;
+    width: 150px;
+}
+
+.botonDetalle:before {
+	margin-left: 0em;
+}
+
+.botonDetalle span{
+	display: inline-block !important;
+	padding: .3em 0em .3em 0.5em !important;
+}
+
+.botonDetalle:hover{
+	color: #ffffff;
+	background-color: #2299FB;
+}
+
+#idTablaOperacionActual td{
+	padding: 0.3rem;
+    vertical-align: middle;
+}
+
+/* .claseOperacionEnProceso{ */
+/* 	color: orange; */
+/* 	font-weight: bold; */
+/* } */
+
+/* .claseOperacionCancelada{ */
+/* 	color: red; */
+/* 	font-weight: bold; */
+/* } */
+
+/* .claseOperacionFinalizada{ */
+/* 	color: green; */
+/* 	font-weight: bold; */
+/* } */
+
+
+.claseOperacionIniciada{
+	color: orange;
+	font-weight: bold;
+}
+
+.claseOperacionVerificacion{
+	color: #2299FB;
+	font-weight: bold;
+}
+
+
+.claseOperacionFinalizada{
+	color: green;
+	font-weight: bold;
+}
+
+.claseOperacionCancelada{
+	color: red;
+	font-weight: bold;
+}
+
+.cursorPointer{
+	cursor: pointer;
+	font-weight: bold !important;
+	color: #003885 !important;
+}
+
+.botonIniciarOperacionPerfil{
+	color: #fff !important;
+	display: initial !important;
+	padding: 0.14rem 0.60rem !important;
+    font-size: 0.9rem !important;
+}
+
+.botonIniciarOperacionPerfil:before {
+    margin-left: 0em;
+}
+
+.botonIniciarOperacionPerfil span {
+    display: inline-block !important;
+    padding: .3em 0em .3em 0.5em !important;
+}
+
+.botonIniciarOperacionPerfil:hover {
+    border-bottom: none !important;
+}

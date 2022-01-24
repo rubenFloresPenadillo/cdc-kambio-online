@@ -43,7 +43,7 @@ import util.types.PaginasPrivadasType;
 import util.types.PerfilesType;
 import util.types.RegistroActivoType;
 
-@ManagedBean(name="datosBeanEmpresa")
+@ManagedBean(name="datosEmpresaBean")
 @ViewScoped
 public class DatosEmpresaBean {
 
