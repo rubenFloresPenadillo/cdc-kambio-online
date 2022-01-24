@@ -48,6 +48,9 @@ public class CuentaItemBean {
 	private List<SelectItem> listaComboTipoCuentas;
 //	private List<SelectItem> listaComboIndiTransfeBancarias;
 //	private List<SelectItem> listaComboIndiCuentaPropia;
+	private Boolean indDatosEmpresa;
+	private Integer codigoUsuario;
+	private Integer codigoUsuarioPadre;	
 	
 	private Boolean indicadorModoConsulta;
 	public CuentaItemBean() {
@@ -55,6 +58,7 @@ public class CuentaItemBean {
 		indicadorModoConsulta = Boolean.FALSE;
 		resultadoProcesoExito = CadenasType.VACIO.getValor();
 		resultadoProcesoError = CadenasType.VACIO.getValor();
+		indDatosEmpresa = Boolean.FALSE;
 		System.out.println("Entro al constructor CuentaItemBean");
 	}
 	
@@ -71,6 +75,14 @@ public class CuentaItemBean {
     	if(ValidacionesString.esNuloOVacio(valorNombre)) {
     		valorNombre = CadenasType.CADENA_USUARIO.getValor();
     	}
+    	
+    	codigoUsuario = (Integer) sesion.getAttribute("codigoUsuario");
+    	codigoUsuarioPadre = (Integer) sesion.getAttribute("codigoUsuarioPadre");
+    	
+    	if(codigoUsuario.intValue() != codigoUsuarioPadre.intValue()) {
+    		indDatosEmpresa = Boolean.TRUE;
+    	}
+    	
     	TpCuentBancoDto cuentaBancariaItemSeleccionado = (TpCuentBancoDto) sesion.getAttribute("cuentaBancariaItemSeleccionado");
 		Boolean indicadorModoConsultaTemporal = (Boolean) sesion.getAttribute("indicadorModoConsulta");
 		sesion.removeAttribute("cuentaBancariaItemSeleccionado");
@@ -303,6 +315,14 @@ public class CuentaItemBean {
 
 	public void setCuentaItem(TpCuentBancoDto cuentaItem) {
 		this.cuentaItem = cuentaItem;
+	}
+
+	public Boolean getIndDatosEmpresa() {
+		return indDatosEmpresa;
+	}
+
+	public void setIndDatosEmpresa(Boolean indDatosEmpresa) {
+		this.indDatosEmpresa = indDatosEmpresa;
 	}
 
 	

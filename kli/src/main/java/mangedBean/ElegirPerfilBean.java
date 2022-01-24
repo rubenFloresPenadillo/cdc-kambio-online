@@ -57,7 +57,7 @@ public class ElegirPerfilBean {
 	}
 	
     /**
-     * Realiza su ejecuciÃ³n despues del Constructor de la clase DatosBean.
+     * Realiza su ejecución despues del Constructor de la clase DatosBean.
      */
     @PostConstruct
     public void init() {

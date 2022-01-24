@@ -41,22 +41,22 @@
 			
 			<nav class="menu">
 				<ul>
-					<li> 
+					<li onclick="window.location.href='inicio.xhtml'"> 
 						<a class="claseInicio" href="inicio.xhtml">Inicia Operacion</a>  
 					</li>
-					<li> 
+					<li onclick="window.location.href='datos.xhtml'"> 
 						<a class="claseDatos" href="datos.xhtml">Mis Datos</a> 
 					</li>
-					<li> 
+					<li onclick="window.location.href='cuenta.xhtml'"> 
 						<a class="claseCuentas" href="cuenta.xhtml"> Mis Cuentas Bancarias</a> 
 					</li>
-					<li> 
+					<li onclick="window.location.href='operaciones.xhtml'"> 
 						<a class="claseOperaciones" href="operaciones.xhtml">Mis Operaciones</a> 
 					</li>
-					<li class="#{mAlias.indCompleDatos eq 1  ? 'claseMostrarBoton' : 'claseNoMostrarBoton' }"> 
+					<li class="#{mAlias.indCompleDatos eq 1  ? 'claseMostrarBoton' : 'claseNoMostrarBoton' }" onclick="window.location.href='elegirPerfil.xhtml'"> 
 						<a href="elegirPerfil.xhtml" id="idEnlaceElegirPerfil" class="claseElegirPerfil btn btn-info botonIniciarOperacionPerfil icon-user">Elegir Perfil</a> 
 					</li>
-					<li id="idEnlaceCerrarSesion"> 
+					<li id="idEnlaceCerrarSesion" onclick="mostrarPopupCerrarSesion();"> 
 						<a href="#"  onclick="mostrarPopupCerrarSesion();" >Cerrar Sesion</a> 
 					</li>
 					

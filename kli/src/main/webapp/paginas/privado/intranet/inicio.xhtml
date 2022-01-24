@@ -41,22 +41,22 @@
 			
 			<nav class="menu">
 				<ul>
-					<li> 
+					<li onclick="window.location.href='inicio.xhtml'"> 
 						<a class="claseInicio" href="inicio.xhtml">Inicia Operacion</a>  
 					</li>
-					<li> 
+					<li onclick="window.location.href='#{mAlias.indDatosEmpresa ? 'datosEmpresa.xhtml' : 'datos.xhtml'}'"> 
 						<a class="claseDatos" href="#{mAlias.indDatosEmpresa ? 'datosEmpresa.xhtml' : 'datos.xhtml'}">Mis Datos</a> 
 					</li>
-					<li> 
+					<li onclick="window.location.href='cuenta.xhtml'"> 
 						<a class="claseCuentas" href="cuenta.xhtml"> Mis Cuentas Bancarias</a> 
 					</li>
-					<li> 
+					<li onclick="window.location.href='operaciones.xhtml'"> 
 						<a class="claseOperaciones" href="operaciones.xhtml">Mis Operaciones</a> 
 					</li>
-					<li > 
+					<li onclick="window.location.href='elegirPerfil.xhtml'"> 
 						<a href="elegirPerfil.xhtml" id="idEnlaceElegirPerfil" class="claseElegirPerfil btn btn-info botonIniciarOperacionPerfil icon-user">Elegir Perfil</a> 
 					</li>
-					<li id="idEnlaceCerrarSesion"> 
+					<li id="idEnlaceCerrarSesion" onclick="mostrarPopupCerrarSesion();'"> 
 						<a href="#"  onclick="mostrarPopupCerrarSesion();" >Cerrar Sesion</a> 
 					</li>
 				</ul>
@@ -103,7 +103,7 @@
 			        </button>
 			      </div>
 			      <div class="modal-body">
-			        Recuerda que debes registrar la cuenta bancaria a donde te enviaremos tu dinero.
+			        Recuerda que debes registrar mínimamente una cuenta en USD y otra en PEN para poder realizar tus operaciones.
 			      </div>
 			      <div class="modal-footer">
 							<button type="button" class="btn btn-success" data-dismiss="modal"  onclick="ejecutarIrARegistrarCuenta();">Registrar cuenta</button>

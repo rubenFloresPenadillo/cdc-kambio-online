@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+		<!-- Required meta tags -->
+		<title>Casa de Cambio Multicambio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+			
+		<link rel="shortcut icon" href="resources/imagenes/favicon.ico" />	
+		<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css" />
+
+<!-- 		<script type="text/javascript"   src="resources/js/jquery-3.2.1.slim.min.js"></script> -->
+		<script type="text/javascript"   src="resources/js/popper.min.js"></script>
+		<script type="text/javascript"   src="resources/js/bootstrap.min.js"></script>
+		<script type="text/javascript"   src="resources/js/principalHome.js"></script>	
+		<script type="text/javascript"   src="resources/js/eskju.jquery.scrollflow.min.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="resources/css/all.css"/>
+<!-- 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"/> -->
+		
+		<link rel="stylesheet" type="text/css" href="resources/css/fontello.css"/> 
+		<link rel="stylesheet" type="text/css" href="resources/css/estilos.css"/>
+		
+		
+</h:head>
+<h:body>
+
+<header>
+		
+		<ui:param name="mAlias" value="#{principalBean}" />
+		<div class="cabeceraInfo">
+			<div class="contenedorInfo">
+<!-- 				<a class="icon-whatsapp" href=""></a> -->
+				<a class="icon-whatsapp" href="">992951162</a>
+				<a class="icon-mail" href="">ventas@multicambio.pe</a>
+			</div>
+		</div>
+		<div class="contenedor">
+			<a  href="index.xhtml">
+				<img class="imagenLogo" src="resources/imagenes/logoHorizontal390x120.png" alt="Logo Multicambio"/>
+			</a>
+			
+			<h:selectBooleanCheckbox  id="menu-bar"/>
+			<label class="icon-menu" for="menu-bar"></label> 
+
+			<nav class="menu">
+				<ul>
+					<li>
+						<a href="paginas/privado/nosotros.xhtml" class="claseColorBlanco">NOSOTROS</a> 
+					</li>
+<!-- 					<li> -->
+<!-- 						<a href="paginas/privado/blog.xhtml">Blog</a> -->
+<!-- 					</li> -->
+					<li>
+						<a href="paginas/privado/contacto.xhtml" class="claseColorBlanco">CONTACTO</a> 
+					</li>
+<!-- 					<li> -->
+<!-- 						<a href="#">Ayuda</a>  -->
+<!-- 					</li> -->
+					<li>
+						<a class="icon-user" href="paginas/privado/ingreso.xhtml">INICIAR SESIÓN</a> 
+					</li>
+					
+					<li class="botonRegistrarme" >
+						<a class="icon-user-plus" href="paginas/privado/registro.xhtml">REGÍSTRATE</a> 
+					</li>
+				</ul>
+<!-- 				<p:commandButton class="btn btn-warning botonIniciarOperacionGeneral icon-right-dir" value="INICIAR OPERACIÓN" /> -->
+			</nav>
+
+		</div>
+</header>
+
+
+
+			<!-- Modal Para Comunicado -->
+<!-- 			<div class="modal fade" id="modalComunicadoPrincipal" tabindex="-1" role="dialog" > -->
+<!-- 			  <div class="modal-dialog" role="document"> -->
+<!-- 			    <div class="modal-content"> -->
+<!-- 			      <div class="modal-header"> -->
+<!-- 			        <h5 class="modal-title" >¡ Comunicado General !</h5> -->
+<!-- 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
+
+<!-- 			        </button> -->
+<!-- 			      </div> -->
+<!-- 			      <div class="modal-body" align="justify"> -->
+<!-- 			        Estimados clientes por el presente les comunicamos que el día Sábado 14/11/2020 hemos tenido un problema con nuestra configuración de tipo de cambio,  -->
+<!-- 			        esto ha ocasionado confusión por lo que nos estamos comunicando con cada cliente que se ha visto afectado, les agradecemos de antemano por su comprensión. -->
+<!-- 			        <br></br><br></br> -->
+<!-- 			        La Casa de Cambio Multicambio les reitera su compromiso de seguir trabajando para brindarles un servicio de calidad. -->
+<!-- 			      </div> -->
+<!-- 			      <div class="modal-footer"> -->
+<!-- 			        <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button> -->
+<!-- 			      </div> -->
+<!-- 			    </div> -->
+<!-- 			  </div> -->
+<!-- 			</div> -->
+		
+
+	  
+	<h:form id="idFormPrincipal" method="post" role="form" class="form-horizontal">
+	
+		<p:remoteCommand name="ejecutarEnviarSuscripcion" actionListener="#{mAlias.procesarEnviarSuscripcion()}" update="idFormPrincipal"/>
+		
+		<main>
+			<section id="banner" class="claseBanner">
+				<img class="imagenBannerFondo" src="resources/imagenes/fondo-home-bg-2.jpg" alt="Home Multicambio"/> 
+
+				<div class="contenedor">
+				
+					<div class="row filaBannerContenido mx-auto justify-content-md-center">
+						<div class="clasetituloContenido col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					      	<h1>Cambia dólares de manera rápida, segura y confiable</h1>
+<!-- 							<h3 class="claseRapidoSeguro" >Rápido y seguro con el mejor tipo de cambio del mercado.</h3> -->
+					    </div>
+					</div>
+					
+					<div class="row filaBannerContenido mx-auto justify-content-md-center">
+						
+
+					    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-5">
+					    
+					    	<p:outputPanel styleClass="row claseSeccionTipoCambio claseDescripcionTipoCambio">
+
+								<div >
+									<p:outputLabel  value="Tipo de cambio"/>
+								</div>
+
+			
+							</p:outputPanel>
+							
+					    	
+					    	<p:outputPanel styleClass="row claseSeccionTipoCambio">
+
+								<div class="claseCompraVenta">
+									<p:outputLabel styleClass="claseEtiquetaCompraVenta" value="Venta:"/>
+									<p:outputLabel styleClass="claseEtiquetaValorCompraVenta claseVenta" value="#{mAlias.tipoCambioVentaDolar}"/>
+								</div>
+								
+								<div class="claseCompraVenta">
+									<p:outputLabel styleClass="claseEtiquetaCompraVenta" value="Compra:"/> 
+									<p:outputLabel styleClass="claseEtiquetaValorCompraVenta claseCompra" value="#{mAlias.tipoCambioCompraDolar}" />
+								</div>
+			
+							</p:outputPanel>
+							<p:outputPanel class="seccionCalculadora" id="idSeccionCalculadora">
+							
+<!-- 								<input name="name" id="id" type="checkbox" checked="true" hidden="true"> -->
+								<h:inputHidden value = "#{mAlias.mostrarCompra}" id = "idMostrarCompra" /> 
+							
+								<p:remoteCommand name="metodoRemotoRotarVista"  actionListener="#{mAlias.rotarVista}" update="idSeccionCalculadora, idSeccionTipoCambioUso" />
+								<h:link styleClass="enlaceImagenCambioBandera" title="Rotar vista" outcome="#" onclick="metodoRemotoRotarVista();">
+									<h:graphicImage styleClass="imagenCambioBandera" value="resources/imagenes/cambiarBanderas.png" />
+								</h:link>
+								
+								<div class="contenedora">
+									<div class="filaBandera">
+										<div class="datosEnvioRecibo">
+											<p:outputLabel styleClass="claseTextoEnvioRecibo" value="Tengo" />
+										</div>
+										<h:graphicImage styleClass="imagenBanderaCalculadora" value="resources/imagenes/SolesCalculadora.jpg" rendered="#{!mAlias.mostrarCompra}"/>
+										<h:graphicImage styleClass="imagenBanderaCalculadora" value="resources/imagenes/DolaresCalculadora.jpg" rendered="#{mAlias.mostrarCompra}"/>
+										<p:inputText class="form-control inputCalculadora inputSuperior"
+											value="#{mAlias.cantidadEnvio}" onkeyup="calcularValorEnvio()">
+											
+										</p:inputText>
+									</div>
+								</div>
+								
+								<div class="contenedora contenedoraInferior">
+									<div class="filaBandera">
+										<div class="datosEnvioRecibo">
+											<p:outputLabel styleClass="claseTextoEnvioRecibo" value="Recibo" />
+										</div>
+										<h:graphicImage styleClass="imagenBanderaCalculadora" value="resources/imagenes/DolaresCalculadora.jpg" rendered="#{!mAlias.mostrarCompra}"/>	
+										<h:graphicImage styleClass="imagenBanderaCalculadora" value="resources/imagenes/SolesCalculadora.jpg" rendered="#{mAlias.mostrarCompra}"/>
+										<p:inputText class="form-control inputCalculadora inputInferior"
+											value="#{mAlias.cantidadRecibo}" onkeyup="calcularValorRecibo()">
+										</p:inputText>
+									</div>
+								</div>
+		
+							</p:outputPanel>
+							
+							<p:outputPanel styleClass="claseSeccionTipoCambioUso" id="idSeccionTipoCambioUso">
+								<div class="claseCompraVentaUso">
+									<p:outputLabel styleClass="claseEtiquetaTextoCompraVentaUso" value="Tipo de cambio usado:"/>
+									<p:outputLabel styleClass="claseEtiquetaValorCompraVentaUso" value="#{mAlias.tipoCambioUsado}"/>
+								</div>
+								
+							</p:outputPanel>
+							
+							<p:outputPanel styleClass="claseContenedorBotonOperacionGeneral">
+<!-- 								<p:commandButton class="btn btn-warning botonIniciarOperacionGeneral icon-right-dir" value="INICIAR OPERACIÓN" /> -->
+								<p:commandButton class="btn btn-warning botonIniciarOperacionHome icon-right-dir" value="INICIAR OPERACIÓN" 
+								 action="paginas/privado/ingreso.xhtml?faces-redirect=true"/>
+							</p:outputPanel>
+						</div>
+						
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-4 text-center">
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<h6>Con nosotros ahorrarás cambiando dólares</h6>
+								</div>
+
+							</div>
+								
+
+	
+					    </div>
+					</div>
+				</div>
+			</section>
+
+<!-- 			<section id="bienvenidos" > -->
+<!-- 				<h2>BIENVENIDO</h2> -->
+<!-- 				<h3>Estamos aquí para cumplir tus expectativas de calidad y satisfacción.</h3> -->
+<!-- 				<img class="img-fluid"  src="resources/imagenes/grupoTrabajoBienvenida.jpg" alt="Bienvenido"/> -->
+
+<!-- 			</section> -->
+			
+			<section id="comoFunciona" class="scrollflow -slide-top -opacity">
+				<h2>¿Como Funciona Tu Casa de Cambio Multicambio?</h2>
+				<div class="row contenedorComoFunciona">
+					
+					<div class="comoFunciona-item">
+						<img src="resources/imagenes/funciona_paso_1.png" alt="Paso uno"/>
+						<p>Ingresa a tu cuenta segura<br></br> desde cualquier dispositivo</p>
+					</div>
+					<div class="comoFunciona-item">
+						<img src="resources/imagenes/funciona_paso_2.png" alt="Paso dos"/>
+						<p>Cotiza y realiza tu operación</p>
+					</div>
+					<div class="comoFunciona-item">
+						<img src="resources/imagenes/funciona_paso_3.png" alt="Paso tres"/>
+						<p>Transfiere y envianos la constancia</p>
+					</div>
+					<div class="comoFunciona-item">
+						<img src="resources/imagenes/funciona_paso_4.png" alt="Paso cuatro"/>
+						<p>Recibe el dinero en tu cuenta bancaria</p>
+					</div>
+				</div>
+			</section>
+			
+			<section id="respaldo" class="scrollflow -slide-top -opacity">
+				<h2>Números que inspiran confianza</h2>
+				<div class="row contenedor">
+					
+					<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-4" >
+						<div class= "claseItemRespaldo">
+							<h1 class="counter" style = "text-align: center;" id="valor1">945</h1>
+							<h5 style = "text-align: center;">Usuarios Registrados</h5>
+						</div>
+					</div>
+
+					<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-4" >
+						<div class= "claseItemRespaldo">
+							<div class= "claseItemNumeros">
+								<h1 class="counter" style = "text-align: center;" id="valor3">350</h1> 
+								<h1>k</h1>
+							</div>
+							<h5 style = "text-align: center;">Operaciones exitosas</h5>
+						</div>
+					</div>
+					
+					<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-4" >
+						<div class= "claseItemRespaldo">
+							<div class= "claseItemNumeros">
+								<h1 class="counter" style = "text-align: center;" id="valor2">10</h1>
+								<h1>mill</h1>
+							</div>
+							<h5 style = "text-align: center;">Soles Cambiados</h5>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			
+			<section id="transferencias" class="scrollflow -slide-top -opacity">
+				<h2>OPERAMOS CON TODOS LOS BANCOS</h2>
+				<h3>Operaciones inmediatas</h3>
+				<div class="contenedor">
+
+					<div class="transf-item">
+						<img src="resources/imagenes/logoPichincha120x30.png" alt="Logo BCP transferencias"/>
+					</div>
+					<div class="transf-item">
+						<img src="resources/imagenes/logoInterbank120x30.png" alt="Logo Interbank transferencias"/>
+					</div>
+				</div>
+				
+				<h3>Operaciones interbancarias</h3>
+				<div class="contenedor">
+					<div class="transf-item">
+						<img src="resources/imagenes/logoScotiabank120x30.png" alt="Logo Interbank transferencias"/>
+					</div>
+					<div class="transf-item">
+						<img src="resources/imagenes/logoBcp120x30.png" alt="Logo BCP transferencias"/>
+					</div>
+					<div class="transf-item">
+						<img src="resources/imagenes/logoBbva120x30.png" alt="Logo Bbva transferencias"/>
+					</div>
+				</div>
+				<h5>Y todos los demás bancos</h5>
+			</section>
+			
+			
+<!-- 			<section id="idBlog"> -->
+<!-- 				<div class="contenedor contenedorTitulo"> -->
+<!-- 					<h2>Lo Último de Nuestro Blog</h2> -->
+					
+<!-- 					<div class="row text-center text-lg-left" > -->
+<!-- 							<ui:repeat value="#{mAlias.listaUltimasEntradas}" var="item"  varStatus="status" > -->
+<!-- 									<div class="col-xs-5 col-sm-4 col-md-4 col-lg-4 contenedorObjetoBlog"> -->
+<!-- 										<div class="col-xs-5 col-sm-4 col-md-12 col-lg-12  contenedorObjetoBlogInterno"> -->
+<!-- 										  <div class="claseEntradaParteSUperior"> -->
+<!-- 										  	  <p:outputLabel value="Publicado: #{item.fecCreaFormPrev}" styleClass="claseFechaEntrada"></p:outputLabel> <br></br> -->
+<!-- 											  <p:outputLabel value="#{item.catEntr}" styleClass="claseCategoriaEntrada" ></p:outputLabel> <br></br> -->
+<!-- 											  <a href="paginas/privado/blogItem.xhtml?param=#{item.enlEntr}" class="d-block mb-4 h-100"> -->
+<!-- 											  	<p:outputLabel value="#{item.titEntr}" styleClass="claseTituloEntrada"></p:outputLabel> -->
+<!-- 											  </a>	 -->
+<!-- 										  </div> -->
+<!-- 									      <a href="paginas/privado/blogItem.xhtml?param=#{item.enlEntr}" class="d-block mb-4 h-100"> -->
+<!-- 									      		<figure class="flow-image"> -->
+<!-- 									            	<h:graphicImage value="#{item.imaEntrPrev}" /> -->
+<!-- 									            </figure> -->
+<!-- 									       </a> -->
+<!-- 									    </div>    -->
+									    
+<!-- 									    <div class="fb-share-button" data-href="https://www.multicambio.pe/paginas/privado/contacto.xhtml" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.multicambio.pe%2Fpaginas%2Fprivado%2Fcontacto.xhtml&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></div> -->
+									    
+<!-- 								    </div> -->
+<!-- 							</ui:repeat> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</section> -->
+			
+<!-- 			<section id="idDataTipoCambio" class="scrollflow -slide-top -opacity"> -->
+<!-- 				<h2>Nuestro tipo de cambio y su variación</h2> -->
+<!-- 				<div class="row contenedor"> -->
+<!-- 					<div class="column col-xs-12 col-sm-10 col-md-9 col-lg-9 mx-auto" > -->
+<!-- 						<p:chart type="line" model="#{mAlias.modeloTipoCambio}" responsive="true" /> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</section> -->
+			
+<!-- 			<section id="idComentarios" class="scrollflow -slide-top -opacity"> -->
+				
+<!-- 				<div id="carouselExampleIndicators" class="carousel slide claseFondoComentarios" data-ride="carousel"> -->
+<!-- 				  <ol class="carousel-indicators"> -->
+<!-- 				    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li> -->
+<!-- 				    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li> -->
+<!-- 				    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
+<!-- 				  </ol> -->
+<!-- 				  <h2>Nuestros clientes opinan</h2> -->
+<!-- 				  <div class="carousel-inner"> -->
+				  	
+<!-- 				    <div class="carousel-item active"> -->
+<!-- 				      <div class="row"> -->
+<!-- 				      	<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" > -->
+<!-- 							<img  src="resources/imagenes/coment-1-150x150.jpg" class="img-circle"  alt="John Smith" /> -->
+<!-- 						</div> -->
+<!-- 				      </div> -->
+					  
+<!-- 					  <div class="row"> -->
+<!-- 				      	<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-7 text-center mx-auto" > -->
+<!-- 							<blockquote class="testimonial-carousel" style="color:#ffffff"><p>Ahora solo cambio mi dinero a través de internet y la verdad que el ahorro de tiempo y la seguridad de la operación, a comparación al cambio en la calle, ES INIGUALABLE!!!</p></blockquote> -->
+<!-- 						</div> -->
+<!-- 				      </div> -->
+<!-- 				    </div> -->
+				    
+<!-- 				    <div class="carousel-item"> -->
+<!--  				       <div class="row"> -->
+<!-- 				      	<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" > -->
+<!-- 							<img  src="resources/imagenes/coment-2-150x150.jpg" class="img-circle"  alt="John Smith" /> -->
+<!-- 						</div> -->
+<!-- 				      </div> -->
+					  
+<!-- 					  <div class="row"> -->
+<!-- 				      	<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-7 text-center mx-auto" > -->
+<!-- 							<blockquote class="testimonial-carousel" style="color:#ffffff"><p>Es increible !! Acabo de cambiar y me he quedado asombrada con la diferencia del tipo de cambio. BCP me pagaba 3,25 y Casa de Cambio Multicambio me pago 3,30, gran diferencia. Felicitaciones !!</p></blockquote> -->
+<!-- 						</div> -->
+<!-- 				      </div> -->
+<!-- 				    </div> -->
+				    
+				    
+<!-- 				    <div class="carousel-item"> -->
+<!--  				       <div class="row"> -->
+<!-- 				      	<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" > -->
+<!-- 							<img  src="resources/imagenes/coment-1-150x150.jpg" class="img-circle"  alt="John Smith" /> -->
+<!-- 						</div> -->
+<!-- 				      </div> -->
+					  
+<!-- 					  <div class="row"> -->
+<!-- 				      	<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-7 text-center mx-auto" > -->
+<!-- 							<blockquote class="testimonial-carousel" style="color:#ffffff"><p>De lejos la mejora opción, es 100% seguro y sin riesgos, el tipo de cambio es muchisimo mejor que el que te da el banco. Definitivamente la mejor forma de cambiar dolares.</p></blockquote> -->
+<!-- 						</div> -->
+<!-- 				      </div> -->
+<!-- 				    </div> -->
+<!-- 				  </div> -->
+<!-- 				  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev"> -->
+<!-- 				    <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
+<!-- 				    <span class="sr-only">Previous</span> -->
+<!-- 				  </a> -->
+<!-- 				  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next"> -->
+<!-- 				    <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
+<!-- 				    <span class="sr-only">Next</span> -->
+<!-- 				  </a> -->
+<!-- 				</div> -->
+
+<!-- 			</section> -->
+			
+			<section id="info">
+				<h3>
+					Le brindamos un servicio único y especializado.
+				</h3>
+				<div class="contenedor">
+					<div class="info-pet">
+						<img src="resources/imagenes/1-confianza.jpg" alt="Confianza"/>
+						<h4>Confianza</h4>
+					</div>
+					<div class="info-pet">
+						<img src="resources/imagenes/2-comodidad.jpg" alt="Comodidad"/>
+						<h4>Comodidad</h4>
+					</div>
+					<div class="info-pet">
+						<img src="resources/imagenes/3-seguridad2.jpg" alt="Seguridad"/>
+						<h4>Seguridad</h4>
+					</div>
+					<div class="info-pet">
+						<img src="resources/imagenes/4-rapidez.jpg" alt="Rapidez"/>
+						<h4>Rapidez</h4>
+					</div>
+				</div>
+			
+			</section>
+			
+<!-- 			<section id="idSuscripcion" class="scrollflow -slide-top -opacity"> -->
+<!-- 				<h2>¡QUIERO ESTAR SIEMPRE ENTERADO!</h2> -->
+<!-- 				<h3> Recibe noticias y actualizaciones. ¡Suscríbete! </h3> -->
+<!-- 				<div class="row" > -->
+<!-- 					<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12"> -->
+<!-- 						<div class="form-group"> -->
+<!-- 					        <p:inputText id="idTxtCorreoElectronico" styleClass="form-control  mx-auto"  value="#{mAlias.correoSuscripcion}"/> -->
+<!-- 							<p:watermark for="idTxtCorreoElectronico" value="Ingresa tu Correo Electrónico" /> -->
+<!-- 							<div id="idMensajeCorreoElectronico" > </div> -->
+<!-- 					    </div>  -->
+<!-- 					</div> -->
+				
+<!-- 				</div> -->
+				
+<!-- 				<div class="row"> -->
+<!-- 					<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12"> -->
+<!-- 						<div class="form-group claseContenedorBotonSuscrip"> -->
+<!-- 					        <p:commandButton onclick="enviar(event);" styleClass="btn btn-success botonSuscripcion mx-auto" value="SUSCRIBIRME" /> -->
+<!-- 					    </div>      -->
+<!-- 					</div> -->
+				
+<!-- 				</div> -->
+			
+<!-- 			</section> -->
+		    
+		<!--Modal: Name-->
+		<div class="modal fade" id="modalComo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		
+		    <!--Content-->
+		    <div class="modal-content">
+		
+		      <!--Body-->
+		      <div class="modal-body mb-0 p-0">
+		
+		        <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+		          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/0kBlHt1bXGk" allow="fullscreen"></iframe>
+		        </div>
+		
+		      </div>
+		
+		      <!--Footer-->
+		      <div class="modal-footer justify-content-center">
+		        <span class="mr-4">¡La confianza de siempre, ahora online! </span>
+		
+		        <button type="button" class="btn btn-success btn-md ml-4" data-dismiss="modal">Cerrar</button>
+		
+		      </div>
+		
+		    </div>
+		    <!--/.Content-->
+		
+		  </div>
+		</div>
+    
+		</main>
+
+		  <ui:include src="footer.xhtml" />
+		  
+		  <ui:include src="/estatus.xhtml" />
+		  
+		  <!-- Modal Guardar Banco Exitoso -->
+			<div class="modal fade" id="idModalEnviarSuscripcionExito" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">Tu suscripción se realizo de forma exitosa.</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		
+			<!-- Modal Error-->
+			<div class="modal fade" id="idModalErrorSistema" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title mensajeTituloError">¡ Mensaje del Sistema - ERROR !</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body mensajeCuerpoError">#{mAlias.resultadoProcesoError} <strong>Comuníquese con el área de Soporte.</strong></div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+	</h:form>	
+<button onclick="enlaceWhatsapp();" id="myBtn" title="Escribenos" />
+</h:body>
+</html>

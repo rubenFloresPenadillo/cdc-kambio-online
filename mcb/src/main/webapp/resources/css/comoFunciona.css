@@ -1,0 +1,38 @@
+
+#comoFunciona{
+	background: #f7f9ff;
+	text-align: center;
+	padding: 20px;
+}
+
+#comoFunciona h2{
+	margin-top: 30px;
+	color: #5763eb !important;
+    font-weight: bold;
+}
+
+#comoFunciona h3{
+	margin-top: 30px;
+	color: #5763eb !important;
+}
+
+#comoFunciona .contenedorComoFunciona{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: auto;
+}
+
+.comoFunciona-item{
+	margin: 30px;
+}
+
+.comoFunciona-item img{
+	width: 290px;
+	height: 290px;
+}
+
+.comoFunciona-item p{
+	color: #5763eb;
+	font-weight: bold;
+}

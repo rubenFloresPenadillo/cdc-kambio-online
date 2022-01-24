@@ -46,7 +46,7 @@
 			
 			<nav class="menu">
 				<ul>
-					<li>
+					<li onclick="window.location.href='panelPrincipal.xhtml'">
 						<a class="claseControl" href="panelPrincipal.xhtml">Panel de Control</a>
 					</li>
 <!-- 					<li> -->
@@ -148,6 +148,15 @@
 						<p class="claseSubtituloControl">Configuración</p>
 					</div>
 					
+					
+					<div class="claseOpcionesPanel">
+						<p:commandButton value="" title="Configuración general"
+								styleClass="imagenPregunta64x64 claseBotonElementoMenu"
+								action="opciones/ayudaConfiguracion?faces-redirect=true">
+						</p:commandButton>
+						<p class="claseSubtituloControl">Ayuda</p>
+					</div>
+					
 <!-- 					<div class="claseOpcionesPanel"> -->
 <!-- 						<p:commandButton value="" title="Editar Datos de la Empresa" -->
 <!-- 								styleClass="imagenBotonInformacionPersonal64x64 claseBotonElementoMenu" -->
@@ -156,13 +165,13 @@
 <!-- 						<p class="claseSubtituloControl">Datos Empresa</p> -->
 <!-- 					</div> -->
 					
-<!-- 					<div class="claseOpcionesPanel"> -->
-<!-- 						<p:commandButton value="" title="Blog" -->
-<!-- 								styleClass="imagenBotonBlog64x64 claseBotonElementoMenu" -->
-<!-- 								action="opciones/blogGeneral?faces-redirect=true"> -->
-<!-- 						</p:commandButton> -->
-<!-- 						<p class="claseSubtituloControl">Blog</p> -->
-<!-- 					</div> -->
+					<div class="claseOpcionesPanel">
+						<p:commandButton value="" title="Blog"
+								styleClass="imagenBotonBlog64x64 claseBotonElementoMenu"
+								action="opciones/blogGeneral?faces-redirect=true">
+						</p:commandButton>
+						<p class="claseSubtituloControl">Blog</p>
+					</div>
 <!-- 					<div class="claseOpcionesPanel"> -->
 <!-- 						<p:commandButton value="" title="Clientes" -->
 <!-- 								styleClass="imagenBotonClientes64x64 claseBotonElementoMenu" -->

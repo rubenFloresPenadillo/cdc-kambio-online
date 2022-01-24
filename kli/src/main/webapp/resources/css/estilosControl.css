@@ -280,6 +280,12 @@ table.dataTable {
 	background-position: center !important;
 }
 
+.imagenPregunta64x64 {
+	background-image: url(../../resources/imagenes/preguntas64x64.png) !important;
+	background-repeat: no-repeat !important;
+	background-position: center !important;
+}
+
 .claseBotonElementoMenu{
 	width: 100px;
 	height: 100px;

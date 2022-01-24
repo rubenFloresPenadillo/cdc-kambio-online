@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:ajaxStatus onstart="PF('statusDialog').show();"
+		oncomplete="PF('statusDialog').hide();" />
+
+	<p:dialog widgetVar="statusDialog" modal="true"
+		resizable="false" draggable="false" closable="false" showHeader="false">		
+		<h:panelGrid columns="2">
+				<h:graphicImage library="imagenes" name="ajaxLoader.gif"
+					style="margin-right: 12px; vertical-align: middle;" />
+				<h:outputText value="Procesando..."/>
+		</h:panelGrid>
+	</p:dialog>
+
+</ui:composition>

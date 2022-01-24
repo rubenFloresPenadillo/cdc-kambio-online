@@ -224,9 +224,8 @@ section{
 	font-weight: bold;
 }
 
-.claseContactoItem{
-/*    font-size: 0.85rem;	 */
-/*    color: #003885; */
+.claseContactoItem span{
+   color: #212529;
 }
 
 .claseContactoItem span{

@@ -1,31 +1,93 @@
-
-#transferencias{
-	background: #f7f9ff;
+#transferenciasDirectas{
+	background: rgba(255,255,255,1);
+	background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(230,244,247,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(100%, rgba(230,244,247,1)));
+	background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(230,244,247,1) 100%);
+	background: -o-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(230,244,247,1) 100%);
+	background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(230,244,247,1) 100%);
+	background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(230,244,247,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e6f4f7', GradientType=1 );
 	text-align: center;
 	padding: 20px;
 }
 
-
-#transferencias h2{
+#transferenciasDirectas h2{
 	margin-top: 30px;
 	color: #003885 !important;
     font-weight: 500;
     font-size: 45px;
 }
 
-#transferencias h3{
+#transferenciasDirectas h3{
 	margin-top: 30px;
 	color: #003885 !important;
 }
 
-#transferencias .contenedor{
+#transferenciasInterInmediatas{
+	text-align: center;
+	padding: 20px;
+}
+
+#transferenciasInterInmediatas h2{
+	margin-top: 30px;
+	color: #003885 !important;
+    font-weight: 500;
+    font-size: 45px;
+}
+
+#transferenciasInterInmediatas h3{
+	margin-top: 30px;
+	color: #003885 !important;
+}
+
+.contenedorTransferencias{
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	margin: auto;
 }
 
-.transf-item{
-	margin: 20px;
+#transferenciasDirectas{
+	display: none;
+}
+
+#transferenciasInterInmediatas{
+	display: none;
+}
+
+
+@media (max-width:768px) {
+	
+	#transferenciasDirectas{
+		margin-top: 640px;
+	}	
+	
+	#transferenciasDirectas{
+		display: block;
+	}
+	
+	#transferenciasInterInmediatas{
+		display: block;
+	}
+}
+
+
+.transferencias-item{
+	margin: 30px;
+}
+
+/* .transferencias-item img{ */
+/* 	width: 290px; */
+/* 	height: 290px; */
+/* } */
+
+.transferencias-item p{
+	color: #003885;
+	margin-top: 20px;
+}
+
+.transferencias-item span{
+	color: #003885;
 }
 
 .line-shape {

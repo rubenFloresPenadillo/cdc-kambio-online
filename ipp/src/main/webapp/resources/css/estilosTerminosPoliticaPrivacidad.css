@@ -1,0 +1,264 @@
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url(menu.css);
+@import url(banner.css);
+@import url(calculadora.css);
+/* @import url(blog.css); */
+@import url(info.css);
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+/* 	font-size: 0.85rem; */
+}
+
+header {
+    width: 100%;
+    height: 65px;
+/*     background: #EFEFEF; */
+    color: #00089F;
+    font-weight: bold;
+    border-top: 1px solid #00089F;
+    border-bottom: 1px solid #00089F;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+	background: rgba(255,255,255,1);
+	background: -moz-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(235,232,235,1) 47%, rgba(207,207,207,1) 100%);
+	background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(47%, rgba(235,232,235,1)), color-stop(100%, rgba(207,207,207,1)));
+	background: -webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(235,232,235,1) 47%, rgba(207,207,207,1) 100%);
+	background: -o-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(235,232,235,1) 47%, rgba(207,207,207,1) 100%);
+	background: -ms-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(235,232,235,1) 47%, rgba(207,207,207,1) 100%);
+	background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(235,232,235,1) 47%, rgba(207,207,207,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#cfcfcf', GradientType=1 );
+}
+
+.cabeceraInfo{
+	display: none;	
+}
+
+@media (min-width:1024px) {
+	
+	header{
+		height: 90px !important;
+	}
+
+	.cabeceraInfo{
+		height: 25px;
+		background: #00089F !important;
+		display: block;	
+	}
+	
+	.contenedorInfo{
+		width: 98%;
+		margin: auto;
+		font-weight: normal;
+	}
+	
+	.contenedorInfo a{
+		color: #fff;
+		font-size: 15px;
+		margin-right: 20px;
+	}
+	
+	.contenedorInfo a:hover{
+		text-decoration: none;
+	}
+}
+
+.contenedor{
+	width: 98%;
+	margin: auto;
+}
+
+.imagenLogo{
+	float: left;
+	width: 211.25px;
+	height: 65px;
+}
+  
+header .contenedor{
+	display: table; /*Para que encierre todo el header*/
+}
+
+section{
+	width: 100%;
+	margin-bottom: 25px;
+}
+
+#bienvenidos{
+	text-align: center;
+}
+
+/* footer .contenedor{ */
+/* 	display: flex; */
+/* 	flex-wrap: wrap; */
+/* 	justify-content: center; */
+/* 	padding-bottom: 25px; */
+/* } */
+
+/* footer p{ */
+/* 	text-align: center; */
+/* } */
+
+footer{
+	background: #00089F;
+	color: #fff;
+}
+
+.contactoIconos a{
+/* 	font-size: 20px; */
+	font-weight: bold;
+	text-decoration: none;	
+	color: #fff;
+	cursor: default;
+}
+
+
+.copy {
+	font-size: 20px;
+}
+
+.sociales{
+	width: 100%;
+	text-align: center;
+	font-size: 28px;
+}
+
+.sociales a{
+	color: #333;
+	text-decoration: none;
+}
+
+
+@media (min-width: 1024px){
+	.contenedor {
+		width: 1000px;
+	}
+	
+	.contenedorInfo {
+		width: 1000px;
+	}
+}
+
+.claseDerechos a{
+	text-decoration: none;
+	color: #fff;
+}
+
+
+#myBtn {
+/*     display: none; Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+/*     background-color: red; Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+/*     border-radius: 10px; Rounded corners */
+/*     font-size: 18px; Increase font size */
+    
+    background-image: url(../../resources/imagenes/whatsapp64x64.png) !important;
+	background-repeat: no-repeat !important;
+	background-position: center !important;
+	width: 64px;
+	height: 64px;
+	
+	border-radius: 200px 200px 200px 200px;
+	-moz-border-radius: 200px 200px 200px 200px;
+	-webkit-border-radius: 200px 200px 200px 200px;
+	border: 0px solid #000000;
+	
+	-webkit-box-shadow: 0px 0px 35px 7px rgba(0,73,0,1);
+	-moz-box-shadow: 0px 0px 35px 7px rgba(0,73,0,1);
+	box-shadow: 0px 0px 35px 7px rgba(0,73,0,1);
+}
+
+#myBtn:hover {
+	-webkit-box-shadow: 0px 0px 35px 7px rgba(0,179,0,1);
+	-moz-box-shadow: 0px 0px 35px 7px rgba(0,179,0,1);
+	box-shadow: 0px 0px 35px 7px rgba(0,179,0,1);
+}
+
+
+.imagenBotonOperacionesLista64x64 {
+	background-image: url(../../resources/imagenes/operacionesLista64x64.png) !important;
+	background-repeat: no-repeat !important;
+	background-position: center !important;
+}
+
+.claseBotonElementoMenu{
+	width: 100px;
+	height: 100px;
+	cursor: pointer;
+	border: none !important;
+	background-color: #EFEFEF; /* Color al fondo de los botones con imagen*/  
+	/*Para hacer los botones circulares*/
+	border-radius: 18px 18px 18px 18px;
+	-moz-border-radius: 18px 18px 18px 18px;
+	-webkit-border-radius: 18px 18px 18px 18px;
+	/*Para las sombras*/
+	-webkit-box-shadow: 3px 3px 11px 0px rgba(0,139,17,0.73);
+	-moz-box-shadow: 3px 3px 11px 0px rgba(0,139,17,0.73);
+	box-shadow: 3px 3px 11px 0px rgba(0,139,17,0.73);
+}
+
+
+/*Inicio estilos para el procesando*/
+.ui-widget-overlay{
+	background: #2d5972 url(/app/javax.faces.resource/images/ui-bg_flat_0_2d5972_40x100.png.xhtml?ln=primefaces-aristo) 50% 50% repeat-x;
+    opacity: .30;
+    filter: Alpha(Opacity=30);
+}
+
+.ui-widget-content {
+    border: 1px solid #a8a8a8;
+    background: #fff;
+    color: #4f4f4f;
+    border-radius: 4px 4px 4px 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    border: 0px solid #000000;
+    font-family: Arial,sans-serif;
+    font-size: 1.1em;
+}
+/*Fin estilos para el procesando*/
+
+.claseTerminos{
+	margin-top: 110px;
+	text-align: center;
+}
+
+.claseTerminos h2{
+	font-weight: bold;
+	color: #00089F;
+	margin-bottom: 15px;
+}
+
+.claseTerminos h4{
+	font-weight: bold;
+	color: #00089F;
+	margin-bottom: 15px;
+}
+
+.claseEnlaceSinLineas{
+	text-decoration: none;	
+	color: #fff;
+	cursor: default;
+}
+
+.claseEnlaceSinLineas:hover{
+  	text-decoration: underline;
+  	color: #fff;
+  	cursor: pointer;	
+}

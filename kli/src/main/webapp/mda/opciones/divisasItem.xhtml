@@ -45,7 +45,7 @@
 			
 			<nav class="menu">
 				<ul>
-					<li>
+					<li onclick="window.location.href='../panelPrincipal.xhtml'">
 						<a class="claseControl" href="../panelPrincipal.xhtml">Panel de Control</a>
 					</li>
 <!-- 					<li> -->
@@ -101,11 +101,11 @@
 			</div>
 		</div>
 		
-		<h:form id="idFormParametroGeneralItem" method="post" role="form"
+		<h:form id="idFormDivisaItem" method="post" role="form"
 			class="form-horizontal">
 			
 			<p:remoteCommand name="ejecutarCerrarSesionRemoto" actionListener="#{mAlias.procesarCerrarSesion()}"/>
-			<p:remoteCommand name="ejecutarGuardarDivisa" actionListener="#{mAlias.procesarGuardarDivisa()}" update="idFormParametroGeneralItem"/>
+			<p:remoteCommand name="ejecutarGuardarDivisa" actionListener="#{mAlias.procesarGuardarDivisa()}" update="idFormDivisaItem"/>
 			<p:remoteCommand name="ejecutarRegresar" actionListener="#{mAlias.regresar()}"/>
 			
 			<div class="row mx-auto">

@@ -64,7 +64,7 @@
 											
 											<tr>
 												<td style="padding-top: 20px; padding-bottom: 20px;text-align: justify;" >
-													<strong>Recuerde que mientras m&aacute;s r&aacute;pido demos respuesta a este reclamo o queja tendremos mayor aceptación por el usuario.</strong>
+													<strong>Recuerde que mientras m&aacute;s r&aacute;pido demos respuesta a este reclamo o queja tendremos mayor aceptaci&oacute;n por el usuario.</strong>
 												</td>
 												
 											</tr>
@@ -79,7 +79,7 @@
 											
 											<tr>
 												<td style="text-align: justify; background-color: #0b0561; color: #fff; padding-bottom: 5px; padding-top: 5px; padding-right: 5px;">
-													<a  style="float: right;" href="https://www.facebook.com/christianexchangeperu" target="_blank" rel="noopener noreferrer">
+													<a  style="float: right;" href="https://www.facebook.com/kambio.online" target="_blank" rel="noopener noreferrer">
 															<img style="display: flex; width: 40px; height: auto;" src="https://www.casadecambioelalfarero.com/resources/imagenes/facebook.png" alt="Facebook"/>
 													</a>
 													<span style="float: right;margin-top: 10px; margin-right: 8px; ">Siguenos en: </span>

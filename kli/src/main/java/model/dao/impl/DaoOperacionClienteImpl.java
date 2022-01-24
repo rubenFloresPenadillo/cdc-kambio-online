@@ -1,6 +1,7 @@
 package model.dao.impl;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -217,7 +218,7 @@ public class DaoOperacionClienteImpl implements DaoOperacionCliente {
 		
 		StringBuilder sb = new StringBuilder();
 		
-		sb.append("select toc.codOperClie, toc.tpEstadOpera.codEstaOper , toc.indCompVent, toc.valTipoCambUsad, toc.monEnvi, toc.monReci,  toc.tpBanco.codBanc,  toc.tpDivisByCodDiviEnvi.codDivi, toc.tpCuentBancoByCodCuenBancClieReci.codCuenBanc, ");
+		sb.append("select toc.codOperClie, toc.tpEstadOpera.codEstaOper , toc.indCompVent, toc.valTipoCambUsad, toc.monEnvi, toc.monReci,  toc.tpDivisByCodDiviEnvi.codDivi, toc.tpCuentBancoByCodCuenBancClieReci.codCuenBanc, ");
 		sb.append(" toc.tpClien.valPrimNombPers ");
 		sb.append(" from TpOperaClien toc where 1=1 ");
 		if(!ValidacionesNumeros.esCeroONuloEntero(tpOperaClien.getCodOperClie())) {
@@ -245,7 +246,7 @@ public class DaoOperacionClienteImpl implements DaoOperacionCliente {
         sb.append("select toc.codOperClie, toc.codUnicOperClie, toc.tpClien.tpUsuar.codUsua, toc.fecCreaRegi, toc.monEnvi, ");
         sb.append("toc.monReci, toc.valTipoCambUsad, toc.indCompVent, toc.tpEstadOpera.codEstaOper, toc.tpEstadOpera.desEstaOper, ");
         sb.append("toc.tpClien.tpUsuar.ideUsuaEmai, toc.tpClien.valPrimNombPers, toc.tpClien.valSeguNombPers, toc.tpClien.valPrimApelPers, toc.tpClien.valSeguApelPers, ");
-        sb.append("toc.tpClien.valRazoSociPers, toc.tpClien.tpTipoDocumPerso.tpTipoPerso.codTipoPers, toc.tpCuentBancoByCodCuenBancClieEnvi.codCuenBanc, toc.tpCuentBancoByCodCuenBancClieReci.codCuenBanc, ");
+        sb.append("toc.tpClien.valRazoSociPers, toc.tpClien.tpTipoDocumPerso.tpTipoPerso.codTipoPers, toc.tpCuentBancoByCodCuenBancClieOrig.codCuenBanc, toc.tpCuentBancoByCodCuenBancCome.codCuenBanc, toc.tpCuentBancoByCodCuenBancClieReci.codCuenBanc, ");
         sb.append("toc.fecInicOper, toc.fecVeriOper, toc.fecFinaOper, toc.usuApliFinaOper, toc.fecCancOper, toc.usuApliCancOper, toc.valTextComeCanc, toc.tpClien.tpUsuar.codUsuaPadr, toc.tpClien.valNombPerf, toc.tpClien.valDocuEmpr");
         sb.append(" from TpOperaClien toc");
         sb.append(" where 1=1 ");
@@ -281,6 +282,31 @@ public class DaoOperacionClienteImpl implements DaoOperacionCliente {
         return list;
         
         
+	}
+
+	@Override
+	public BigInteger getCodigoUnicoOperacion() {
+		
+		BigInteger resultado = BigInteger.valueOf(NumerosType.NUMERO_MINIMO_CERO.getValor());
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT NEXTVAL('cod_unico_oper_seq') as codigo");
+		
+		Query query = session.createNativeQuery(sb.toString());
+		
+		resultado = (BigInteger) query.uniqueResult();
+		
+		/*Long psqlAutoincrement = (Long) session.createQuery(sb.toString()).addS
+				
+				
+		                                                      .addScalar("id", Hibernate.LONG)
+		                                                      .setParameter("psqlTableName", psqlTableName)
+		                                                      .uniqueResult();
+		*/
+		
+		session.close();
+		
+		return resultado;
 	}
 	
 }

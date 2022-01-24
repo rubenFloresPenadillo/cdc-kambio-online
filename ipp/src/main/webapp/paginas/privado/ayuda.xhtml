@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+		<!-- Required meta tags -->
+		<title>Ayuda</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+			
+		<link rel="shortcut icon" href="../../resources/imagenes/favicon.ico" />	
+		<link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.css" />
+
+
+		<script type="text/javascript"   src="../../resources/js/popper.min.js"></script>
+		<script type="text/javascript"   src="../../resources/js/bootstrap.min.js"></script>
+		<script type="text/javascript"   src="../../resources/js/principalAyuda.js"></script>
+		<script type="text/javascript"   src="../../resources/js/eskju.jquery.scrollflow.min.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="../../resources/css/all.css"/>
+		
+		<link rel="stylesheet" type="text/css" href="../../resources/css/fontello.css"/> 
+		<link rel="stylesheet" type="text/css" href="../../resources/css/estilosAyuda.css"/> 
+		
+</h:head>
+<h:body>
+
+<header>
+
+		<ui:param name="mAlias" value="#{ayudaBean}" />
+		<div class="contenedor">
+			<a  href="../../index.xhtml">
+				<img class="imagenLogo" src="../../resources/imagenes/logoHorizontal390x120.png" alt="Logo Rhaak"/>
+			</a>
+			
+			<h:selectBooleanCheckbox  id="menu-bar"/>
+			<label class="icon-menu" for="menu-bar"></label> 
+
+			<nav class="menu">
+				<ul>
+					<li onclick="window.location.href='nosotros.xhtml'">
+						<a href="nosotros.xhtml"  >Nosotros</a> 
+					</li>
+					<li>
+						<a href="#">Blog</a>
+					</li>
+					<li onclick="window.location.href='contacto.xhtml'">
+						<a href="contacto.xhtml">Contacto</a> 
+					</li>
+					<li>
+						<a href="#" class="claseAyudaMarcado">Ayuda</a> 
+					</li>
+					<li onclick="window.location.href='ingreso.xhtml'">
+						<a class="btn btn-secondary-kli botonIniciarOperacionGeneral" href="ingreso.xhtml">INICIAR SESIÓN</a> 
+					</li>
+					<li onclick="window.location.href='registro.xhtml'">
+						<a class="btn btn-primary-kli  botonIniciarOperacionGeneral" href="registro.xhtml">REGISTRARME</a> 
+					</li>	
+				</ul>
+<!-- 				<p:commandButton class="btn btn-warning botonIniciarOperacionGeneral icon-right-dir" value="INICIAR OPERACIÓN" /> -->
+			</nav>
+
+		</div>
+</header>
+
+		<main>
+		    <section id="idFrecuentes" class="scrollflow -slide-top -opacity">
+				<h2>Preguntas Frecuentes</h2>
+				<div class="line-shape"></div>
+				<div class="row claseContenedorFrecuentes">
+					<div class="frecuentes-item">
+						<p>¿Tienes preguntas acerca de Rhaak o algun otro tema?, <br></br>¡Esperamos que esta lista de preguntas frecuentes pueda ayudarte!</p>
+					</div>
+				</div>
+			</section>
+			
+			<section id="idAyuda" class="scrollflow -slide-top -opacity">
+			
+			    <div class="row scrollflow -slide-top -opacity">
+			        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+					<div class="card clasePanelSeccion col-xs-12 col-sm-12 col-md-8 col-lg-8">
+						<div class="card-header claseTituloPanelAyuda">
+							<span>Sobre Nosotros</span>
+						</div>
+						<div class="card-body">
+							<div class="flex flex-column mb-5 mt-4 faq-section">
+								<div class="row">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+										<div id="accordion">
+										
+											<ui:repeat value="#{mAlias.listaPreguntasAyudaNosotros}" var="item"  varStatus="status" >
+												<div class="card">
+													<div class="card-header" id="heading-#{item.tpTipoPregu.codTipoPreg}-#{status.index + 1}">
+														<h5 class="mb-0">
+															<a class="collapsed claseSeccionTituloPregunta" role="button" data-toggle="collapse" href="#collapse-#{item.tpTipoPregu.codTipoPreg}-#{status.index + 1}"
+																aria-expanded="false" aria-controls="collapse-#{item.tpTipoPregu.codTipoPreg}-#{status.index + 1}" > 
+																 #{item.valPreg}  </a>
+														</h5>
+													</div>
+													<div id="collapse-#{item.tpTipoPregu.codTipoPreg}-#{status.index + 1}" class="collapse"
+														data-parent="#accordion" aria-labelledby="heading-#{item.tpTipoPregu.codTipoPreg}-#{status.index + 1}">
+														<div class="card-body"> <h:outputText escape="false" value=" #{item.valResp}"/> </div>
+													</div>
+												</div>
+											</ui:repeat>
+	
+										</div>
+									</div>
+	
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+				</div>
+				
+				<div class="row scrollflow -slide-top -opacity">
+			        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+					<div class="card clasePanelSeccion col-xs-12 col-sm-12 col-md-8 col-lg-8">
+						<div class="card-header claseTituloPanelAyuda">
+							<span>Proceso de Cambio</span>
+						</div>
+						<div class="card-body">
+							<div class="flex flex-column mb-5 mt-4 faq-section">
+								<div class="row">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+										<div id="accordion">
+										
+											<ui:repeat value="#{mAlias.listaPreguntasAyudaCambio}" var="item"  varStatus="status" >
+												<div class="card">
+													<div class="card-header" id="heading-#{item.tpTipoPregu.codTipoPreg}-#{status.index + 1}">
+														<h5 class="mb-0">
+															<a class="collapsed claseSeccionTituloPregunta" role="button" data-toggle="collapse" href="#collapse-#{item.tpTipoPregu.codTipoPreg}-#{status.index + 1}"
+																aria-expanded="false" aria-controls="collapse-#{item.tpTipoPregu.codTipoPreg}-#{status.index + 1}" > 
+																 #{item.valPreg}  </a>
+														</h5>
+													</div>
+													<div id="collapse-#{item.tpTipoPregu.codTipoPreg}-#{status.index + 1}" class="collapse"
+														data-parent="#accordion" aria-labelledby="heading-#{item.tpTipoPregu.codTipoPreg}-#{status.index + 1}">
+														<div class="card-body"> <h:outputText escape="false" value=" #{item.valResp}"/> </div>
+													</div>
+												</div>
+											</ui:repeat>
+	
+										</div>
+									</div>
+	
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+				</div>
+				
+				
+				<div class="row scrollflow -slide-top -opacity">
+			        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+					<div class="card clasePanelSeccion col-xs-12 col-sm-12 col-md-8 col-lg-8">
+						<div class="card-header claseTituloPanelAyuda">
+							<span>Seguridad</span>
+						</div>
+						<div class="card-body">
+							<div class="flex flex-column mb-5 mt-4 faq-section">
+								<div class="row">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+										<div id="accordion">
+										
+											<ui:repeat value="#{mAlias.listaPreguntasAyudaSeguridad}" var="item"  varStatus="status" >
+												<div class="card">
+													<div class="card-header" id="heading-#{item.tpTipoPregu.codTipoPreg}-#{status.index + 1}">
+														<h5 class="mb-0">
+															<a class="collapsed claseSeccionTituloPregunta" role="button" data-toggle="collapse" href="#collapse-#{item.tpTipoPregu.codTipoPreg}-#{status.index + 1}"
+																aria-expanded="false" aria-controls="collapse-#{item.tpTipoPregu.codTipoPreg}-#{status.index + 1}" > 
+																 #{item.valPreg}  </a>
+														</h5>
+													</div>
+													<div id="collapse-#{item.tpTipoPregu.codTipoPreg}-#{status.index + 1}" class="collapse"
+														data-parent="#accordion" aria-labelledby="heading-#{item.tpTipoPregu.codTipoPreg}-#{status.index + 1}">
+														<div class="card-body"> <h:outputText escape="false" value=" #{item.valResp}"/> </div>
+													</div>
+												</div>
+											</ui:repeat>
+	
+										</div>
+									</div>
+	
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+				</div>
+				
+				
+				<div class="row scrollflow -slide-top -opacity">
+			        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+					<div class="card clasePanelSeccion col-xs-12 col-sm-12 col-md-8 col-lg-8">
+						<div class="card-header claseTituloPanelAyuda">
+							<span>Otras Preguntas</span>
+						</div>
+						<div class="card-body">
+							<div class="flex flex-column mb-5 mt-4 faq-section">
+								<div class="row">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+										<div id="accordion">
+										
+											<ui:repeat value="#{mAlias.listaPreguntasAyudaOtras}" var="item"  varStatus="status" >
+												<div class="card">
+													<div class="card-header" id="heading-#{item.tpTipoPregu.codTipoPreg}-#{status.index + 1}">
+														<h5 class="mb-0">
+															<a class="collapsed claseSeccionTituloPregunta" role="button" data-toggle="collapse" href="#collapse-#{item.tpTipoPregu.codTipoPreg}-#{status.index + 1}"
+																aria-expanded="false" aria-controls="collapse-#{item.tpTipoPregu.codTipoPreg}-#{status.index + 1}" > 
+																 #{item.valPreg}  </a>
+														</h5>
+													</div>
+													<div id="collapse-#{item.tpTipoPregu.codTipoPreg}-#{status.index + 1}" class="collapse"
+														data-parent="#accordion" aria-labelledby="heading-#{item.tpTipoPregu.codTipoPreg}-#{status.index + 1}">
+														<div class="card-body"> <h:outputText escape="false" value=" #{item.valResp}"/> </div>
+													</div>
+												</div>
+											</ui:repeat>
+	
+										</div>
+									</div>
+	
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+				</div>
+				
+				
+        	</section>
+        	
+			
+		</main>
+		
+		<!-- Footer -->
+		<ui:include src="/footer.xhtml" />
+		  
+		  <ui:include src="/estatus.xhtml" />
+
+<button onclick="enlaceWhatsapp();" id="myBtn" title="Escribenos" />
+</h:body>
+</html>

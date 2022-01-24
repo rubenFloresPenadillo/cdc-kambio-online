@@ -32,12 +32,16 @@ public class CuentaBean {
 	private Integer indCompleDatos;
 	private Integer codPerfUsua;
 	private String valorNombre;
+	private Boolean indDatosEmpresa;
+	private Integer codigoUsuario;
+	private Integer codigoUsuarioPadre;	
 	
 	public CuentaBean() {
 		cuentaBancariaSeleccionada = new TpCuentBancoDto();
 		listaCuentasBancarias = new LinkedList<TpCuentBancoDto>();
 		resultadoProcesoError = CadenasType.VACIO.getValor();
 		System.out.println("Entro al constructor CuentaBean");
+		indDatosEmpresa = Boolean.FALSE;
 		
 	}
 	
@@ -54,6 +58,13 @@ public class CuentaBean {
     	codPerfUsua = (Integer) sesion.getAttribute("codPerfUsua");
     	if(ValidacionesString.esNuloOVacio(valorNombre)) {
     		valorNombre = CadenasType.CADENA_USUARIO.getValor();
+    	}
+    	
+    	codigoUsuario = (Integer) sesion.getAttribute("codigoUsuario");
+    	codigoUsuarioPadre = (Integer) sesion.getAttribute("codigoUsuarioPadre");
+    	
+    	if(codigoUsuario.intValue() != codigoUsuarioPadre.intValue()) {
+    		indDatosEmpresa = Boolean.TRUE;
     	}
     	
     	if(indCompleDatos.equals(NumerosType.NUMERO_MINIMO_CERO.getValor())) {
@@ -143,6 +154,14 @@ public class CuentaBean {
 
 	public void setListaCuentasBancarias(List<TpCuentBancoDto> listaCuentasBancarias) {
 		this.listaCuentasBancarias = listaCuentasBancarias;
+	}
+
+	public Boolean getIndDatosEmpresa() {
+		return indDatosEmpresa;
+	}
+
+	public void setIndDatosEmpresa(Boolean indDatosEmpresa) {
+		this.indDatosEmpresa = indDatosEmpresa;
 	}
 
 	

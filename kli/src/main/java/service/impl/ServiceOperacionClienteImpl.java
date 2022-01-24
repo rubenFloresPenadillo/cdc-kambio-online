@@ -1,6 +1,7 @@
 package service.impl;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,6 +18,7 @@ import numeros.util.ValidacionesNumeros;
 import service.ServiceOperacionCliente;
 import util.types.CadenasType;
 import util.types.ElementosTablasType;
+import util.types.NumerosType;
 
 public class ServiceOperacionClienteImpl  implements ServiceOperacionCliente{
 
@@ -45,9 +47,9 @@ public class ServiceOperacionClienteImpl  implements ServiceOperacionCliente{
         tpOperaClienEntidad.setCodUnicOperClie(tpOperaClienDto.getCodUnicOperClie());
         tpOperaClienEntidad.getTpClien().setCodClie(tpOperaClienDto.getTpClien().getCodClie());
         tpOperaClienEntidad.getTpClien().getTpUsuar().setCodUsua(tpOperaClienDto.getTpClien().getTpUsuar().getCodUsua());
-        tpOperaClienEntidad.getTpBanco().setCodBanc(tpOperaClienDto.getTpBanco().getCodBanc());
+        tpOperaClienEntidad.getTpCuentBancoByCodCuenBancClieOrig().setCodCuenBanc(tpOperaClienDto.getTpCuentBancoByCodCuenBancClieOrig().getCodCuenBanc());
         tpOperaClienEntidad.getTpCuentBancoByCodCuenBancClieReci().setCodCuenBanc(tpOperaClienDto.getTpCuentBancoByCodCuenBancClieReci().getCodCuenBanc());
-        tpOperaClienEntidad.getTpCuentBancoByCodCuenBancClieEnvi().setCodCuenBanc(tpOperaClienDto.getTpCuentBancoByCodCuenBancClieEnvi().getCodCuenBanc());
+        tpOperaClienEntidad.getTpCuentBancoByCodCuenBancCome().setCodCuenBanc(tpOperaClienDto.getTpCuentBancoByCodCuenBancCome().getCodCuenBanc());
         tpOperaClienEntidad.getTpDivisByCodDiviEnvi().setCodDivi(tpOperaClienDto.getTpDivisByCodDiviEnvi().getCodDivi());
         tpOperaClienEntidad.getTpDivisByCodDiviReci().setCodDivi(tpOperaClienDto.getTpDivisByCodDiviReci().getCodDivi());
         tpOperaClienEntidad.setMonEnvi(tpOperaClienDto.getMonEnvi());
@@ -121,10 +123,10 @@ public class ServiceOperacionClienteImpl  implements ServiceOperacionCliente{
 			resultado.setValTipoCambUsad((Double) temporal[3]);
 			resultado.setMonEnvi((BigDecimal) temporal[4]);
 			resultado.setMonReci((BigDecimal) temporal[5]);
-			resultado.getTpBanco().setCodBanc((Integer) temporal[6]);
-			resultado.getTpDivisByCodDiviEnvi().setCodDivi((Integer) temporal[7]);
-			resultado.getTpCuentBancoByCodCuenBancClieReci().setCodCuenBanc((Integer) temporal[8]);
-			resultado.getTpClien().setValPrimNombPers((String) temporal[9]);
+//			resultado.getTpBanco().setCodBanc((Integer) temporal[6]);
+			resultado.getTpDivisByCodDiviEnvi().setCodDivi((Integer) temporal[6]);
+			resultado.getTpCuentBancoByCodCuenBancClieReci().setCodCuenBanc((Integer) temporal[7]);
+			resultado.getTpClien().setValPrimNombPers((String) temporal[8]);
 		}
 
 		return resultado;
@@ -160,18 +162,19 @@ public class ServiceOperacionClienteImpl  implements ServiceOperacionCliente{
 			dto.getTpClien().setValSeguApelPers((String) temp[14]);
 			dto.getTpClien().setValRazoSociPers((String) temp[15]);
 			dto.getTpClien().getTpTipoDocumPerso().getTpTipoPerso().setCodTipoPers((Integer) temp[16]);
-			dto.getTpCuentBancoByCodCuenBancClieEnvi().setCodCuenBanc((Integer) temp[17]);
-			dto.getTpCuentBancoByCodCuenBancClieReci().setCodCuenBanc((Integer) temp[18]);	
-			dto.setFecInicOper((Date) temp[19]);
-			dto.setFecVeriOper((Date) temp[20]);
-			dto.setFecFinaOper((Date) temp[21]);
-			dto.setUsuApliFinaOper((String) temp[22]);
-			dto.setFecCancOper((Date) temp[23]);
-			dto.setUsuApliCancOper((String) temp[24]);
-			dto.setValTextComeCanc((String)temp[25]);
-			dto.getTpClien().getTpUsuar().setCodUsuaPadr((Integer) temp[26]);
-			dto.getTpClien().setValNombPerf( (String) temp[27]);
-			dto.getTpClien().setValDocuEmpr((String) temp[28]);
+			dto.getTpCuentBancoByCodCuenBancClieOrig().setCodCuenBanc((Integer) temp[17]);
+			dto.getTpCuentBancoByCodCuenBancCome().setCodCuenBanc((Integer) temp[18]);
+			dto.getTpCuentBancoByCodCuenBancClieReci().setCodCuenBanc((Integer) temp[19]);	
+			dto.setFecInicOper((Date) temp[20]);
+			dto.setFecVeriOper((Date) temp[21]);
+			dto.setFecFinaOper((Date) temp[22]);
+			dto.setUsuApliFinaOper((String) temp[23]);
+			dto.setFecCancOper((Date) temp[24]);
+			dto.setUsuApliCancOper((String) temp[25]);
+			dto.setValTextComeCanc((String)temp[26]);
+			dto.getTpClien().getTpUsuar().setCodUsuaPadr((Integer) temp[27]);
+			dto.getTpClien().setValNombPerf( (String) temp[28]);
+			dto.getTpClien().setValDocuEmpr((String) temp[29]);
 //			if(ValidacionesString.esNuloOVacio(dto.getTpClien().getValNombPerf())) {
 //				dto.getTpClien().setValNombPerf(CadenasType.VACIO.getValor());
 //			}
@@ -222,6 +225,17 @@ public class ServiceOperacionClienteImpl  implements ServiceOperacionCliente{
 		
 		return resultado;
 		
+	}
+
+	@Override
+	public BigInteger getCodigoUnicoOperacion() {
+
+
+		BigInteger resultado = BigInteger.valueOf(NumerosType.NUMERO_MINIMO_CERO.getValor());
+		
+		resultado = daoOperacionCliente.getCodigoUnicoOperacion();
+		
+		return resultado;
 	}
 
 

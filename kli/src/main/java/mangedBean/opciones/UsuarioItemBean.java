@@ -127,7 +127,7 @@ public class UsuarioItemBean {
     	
         if(result.startsWith(CadenasType.INDICADOR_PROCESO_OK.getValor())) {
 
-//        	resultadoProcesoExito = "Datos guardados con Ã©xito.";
+//        	resultadoProcesoExito = "Datos guardados con éxito.";
         	usuarioClienteItem = new TpClienDto();
         	PrimeFaces.current().executeScript("operacionGuardarUsuarioExitosa();");
         }else {

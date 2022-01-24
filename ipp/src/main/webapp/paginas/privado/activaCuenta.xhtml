@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+	<link rel="shortcut icon" href="../../resources/imagenes/favicon.ico" />	
+	
+	<link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.css"/>
+	
+<!-- 	<script type="text/javascript"   src="../../resources/js/jquery-3.2.1.slim.min.js"></script> -->
+	<script type="text/javascript" src="../../resources/js/popper.min.js"></script>
+	<script type="text/javascript" src="../../resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../resources/js/principalActivaCuenta.js"></script>
+	
+	<!-- Iconos del formulario login y registro -->
+	<link rel="stylesheet" type="text/css" href="../../resources/css/all.css"/>
+	<link rel="stylesheet" type="text/css" href="../../resources/css/estilosActivaCuenta.css"/>
+	<link rel="stylesheet" type="text/css" href="../../resources/css/fontello.css"/>
+	
+	
+	
+	<title>Activación de Cuenta</title>
+</h:head>
+<h:body>
+
+	<ui:param name="mAlias" value="#{activaCuentaBean}" />
+		
+	<main>
+
+	<section id="seccionLogin">
+		<div class="contenedor row">
+			
+			<div class="claseContieneImagen text-center col-xs-12 col-sm-12 col-md-5 col-lg-4">
+				<a href="../../" class="d-none d-sm-block d-sm-none d-md-block"> 
+				<img class="imagenLogoPaginaLogin"
+					src="../../resources/imagenes/logoRhaakOficial.png" alt="Logo Rhaak"/>
+				</a>
+				
+				<a href="../../" class="d-block d-sm-none"> 
+				<img class="imagenLogoHorizontalPaginaLogin"
+					src="../../resources/imagenes/logoHorizontal390x120.png" alt="Logo Rhaak"/>
+				</a>
+
+<!-- 				<label class="seccionRegistrateYa">¡ ACTIVACIÓN DE CUENTA !</label> -->
+			</div>
+
+			<div class="claseContieneLogin text-center col-xs-12 col-sm-12 col-md-7 col-lg-4">
+				<div class="col-lg-12">
+					<label class="seccionRegistrateYa">¡ TU CUENTA SE ACTIVO CON ÉXITO !</label>
+				</div>
+				
+				<div class="col-lg-12">
+					<img 
+					src="../../resources/imagenes/check200x200.png" alt="Cuenta activada" />
+				</div>
+				
+				<div class="col-lg-12">
+<!-- 					<p:commandButton  styleClass="btn btn-success btn-enviar"  value="Ingresar"  -->
+<!-- 					 	action="../../index?faces-redirect=true" /> -->
+					 <a href="../../paginas/privado/ingreso.xhtml" class="btn btn-success btn-enviar">Ingresar</a>	
+				</div>				
+
+
+				<!-- Modal Error-->
+				<div class="modal fade" id="idModalErrorSistema" tabindex="-1" role="dialog">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title mensajeTituloError">¡ Mensaje del Sistema !</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+								</button>
+							</div>
+							<div class="modal-body mensajeCuerpoError"><strong>#{mAlias.resultadoProcesoError}</strong> Este enlace ya no esta disponible.</div>
+							<div class="modal-footer">
+									<button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	</main>
+
+</h:body>
+
+</html>

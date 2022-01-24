@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+		<!-- Required meta tags -->
+<!-- 		<title>Casa de Cambio Rhaak</title> -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+			
+		<link rel="shortcut icon" href="resources/imagenes/favicon.ico" />	
+		<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css" />
+
+<!-- 		<script type="text/javascript"   src="resources/js/jquery-3.2.1.slim.min.js"></script> -->
+		<script type="text/javascript"   src="resources/js/popper.min.js"></script>
+		<script type="text/javascript"   src="resources/js/bootstrap.min.js"></script>
+		<script type="text/javascript"   src="resources/js/principalHome.js"></script>
+		<script type="text/javascript"   src="resources/js/eskju.jquery.scrollflow.min.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="resources/css/all.css"/>
+<!-- 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"/> -->
+		
+		<link rel="stylesheet" type="text/css" href="resources/css/fontello.css"/> 
+		<link rel="stylesheet" type="text/css" href="resources/css/estilos.css"/>
+		
+
+		
+</h:head>
+<h:body>
+
+<header>
+		
+		<ui:param name="mAlias" value="#{principalBean}" />
+		<div class="cabeceraInfo">
+			<div class="contenedorInfo">
+<!-- 				<a class="icon-whatsapp" href=""></a> -->
+				<a class="icon-whatsapp" href="">943395368</a>
+				<a class="icon-mail" href="">ventas@rhaak.com</a>
+				<!--  <a class="icon-phone" href="">(01)3338118</a> -->
+			</div>
+		</div>
+		<div class="contenedor">
+			<a  href="index.xhtml">
+				<img class="imagenLogo" src="resources/imagenes/logoHorizontal390x120.png" alt="Logo Rhaak"/>
+			</a>
+			
+			<h:selectBooleanCheckbox  id="menu-bar"/>
+			<label class="icon-menu" for="menu-bar"></label> 
+
+			<nav class="menu">
+				<ul>
+					<li>
+						<a href="paginas/privado/nosotros.xhtml">Nosotros</a> 
+					</li>
+<!-- 					<li> -->
+<!-- 						<a href="paginas/privado/blog.xhtml">Blog</a> -->
+<!-- 					</li> -->
+					<li>
+						<a href="paginas/privado/contacto.xhtml">Contacto</a> 
+					</li>
+					<li>
+						<a href="paginas/privado/ayuda.xhtml">Ayuda</a> 
+					</li>
+					<li>
+						<a class="btn btn-success botonIniciarOperacionGeneral icon-user" href="paginas/privado/ingreso.xhtml">INICIAR SESIÓN</a> 
+					</li>
+				</ul>
+<!-- 				<p:commandButton class="btn btn-warning botonIniciarOperacionGeneral icon-right-dir" value="INICIAR OPERACIÓN" /> -->
+			</nav>
+
+		</div>
+</header>
+	<h:form id="idFormPrincipal" method="post" role="form" class="form-horizontal">
+	
+		<p:remoteCommand name="ejecutarEnviarSuscripcion" actionListener="#{mAlias.procesarEnviarSuscripcion()}" update="idFormPrincipal"/>
+		
+		<main>
+			<section id="banner">
+				<img class="imagenBannerFondo" src="resources/imagenes/bannerHome4.jpeg" alt="Home Rhaak"/>
+				<div class="contenedor">
+					<div class="row filaBannerContenido mx-auto">
+					    
+					    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					    
+					    	<p:outputPanel styleClass="row claseSeccionTipoCambio claseDescripcionTipoCambio">
+
+								<div >
+									<p:outputLabel  value="Tipo de cambio del dolar"/>
+								</div>
+
+			
+							</p:outputPanel>
+							
+					    
+					    	<p:outputPanel styleClass="row claseSeccionTipoCambio">
+
+								<div class="claseCompraVenta">
+									<p:outputLabel styleClass="claseEtiquetaCompraVenta" value="Venta:"/>
+									<p:outputLabel styleClass="claseEtiquetaValorCompraVenta claseVenta" value="#{mAlias.tipoCambioVentaDolar}"/>
+								</div>
+								
+								<div class="claseCompraVenta">
+									<p:outputLabel styleClass="claseEtiquetaCompraVenta" value="Compra:"/> 
+									<p:outputLabel styleClass="claseEtiquetaValorCompraVenta claseCompra" value="#{mAlias.tipoCambioCompraDolar}"/>
+								</div>
+			
+							</p:outputPanel>
+							<p:outputPanel class="seccionCalculadora" id="idSeccionCalculadora">
+								
+								<h:inputHidden value = "#{mAlias.mostrarCompra}" id = "idMostrarCompra" />
+								
+								<p:remoteCommand name="metodoRemotoRotarVista"  actionListener="#{mAlias.rotarVista}" update="idSeccionCalculadora, idSeccionTipoCambioUso" />
+								<h:link styleClass="enlaceImagenCambioBandera" title="Rotar vista" outcome="#" onclick="metodoRemotoRotarVista();">
+									<h:graphicImage styleClass="imagenCambioBandera" value="resources/imagenes/cambiarBanderas.png" />
+								</h:link>
+								
+								<div class="contenedora">
+									<div class="filaBandera">
+										<div class="datosEnvioRecibo">
+											<p:outputLabel styleClass="claseTextoEnvioRecibo" value="Tu envías" />
+										</div>
+										<h:graphicImage styleClass="imagenBanderaCalculadora" value="resources/imagenes/monedaSolesBandera120x50.png" rendered="#{!mAlias.mostrarCompra}"/>
+										<h:graphicImage styleClass="imagenBanderaCalculadora" value="resources/imagenes/monedaDolaresBandera120x50.png" rendered="#{mAlias.mostrarCompra}"/>
+										<p:inputText class="form-control inputCalculadora inputSuperior"
+											value="#{mAlias.cantidadEnvio}" onkeyup="calcularValorEnvio()">
+										</p:inputText>
+									</div>
+								</div>
+								
+								<div class="contenedora contenedoraInferior">
+									<div class="filaBandera">
+										<div class="datosEnvioRecibo">
+											<p:outputLabel styleClass="claseTextoEnvioRecibo" value="Tu recibes" />
+										</div>
+										<h:graphicImage styleClass="imagenBanderaCalculadora" value="resources/imagenes/monedaDolaresBandera120x50.png" rendered="#{!mAlias.mostrarCompra}"/>	
+										<h:graphicImage styleClass="imagenBanderaCalculadora" value="resources/imagenes/monedaSolesBandera120x50.png" rendered="#{mAlias.mostrarCompra}"/>
+										<p:inputText class="form-control inputCalculadora inputInferior"
+											value="#{mAlias.cantidadRecibo}" onkeyup="calcularValorRecibo()">
+										</p:inputText>
+									</div>
+								</div>
+		
+							</p:outputPanel>
+							
+							<p:outputPanel styleClass="claseSeccionTipoCambioUso" id="idSeccionTipoCambioUso">
+								<div class="claseCompraVentaUso">
+									<p:outputLabel styleClass="claseEtiquetaTextoCompraVentaUso" value="Tipo de cambio de dolar usado:"/>
+									<p:outputLabel styleClass="claseEtiquetaValorCompraVentaUso" value="#{mAlias.tipoCambioUsado}"/>
+								</div>
+								
+							</p:outputPanel>
+							
+							<p:outputPanel styleClass="claseContenedorBotonOperacionGeneral">
+<!-- 								<p:commandButton class="btn btn-warning botonIniciarOperacionGeneral icon-right-dir" value="INICIAR OPERACIÓN" /> -->
+								<p:commandButton class="btn btn-warning botonIniciarOperacionHome icon-right-dir" value="INICIAR OPERACIÓN" 
+								 action="paginas/privado/ingreso.xhtml?faces-redirect=true"/>
+							</p:outputPanel>
+						</div>
+						
+						<div class="contieneDetalleTexto col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					      	<h2>Cambia tus dólares desde casa de forma rápida y segura</h2>
+							<p class="claseRapidoSeguro" >Hazlo con el mejor tipo de cambio</p>
+							<a href="#comoFunciona">¿Cómo funciona? 
+								<span class="icon-play-circled"/>
+							</a>
+<!-- 							<a href="#modalComo" data-toggle="modal">¿Cómo funciona?  -->
+<!-- 								<span class="icon-play-circled"/> -->
+<!-- 							</a>				 -->
+<!-- 							<img class="imagenPresentando" -->
+<!-- 								src="resources/imagenes/presentando990x990.png" alt="Logo Rhaak"/> -->
+					    </div>
+					    
+						<div class="contenedorBancosRegistroSBS col-xs-12 col-sm-12 col-md-12 col-lg-12 mx-auto">
+							<div class="row">
+								<div class="contenedorTextoCuentas col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<p class="claseTextoContamosConCuentas">Estamos registrados en la SBS y tenemos cuentas en: </p>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<div class="contenedorBancos">
+										<img class="imagenBanco" src="resources/imagenes/logoInterbank132x24W.png" alt="Logo Interbank"/> 
+<!-- 										<img class="imagenBanco" src="resources/imagenes/logoBcp96x24.png" alt="Logo BCP"/> -->
+<!-- 										<img class="imagenBanco" src="resources/imagenes/logoBbva77x24.png" alt="Logo Bbva"/> -->
+									</div>
+
+								</div>
+
+							</div>
+
+					    </div>
+					</div>
+				</div>
+			</section>
+			
+			
+			
+<!-- 			<section id="bienvenidos" > -->
+<!-- 				<h2>BIENVENIDO</h2> -->
+<!-- 				<h3>Estamos aquí para cumplir tus expectativas de calidad y satisfacción</h3> -->
+<!-- 				<img class="img-fluid"  src="resources/imagenes/grupoTrabajoBienvenida.jpg" alt="Bienvenido"/> -->
+
+<!-- 			</section> -->
+
+			<section id="comoFunciona" name="comoFunciona" class="scrollflow -slide-top -opacity">
+				<h2>¿Como Funciona Rhaak?</h2>
+				<div class="row contenedorComoFunciona">
+					
+					<div class="comoFunciona-item scrollflow -slide-top -opacity">
+						<img src="resources/imagenes/funciona_paso_1.png" alt="Paso uno"/>
+						<p>Ingresa a tu cuenta segura<br></br> desde cualquier dispositivo</p>
+					</div>
+					<div class="comoFunciona-item scrollflow -slide-top -opacity">
+						<img src="resources/imagenes/funciona_paso_2.png" alt="Paso dos"/>
+						<p>Cotiza y realiza tu operación</p>
+					</div>
+					<div class="comoFunciona-item scrollflow -slide-top -opacity">
+						<img src="resources/imagenes/funciona_paso_3.png" alt="Paso tres"/>
+						<p>Transfiere y envianos la constancia</p>
+					</div>
+					<div class="comoFunciona-item scrollflow -slide-top -opacity">
+						<img src="resources/imagenes/funciona_paso_4.png" alt="Paso cuatro"/>
+						<p>Recibe el dinero en tu cuenta bancaria</p>
+					</div>
+				</div>
+			</section>
+			
+			<section id="transferencias" class="scrollflow -slide-top -opacity">
+				<h2>OPERAMOS CON TODOS LOS BANCOS</h2>
+				<h3>Operaciones inmediatas</h3>
+				<div class="contenedor">
+					<div class="transf-item">
+						<img src="resources/imagenes/logoInterbank120x30.png" alt="Logo Interbank transferencias"/>
+					</div>
+					
+				</div>
+				
+				<h3>Operaciones interbancarias</h3>
+				<div class="contenedor">
+<!-- 					<div class="transf-item"> -->
+<!-- 						<img src="resources/imagenes/logoFalabella120x30.png" alt="Logo Banco Falabella transferencias"/> -->
+<!-- 					</div> -->
+					<div class="transf-item">
+						<img src="resources/imagenes/logoPichincha120x30.png" alt="Logo Pichincha transferencias"/>
+					</div>
+					<div class="transf-item">
+						<img src="resources/imagenes/logoScotiabank120x30.png" alt="Logo Interbank transferencias"/>
+					</div>
+					<div class="transf-item">
+						<img src="resources/imagenes/logoBcp120x30.png" alt="Logo BCP transferencias"/>
+					</div>
+					<div class="transf-item">
+						<img src="resources/imagenes/logoBbva120x30.png" alt="Logo Bbva transferencias"/>
+					</div>
+				</div>
+				<h5>Y todos los demás bancos</h5>
+			</section>
+			
+<!-- 			<section id="idBlog"> -->
+<!-- 				<div class="contenedor contenedorTitulo"> -->
+<!-- 					<h2>Lo Último de Nuestro Blog</h2> -->
+					
+<!-- 					<div class="row text-center text-lg-left" > -->
+<!-- 							<ui:repeat value="#{mAlias.listaUltimasEntradas}" var="item"  varStatus="status" > -->
+<!-- 									<div class="col-xs-5 col-sm-4 col-md-4 col-lg-4 contenedorObjetoBlog"> -->
+<!-- 										<div class="col-xs-5 col-sm-4 col-md-12 col-lg-12  contenedorObjetoBlogInterno"> -->
+<!-- 										  <div class="claseEntradaParteSUperior"> -->
+<!-- 										  	  <p:outputLabel value="Publicado: #{item.fecCreaFormPrev}" styleClass="claseFechaEntrada"></p:outputLabel> <br></br> -->
+<!-- 											  <p:outputLabel value="#{item.catEntr}" styleClass="claseCategoriaEntrada" ></p:outputLabel> <br></br> -->
+<!-- 											  <a href="paginas/privado/blogItem.xhtml?param=#{item.enlEntr}" class="d-block mb-4 h-100"> -->
+<!-- 											  	<p:outputLabel value="#{item.titEntr}" styleClass="claseTituloEntrada"></p:outputLabel> -->
+<!-- 											  </a>	 -->
+<!-- 										  </div> -->
+<!-- 									      <a href="paginas/privado/blogItem.xhtml?param=#{item.enlEntr}" class="d-block mb-4 h-100"> -->
+<!-- 									      		<figure class="flow-image"> -->
+<!-- 									            	<h:graphicImage value="#{item.imaEntrPrev}" /> -->
+<!-- 									            </figure> -->
+<!-- 									       </a> -->
+<!-- 									    </div>    -->
+									    
+<!-- 									    <div class="fb-share-button" data-href="https://www.rhaak.com/paginas/privado/contacto.xhtml" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.rhaak.com%2Fpaginas%2Fprivado%2Fcontacto.xhtml&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></div> -->
+									    
+<!-- 								    </div> -->
+<!-- 							</ui:repeat> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</section> -->
+
+			
+			<section id="info" >
+				<h3>
+					Le brindamos un servicio único y especializado.
+				</h3>
+				<div class="contenedor">
+					<div class="info-pet">
+						<img src="resources/imagenes/1-confianza.jpg" alt="Confianza"/>
+						<h4>Confianza</h4>
+					</div>
+					<div class="info-pet">
+						<img src="resources/imagenes/2-comodidad.jpg" alt="Comodidad"/>
+						<h4>Comodidad</h4>
+					</div>
+					<div class="info-pet">
+						<img src="resources/imagenes/3-seguridad2.jpg" alt="Seguridad"/>
+						<h4>Seguridad</h4>
+					</div>
+					<div class="info-pet">
+						<img src="resources/imagenes/4-rapidez.jpg" alt="Rapidez"/>
+						<h4>Rapidez</h4>
+					</div>
+				</div>
+			
+			</section>
+			
+			
+		    
+		<!--Modal: Name-->
+		<div class="modal fade" id="modalComo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		
+		    <!--Content-->
+		    <div class="modal-content">
+		
+		      <!--Body-->
+		      <div class="modal-body mb-0 p-0">
+		
+		        <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+		          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/0kBlHt1bXGk" allow="fullscreen"></iframe>
+		        </div>
+		
+		      </div>
+		
+		      <!--Footer-->
+		      <div class="modal-footer justify-content-center">
+		        <span class="mr-4">¡La confianza de siempre, ahora online! </span>
+		
+		        <button type="button" class="btn btn-success btn-md ml-4" data-dismiss="modal">Cerrar</button>
+		
+		      </div>
+		
+		    </div>
+		    <!--/.Content-->
+		
+		  </div>
+		</div>
+    
+		</main>
+		
+		<!-- Footer -->
+		<footer class="page-footer font-small mdb-color pt-4">
+		
+		    <!-- Footer Links -->
+		    <div class="container text-center text-md-left">
+		
+		      <!-- Footer links -->
+		      <div class="row text-center text-md-left mt-3 pb-3">
+		
+		        <!-- Grid column -->
+		        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+		          <h6 class="text-uppercase mb-4 font-weight-bold">Casa de Cambio Rhaak</h6>
+		          <p>Somos una empresa especializada en el rubro de intermediación financiera</p>
+		          <p>Estamos registrados en la Cámara de Comercio de Lima</p>
+		          <p>Asociados a Fintech Perú</p>
+		          <p>Registrados en la SBS: Resolución Nro. 05154-2019</p>
+		          <p>RUC: 20604531277</p>
+<!-- 		          <p>Registro SBS: </p> -->
+		        </div>
+		        <!-- Grid column -->
+		
+		        <hr class="w-100 clearfix d-md-none"></hr>
+		
+		        <!-- Grid column -->
+		        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+		          <h6 class="text-uppercase mb-4 font-weight-bold">Servicios</h6>
+		          <p> Cambio de divisas online </p>
+		          
+		         
+		        </div>
+		        <!-- Grid column -->
+		
+		        <hr class="w-100 clearfix d-md-none"></hr>
+		
+		        <!-- Grid column -->
+		        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+		          <h6 class="text-uppercase mb-4 font-weight-bold">Recursos</h6>
+<!-- 		          <p> Blog </p> -->
+<!-- 		          <p> Ayuda </p> -->
+		          <p><a class="claseEnlaceSinLineas" href="paginas/privado/terminos.xhtml" target="_blank">Terminos y condiciones</a></p>
+		          <p><a class="claseEnlaceSinLineas" href="paginas/privado/politicaPrivacidad.xhtml" target="_blank">Políticas de privacidad</a></p>
+		          <p><a class="claseEnlaceSinLineas" href="paginas/privado/libroReclamaciones.xhtml" target="_blank">Libro de Reclamaciones</a></p>
+		        </div>
+		
+		        <!-- Grid column -->
+		        <hr class="w-100 clearfix d-md-none"></hr>
+		
+		        <!-- Grid column -->
+		        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3 contactoIconos">
+		          <h6 class="text-uppercase mb-4 font-weight-bold">Contacto</h6>
+		          <p><a class="icon-clock" href=""/>Atención de Lunes a Viernes de 9:00 a 18:00 horas, Sábado de 9:00 a 13:00 horas</p>		          
+		          <p><a class="icon-location" href=""/>Jr. Monterosa Nro 140 Tda 000007 Urb. Chacarilla del Estanque, Lima</p>
+		          <p><a class="icon-mail" href=""/>ventas@rhaak.com</p>
+		          <!--   <p><a class="icon-phone" href=""/>(01)3338118</p> -->
+		          <p><a class="icon-whatsapp" href=""/>943395368</p>
+
+		        </div>
+		        <!-- Grid column -->
+		
+		      </div>
+		      <!-- Footer links -->
+		
+		      <hr></hr>
+		
+		      <!-- Grid row -->
+		      <div class="row d-flex align-items-center">
+		
+		        <!-- Grid column -->
+		        <div class="col-md-7 col-lg-8 claseDerechos">
+		
+		          <!--Copyright-->
+		          <p class="text-center text-md-left">© 2019 Copyright:
+		            <a href="https://www.rhaak.com">
+		              <strong>www.rhaak.com</strong>
+		            </a>
+		          </p>
+		
+		        </div>
+		        <!-- Grid column -->
+		
+		        <!-- Grid column -->
+		        <div class="col-md-5 col-lg-4">
+
+		          <!-- Social buttons -->
+		          <div class="text-center text-md-right">
+		            <ul class="list-unstyled list-inline">
+		              <li class="list-inline-item">
+		                <a class="btn-floating btn-lg btn-fb botonContactoFb" ><i class="fab fa-facebook-f"></i></a>
+		              </li>
+<!-- 		              <li class="list-inline-item"> -->
+<!-- 						<a class="icon-googleplus btn-floating btn-sm mx-1" href="#"></a> -->
+<!-- 		              </li> -->
+		            </ul>
+		          </div>
+		
+		        </div>
+		        <!-- Grid column -->
+		
+		      </div>
+		      <!-- Grid row -->
+		
+		    </div>
+		    <!-- Footer Links -->
+		    
+
+		
+		  </footer>
+		  
+		  <ui:include src="/estatus.xhtml" />
+		  
+		  <!-- Modal Guardar Banco Exitoso -->
+			<div class="modal fade" id="idModalEnviarSuscripcionExito" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">Tu suscripción se realizo de forma exitosa.</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		
+			<!-- Modal Error-->
+			<div class="modal fade" id="idModalErrorSistema" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title mensajeTituloError">¡ Mensaje del Sistema - ERROR !</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body mensajeCuerpoError">#{mAlias.resultadoProcesoError} <strong>Comuníquese con el área de Soporte.</strong></div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+	</h:form>	
+<button onclick="enlaceWhatsapp();" id="myBtn" title="Escribenos" />
+</h:body>
+</html>

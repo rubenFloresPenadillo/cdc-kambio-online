@@ -21,7 +21,6 @@ import org.primefaces.PrimeFaces;
 
 import cadenas.util.ValidacionesString;
 import dto.TpClienDto;
-import dto.TpCuentBancoDto;
 import dto.TpDeparDto;
 import dto.TpDistrDto;
 import dto.TpPaisDto;
@@ -89,7 +88,7 @@ public class DatosBean {
 	}
 	
     /**
-     * Realiza su ejecuciÃ³n despues del Constructor de la clase DatosBean.
+     * Realiza su ejecución despues del Constructor de la clase DatosBean.
      */
     @PostConstruct
     public void init() {
@@ -358,7 +357,7 @@ public class DatosBean {
 				sesion.setAttribute("indCompleDatos", indCompleDatos);
         	}
         	
-//        	resultadoProcesoExito = "Datos guardados con Ã©xito.";
+//        	resultadoProcesoExito = "Datos guardados con éxito.";
         	PrimeFaces.current().executeScript("operacionDatosGuardadosExito();");
         } else if (result.startsWith(CadenasType.INDICADOR_PROCESO_ACTUALIZA_OK.getValor())) {
         	PrimeFaces.current().executeScript("operacionDatosActualizaExito();");

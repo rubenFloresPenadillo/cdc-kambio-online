@@ -40,7 +40,7 @@
 											
 											<tr>
 												<td style="padding-top: 20px; text-align: justify;" >
-													Kamio Online te da la bienvenida, estamos muy felices de que formes parte de esta grandiosa familia. Solo necesitas activar tu cuenta, utiliza para esto el siguiente c&oacute;digo de verificaci&oacute;n.
+													Kambio Online te da la bienvenida, estamos muy felices de que formes parte de esta grandiosa familia. Solo necesitas activar tu cuenta, utiliza para esto el siguiente c&oacute;digo de verificaci&oacute;n.
 												</td>
 											</tr>
 											
@@ -63,7 +63,7 @@
 											
 											<tr>
 												<td style="text-align: justify; background-color: #0b0561; color: #fff; padding-bottom: 5px; padding-top: 5px; padding-right: 5px;">
-													<a  style="float: right;" href="https://www.facebook.com/christianexchangeperu" target="_blank" rel="noopener noreferrer">
+													<a  style="float: right;" href="https://www.facebook.com/kambio.online" target="_blank" rel="noopener noreferrer">
 															<img style="display: flex; width: 40px; height: auto;" src="https://www.casadecambioelalfarero.com/resources/imagenes/facebook.png" alt="Facebook"/>
 													</a>
 													<span style="float: right;margin-top: 10px; margin-right: 8px; ">Siguenos en: </span>

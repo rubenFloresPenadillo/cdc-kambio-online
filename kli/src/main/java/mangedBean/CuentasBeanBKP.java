@@ -193,7 +193,7 @@ public class CuentasBeanBKP {
 //    	
 //        if(result == null) {
 //        	getCuentasBancos();
-//        	resultadoProcesoExito = "Datos guardados con Ã©xito.";
+//        	resultadoProcesoExito = "Datos guardados con éxito.";
 //        }else {
 //        	resultadoProcesoError = result;
 //        }

@@ -14,7 +14,6 @@ import org.primefaces.PrimeFaces;
 import cadenas.util.ValidacionesString;
 import dto.TpUsuarDto;
 import loggerUtil.LoggerUtil;
-import seguridad.EnmascaraUtil;
 import service.ServiceUsuario;
 import service.impl.ServiceUsuarioImpl;
 import util.sesion.ConeccionSesion;
@@ -83,7 +82,7 @@ public class ConfirmaCuentaRegistradaBean {
         if (ValidacionesString.esNuloOVacio(ideUsuaEmai)) {
         	result = "No se puede verificar el correo, por favor contactar al Soporte Técnico";
         }else if (!validarCodigoVerificacion()) {
-        	result = "El codigo de verificación es incorrecto, por favor valídelo.";
+        	result = "El codigo de verificaci�n es incorrecto, por favor valídelo.";
         }else {
         	
         	TpUsuarDto temp = new TpUsuarDto();
@@ -94,7 +93,7 @@ public class ConfirmaCuentaRegistradaBean {
     		temp = serviceUsuarioEstadoCuenta.getUsuario(temp);
     		
     		if (EstadosCuentaUsuarioType.ESTADO_CUENTA_USUARIO_ACTIVADA.getIdElemento().equals(temp.getCodEstaCuenUsua())) {
-    			result = "Su cuenta ya esta activada, por favor inicie sesión";
+    			result = "Su cuenta ya esta activada, por favor inicie sesi�n";
     		}else {
     			StringBuilder sb = new StringBuilder();
             	sb.append(codigoVerificacion1);
@@ -119,7 +118,7 @@ public class ConfirmaCuentaRegistradaBean {
             	PrimeFaces.current().executeScript("operacionConfirmaCuentaCodigoExitosa();");
             }else {
             	LoggerUtil.getInstance().getLogger().error(result);
-            	resultadoProcesoError = "El código ingresado no es valido, por favor verifique o genere uno nuevo.";
+            	resultadoProcesoError = "El c�digo ingresado no es valido, por favor verifique o genere uno nuevo.";
             	LoggerUtil.getInstance().getLogger().error(resultadoProcesoError);
             	PrimeFaces.current().executeScript("procesoConError();");
             }

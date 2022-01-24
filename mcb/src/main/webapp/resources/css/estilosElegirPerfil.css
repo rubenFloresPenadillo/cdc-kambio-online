@@ -1,0 +1,419 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200&display=swap');
+@import url(menuElegirPerfil.css);
+
+* {
+	margin: 0;
+	padding: 0;
+	/*El width y el height incluyen el padding y el border, pero no el margin. */
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Cairo', sans-serif;
+	font-size: 0.85rem;
+	background-image: rgba(87,99,235,1);
+	background-image: -moz-linear-gradient(left, rgba(87,99,235,1) 0%, rgba(50,164,199,1) 95%, rgba(50,164,199,1) 100%);
+	background-image: -webkit-gradient(left top, right top, color-stop(0%, rgba(87,99,235,1)), color-stop(95%, rgba(50,164,199,1)), color-stop(100%, rgba(50,164,199,1)));
+	background-image: -webkit-linear-gradient(left, rgba(87,99,235,1) 0%, rgba(50,164,199,1) 95%, rgba(50,164,199,1) 100%);
+	background-image: -o-linear-gradient(left, rgba(87,99,235,1) 0%, rgba(50,164,199,1) 95%, rgba(50,164,199,1) 100%);
+	background-image: -ms-linear-gradient(left, rgba(87,99,235,1) 0%, rgba(50,164,199,1) 95%, rgba(50,164,199,1) 100%);
+	background-image: linear-gradient(to right, rgba(87,99,235,1) 0%, rgba(50,164,199,1) 95%, rgba(50,164,199,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5763eb', endColorstr='#32a4c7', GradientType=1 );
+}
+
+section{
+	width: 88%;
+	margin: auto;
+	padding-left: 2%; 
+	padding-right: 2%;
+	background: #fff;
+}
+
+/*Inicio estilos para el procesando*/
+.ui-widget-overlay{
+	background: #2d5972 url(/app/javax.faces.resource/images/ui-bg_flat_0_2d5972_40x100.png.xhtml?ln=primefaces-aristo) 50% 50% repeat-x;
+    opacity: .30;
+    filter: Alpha(Opacity=30);
+}
+
+.ui-widget-content {
+    border: 1px solid #a8a8a8;
+    background: #fff;
+    color: #4f4f4f;
+    border-radius: 4px 4px 4px 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    border: 0px solid #000000;
+    font-family: Arial,sans-serif;
+    font-size: 1.1em;
+}
+/*Fin estilos para el procesando*/
+
+header{
+	width: 100%;
+	height: 63px;
+	background: #EFEFEF;
+	color: #5763eb;
+	font-weight: bold;
+	/* border-top: 1px solid #ffdd00; */
+	border-bottom: 1px solid #ffdd00;
+	
+	
+	/*Para que se quede fijo*/
+	position: fixed;
+	top: 0;
+	left: 0;
+	/*Para que este siempre por delante de los demas elementos, el tape a los demas*/
+	z-index: 100;
+}
+
+.contenedor{
+	width: 98%;
+	margin: auto;
+}
+
+.claseImagenLogoHorizontal{
+	float: left;
+	/* width: 211.25px; */
+	height: 63px;
+}
+
+
+@media (min-width: 1024px){
+	.contenedor {
+		width: 90%;
+	}
+}
+
+
+#datosPersonales {
+    margin-top: 65px;
+/*     position: relative; */
+/* 	height: auto !important; */
+	min-height: 90vh;
+}
+
+
+#idFormDatosPersonales{
+	display: inline-block;
+	width: 100%;
+	margin-top: 1rem;
+/* 	margin: auto; */
+}
+
+.form-group {
+    margin-bottom: 0.4rem;
+}
+
+.form-group label{
+	color: #5763eb;
+	font-weight: bold;
+}
+
+.form-control{
+	font-size: 0.85rem !important;
+}
+
+.column {
+    float: left;
+}
+
+/* .columna-izq{ */
+/* 	width: 30%; */
+/* } */
+
+/* .columna-der{ */
+/* 	width: 70%; */
+/* } */
+
+.btn-guardar-datos{
+	width: 60%;
+	margin-top: 10px;
+}
+
+@media (max-width: 400px){
+	.btn-guardar-datos{
+		width: 100%;
+	}
+}
+
+.alert{
+	padding: 0.67rem 1.25rem !important;
+}
+
+.claseCampoObligatorios{
+	color: red;
+	font-weight: bold;
+/* 	margin-top: 10px; */
+	margin-bottom: 0 !important;
+	padding: 10px 0 !important;
+}
+
+#idMensajeResultado{
+	margin-top: 10px !important;
+}
+
+.claseMensajeResultado{
+	margin-top: 10px !important;	
+}
+
+.claseErrorFormulario{
+	border-color: red !important;
+	box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.4) !important;
+}
+
+.claseComboFecha{
+	width: 32.5% !important;
+}
+
+.margenComboFecha{
+	margin-right: 1.25% !important;
+}
+
+.claseComboFormulario{
+	height: 34px !important;
+}
+
+.mensajeTituloError{
+    color: #c82333 !important;
+}
+
+.mensajeCuerpoError{
+	color: #dc3545 !important;
+}
+
+.modal-title{
+    color: #000000 !important;
+	font-weight: bold !important;
+}
+
+.modal-content{
+	margin-top: 70px !important;
+}
+    
+.btn-si-toogle{
+	color: #FFFFFF !important;
+	background-color: #5763eb !important;
+}
+
+.btn-no-toogle{
+    background-color: #e6e6e6;
+    color: #333 !important;
+}
+
+.cabeceraPerfil1{
+	margin-top: 60px;
+	font-weight: bold;
+}
+
+.cabeceraPerfil2{
+	margin-top: 20px;
+	color: #5763eb;
+	font-weight: bold;
+}
+
+.cabeceraPerfil3{
+	margin-top: 20px;
+}
+
+.cabeceraPerfil4{
+	margin-top: 60px;
+	font-weight: bold;
+}
+
+.claseBotonElementoMenu{
+	width: 100px;
+	height: 100px;
+	cursor: pointer;
+	border: none !important;
+	background-color: #EFEFEF; /* Color al fondo de los botones con imagen*/  
+	/*Para hacer los botones circulares*/
+	border-radius: 18px 18px 18px 18px;
+	-moz-border-radius: 18px 18px 18px 18px;
+	-webkit-border-radius: 18px 18px 18px 18px;
+	/*Para las sombras*/
+	-webkit-box-shadow: 3px 3px 11px 0px rgba(0,139,17,0.73);
+	-moz-box-shadow: 3px 3px 11px 0px rgba(0,139,17,0.73);
+	box-shadow: 3px 3px 11px 0px rgba(0,139,17,0.73);
+}
+
+.claseBotonElementoMenu:focus{
+	outline: 0; /*Para que no se vea la linea cuadrada al darle click al boton*/
+}
+
+.claseBotonElementoMenu:hover{
+	background-color: #B5D6B2;
+}
+
+.imagenBotonOperacionesLista64x64 {
+	background-image: url(../../resources/imagenes/operacionesLista64x64.png) !important;
+	background-repeat: no-repeat !important;
+	background-position: center !important;
+}
+
+@media (max-width: 470px){
+	.claseOpcionesPanel{
+		margin: 10px;
+	}
+	
+	.claseBotonElementoMenu{
+		width: 90px;
+		height: 90px;
+    }
+}
+
+.claseOpcionesPanel{
+	margin: 20px;
+}
+
+.claseOpcionesPanel p{
+	text-align: center;
+	margin-bottom: 0 !important; 
+}
+
+.claseContenedoraPerfiles{
+	width: 400px;
+	margin: auto;
+}
+
+/*Inicio perfiles*/
+
+
+element.style {
+}
+.profiles-container li.profile.personal .profile-link.focused .profile-icon, .profiles-container li.profile.personal .profile-link:focus .profile-icon, .profiles-container li.profile.personal .profile-link:hover .profile-icon {
+    border-color: #5763eb;
+    transform: scale(1.1);
+}
+
+
+.list-of-profiles .profile.personal .profile-link .profile-icon {
+    background-color: #ffffff ;
+    background-image: url(../../resources/imagenes/perfilPersona.png);
+    background-repeat: no-repeat;
+}
+
+.list-of-profiles .profile.companies .profile-link .profile-icon {
+    background-color: #5763eb;
+    background-image: url(../../resources/imagenes/empresa-perfil320x320.jpg);
+    background-repeat: no-repeat;
+}
+
+
+
+
+.profiles-container li .profile-link.focused .profile-icon, .profiles-container li .profile-link:focus .profile-icon, .profiles-container li .profile-link:hover .profile-icon {
+    border-color: #5763eb;
+    transform: scale(1.1);
+}
+.list-of-profiles .profile .profile-icon {
+    height: 8vw;
+    width: 8vw;
+    max-height: 150px;
+    max-width: 150px;
+    min-height: 84px;
+    min-width: 84px;
+    box-sizing: border-box;
+    position: relative;
+    text-decoration: none;
+    border: .3em solid #5763eb;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #333;
+    border-radius: 10px;
+}
+
+.list-of-profiles .profile {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    width: 8vw;
+    max-width: 200px;
+    min-width: 84px;
+}
+
+.list-of-profiles {
+    margin: 4em 0;
+}
+
+.profiles-container li.profile:not(:last-child) {
+    margin: 0 2vw 0 0;
+}
+
+.profiles-container {
+    text-align: center;
+}
+
+a {
+    cursor: pointer;
+    outline: 0;
+}
+
+a, a:focus, a:hover, button, pre {
+    color: inherit;
+}
+
+list-of-profiles .profile .avatar-wrapper {
+    position: relative;
+    transition: all .4s ease-in-out;
+}
+
+.profiles-container li .profile-link {
+    text-decoration: none;
+}
+
+body, h1, h2, html {
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+/*         background-image: url(https://app.kambista.com/_nuxt/img/Desktop.c381852.png); */
+}
+
+.list-of-profiles .profile.personal .profile-link .profile-type {
+    color: #FFB726;
+}
+
+.color-empresa{
+	color: #B55200 !important; 
+}
+
+.list-of-profiles .profile .profile-type {
+    margin: 0;
+    font-size: .9vw;
+}
+
+.list-of-profiles .profile .profile-name, .list-of-profiles .profile .profile-type {
+    line-height: 1.2em;
+    min-height: 2.4em;
+    display: block;
+    text-align: center;
+    font-size: 1em;
+    margin: .8em 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #5763eb;
+    font-family: Montserrat;
+}
+
+
+.list-of-profiles .profile.add .profile-link.nuevo-perfil-empresa .profile-icon {
+    background-image: url(../../resources/imagenes/agregarPerfilEmpresa.jpg);
+    background-repeat: no-repeat;
+}
+
+.list-of-profiles .profile-link.nuevo-perfil-empresa .profile-icon {
+    background-color: rgba(48,178,255,.6);
+}
+
+a {
+    color: #2d8cf0;
+    background: 0 0;
+    text-decoration: none;
+    outline: 0;
+    cursor: pointer;
+    transition: color .2s ease;
+}
+
+
+/*Fin perfiles*/

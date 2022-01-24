@@ -1,0 +1,36 @@
+
+#transferencias{
+	background: #f7f9ff;
+	text-align: center;
+	padding: 20px;
+}
+
+#transferencias h2{
+	margin-top: 30px;
+	color: #5763eb !important;
+    font-weight: bold;
+}
+
+#transferencias h3{
+	margin-top: 30px;
+	color: #5763eb !important;
+}
+
+#transferencias .contenedor{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.transf-item{
+	margin: 20px;
+}
+
+/* .transf-item img{ */
+/* 	width: 180px; */
+/* 	height: 180px; */
+/* 	border-radius: 50%; */
+/* 	border: 5px solid #fff; */
+/* } */
+
+

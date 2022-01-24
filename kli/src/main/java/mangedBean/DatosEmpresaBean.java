@@ -43,7 +43,7 @@ import util.types.PaginasPrivadasType;
 import util.types.PerfilesType;
 import util.types.RegistroActivoType;
 
-@ManagedBean(name="datosBeanEmpresa")
+@ManagedBean(name="datosEmpresaBean")
 @ViewScoped
 public class DatosEmpresaBean {
 
@@ -95,14 +95,14 @@ public class DatosEmpresaBean {
 		clienteFormulario = new TpClienDto();
 		tpSectorEconoSeleccionado = new TpSectoEconoDto();
 		tpActivEconoSeleccionado = new TpActivEconoDto();
-		clienteFormulario.setIndPepo(NumerosType.NUMERO_MINIMO_CERO.getValor());
+//		clienteFormulario.setIndPepo(NumerosType.NUMERO_MINIMO_CERO.getValor());
 		mostrarSelecionUbigeo = Boolean.TRUE;
 		indSeleccionPep = NumerosType.NUMERO_MINIMO_CERO.getValor(); 
 		datosClientePadre = new TpClienDto();
 	}
 	
     /**
-     * Realiza su ejecuciÃ³n despues del Constructor de la clase DatosBean.
+     * Realiza su ejecución despues del Constructor de la clase DatosBean.
      */
     @PostConstruct
     public void init() {
@@ -126,7 +126,7 @@ public class DatosEmpresaBean {
     	
     	// El codigo de cliente se crea despues de completar los datos, al darle click en el metodo validar() de la clase DatosBean
     	if(!ValidacionesNumeros.esCeroONuloEntero(codigoCliente)) {
-    		//getDatosCliente();
+    		getDatosCliente();
     		//getCargaIndicadorOperacionEnCurso();
     	}
     	
@@ -180,11 +180,18 @@ public class DatosEmpresaBean {
 		
 	}
 	
-//    private void getDatosCliente() {
-//    	ServiceCliente serviceCliente = new ServiceClienteImpl(); 
-//    	clienteFormulario = serviceCliente.get(codigoCliente);
-//    	
-//    	if(clienteFormulario != null) {
+	
+	
+    private void getDatosCliente() {
+    	
+    	ServiceCliente serviceCliente = new ServiceClienteImpl(); 
+    	clienteFormulario = serviceCliente.get(codigoCliente);
+    	
+    	if(clienteFormulario != null) {
+    		
+    		tpSectorEconoSeleccionado.setCodSectEcon(clienteFormulario.getTpActivEcono().getCodActiEcon());
+    		
+    		
 //    		valorCodigoDepartamento = clienteFormulario.getTpDepar().getCodDepa();
 //        	valorCodigoProvincia = clienteFormulario.getTpProvi().getCodProv();
 //        	valorCodigoDistrito = clienteFormulario.getTpDistr().getCodDist();
@@ -212,10 +219,10 @@ public class DatosEmpresaBean {
 //        		mostrarDatosSeleccionPep = Boolean.FALSE;
 //        		indSeleccionPep = NumerosType.NUMERO_MINIMO_CERO.getValor();
 //        	}
-//        	
-//    	}
-//    	
-//	}
+        	
+    	}
+    	
+	}
 
 	
 //	public void getListaTipoDocumentos() {

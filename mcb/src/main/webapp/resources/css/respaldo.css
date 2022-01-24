@@ -1,0 +1,48 @@
+#respaldo{
+/* 	background: #333; */
+
+	text-align: center;
+	padding: 20px;
+}
+
+#respaldo .contenedor{
+/* 	display: flex; */
+/* 	flex-wrap: wrap; */
+	justify-content: center;
+}
+
+.claseItemRespaldo{
+	color: #fff;
+	margin: 15px;
+	border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    padding: 15px;
+	background: rgba(59,159,56,1);
+	background: -moz-linear-gradient(left, rgba(59,159,56,1) 0%, rgba(58,130,74,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(59,159,56,1)), color-stop(100%, rgba(58,130,74,1)));
+	background: -webkit-linear-gradient(left, rgba(59,159,56,1) 0%, rgba(58,130,74,1) 100%);
+	background: -o-linear-gradient(left, rgba(59,159,56,1) 0%, rgba(58,130,74,1) 100%);
+	background: -ms-linear-gradient(left, rgba(59,159,56,1) 0%, rgba(58,130,74,1) 100%);
+	background: linear-gradient(to right, rgba(59,159,56,1) 0%, rgba(58,130,74,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b9f38', endColorstr='#3a824a', GradientType=1 );
+}
+
+.claseItemNumeros{
+	display: inline-flex;
+}
+
+.claseItemNumeros h1{
+	padding-right: 5px;
+}
+
+#respaldo h2{
+	color: #5763eb;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;	
+}
+
+#respaldo h1{
+    font-weight: bold;	
+}

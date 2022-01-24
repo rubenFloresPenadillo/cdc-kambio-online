@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+		<!-- Required meta tags -->
+		<title>Casa de Cambio Rhaak</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+			
+		<link rel="shortcut icon" href="../../resources/imagenes/favicon.ico" />	
+		<link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.css" />
+
+<!-- 		<script type="text/javascript"   src="../../resources/js/jquery-3.2.1.slim.min.js"></script> -->
+		<script type="text/javascript"   src="../../resources/js/popper.min.js"></script>
+		<script type="text/javascript"   src="../../resources/js/bootstrap.min.js"></script>
+		<script type="text/javascript"   src="../../resources/js/principalContacto.js"></script>
+		
+		
+		<link rel="stylesheet" type="text/css" href="../../resources/css/all.css"/>
+<!-- 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"/> -->
+		
+		<link rel="stylesheet" type="text/css" href="../../resources/css/fontello.css"/> 
+		<link rel="stylesheet" type="text/css" href="../../resources/css/estilosContacto.css"/> 
+		
+</h:head>
+<h:body>
+
+<header>
+		
+		<ui:param name="mAlias" value="#{contactoBean}" />
+		
+		<div class="cabeceraInfo">
+			<div class="contenedorInfo">
+<!-- 				<a class="icon-whatsapp" href=""></a> -->
+				<a class="icon-whatsapp" href="">943395368</a>
+				<a class="icon-mail" href="">ventas@rhaak.com</a>
+				<!--  <a class="icon-phone" href="">(01)3338118</a> -->
+			</div>
+		</div>
+		<div class="contenedor">
+			<a  href="../../index.xhtml">
+				<img class="imagenLogo" src="../../resources/imagenes/logoHorizontal390x120.png" alt="Logo Rhaak"/>
+			</a>
+			
+			<h:selectBooleanCheckbox  id="menu-bar"/>
+			<label class="icon-menu" for="menu-bar"></label> 
+
+			<nav class="menu">
+				<ul>
+					<li>
+						<a href="nosotros.xhtml">Nosotros</a> 
+					</li>
+<!-- 					<li> -->
+<!-- 						<a href="blog.xhtml">Blog</a> -->
+<!-- 					</li> -->
+					<li>
+						<a href="#" class="claseContactoMarcado" >Contacto</a> 
+					</li>
+					<li>
+						<a href="ayuda.xhtml">Ayuda</a> 
+					</li>
+					<li>
+						<a class="btn btn-success botonIniciarOperacionGeneral icon-user" href="../../paginas/privado/ingreso.xhtml">INICIAR SESIÓN</a> 
+					</li>
+				</ul>
+<!-- 				<p:commandButton class="btn btn-warning botonIniciarOperacionGeneral icon-right-dir" value="INICIAR OPERACIÓN" /> -->
+			</nav>
+
+		</div>
+</header>
+
+	<!-- Modal Confirmacion-->
+		<div class="modal fade" id="idModalConfirmacionEnviarMensaje" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body"> ¿Está seguro de enviar mensaje?</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal" onclick="ejecutarEnviarMensaje();">Aceptar</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" >Cancelar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	<h:form id="idFormContacto" method="post" role="form" class="form-horizontal">
+	
+		<p:remoteCommand name="ejecutarEnviarMensaje" actionListener="#{mAlias.procesarEnviarMensaje()}" update="idFormContacto"/>
+		
+		<main>
+
+			<section id="seccionContacto">
+
+				<div class="contenedor">
+				
+					<div class="row" >
+						
+						<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6">
+							<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<div class="form-group">
+									<p:outputPanel styleClass="contenedorPregunta">
+										<p>¿Tienes Dudas o Comentarios?, Escríbenos</p>
+										<h3>FORMULARIO DE CONSULTAS</h3>
+									</p:outputPanel>
+									
+								</div>
+							</div>
+							
+							<div class="claseLineaHorizontal">
+								<div> </div>
+							</div>
+							
+							<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<div class="form-group">
+									<p:inputText id="idTxtNombreCompleto" styleClass="form-control"  value="#{mAlias.nombreCompleto}"/>
+									<p:watermark for="idTxtNombreCompleto" value="Nombre Completo" />
+									<div id="idMensajeNombreCompleto" > </div>
+								</div>
+							</div>
+							
+							<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<div class="row">
+									<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6">
+										<div class="form-group">
+											<p:inputText id="idTxtTelefonoCelular" styleClass="form-control" value="#{mAlias.telefonoCelular}"/>
+											<p:watermark for="idTxtTelefonoCelular" value="Teléfono o Celular" />
+											<div id="idMensajeTelefonoCelular" > </div>
+										</div>
+									</div>
+									
+									<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6">
+										<div class="form-group">
+											<p:inputText id="idTxtCorreoElectronico" styleClass="form-control"  value="#{mAlias.correoElectronico}"/>
+											<p:watermark for="idTxtCorreoElectronico" value="Correo Eléctronico" />
+											<div id="idMensajeCorreoElectronico" > </div>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+							
+							<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<div class="form-group">
+									<p:inputText id="idTxtAsunto" styleClass="form-control"  value="#{mAlias.asuntoCorreo}"/>
+									<p:watermark for="idTxtAsunto" value="Asunto" />
+									<div id="idMensajeAsunto" > </div>
+								</div>
+							</div>
+							
+							<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<div class="form-group">
+									<p:inputTextarea  rows="5" cols="30" id="idTxtMensaje" styleClass="form-control"  value="#{mAlias.mensaje}"/>
+									<p:watermark for="idTxtMensaje" value="Escriba su mensaje..." />
+									<div id="idMensaje" > </div>
+								</div>
+							</div>
+							
+							<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left">
+								<div class="form-group">
+									<p:commandButton  onclick="enviar(event);" styleClass="btn btn-success btn-guardar-datos"  value="ENVIAR MENSAJE"/>
+								</div>
+							</div>
+							
+						</div>
+						
+					
+						<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6 contenedorDatosContacto">
+							<div class="row">
+								<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<div class="row claseContactoItemContenedor">
+										<div class="column col-xs-2 col-sm-2 col-md-3 col-lg-3">
+											<img  src="../../resources/imagenes/contacto-telefono42x42.png" alt="Telefono de contacto"/>	
+										</div>
+										<div class="claseContactoItem column col-xs-10 col-sm-10 col-md-9 col-lg-9">
+											<span class="contactoTitulo">Consultas Telefonicas</span><br></br>
+											<span>943395368</span>
+										</div>
+									</div>
+									
+								</div>
+								
+								<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<div class="row claseContactoItemContenedor">
+										<div class="column col-xs-2 col-sm-2 col-md-3 col-lg-3">
+											<img  src="../../resources/imagenes/contacto-mensaje42x42.png" alt="Correo de contacto"/>	
+										</div>
+										<div class="claseContactoItem column col-xs-10 col-sm-10 col-md-9 col-lg-9 ">
+											<span class="contactoTitulo" >Correo para ventas</span><br></br>
+											<span>ventas@rhaak.com</span>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<div class="row claseContactoItemContenedor">
+										<div class="column col-xs-2 col-sm-2 col-md-3 col-lg-3">
+											<img  src="../../resources/imagenes/contacto-ubicacion42x42.png" alt="Ubicación"/>	
+										</div>
+										<div class="claseContactoItem column col-xs-10 col-sm-10 col-md-9 col-lg-9">
+											<span class="contactoTitulo">Av. San Luis 1045</span>
+											<span>San Borja, Lima</span>
+										</div>
+									</div>
+									
+								</div>
+								
+								<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<div class="row claseContactoItemContenedor">
+										<div class="column col-xs-2 col-sm-2 col-md-3 col-lg-3">
+											<img  src="../../resources/imagenes/contacto-like42x42.png" alt="Siguenos en Facebook"/>	
+										</div>
+										<div class="claseContactoItem column col-xs-10 col-sm-10 col-md-9 col-lg-9">
+											<span class="contactoTitulo">Siguenos en Facebook</span><br></br>
+											<span>Aquí</span>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+							
+							<div class="row">
+								<img class="img-fluid bannerContacto" src="../../resources/imagenes/bannerContacto924x444.png" alt="Contacto"/>								
+							</div>
+						</div>
+						
+					</div>
+					
+					<div class="row claseContieneMapa" >
+						<div class="embed-responsive embed-responsive-21by9">
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.9976864535142!2d-76.99355758552058!3d-12.1123104914237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c7ec7209151d%3A0x24fe2b9cf071def3!2sCalle%20Monte%20Rosa%20140%2C%20Santiago%20de%20Surco%2015038!5e0!3m2!1ses-419!2spe!4v1572113970195!5m2!1ses-419!2spe" width="1000" height="460" style="border:0" allow="fullscreen"></iframe>
+						</div>	
+					</div>
+				
+					
+				</div>
+				
+    		</section>
+		</main>
+		
+		<!-- Footer -->
+		<footer class="page-footer font-small mdb-color pt-4">
+		
+		    <!-- Footer Links -->
+		    <div class="container text-center text-md-left">
+		
+		      <!-- Footer links -->
+		      <div class="row text-center text-md-left mt-3 pb-3">
+		
+		        <!-- Grid column -->
+		        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+		          <h6 class="text-uppercase mb-4 font-weight-bold">Casa de Cambio Rhaak</h6>
+		          <p>Somos una empresa especializada en el rubro de intermediación financiera</p>
+		          <p>Estamos registrados en la Cámara de Comercio de Lima</p>
+		          <p>Asociados a Fintech Perú</p>
+		          <p>Registrados en la SBS: Resolución Nro. 05154-2019</p>
+		          <p>RUC: 20604531277</p>
+<!-- 		          <p>Registro SBS: </p> -->
+		        </div>
+		        <!-- Grid column -->
+		
+		        <hr class="w-100 clearfix d-md-none"></hr>
+		
+		        <!-- Grid column -->
+		        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+		          <h6 class="text-uppercase mb-4 font-weight-bold">Servicios</h6>
+		          <p> Cambio de divisas online </p>
+		        
+		         
+		        </div>
+		        <!-- Grid column -->
+		
+		        <hr class="w-100 clearfix d-md-none"></hr>
+		
+		        <!-- Grid column -->
+		        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+		          <h6 class="text-uppercase mb-4 font-weight-bold">Recursos</h6>
+<!-- 		          <p> Blog </p> -->
+<!-- 		          <p> Ayuda </p> -->
+		          <p><a class="claseEnlaceSinLineas" href="../../paginas/privado/terminos.xhtml" target="_blank">Terminos y condiciones</a></p>
+		          <p><a class="claseEnlaceSinLineas" href="../../paginas/privado/politicaPrivacidad.xhtml" target="_blank">Políticas de privacidad</a></p>
+		          <p><a class="claseEnlaceSinLineas" href="../../paginas/privado/libroReclamaciones.xhtml" target="_blank">Libro de Reclamaciones</a></p>
+		        </div>
+		
+		        <!-- Grid column -->
+		        <hr class="w-100 clearfix d-md-none"></hr>
+		
+		        <!-- Grid column -->
+		        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3 contactoIconos">
+		          <h6 class="text-uppercase mb-4 font-weight-bold">Contacto</h6>
+		          <p><a class="icon-clock" href=""/>Atención de Lunes a Viernes de 9:00 a 18:00 horas, Sábado de 9:00 a 13:00 horas</p>		          
+		          <p><a class="icon-location" href=""/>Jr. Monterosa Nro 140 Tda 000007 Urb. Chacarilla del Estanque, Lima</p>
+		          <p><a class="icon-mail" href=""/>ventas@rhaak.com</p>
+		          <!--   <p><a class="icon-phone" href=""/>(01)3338118</p> -->
+		          <p><a class="icon-whatsapp" href=""/>943395368</p>
+
+		        </div>
+		        <!-- Grid column -->
+		
+		      </div>
+		      <!-- Footer links -->
+		
+		      <hr></hr>
+		
+		      <!-- Grid row -->
+		      <div class="row d-flex align-items-center">
+		
+		        <!-- Grid column -->
+		        <div class="col-md-7 col-lg-8 claseDerechos">
+		
+		          <!--Copyright-->
+		          <p class="text-center text-md-left">© 2019 Copyright:
+		            <a href="https://www.rhaak.com">
+		              <strong>www.rhaak.com</strong>
+		            </a>
+		          </p>
+		
+		        </div>
+		        <!-- Grid column -->
+		
+		        <!-- Grid column -->
+		         <div class="col-md-5 col-lg-4">
+
+		          <!-- Social buttons -->
+		          <div class="text-center text-md-right">
+		            <ul class="list-unstyled list-inline">
+		              <li class="list-inline-item">
+		                <a class="btn-floating btn-lg btn-fb botonContactoFb" ><i class="fab fa-facebook-f"></i></a>
+		              </li>
+<!-- 		              <li class="list-inline-item"> -->
+<!-- 						<a class="icon-googleplus btn-floating btn-sm mx-1" href="#"></a> -->
+<!-- 		              </li> -->
+		            </ul>
+		          </div>
+		
+		        </div>
+		        <!-- Grid column -->
+		
+		      </div>
+		      <!-- Grid row -->
+		
+		    </div>
+		    <!-- Footer Links -->
+		    
+
+		
+		  </footer>
+		  
+		  <ui:include src="/estatus.xhtml" />
+		  
+		  <!-- Modal Guardar Banco Exitoso -->
+			<div class="modal fade" id="idModalEnviarMensajeoExito" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">Tu mensaje se envió de forma exitosa.</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		
+			<!-- Modal Error-->
+			<div class="modal fade" id="idModalErrorSistema" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title mensajeTituloError">¡ Mensaje del Sistema - ERROR !</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body mensajeCuerpoError">#{mAlias.resultadoProcesoError} <strong>Comuníquese con el área de Soporte.</strong></div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		  
+	</h:form>	
+<button onclick="enlaceWhatsapp();" id="myBtn" title="Escribenos" />
+</h:body>
+</html>

@@ -2,6 +2,7 @@ package mangedBean;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.security.SecureRandom;
 import java.text.DateFormat;
@@ -14,6 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -88,7 +90,8 @@ public class InicioBean {
 	private TpCuentBancoDto cuentaClienteUsoDetalle;
 	
 	private List<SelectItem> listaComboBancosEnvioDinero;
-	private List<SelectItem> listaComboCuentasBancarias;
+	private List<SelectItem> listaComboCuentasBancariasReci;
+	private List<SelectItem> listaComboCuentasBancariasEnvi;	
 	private List<SelectItem> listaComboOrigenFondo;	
 	private List<TpCuentBancoDto> listaCuentasBancariasTemporal;
 	private List<TpOrigeFondoDto> listaComboOrigenFondoTemporal;
@@ -111,8 +114,8 @@ public class InicioBean {
 	private Integer codPerfUsua;
 	private String ideUsuaEmai;
 	private Integer indRegistroCuentaBancaria;
-	private Integer indExisteBancoEnNegocio;
 	private Boolean mostrarMensajeCCI;
+	private Boolean mostrarMensajeClienteCCI;
 	private String mensajeHorarioAtencion;
 	private Boolean indHabilitarOrigenFondo;
 	private Boolean indDatosEmpresa;
@@ -126,8 +129,8 @@ public class InicioBean {
 		resultadoProcesoError = CadenasType.VACIO.getValor();
 		indRegistroCuentaBancaria = NumerosType.INDICADOR_NEGATIVO_UNO.getValor();
 		indFueraDeHorario = NumerosType.NUMERO_MINIMO_CERO.getValor();
-		indExisteBancoEnNegocio = NumerosType.NUMERO_MINIMO_CERO.getValor();
 		mostrarMensajeCCI = Boolean.FALSE;
+		mostrarMensajeClienteCCI = Boolean.FALSE;
 		indDatosEmpresa = Boolean.FALSE;
 	}
 	
@@ -164,7 +167,8 @@ public class InicioBean {
 		}else if (PerfilesType.CLIENTE.getIdElemento().equals(codPerfUsua)) {
 			getTipoCambioDolar();
 			getListaBancosEnvioDinero();
-			getListaCuentasBancarias();
+			getListaCuentasBancariasReci();
+			getListaCuentasBancariasEnvi();
 			getListaOrigenFondos();
 			
 			ServiceUsuario serviceUsuario = new ServiceUsuarioImpl();
@@ -251,7 +255,7 @@ public class InicioBean {
     		if (indFueraDeHorario.equals(NumerosType.INDICADOR_POSITIVO_UNO.getValor())) {
     			
     			DateTimeFormatter pattern = DateTimeFormatter.ofPattern("hh:mm a");
-        		mensajeHorarioAtencion = "Horario de atenci贸n: Lunes a Viernes de "+horaInicioLaV.format(pattern)+" a "+horaFinalLaV.format(pattern)
+        		mensajeHorarioAtencion = "Horario de atenci髇: Lunes a Viernes de "+horaInicioLaV.format(pattern)+" a "+horaFinalLaV.format(pattern)
         		+" y S谩bados de "+horaInicioSab.format(pattern)+" a "+horaFinalSab.format(pattern);
         		
         		vistaInicialCalculadora();
@@ -295,7 +299,7 @@ public class InicioBean {
     						
     			        	cuentaBancoAdminDetalle = new TpCuentBancoDto();
     			        	
-    			        	cuentaBancoAdminDetalle.getTpBanco().setCodBanc(operacionClienteFormulario.getTpBanco().getCodBanc());
+//    			        	cuentaBancoAdminDetalle.getTpBanco().setCodBanc(operacionClienteFormulario.getTpBanco().getCodBanc());
     			        	cuentaBancoAdminDetalle.getTpDivis().setCodDivi(operacionClienteFormulario.getTpDivisByCodDiviEnvi().getCodDivi());
     			        	cuentaBancoAdminDetalle.getTpClien().setCodClie(NumerosType.INDICADOR_POSITIVO_UNO.getValor());
     			        	
@@ -371,8 +375,15 @@ public class InicioBean {
     				
     	        	ServiceCliente serviceCliente = new ServiceClienteImpl();
     	        	
-    	        	indRegistroCuentaBancaria = serviceCliente.getExisteCuentaBancariaCliente(codigoCliente);
-    				
+    	        	Integer cantidadCuentas = serviceCliente.getExisteCuentaBancariaCliente(codigoCliente);
+    	        	
+    	        	// Tiene minimo 1 cuenta en USD y PEN registradas
+    	        	if (cantidadCuentas > NumerosType.INDICADOR_POSITIVO_UNO.getValor()) {
+    	        		indRegistroCuentaBancaria = NumerosType.INDICADOR_POSITIVO_UNO.getValor();
+    	        	}else {
+    	        		indRegistroCuentaBancaria = NumerosType.NUMERO_MINIMO_CERO.getValor();
+					}
+    	        	
     				vistaInicialCalculadora();
     				mostrarCompra = Boolean.TRUE;
     				tipoCambioUsado = new Double(tipoCambioCompraDolar);
@@ -492,6 +503,8 @@ public class InicioBean {
     }
     
 	public void getListaBancosEnvioDinero() {
+		
+		listaCuentasBancariasTemporal = new LinkedList<TpCuentBancoDto>();
 		listaComboBancosEnvioDinero = new ArrayList<SelectItem>();
 		ServiceBanco serviceBanco = new ServiceBancoImpl();
 		
@@ -505,8 +518,9 @@ public class InicioBean {
 
 	}
 	
-	public void getListaCuentasBancarias() {
-		listaComboCuentasBancarias = new ArrayList<SelectItem>();
+	public void getListaCuentasBancariasReci() {
+		listaCuentasBancariasTemporal = new LinkedList<TpCuentBancoDto>();
+		listaComboCuentasBancariasReci = new ArrayList<SelectItem>();
 		ServiceCliente serviceCliente = new ServiceClienteImpl();
 		
 		TpCuentBancoDto tpCuentBancoDto = new TpCuentBancoDto();
@@ -517,7 +531,24 @@ public class InicioBean {
     	listaCuentasBancariasTemporal = serviceCliente.getCuentasBanco(tpCuentBancoDto);
 		
 		for(TpCuentBancoDto temp : listaCuentasBancariasTemporal) {
-			listaComboCuentasBancarias.add(new SelectItem(temp.getCodCuenBanc(), temp.getAliCuen() + CadenasType.GUION_ESPACIOS_LATERALES.getValor()+ CadenasType.PARENTESIS_INI.getValor() + temp.getTpDivis().getCodIsoDivi()  + CadenasType.PARENTESIS_FIN.getValor()  + CadenasType.GUION_ESPACIOS_LATERALES.getValor()+ temp.getValCuenBanc()));
+			listaComboCuentasBancariasReci.add(new SelectItem(temp.getCodCuenBanc(), temp.getAliCuen() + CadenasType.GUION_ESPACIOS_LATERALES.getValor()+ CadenasType.PARENTESIS_INI.getValor() + temp.getTpDivis().getCodIsoDivi()  + CadenasType.PARENTESIS_FIN.getValor()  + CadenasType.GUION_ESPACIOS_LATERALES.getValor()+ temp.getValCuenBanc()));
+		}
+		
+	}
+	
+	public void getListaCuentasBancariasEnvi() {
+		listaComboCuentasBancariasEnvi = new ArrayList<SelectItem>();
+		ServiceCliente serviceCliente = new ServiceClienteImpl();
+		
+		TpCuentBancoDto tpCuentBancoDto = new TpCuentBancoDto();
+    	
+    	tpCuentBancoDto.getTpClien().setCodClie(codigoCliente);
+    	tpCuentBancoDto.setIndEsta(RegistroActivoType.ACTIVO.getLlave());
+    	
+    	listaCuentasBancariasTemporal = serviceCliente.getCuentasBanco(tpCuentBancoDto);
+		
+		for(TpCuentBancoDto temp : listaCuentasBancariasTemporal) {
+			listaComboCuentasBancariasEnvi.add(new SelectItem(temp.getCodCuenBanc(), temp.getAliCuen() + CadenasType.GUION_ESPACIOS_LATERALES.getValor()+ CadenasType.PARENTESIS_INI.getValor() + temp.getTpDivis().getCodIsoDivi()  + CadenasType.PARENTESIS_FIN.getValor()  + CadenasType.GUION_ESPACIOS_LATERALES.getValor()+ temp.getValCuenBanc()));
 		}
 		
 	}
@@ -549,20 +580,40 @@ public class InicioBean {
 		return valorRespuesta;
 	}
 	
+	public Integer validarCuentaOrigenCliente() {
+		Integer valorRespuesta = NumerosType.NUMERO_MINIMO_CERO.getValor();
+		
+		TpCuentBancoDto tpCuentBancoDto = listaCuentasBancariasTemporal.stream()
+				  .filter(x -> operacionClienteFormulario.getTpCuentBancoByCodCuenBancClieOrig().getCodCuenBanc().equals(x.getCodCuenBanc()))
+				  .findAny()
+				  .orElse(null);
+		
+		if( !tpCuentBancoDto.getTpDivis().getCodDivi().equals(operacionClienteFormulario.getTpDivisByCodDiviEnvi().getCodDivi())) {
+			valorRespuesta = operacionClienteFormulario.getTpDivisByCodDiviEnvi().getCodDivi();
+		}
+		
+		return valorRespuesta;
+	}
+	
     public void validarSeleccionCuenta() {
     	resultadoProcesoError = CadenasType.VACIO.getValor();
     	String result = null;
     	Integer temp = validarCuentaReciboCliente();
-    	if(operacionClienteFormulario.getTpBanco().getCodBanc() == null) {
-    		result = "Debes seleccionar el banco.";
+    	Integer tempOrigen = validarCuentaOrigenCliente();
+    	if(operacionClienteFormulario.getTpCuentBancoByCodCuenBancClieOrig().getCodCuenBanc() == null) {
+    		result = "Debes seleccionar la cuenta de donde env韆s tu dinero.";
     	}else if(operacionClienteFormulario.getTpCuentBancoByCodCuenBancClieReci().getCodCuenBanc() == null) {
-    		result = "Debes seleccionar una cuenta.";
+    		result = "Debes seleccionar la cuenta a donde te enviaremos tu dinero.";
+    	}else if(operacionClienteFormulario.getTpCuentBancoByCodCuenBancClieOrig().getCodCuenBanc() == 
+    			operacionClienteFormulario.getTpCuentBancoByCodCuenBancClieReci().getCodCuenBanc()) {
+    		result = "Las cuentas seleccionadas no pueden ser iguales.";
+    	}else if(!NumerosType.NUMERO_MINIMO_CERO.getValor().equals(tempOrigen)) {
+    		result = ( tempOrigen.equals(DivisaType.DOLAR.getCodDivi()) ? "La cuenta de donde enviaras tu dinero debe ser en Dolares." :"La cuenta de donde enviaras tu dinero debe ser en Soles.") ;
     	}else if(!NumerosType.NUMERO_MINIMO_CERO.getValor().equals(temp)) {
     		result = ( temp.equals(DivisaType.DOLAR.getCodDivi()) ? "La cuenta en donde recibiras tu dinero debe ser en Dolares." :"La cuenta en donde recibiras tu dinero debe ser en Soles.") ;
-
     	}else {
     		
-    		vistaInicialTransferencia();
+    		
     		
         	/*inicio de banco a donde enviara el cliente*/
 
@@ -585,7 +636,7 @@ public class InicioBean {
         	
         	cuentaBancoAdminDetalle = new TpCuentBancoDto();
         	
-        	cuentaBancoAdminDetalle.getTpBanco().setCodBanc(operacionClienteFormulario.getTpBanco().getCodBanc());
+//        	cuentaBancoAdminDetalle.getTpBanco().setCodBanc(operacionClienteFormulario.getTpBanco().getCodBanc());
         	cuentaBancoAdminDetalle.getTpDivis().setCodDivi(operacionClienteFormulario.getTpDivisByCodDiviEnvi().getCodDivi());
         	cuentaBancoAdminDetalle.getTpClien().setCodClie(NumerosType.INDICADOR_POSITIVO_UNO.getValor());
         	
@@ -644,7 +695,7 @@ public class InicioBean {
     		//Insertamos la operacion en curso con estatus iniciada
         	
         	
-        	operacionClienteFormulario.setTpCuentBancoByCodCuenBancClieEnvi(cuentaBancoAdminDetalle);
+        	operacionClienteFormulario.setTpCuentBancoByCodCuenBancCome(cuentaBancoAdminDetalle);
     		operacionClienteFormulario.getTpClien().setCodClie(codigoCliente);
     		operacionClienteFormulario.getTpClien().getTpUsuar().setCodUsua(codigoUsuario);
     		operacionClienteFormulario.setMonEnvi(cantidadEnvio);
@@ -672,11 +723,12 @@ public class InicioBean {
         	
         	result = serviceOperacionCliente.insertUpdate(operacionClienteFormulario);
         	
-        	if(ValidacionesNumeros.esCeroONuloEntero(codOperClie)) {
+        	if(result.startsWith(CadenasType.INDICADOR_PROCESO_OK.getValor()) && ValidacionesNumeros.esCeroONuloEntero(codOperClie)) {
 	    		String[] respuesta = result.split(CadenasType.GUION.getValor());
 	    		codOperClie = Integer.parseInt(respuesta[1]);
 	    		HttpSession sesion = ConeccionSesion.getSession();
 				sesion.setAttribute("codOperClie", codOperClie);
+				vistaInicialTransferencia();
 	    	}
 
         	
@@ -693,6 +745,7 @@ public class InicioBean {
         
         if(!result.startsWith(CadenasType.INDICADOR_PROCESO_OK.getValor())) {
         	resultadoProcesoError = result;
+        	PrimeFaces.current().executeScript("operacionSeleccionarCuentaError();");
         }
         
     }
@@ -770,7 +823,7 @@ public class InicioBean {
 //    	
 //    	
 //    	
-//    	String asunto = "Operaci贸n con c贸digo "+operacionClienteFormulario.getCodUnicOperClie()+ " registrada, pendiente de verificaci贸n.";
+//    	String asunto = "Operaci髇 con c骴igo "+operacionClienteFormulario.getCodUnicOperClie()+ " registrada, pendiente de verificaci髇.";
 //    	NotificacionUtil.enviarCorreo(datamodel, PlantillasType.PLANTILLA_ENVIAR_REGISTRO_OPERACION.getNombre(), asunto, usuario);
 //    	LoggerUtil.getInstance().getLogger().info("Fin enviarCorreoRegistroOperacion");
 //	}
@@ -783,7 +836,12 @@ public class InicioBean {
     	
     	// Actualiza 
     	
-    	String codigoGenerado = generarCodigoUnico();
+    	ServiceOperacionCliente serviceOperacionClienteCodigo = new ServiceOperacionClienteImpl();
+    	
+//    	String codigoGenerado = generarCodigoUnico();
+    	
+    	BigInteger codigoGenerado = serviceOperacionClienteCodigo.getCodigoUnicoOperacion();
+    	
     	
 		ServiceOperacionCliente serviceOperacionCliente = new ServiceOperacionClienteImpl();
 		
@@ -792,7 +850,7 @@ public class InicioBean {
     	operacionClienteFormulario.getTpClien().getTpUsuar().setCodUsua(codigoUsuario);
     	operacionClienteFormulario.setUsuApliModi(ideUsuaEmai);
     	operacionClienteFormulario.setFecModiRegi(new Date());
-		operacionClienteFormulario.setCodUnicOperClie(codigoGenerado);
+		operacionClienteFormulario.setCodUnicOperClie(String.format("%06d" , codigoGenerado));
 		operacionClienteFormulario.setFecVeriOper(new Date());
 		
     	String result = serviceOperacionCliente.actualizarEstadoOperacionCliente(operacionClienteFormulario);
@@ -831,8 +889,24 @@ public class InicioBean {
 		mostrarVerificacion = Boolean.FALSE;
     }
     
+    public void validarMensajeClienteCCI() {
+    	ServiceCliente serviceCliente = new ServiceClienteImpl();
+    	
+    	Integer indExisteBancoEnNegocio = NumerosType.NUMERO_MINIMO_CERO.getValor();
+    	
+    	indExisteBancoEnNegocio = serviceCliente.getExisteBancoEnNegocio(operacionClienteFormulario.getTpCuentBancoByCodCuenBancClieOrig());
+    	
+    	if(indExisteBancoEnNegocio.equals(NumerosType.INDICADOR_POSITIVO_UNO.getValor())) {
+    		mostrarMensajeClienteCCI = Boolean.FALSE;
+    	}else {
+    		mostrarMensajeClienteCCI = Boolean.TRUE;
+    	}
+    }
+    
     public void validarMensajeCCI() {
     	ServiceCliente serviceCliente = new ServiceClienteImpl();
+    	
+    	Integer indExisteBancoEnNegocio = NumerosType.NUMERO_MINIMO_CERO.getValor();
     	
     	indExisteBancoEnNegocio = serviceCliente.getExisteBancoEnNegocio(operacionClienteFormulario.getTpCuentBancoByCodCuenBancClieReci());
     	
@@ -842,6 +916,8 @@ public class InicioBean {
     		mostrarMensajeCCI = Boolean.TRUE;
     	}
     }
+    
+    
     
     public void procesarCerrarSesion() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
@@ -928,12 +1004,12 @@ public class InicioBean {
 		this.indCompleDatos = indCompleDatos;
 	}
 
-	public List<SelectItem> getListaComboCuentasBancarias() {
-		return listaComboCuentasBancarias;
+	public List<SelectItem> getListaComboCuentasBancariasReci() {
+		return listaComboCuentasBancariasReci;
 	}
 
-	public void setListaComboCuentasBancarias(List<SelectItem> listaComboCuentasBancarias) {
-		this.listaComboCuentasBancarias = listaComboCuentasBancarias;
+	public void setListaComboCuentasBancariasReci(List<SelectItem> listaComboCuentasBancariasReci) {
+		this.listaComboCuentasBancariasReci = listaComboCuentasBancariasReci;
 	}
 
 	public Boolean getMostrarCompra() {
@@ -1072,6 +1148,14 @@ public class InicioBean {
 		this.mostrarMensajeCCI = mostrarMensajeCCI;
 	}
 
+	public Boolean getMostrarMensajeClienteCCI() {
+		return mostrarMensajeClienteCCI;
+	}
+
+	public void setMostrarMensajeClienteCCI(Boolean mostrarMensajeClienteCCI) {
+		this.mostrarMensajeClienteCCI = mostrarMensajeClienteCCI;
+	}
+
 	public List<SelectItem> getListaComboOrigenFondo() {
 		return listaComboOrigenFondo;
 	}
@@ -1094,6 +1178,14 @@ public class InicioBean {
 
 	public void setIndDatosEmpresa(Boolean indDatosEmpresa) {
 		this.indDatosEmpresa = indDatosEmpresa;
+	}
+
+	public List<SelectItem> getListaComboCuentasBancariasEnvi() {
+		return listaComboCuentasBancariasEnvi;
+	}
+
+	public void setListaComboCuentasBancariasEnvi(List<SelectItem> listaComboCuentasBancariasEnvi) {
+		this.listaComboCuentasBancariasEnvi = listaComboCuentasBancariasEnvi;
 	}
 
 	

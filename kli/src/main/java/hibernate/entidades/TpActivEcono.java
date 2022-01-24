@@ -21,6 +21,7 @@ import javax.persistence.TemporalType;
 @Table(name = "tp_activ_econo", schema = "public")
 public class TpActivEcono implements java.io.Serializable {
 
+	private static final long serialVersionUID = -3321591347195245711L;
 	private Integer codActiEcon;
 	private TpSectoEcono tpSectoEcono;
 	private String desActiEcon;

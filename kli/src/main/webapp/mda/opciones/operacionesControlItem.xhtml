@@ -46,7 +46,7 @@
 			
 			<nav class="menu">
 				<ul>
-					<li>
+					<li onclick="window.location.href='../panelPrincipal.xhtml'">
 						<a class="claseControl" href="../panelPrincipal.xhtml">Panel de Control</a>
 					</li>
 <!-- 					<li> -->
@@ -229,7 +229,73 @@
 							
 					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
 						<div class="form-group">
-							<p:outputLabel value="Cuenta Bancaria a donde Cliente Envía" styleClass="claseTituloCuentaClienteEnvia" />
+							<p:outputLabel value="Cuenta desde donde Cliente Envía su Dinero" styleClass="claseTituloCuentaClienteRecibe"/>
+						</div>
+					</div>
+			</div>
+			
+			<div class="claseCuentaClienteRecibe">
+			
+				<div class="row">
+							
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Alias" styleClass="claseTituloCuentaClienteRecibe"/>
+								<p:inputText styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieOrig.aliCuen}" disabled="true"/>
+							</div>
+						</div>
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Banco" styleClass="claseTituloCuentaClienteRecibe"/>
+								<p:inputText styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieOrig.tpBanco.nomBanc}" disabled="true"/>
+							</div>
+						</div>	
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Tipo de cuenta" styleClass="claseTituloCuentaClienteRecibe"/>
+								<p:inputText  styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieOrig.tpTipoCuent.desTipoCuen} - #{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieReci.tpDivis.codIsoDivi} " disabled="true"/>
+							</div>
+						</div>
+	
+				</div>
+				
+				
+				<div class="row">
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Número de la Cuenta" styleClass="claseTituloCuentaClienteRecibe"/>
+								<p:inputText  styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieOrig.valCuenBanc}" disabled="true"/>
+							</div>
+						</div>	
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Títular de la cuenta" styleClass="claseTituloCuentaClienteRecibe"/>
+								<p:inputText styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieOrig.nombreTitularVista}" disabled="true"/>
+							</div>
+						</div>
+						
+					
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieOrig.tpClien.tpTipoDocumPerso.nomTipoDocuPerso} del titular" styleClass="claseTituloCuentaClienteRecibe"/>
+								<p:inputText styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieOrig.tpClien.valDocuPers}" disabled="true"/>
+							</div>
+						</div>
+	
+				</div>
+				
+			</div>
+			
+			<div class="row">
+							
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="form-group">
+							<p:outputLabel value="Cuenta donde Kambio Online Recibe el Dinero" styleClass="claseTituloCuentaClienteEnvia" />
 						</div>
 					</div>
 			</div>
@@ -242,21 +308,21 @@
 						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
 							<div class="form-group">
 								<p:outputLabel value="Banco" styleClass="claseTituloCuentaClienteEnvia"/>
-								<p:inputText id="idTxtBancoEnvia" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieEnvi.tpBanco.nomBanc}"  disabled="true"/>
+								<p:inputText id="idTxtBancoEnvia" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancCome.tpBanco.nomBanc}"  disabled="true"/>
 							</div>
 						</div>
 						
 						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
 							<div class="form-group">
 								<p:outputLabel value="Tipo de Cuenta" styleClass="claseTituloCuentaClienteEnvia"/>
-								<p:inputText id="idTxtTipoCuentaEnvia" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieEnvi.tpTipoCuent.desTipoCuen} - #{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieEnvi.tpDivis.codIsoDivi}" disabled="true"/>
+								<p:inputText id="idTxtTipoCuentaEnvia" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancCome.tpTipoCuent.desTipoCuen} - #{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancCome.tpDivis.codIsoDivi}" disabled="true"/>
 							</div>
 						</div>	
 						
 						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
 							<div class="form-group">
 								<p:outputLabel value="Número de Cuenta" styleClass="claseTituloCuentaClienteEnvia"/>
-								<p:inputText id="idTxtNumeroCuentaEnvia" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieEnvi.valCuenBanc}" disabled="true"/>
+								<p:inputText id="idTxtNumeroCuentaEnvia" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancCome.valCuenBanc}" disabled="true"/>
 							</div>
 						</div>
 	
@@ -268,21 +334,21 @@
 						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
 							<div class="form-group">
 								<p:outputLabel value="Código interbancario" styleClass="claseTituloCuentaClienteEnvia"/>
-								<p:inputText id="idTxtCodigoInterbancarioEnvia" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieEnvi.valCuenInte}" disabled="true"/>
+								<p:inputText id="idTxtCodigoInterbancarioEnvia" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancCome.valCuenInte}" disabled="true"/>
 							</div>
 						</div>
 						
 						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
 							<div class="form-group">
 								<p:outputLabel value="Titular de la Cuenta" styleClass="claseTituloCuentaClienteEnvia"/>
-								<p:inputText id="idTxtTitularCuentaEnvia" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieEnvi.nombreTitularVista}" disabled="true"/>
+								<p:inputText id="idTxtTitularCuentaEnvia" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancCome.nombreTitularVista}" disabled="true"/>
 							</div>
 						</div>	
 						
 						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
 							<div class="form-group">
 								<p:outputLabel value="RUC del Titular" styleClass="claseTituloCuentaClienteEnvia"/>
-								<p:inputText id="idTxtRucTitularEnvia" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieEnvi.tpClien.valDocuPers}" disabled="true"/>
+								<p:inputText id="idTxtRucTitularEnvia" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancCome.tpClien.valDocuPers}" disabled="true"/>
 							</div>
 						</div>
 	

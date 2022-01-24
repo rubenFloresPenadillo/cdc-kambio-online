@@ -30,7 +30,7 @@ public class BlogItemBean {
 //	private List<TpEntraDto> listaEntradas;
 	private TpEntraDto entradaConsulta;
 //	private Integer codigoCliente;
-//	private String valorNombre;
+	private String valorNombre;
 //	private StreamedContent myImage;
 //	private String rutaImagen;
 	
@@ -53,6 +53,14 @@ public class BlogItemBean {
         String param = paramMap.get("param");
         LoggerUtil.getInstance().getLogger().info("param: "+param);
 
+        HttpSession sesion = ConeccionSesion.getSession();
+        
+    	valorNombre = (String) sesion.getAttribute("valorNombre");
+    	if(ValidacionesString.esNuloOVacio(valorNombre)) {
+    		valorNombre = CadenasType.CADENA_USUARIO.getValor();
+    	}
+    	
+    	
     	try {
 			getEntrada(param);
 		} catch (IOException e) {
@@ -141,6 +149,14 @@ public class BlogItemBean {
 
 	public void setEntradaConsulta(TpEntraDto entradaConsulta) {
 		this.entradaConsulta = entradaConsulta;
+	}
+
+	public String getValorNombre() {
+		return valorNombre;
+	}
+
+	public void setValorNombre(String valorNombre) {
+		this.valorNombre = valorNombre;
 	}
 
 	

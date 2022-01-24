@@ -6,21 +6,21 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 		<!-- Required meta tags -->
-		<title>Kambio Online</title>
+		<title>Contacto</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 			
 		<link rel="shortcut icon" href="../../resources/imagenes/favicon.ico" />	
 		<link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.css" />
 
-<!-- 		<script type="text/javascript"   src="../../resources/js/jquery-3.2.1.slim.min.js"></script> -->
+
 		<script type="text/javascript"   src="../../resources/js/popper.min.js"></script>
 		<script type="text/javascript"   src="../../resources/js/bootstrap.min.js"></script>
 		<script type="text/javascript"   src="../../resources/js/principalContacto.js"></script>
 		<script type="text/javascript"   src="../../resources/js/eskju.jquery.scrollflow.min.js"></script>
 		
 		<link rel="stylesheet" type="text/css" href="../../resources/css/all.css"/>
-<!-- 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"/> -->
+
 		<link rel="stylesheet" type="text/css" href="../../resources/css/fontello.css"/> 
 		<link rel="stylesheet" type="text/css" href="../../resources/css/estilosContacto.css"/> 
 		
@@ -42,7 +42,7 @@
 
 			<nav class="menu">
 				<ul>
-					<li>
+					<li onclick="window.location.href='nosotros.xhtml'">
 						<a href="nosotros.xhtml">Nosotros</a> 
 					</li>
 					<li>
@@ -51,13 +51,13 @@
 					<li>
 						<a href="#" class="claseContactoMarcado" >Contacto</a> 
 					</li>
-					<li>
-						<a href="#">Ayuda</a> 
+					<li onclick="window.location.href='ayuda.xhtml'">
+						<a href="ayuda.xhtml">Ayuda</a> 
 					</li>
-					<li>
+					<li onclick="window.location.href='ingreso.xhtml'">
 						<a class="btn btn-secondary-kli botonIniciarOperacionGeneral" href="ingreso.xhtml">INICIAR SESIÓN</a> 
 					</li>
-					<li>
+					<li onclick="window.location.href='registro.xhtml'">
 						<a class="btn btn-primary-kli  botonIniciarOperacionGeneral" href="registro.xhtml">REGISTRARME</a> 
 					</li>	
 				</ul>
@@ -102,7 +102,6 @@
 								<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6">
 									<div class="row claseContactoItemContenedor">
 										<div class="column col-xs-2 col-sm-2 col-md-3 col-lg-3">
-<!-- 											<img  src="../../resources/imagenes/contacto-telefono42x42.png" alt="Telefono de contacto"/>	 -->
 											<i class="fas fa-phone"></i>
 										</div>
 										<div class="claseContactoItem column col-xs-10 col-sm-10 col-md-9 col-lg-9">
@@ -116,12 +115,11 @@
 								<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6">
 									<div class="row claseContactoItemContenedor">
 										<div class="column col-xs-2 col-sm-2 col-md-3 col-lg-3">
-<!-- 											<img  src="../../resources/imagenes/contacto-mensaje42x42.png" alt="Correo de contacto"/>	 -->
 											<i class="fas fa-envelope"></i>
 										</div>
 										<div class="claseContactoItem column col-xs-10 col-sm-10 col-md-9 col-lg-9 ">
 											<span class="contactoTitulo" >Correo para ventas</span><br></br>
-											<span>ventas@kambio.online</span>
+											<span>pagos@kambio.online</span>
 										</div>
 									</div>
 									
@@ -132,7 +130,6 @@
 								<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6">
 									<div class="row claseContactoItemContenedor">
 										<div class="column col-xs-2 col-sm-2 col-md-3 col-lg-3">
-<!-- 											<img  src="../../resources/imagenes/contacto-ubicacion42x42.png" alt="Ubicación"/>	 -->
 												<i class="fas fa-map-marker-alt"></i>
 										</div>
 										<div class="claseContactoItem column col-xs-10 col-sm-10 col-md-9 col-lg-9">
@@ -146,12 +143,14 @@
 								<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6">
 									<div class="row claseContactoItemContenedor">
 										<div class="column col-xs-2 col-sm-2 col-md-3 col-lg-3">
-<!-- 											<img  src="../../resources/imagenes/contacto-like42x42.png" alt="Siguenos en Facebook"/>	 -->
 												<i class="fab fa-facebook"></i>
 										</div>
 										<div class="claseContactoItem column col-xs-10 col-sm-10 col-md-9 col-lg-9">
 											<span class="contactoTitulo">Siguenos en Facebook</span><br></br>
-											<span>Aquí</span>
+											<a  href="https://www.facebook.com/kambio.online" target="_blank" rel="noopener noreferrer">
+												<span>Aquí</span>
+											</a>
+											
 										</div>
 									</div>
 									
@@ -243,7 +242,7 @@
     		
     		
     		<section id="mapaContacto" class="scrollflow -slide-top -opacity">
-				<h2>Puedes visitarnos en nuestra oficina</h2>
+				<h2>Puedes visitarnos en nuestra oficina física</h2>
 				<div class="line-shape"></div>
 				<div class="row claseContieneMapa" >
 					<div class="column col-xs-12 col-sm-12 col-md-10 col-lg-10 mx-auto">

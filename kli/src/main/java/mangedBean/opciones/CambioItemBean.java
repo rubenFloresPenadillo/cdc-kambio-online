@@ -133,7 +133,7 @@ public class CambioItemBean {
     	
         if(result.startsWith(CadenasType.INDICADOR_PROCESO_OK.getValor())) {
 
-//        	resultadoProcesoExito = "Datos guardados con Ã©xito.";
+//        	resultadoProcesoExito = "Datos guardados con éxito.";
         	tipoCambioItem = new TpTipoCambiDto();
         	PrimeFaces.current().executeScript("operacionGuardarTipoCambioExitosa();");
         }else {
