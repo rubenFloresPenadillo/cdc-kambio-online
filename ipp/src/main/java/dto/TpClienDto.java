@@ -38,6 +38,7 @@ public class TpClienDto implements java.io.Serializable {
 	private String usuApliModi;
 	private Date fecModiRegi;
 	private String valNombPerf;
+	private Integer codCliePadr;
 	
 	public TpClienDto() {
 //		tpDepar = new TpDeparDto();
@@ -288,6 +289,14 @@ public class TpClienDto implements java.io.Serializable {
 
 	public void setTpActivEcono(TpActivEconoDto tpActivEcono) {
 		this.tpActivEcono = tpActivEcono;
+	}
+
+	public Integer getCodCliePadr() {
+		return codCliePadr;
+	}
+
+	public void setCodCliePadr(Integer codCliePadr) {
+		this.codCliePadr = codCliePadr;
 	}
 
 	

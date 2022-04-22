@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+		<!-- Required meta tags -->
+		<title>Nosotros</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+			
+		<link rel="shortcut icon" href="../../resources/imagenes/favicon.ico" />	
+		<link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.css" />
+
+
+		<script type="text/javascript"   src="../../resources/js/popper.min.js"></script>
+		<script type="text/javascript"   src="../../resources/js/bootstrap.min.js"></script>
+		<script type="text/javascript"   src="../../resources/js/principalNosotros.js"></script>
+		<script type="text/javascript"   src="../../resources/js/eskju.jquery.scrollflow.min.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="../../resources/css/all.css"/>
+		
+		<link rel="stylesheet" type="text/css" href="../../resources/css/fontello.css"/> 
+		<link rel="stylesheet" type="text/css" href="../../resources/css/estilosNosotros.css"/> 
+		
+</h:head>
+<h:body>
+
+<header>
+
+
+		<div class="contenedor">
+			<a  href="../../index.xhtml">
+				<img class="imagenLogo" src="../../resources/imagenes/logoIcambio.png" alt="Logo Icambio"/>
+			</a>
+			
+			<h:selectBooleanCheckbox  id="menu-bar"/>
+			<label class="icon-menu" for="menu-bar"></label> 
+
+			<nav class="menu">
+				<ul>
+					<li>
+						<a href="#" class="claseNosotrosMarcado" >Nosotros</a> 
+					</li>
+<!-- 					<li> -->
+<!-- 						<a href="#">Blog</a> -->
+<!-- 					</li> -->
+					<li onclick="window.location.href='contacto.xhtml'">
+						<a href="contacto.xhtml">Contacto</a> 
+					</li>
+					<li onclick="window.location.href='ayuda.xhtml'">
+						<a href="ayuda.xhtml">Ayuda</a> 
+					</li>
+					<li onclick="window.location.href='ingreso.xhtml'">
+						<a class="btn btn-secondary-kli botonIniciarOperacionGeneral" href="ingreso.xhtml">INICIAR SESIÓN</a> 
+					</li>
+					<li onclick="window.location.href='registro.xhtml'">
+						<a class="btn btn-primary-kli  botonIniciarOperacionGeneral" href="registro.xhtml">REGISTRARME</a> 
+					</li>	
+				</ul>
+<!-- 				<p:commandButton class="btn btn-warning botonIniciarOperacionGeneral icon-right-dir" value="INICIAR OPERACIÓN" /> -->
+			</nav>
+
+		</div>
+</header>
+
+		<main>
+			<section id="idNosotros" class="scrollflow -slide-top -opacity">
+				<h2>Te contamos un poco más de nosotros</h2>
+				<div class="line-shape"></div>
+				<div class="container contenedorTitulo">
+		            <div class="row claseFilaHistoria">
+		                <div class="col-md-12">
+		                    <div class="main-timeline">
+<!-- 		                        <a href="#" class="timeline"> -->
+<!-- 		                            <div class="timeline-icon"><i class="fa fa-calculator"></i></div> -->
+<!-- 		                            <div class="timeline-content"> -->
+<!-- 		                                <h3 class="title">2004</h3> -->
+<!-- 		                                <p align="justify" class="description"> -->
+<!-- 		                                    Iniciamos como casa de cambio presencial. -->
+<!-- 		                                </p> -->
+<!-- 		                            </div> -->
+<!-- 		                        </a> -->
+		                        <a href="#" class="timeline">
+		                            <div class="timeline-icon"><i class="fa fa-anchor"></i></div>
+		                            <div class="timeline-content">
+		                                <h3 class="title">Mejores</h3>
+		                                <p align="justify" class="description">
+		                                    C&amp;G DIGITAL GROUP SAC nació para mejorar los servicios financieros y digitales del mercado, para contribuir con el acceso al mundo digital a las personas naturales, micro y pequeños empresarios del norte del país
+		                                </p>
+		                            </div>
+		                        </a>
+		                        <a href="#" class="timeline">
+		                            <div class="timeline-icon"><i class="fa fa-shield-alt"></i></div>
+		                            <div class="timeline-content">
+		                                <h3 class="title">Respaldo</h3>
+		                                <p align="justify" class="description">
+		                                    Contamos con el respaldo financiero y operacional de empresas con más de 12 años de experiencia en el mundo empresarial en sus diversas actividades de negocio
+		                                </p>
+		                            </div>
+		                        </a>
+		                        <a href="#" class="timeline">
+		                            <div class="timeline-icon"><i class="fa fa-cloud-upload-alt"></i></div>
+		                            <div class="timeline-content">
+		                                <h3 class="title">Mercado</h3>
+		                                <p align="justify" class="description">
+		                                    Icambio nació para contribuir a mejorar el servicio de cambio de moneda en línea, con el tipo de cambio más competitivo del mercado
+		                                </p>
+		                            </div>
+		                        </a>
+		                         <a href="#" class="timeline">
+		                            <div class="timeline-icon"><i class="fa fa-anchor"></i></div>
+		                            <div class="timeline-content">
+		                                <h3 class="title">DIGITAL</h3>
+		                                <p align="justify" class="description">
+		                                    Contribuimos con el acceso a los servicios financieros digitales para toda persona que necesite un cambio de moneda rápido, fácil y seguro
+		                                </p>
+		                            </div>
+		                        </a>
+		                    </div>
+		                </div>
+		            </div>
+		            
+<!-- 		            <h3 class="clasePieMasHistoria">Y seguimos contruyendo nuestra historia</h3> -->
+<!-- 		            <h5 class="clasePieHistoriaVisitanos">Si deseas saber un poco más, visitanos en:</h5> -->
+<!-- 		            <div class="claseBotonEnlaceFacebookHistoria"> -->
+<!-- 		            	 <a target="_blank" class="btn btn-fb" href="https://www.facebook.com/icambiope-100123225968928"><i class="fab fa-facebook-f pr-1"></i> Facebook</a> -->
+<!-- 		            </div> -->
+		           
+	        	</div>
+        	</section>
+        	
+        	
+			<section id="idMision" class="scrollflow -slide-top -opacity">
+				<h2>Nuestra Misión</h2>
+				<div class="line-shape"></div>
+				<div class="row claseContenedorMisionVision">
+					<div class="conocenos-item">
+						<p>Brindar el mejor servicio de cambio de moneda con el tipo de cambio más competitivo del mercado, <br></br> a través de operaciones agiles para contribuir a cumplir los objetivos de cada uno de nuestros clientes</p>
+					</div>
+				</div>
+			</section>
+			
+			
+ 			<section id="idVision" class="scrollflow -slide-top -opacity">
+				<h2>Nuestra Visión</h2>
+				<div class="line-shape"></div>
+				<div class="row claseContenedorMisionVision">
+					<div class="conocenos-item">
+						<p>Ser la casa de cambio de moneda digital más rápida fácil y segura para todas las personas en el mercado</p>
+					</div>
+				</div>
+			</section>
+			       
+            <section id="imagenTienda" class="scrollflow -slide-top -opacity">
+				<h2>Y estamos siempre listos para atenderte</h2>
+				<div class="line-shape"></div>
+				<div class="row claseImagenTienda" >
+					<div class="column col-xs-12 col-sm-12 col-md-10 col-lg-10 mx-auto">
+						<img class="img-fluid bannerContacto" src="../../resources/imagenes/listosAtencion.png" alt="Contacto"/>			
+					</div>
+				</div>
+			</section>
+			
+		</main>
+		
+		<!-- Footer -->
+		<ui:include src="/footer.xhtml" />
+		  
+		  <ui:include src="/estatus.xhtml" />
+
+<button onclick="enlaceWhatsapp();" id="myBtn" title="Escribenos" />
+</h:body>
+</html>

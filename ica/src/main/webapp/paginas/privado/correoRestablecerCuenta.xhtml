@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<!-- Required meta tags -->
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+<link rel="shortcut icon" href="../../resources/imagenes/favicon.ico" />	
+
+<link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.css" />
+
+<!-- <script type="text/javascript" src="../../resources/js/jquery-3.2.1.min.js"></script> -->
+<script type="text/javascript" src="../../resources/js/popper.min.js"></script>
+<script type="text/javascript" src="../../resources/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../resources/js/principalCorreoRestablecerCuenta.js"></script>
+
+<!-- Iconos del formulario login y registro -->
+<link rel="stylesheet" type="text/css" href="../../resources/css/all.css"/>
+<link rel="stylesheet" type="text/css" href="../../resources/css/estilosCorreoRestablecerCuenta.css" />
+<link rel="stylesheet" type="text/css" href="../../resources/css/fontello.css" />
+
+
+
+<title>Restablece Cuenta - Enlace</title>
+</h:head>
+<h:body>
+
+	<ui:param name="mAlias" value="#{correoRestablecerCuentaBean}" />
+	
+	<main>
+
+	<section id="seccionLogin">
+	
+		<div class="contenedor row">
+			<div class="claseContieneImagen text-center col-xs-12 col-sm-12 col-md-5 col-lg-4">
+				<a href="../../" class="d-none d-sm-block d-sm-none d-md-block"> 
+				<img class="imagenLogoPaginaLogin"
+					src="../../resources/imagenes/logoKambioOnlineOficial.png" alt="Logo Icambio"/>
+				</a>
+				
+				<a href="../../" class="d-block d-sm-none"> 
+				<img class="imagenLogoHorizontalPaginaLogin"
+					src="../../resources/imagenes/logoIcambio.png" alt="Logo Icambio"/>
+				</a>
+
+				<label class="seccionRegistrateYa">¡ RESTABLECE TU CUENTA !</label>
+			</div>
+
+			<div class="claseContieneLogin text-center col-xs-12 col-sm-12 col-md-7 col-lg-4">
+				
+				<label class="claseMensajePerdioPassword">¿Perdiste tu contraseña? Por favor ingresa tu correo electrónico. Recibirás un enlace para crear una nueva contraseña.</label>
+				
+				<div class="col-lg-12 main-section">
+					<div class="modal-content formContenidoIngreso">
+					
+						
+						<div class="col-lg-12 user-img">
+							<img src="../../resources/imagenes/correoEnviado128x128.png" alt="Login"/>
+						</div>
+
+						<div class="col-12 form-input">
+							<h:form id="idFormIngreso" method="post" role="form" class="form-horizontal">
+								
+								
+								<div class="form-group">
+									<i class="pi pi-envelope" style="font-size: 2rem"></i> 
+									<p:inputText id="idTxtEmail" class="form-control" value="#{mAlias.usuarioFormulario.ideUsuaEmai}"/>
+									<p:watermark for="idTxtEmail" value="Ingrese correo" />
+								</div>
+								
+								<div id="idMensajeResultado" > </div>
+								
+								<p:outputPanel id="idMensajeResultadoProceso" >
+									<p:outputPanel styleClass="alert alert-danger" rendered="#{not empty mAlias.resultadoProcesoError}"> 
+										<p:outputLabel value="#{mAlias.resultadoProcesoError}" />
+									</p:outputPanel>
+								</p:outputPanel>
+								
+								<p:remoteCommand name="metodoRemotoEnviarFormulario" actionListener="#{mAlias.validar()}" update="idMensajeResultadoProceso" />
+								<p:commandButton onclick="enviar(event);" styleClass="btn btn-primary-kli botonIniciarOperacionGeneral"  value="Restablecer cuenta" />
+
+								<ui:include src="../../estatus.xhtml" />
+							</h:form>
+						</div>
+						
+						<div class="col-12 forgot">
+							<a href="../privado/ingreso.xhtml">¿Deseas iniciar sesión?</a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+	</main>
+
+</h:body>
+
+</html>

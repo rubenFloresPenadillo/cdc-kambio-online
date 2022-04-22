@@ -260,9 +260,10 @@ public class ServiceClienteImpl  implements ServiceCliente{
 			resultado.getTpClien().setValPrimApelPers(String.valueOf(temporal[11]));
 			resultado.getTpClien().setValSeguApelPers(String.valueOf(temporal[12]));
 			resultado.getTpClien().setValRazoSociPers(String.valueOf(temporal[13]));
-			resultado.getTpClien().setValDocuPers(String.valueOf(temporal[14]));
+			resultado.getTpClien().setValDocuPers(temporal[14] == null ? null : String.valueOf(temporal[14]));
 			resultado.getTpTipoCuent().setDesTipoCuen(String.valueOf(temporal[15]));
 			resultado.setAliCuen(String.valueOf(temporal[16]));
+			resultado.getTpClien().setValDocuEmpr(String.valueOf(temporal[17]));
 			
 			if(ElementosTablasType.TIPO_PERSONERIA_NATURAL.getIdElemento().equals(resultado.getTpClien().getTpTipoDocumPerso().getTpTipoPerso().getCodTipoPers())) {
 				StringBuilder sb = new StringBuilder();
@@ -361,7 +362,8 @@ public class ServiceClienteImpl  implements ServiceCliente{
 	     tpUsuarEntidad.setIndCompDato(tpUsuarDto.getIndCompDato());
 	     tpUsuarEntidad.setValNombRegi(tpUsuarDto.getValNombRegi());
 	     tpUsuarEntidad.setCodUsuaPadr(tpUsuarDto.getCodUsuaPadr());
-	        
+	     tpUsuarEntidad.setEmaUsuaAuxi(tpUsuarDto.getEmaUsuaAuxi());
+	     
 	     tpTipoPersoEntidad.setCodTipoPers(tpUsuarDto.getTpTipoPerso().getCodTipoPers());
 	     tpUsuarEntidad.setTpTipoPerso(tpTipoPersoEntidad);
 	        
@@ -375,7 +377,7 @@ public class ServiceClienteImpl  implements ServiceCliente{
         	tpClienEntidad.setCodClie(tpClienDto.getCodClie());
         }
         
-        
+        tpClienEntidad.setCodCliePadr(tpClienDto.getCodCliePadr());
         tpClienEntidad.getTpUsuar().setCodUsua(tpClienDto.getTpUsuar().getCodUsua());
         tpClienEntidad.getTpUsuar().setValNombRegi(tpClienDto.getValPrimNombPers());
         tpClienEntidad.getTpTipoDocumPerso().setCodTipoDocuPers(tpClienDto.getTpTipoDocumPerso().getCodTipoDocuPers());
@@ -419,6 +421,7 @@ public class ServiceClienteImpl  implements ServiceCliente{
         tpClienEntidad.setIndEsta(tpClienDto.getIndEsta());
         tpClienEntidad.setUsuApliCrea(tpClienDto.getUsuApliCrea());
         tpClienEntidad.setFecCreaRegi(tpClienDto.getFecCreaRegi());
+        tpClienEntidad.setValTelePers(tpClienDto.getValTelePers());
 
         String result = daoCliente.insertUpdateEnterprise(tpUsuarEntidad, tpClienEntidad);
 
@@ -442,6 +445,8 @@ public class ServiceClienteImpl  implements ServiceCliente{
 			dto.getTpUsuar().setCodUsua((Integer) temp[3]);
 			dto.getTpUsuar().setCodOperClie((Integer) temp[4]);
 			dto.getTpUsuar().setCodEstaOper((Integer) temp[5]);
+			dto.setCodCliePadr((Integer) temp[6]);
+			dto.getTpUsuar().setCodUsuaPadr((Integer) temp[7]);
 			resultado.add(dto);
 		}
 		

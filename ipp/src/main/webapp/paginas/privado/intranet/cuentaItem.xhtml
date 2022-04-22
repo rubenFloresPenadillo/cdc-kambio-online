@@ -37,20 +37,34 @@
 		<div class="contenedor">
 			
 			<a  href="../../../mda/index.xhtml">
-				<img src="../../../resources/imagenes/logoHorizontal390x120.png" alt="Logo Rhaak"/>
+				<img class="claseImagenLogoHorizontal" src="../../../resources/imagenes/logoHorizontal390x120.png" alt="Logo Rhaak"/>
 			</a>
 
 			<h:selectBooleanCheckbox  id="menu-bar"/>
 			<label class="icon-down-dir" for="menu-bar" id="idFlechaAbajo" ></label> 
 			<h:outputLabel id="idSeccionUsuario" class="icon-user-circle" for="menu-bar" value="#{mAlias.valorNombre}"/>
 			
-
 			<nav class="menu">
-				<a class="claseInicio" href="inicio.xhtml">Inicia Operacion</a> 
-				<a class="claseDatos" href="datos.xhtml">Mis Datos</a> 
-				<a class="claseCuentas" href="cuenta.xhtml">Mis Cuentas Bancarias</a> 
-				<a class="claseOperaciones" href="operaciones.xhtml">Mis Operaciones</a> 
-				<a href="#" id="idEnlaceCerrarSesion" onclick="mostrarPopupCerrarSesion();">Cerrar Sesion</a>
+				<ul>
+					<li onclick="window.location.href='inicio.xhtml'"> 
+						<a class="claseInicio" href="inicio.xhtml">Inicia Operacion</a> 
+					</li>	
+					<li onclick="window.location.href='#{mAlias.indDatosEmpresa ? 'datosEmpresa.xhtml' : 'datos.xhtml'}'"> 
+						<a class="claseDatos" href="#{mAlias.indDatosEmpresa ? 'datosEmpresa.xhtml' : 'datos.xhtml'}">Mis Datos</a> 
+					</li>	
+					<li onclick="window.location.href='cuenta.xhtml'"> 
+						<a class="claseCuentas" href="cuenta.xhtml">Mis Cuentas Bancarias</a> 
+					</li>
+					<li onclick="window.location.href='operaciones.xhtml'">
+						<a class="claseOperaciones" href="operaciones.xhtml">Mis Operaciones</a> 
+					</li>	
+					<li onclick="window.location.href='elegirPerfil.xhtml'"> 
+						<a href="elegirPerfil.xhtml" id="idEnlaceElegirPerfil" class="claseElegirPerfil btn btn-info botonIniciarOperacionPerfil icon-user">Elegir Perfil</a> 
+					</li>
+					<li id="idEnlaceCerrarSesion" onclick="mostrarPopupCerrarSesion();">
+						<a href="#"  onclick="mostrarPopupCerrarSesion();">Cerrar Sesion</a>
+					</li>	
+				</ul>
 			</nav>
 
 			<a id="idBotonCerrarSesion"  class="btn botonCerrarSesion icon-power" href="#" title="Cerrar sesión" onclick="mostrarPopupCerrarSesion();" />
@@ -105,11 +119,11 @@
 			<p:remoteCommand name="ejecutarRegresarInicio" actionListener="#{mAlias.regresar()}"/>
 			
 			<div class="row mx-auto">
-				
 				<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 claseTituloIzquierda" >
-					<p class="claseTitulo">Añade una cuenta bancaria en donde deseas recibir tu dinero.</p>
+					<p:outputLabel  class="claseTitulo" rendered="#{!mAlias.indicadorModoConsulta}">
+						Las cuentas que añadas serviran para poder realizar las transferencias, añade las que necesites.
+					</p:outputLabel>
 				</div>
-				
 				<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 claseTituloDerecha">
 					<a class="btn botonRegresar icon-undo" href="cuenta.xhtml" title="Regresar a Administración de Cuentas Bancarias"/>
 				</div>
@@ -185,8 +199,16 @@
 					
 					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
 						<div class="form-group">
-							<p:outputLabel value="Alias" styleClass="clasesCamposFormulario" />
-							<p:inputText id="idTxtAlias" styleClass="form-control" value="#{mAlias.cuentaItem.aliCuen}" />
+							<p:outputLabel value="CCI *" />
+							<p:inputText id="idTxtNumeroCCI" styleClass="form-control" value="#{mAlias.cuentaItem.valCuenInte}" disabled="#{mAlias.indicadorModoConsulta}"/>
+							<div id="idMensajeNumeroCCI" > </div>
+						</div>
+					</div>
+					
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="form-group">
+							<p:outputLabel value="Alias *" styleClass="clasesCamposFormulario" />
+							<p:inputText id="idTxtAlias" styleClass="form-control" value="#{mAlias.cuentaItem.aliCuen}" disabled="#{mAlias.indicadorModoConsulta}"/>
 							<div id="idMensajeResultadoAlias" > </div>
 						</div>
 					</div>

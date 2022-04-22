@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 7 ago. 2021 06:38:33 by Hibernate Tools 5.2.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="hibernate.xml.TpPais" optimistic-lock="version" polymorphism="implicit" schema="public" select-before-update="false" table="tp_pais">
+        <comment>TABLA MAESTRO DE PAISES</comment>
+        <id name="codPais" type="java.lang.Integer">
+            <column name="cod_pais"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="nomPais" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="nom_pais" not-null="true">
+                <comment>TEXTO QUE REPRESENTA EL NOMBRE DEL PAIS</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="desGent" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="des_gent">
+                <comment>TEXTO QUE REPRESENTA EL GENTILICIO DEL PAIS</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="indEsta" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="ind_esta" not-null="true">
+                <comment>ESTADO EN EL QUE SE ENCUENTRA EL REGISTRO, ACTIVO = 1 E INACTIVO = 0</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="usuApliCrea" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="usu_apli_crea" not-null="true">
+                <comment>USUARIO DE APLICACION QUE REALIZO LA CREACION DEL REGISTRO</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="fecCreaRegi" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="29" name="fec_crea_regi" not-null="true">
+                <comment>FECHA DE CREACION DEL REGISTRO</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="usuApliModi" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="usu_apli_modi">
+                <comment>USUARIO DE APLICACION QUE REALIZO LA ACTUALIZACION DEL REGISTRO</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="fecModiRegi" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="29" name="fec_modi_regi">
+                <comment>FECHA DE MODIFICACION DEL REGISTRO</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

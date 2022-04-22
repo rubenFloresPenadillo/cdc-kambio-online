@@ -8,9 +8,9 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import dto.TpUsuarDto;
-import javax.servlet.http.HttpSession;
 import loggerUtil.LoggerUtil;
 import managedThread.CorreoEnvioHilo;
 import seguridad.EnmascaraUtil;
@@ -63,7 +63,7 @@ public class CorreoRestablecerCuentaBean {
 
 		ServiceUsuario serviceUsuario = new ServiceUsuarioImpl();
 		temp.setIdeUsuaEmai(usuarioFormulario.getIdeUsuaEmai().trim().toUpperCase());
-		
+		usuarioFormulario.setIdeUsuaEmai(usuarioFormulario.getIdeUsuaEmai().trim().toUpperCase());
 		LoggerUtil.getInstance().getLogger().info("Usuario a Restablecer: "+temp.getIdeUsuaEmai());
 		
 		temp = serviceUsuario.getUsuario(temp);

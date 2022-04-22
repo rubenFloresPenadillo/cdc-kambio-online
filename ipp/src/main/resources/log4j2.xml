@@ -4,8 +4,8 @@
 
 <Configuration>
 	<Properties>
-<!-- 		 <Property name="BASE_DIR">D:/cdcBases/rhaakBase/log</Property> -->
-         <Property name="BASE_DIR">/etc/rhaakBase/log</Property>
+		 <Property name="BASE_DIR">D:/cdcBases/rhaakBase/log</Property>
+<!--          <Property name="BASE_DIR">/etc/rhaakBase/log</Property> -->
     </Properties>
     <Appenders>
     	<Console name="console" >

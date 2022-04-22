@@ -143,6 +143,9 @@ public class InicioBean {
     	usuario = (String) sesion.getAttribute("usuario");
     	ideUsuaEmai = (String) sesion.getAttribute("ideUsuaEmai");
     	
+    	LoggerUtil.getInstance().getLogger().info("Inicio @PostConstruct InicioBean");
+    	
+    	// Entra cuando se esta procesando un perfil diferente al principal
     	if(codigoUsuario.intValue() != codigoUsuarioPadre.intValue()) {
     		indDatosEmpresa = Boolean.TRUE;
     	}
@@ -152,12 +155,19 @@ public class InicioBean {
     	}
     	
     	if(indCompleDatos.equals(NumerosType.NUMERO_MINIMO_CERO.getValor())) {
+    		
+    		LoggerUtil.getInstance().getLogger().info("Va a la pagina de Datos");
+    		
 			try {
 				FacesContext.getCurrentInstance().getExternalContext().redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath()+PaginasPrivadasType.PAGINA_DATOS.getValor());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}else if (PerfilesType.CLIENTE.getIdElemento().equals(codPerfUsua)) {
+			
+			LoggerUtil.getInstance().getLogger().info("Perfil cliente");
+			
+			
 			getTipoCambioDolar();
 			getListaBancosEnvioDinero();
 			getListaCuentasBancariasReci();
@@ -257,10 +267,16 @@ public class InicioBean {
 				cantidadEnvio = new BigDecimal(CANTIDAD_ENVIO_INICIAL);
 				cargarValoresEnvioReciboA();
 				
+				LoggerUtil.getInstance().getLogger().info("No esta dentro del horario");
+				
     		}else {
+    			
+    			LoggerUtil.getInstance().getLogger().info("Si esta dentro del horario");
     			
     			// Si ya se tiene una operacion en proceso
     			if(!ValidacionesNumeros.esCeroONuloEntero(codOperClie)) {
+    				
+    				LoggerUtil.getInstance().getLogger().info("Tiene una operacion en curso");
     				
     				if(ElementosTablasType.ESTADO_OPERACION_INICIADA.getIdElemento().equals(codEstaOper)) {
     					
@@ -350,6 +366,8 @@ public class InicioBean {
     					
     				}else if (ElementosTablasType.ESTADO_OPERACION_VERIFICACION.getIdElemento().equals(codEstaOper)) {
     					
+    					LoggerUtil.getInstance().getLogger().info("Va a la pagina de operaciones");
+    					
     					try {
     						FacesContext.getCurrentInstance().getExternalContext().redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath()+PaginasPrivadasType.PAGINA_OPERACIONES.getValor());
     					} catch (IOException e) {
@@ -365,6 +383,8 @@ public class InicioBean {
     			}else {
     				
     				//Se valida si ya tiene alguna cuenta registrada
+    				
+    				LoggerUtil.getInstance().getLogger().info("Valida que tenga cuentas bancarias registrada");
     				
     	        	ServiceCliente serviceCliente = new ServiceClienteImpl();
     	        	

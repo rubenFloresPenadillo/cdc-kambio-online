@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 7 ago. 2021 06:38:33 by Hibernate Tools 5.2.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="hibernate.xml.TpFactDocumDetal" optimistic-lock="version" polymorphism="implicit" schema="public" select-before-update="false" table="tp_fact_docum_detal">
+        <comment>TABLA FACTURACION DOCUMENTOS DETALLE</comment>
+        <id name="codFactDocuDetal" type="java.lang.Integer">
+            <column name="cod_fact_docu_detal"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="hibernate.xml.TpFactDocumCabec" embed-xml="true" fetch="select" insert="true" name="tpFactDocumCabec" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="cod_fact_docu_cabec" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="codUnidMediItem" optimistic-lock="true" type="string" unique="false">
+            <column length="3" name="cod_unid_medi_item" not-null="true">
+                <comment>CODIGO DE UNIDAD DE MEDIDA POR ITEM</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="canUnidItem" optimistic-lock="true" type="string" unique="false">
+            <column length="23" name="can_unid_item" not-null="true">
+                <comment>CANTIDAD DE UNIDADES POR ITEM</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="codProd" optimistic-lock="true" type="string" unique="false">
+            <column length="30" name="cod_prod">
+                <comment>CODIGO DE PRODUCTO</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="codProdSuna" optimistic-lock="true" type="string" unique="false">
+            <column length="8" name="cod_prod_suna">
+                <comment>CODIGO PRODUCTO SUNAT</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="desDetaServBien" optimistic-lock="true" type="string" unique="false">
+            <column length="500" name="des_deta_serv_bien" not-null="true">
+                <comment>DESCRIPCION DETALLADA DEL SERVICIO PRESTADO, BIEN VENDIDO O CEDIDO EN USO, INDICANDO LAS CARACTERISTICAS.</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="valUnit" optimistic-lock="true" type="string" unique="false">
+            <column length="23" name="val_unit" not-null="true">
+                <comment>VALOR UNITARIO</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="triSumaTribItem" optimistic-lock="true" type="string" unique="false">
+            <column length="15" name="tri_suma_trib_item" not-null="true">
+                <comment>SUMATORIA TRIBUTOS POR ITEM</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="triCodiTipoProdIgv" optimistic-lock="true" type="string" unique="false">
+            <column length="4" name="tri_codi_tipo_prod_igv" not-null="true">
+                <comment>TRIBUTO: CODIGOS DE TIPOS DE TRIBUTOS IGV</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="triMontIgvItem" optimistic-lock="true" type="string" unique="false">
+            <column length="15" name="tri_mont_igv_item" not-null="true">
+                <comment>TRIBUTO: MONTO DE IGV POR ITEM</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="triBaseImpoIgvItem" optimistic-lock="true" type="string" unique="false">
+            <column length="15" name="tri_base_impo_igv_item" not-null="true">
+                <comment>TRIBUTO: BASE IMPONIBLE IGV POR ITEM</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="triNombTribItem" optimistic-lock="true" type="string" unique="false">
+            <column length="4" name="tri_nomb_trib_item" not-null="true">
+                <comment>TRIBUTO: NOMBRE DE TRIBUTO POR ITEM</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="triCodiTipoProdItem" optimistic-lock="true" type="string" unique="false">
+            <column length="4" name="tri_codi_tipo_prod_item" not-null="true">
+                <comment>TRIBUTO: CODIGO DE TIPO DE TRIBUTO POR ITEM</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="triAfecIgvItem" optimistic-lock="true" type="string" unique="false">
+            <column length="2" name="tri_afec_igv_item" not-null="true">
+                <comment>TRIBUTO: AFECTACION AL IGV POR ITEM</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="triPorcIgv" optimistic-lock="true" type="string" unique="false">
+            <column length="5" name="tri_porc_igv" not-null="true">
+                <comment>TRIBUTO: PORCENTAJE DE IGV</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="triIscCodiTipoProdIsc" optimistic-lock="true" type="string" unique="false">
+            <column length="4" name="tri_isc_codi_tipo_prod_isc" not-null="true">
+                <comment>TRIBUTO ISC: CODIGOS DE TIPOS DE TRIBUTOS ISC</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="triIscMontIscItem" optimistic-lock="true" type="string" unique="false">
+            <column length="15" name="tri_isc_mont_isc_item" not-null="true">
+                <comment>TRIBUTO ISC: MONTO DE ISC POR ITEM</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="triIscBaseImpoIscItem" optimistic-lock="true" type="string" unique="false">
+            <column length="15" name="tri_isc_base_impo_isc_item" not-null="true">
+                <comment>TRIBUTO ISC: BASE IMPONIBLE ISC POR ITEM</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="triIscNombTribItem" optimistic-lock="true" type="string" unique="false">
+            <column length="4" name="tri_isc_nomb_trib_item" not-null="true">
+                <comment>TRIBUTO ISC: NOMBRE DE TRIBUTO POR ITEM</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="triIscCodiTipoTribItem" optimistic-lock="true" type="string" unique="false">
+            <column length="4" name="tri_isc_codi_tipo_trib_item" not-null="true">
+                <comment>TRIBUTO ISC: CODIGO DE TIPO DE TRIBUTO POR ITEM</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="triIscTipoSistIsc" optimistic-lock="true" type="string" unique="false">
+            <column length="2" name="tri_isc_tipo_sist_isc">
+                <comment>TRIBUTO ISC: TIPO DE SISTEMA ISC</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="triIscPorcIsc" optimistic-lock="true" type="string" unique="false">
+            <column length="5" name="tri_isc_porc_isc" not-null="true">
+                <comment>TRIBUTO ISC: PORCENTAJE DE ISC</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="triOtroCodiTipoTribOtro" optimistic-lock="true" type="string" unique="false">
+            <column length="4" name="tri_otro_codi_tipo_trib_otro" not-null="true">
+                <comment>TRIBUTO OTRO: CODIGOS DE TIPOS DE TRIBUTOS OTRO</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="triOtroMontTribItem" optimistic-lock="true" type="string" unique="false">
+            <column length="15" name="tri_otro_mont_trib_item" not-null="true">
+                <comment>TRIBUTO OTRO: MONTO DE TRIBUTO OTRO POR IITEM</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="triOtroBaseImpoTribItem" optimistic-lock="true" type="string" unique="false">
+            <column length="15" name="tri_otro_base_impo_trib_item" not-null="true">
+                <comment>TRIBUTO OTRO: BASE IMPONIBLE DE TRIBUTO OTRO POR ITEM</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="triOtroNombTribItem" optimistic-lock="true" type="string" unique="false">
+            <column length="4" name="tri_otro_nomb_trib_item" not-null="true">
+                <comment>TRIBUTO OTRO:  NOMBRE DE TRIBUTO OTRO POR ITEM</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="triOtroCodiTribItem" optimistic-lock="true" type="string" unique="false">
+            <column length="4" name="tri_otro_codi_trib_item" not-null="true">
+                <comment>TRIBUTO OTRO: CODIGO DE TIPO DE TRIBUTO OTRO POR ITEM</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="triOtroPorcTribItem" optimistic-lock="true" type="string" unique="false">
+            <column length="5" name="tri_otro_porc_trib_item" not-null="true">
+                <comment>TRIBUTO OTRO: PORCENTAJE DE TRIBUTO OTRO POR ITEM</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="preVentUnit" optimistic-lock="true" type="string" unique="false">
+            <column length="23" name="pre_vent_unit" not-null="true">
+                <comment>PRECIO DE VENTA UNITARIO</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="valVentItem" optimistic-lock="true" type="string" unique="false">
+            <column length="15" name="val_vent_item" not-null="true">
+                <comment>VALOR DE VENTA POR ITEM</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="valRefeUnitGrat" optimistic-lock="true" type="string" unique="false">
+            <column length="15" name="val_refe_unit_grat">
+                <comment>VALOR REFERENCIAL UNITARIO (GRATUITOS)</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="indEsta" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="ind_esta" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="usuApliCrea" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="usu_apli_crea" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="fecCreaRegi" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="29" name="fec_crea_regi" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="usuApliModi" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="usu_apli_modi"/>
+        </property>
+        <property generated="never" lazy="false" name="fecModiRegi" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="29" name="fec_modi_regi"/>
+        </property>
+    </class>
+</hibernate-mapping>

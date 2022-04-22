@@ -7,13 +7,16 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import cadenas.util.ValidacionesString;
 import dto.TpClienDto;
-import javax.servlet.http.HttpSession;
+import dto.TpUsuarDto;
 import loggerUtil.LoggerUtil;
 import service.ServiceCliente;
+import service.ServiceUsuario;
 import service.impl.ServiceClienteImpl;
+import service.impl.ServiceUsuarioImpl;
 import util.sesion.ConeccionSesion;
 import util.types.CadenasType;
 import util.types.NumerosType;
@@ -47,7 +50,7 @@ public class ElegirPerfilBean {
 
 	
 	public ElegirPerfilBean() {
-		System.out.println("Entro al constructor datosBean");
+		System.out.println("Entro al constructor ElegirPerfilBean");
 		resultadoProcesoExito = CadenasType.VACIO.getValor();
 		resultadoProcesoError = CadenasType.VACIO.getValor();
 	}
@@ -68,6 +71,7 @@ public class ElegirPerfilBean {
 
     	codigoUsuario = (Integer) sesion.getAttribute("codigoUsuario");
     	codigoUsuarioPadre = (Integer) sesion.getAttribute("codigoUsuarioPadre");
+    	codigoClientePadre = (Integer) sesion.getAttribute("codigoClientePadre");
     	
     	getListaPerfilesEmpresa();
     	
@@ -86,26 +90,76 @@ public class ElegirPerfilBean {
     }
     
 
+    // Setea los valores para el perfil principal
 	public void redireccionarAlInicioOperaciones() {
 		
 		HttpSession sesion = ConeccionSesion.getSession();
 		
-		codigoUsuarioPadre = (Integer) sesion.getAttribute("codigoUsuarioPadre");
-		codigoClientePadre = (Integer) sesion.getAttribute("codigoClientePadre");
-		indCompleDatosPadre = (Integer) sesion.getAttribute("indCompleDatosPadre");
-		valorNombrePadre = (String) sesion.getAttribute("valorNombrePadre");
-		codOperCliePadre = (Integer) sesion.getAttribute("codOperCliePadre");
-		codEstaOperPadre = (Integer) sesion.getAttribute("codEstaOperPadre");
+		// Se obtienen los datos del perfil principal desde la base de datos
+		
+		TpUsuarDto temp = new TpUsuarDto();
+
+		ServiceUsuario serviceUsuario = new ServiceUsuarioImpl();
+		temp.setCodUsua(codigoUsuarioPadre);
+		temp = serviceUsuario.getUsuario(temp);
+		
+//		codigoUsuarioPadre = (Integer) sesion.getAttribute("codigoUsuarioPadre");
+//		codigoClientePadre = (Integer) sesion.getAttribute("codigoClientePadre");
+//		indCompleDatosPadre = (Integer) sesion.getAttribute("indCompleDatosPadre");
+//		valorNombrePadre = (String) sesion.getAttribute("valorNombrePadre");
+//		codOperCliePadre = (Integer) sesion.getAttribute("codOperCliePadre");
+//		codEstaOperPadre = (Integer) sesion.getAttribute("codEstaOperPadre");
+//    	
+//    	sesion.setAttribute("codigoUsuario", codigoUsuarioPadre);
+//    	sesion.setAttribute("codigoCliente", codigoClientePadre);
+//    	sesion.setAttribute("indCompleDatos", indCompleDatosPadre);
+//    	sesion.setAttribute("valorNombre", valorNombrePadre);
+//    	sesion.setAttribute("codOperClie", codOperCliePadre);
+//    	sesion.setAttribute("codEstaOper", codEstaOperPadre);
     	
-    	sesion.setAttribute("codigoUsuario", codigoUsuarioPadre);
-    	sesion.setAttribute("codigoCliente", codigoClientePadre);
-    	sesion.setAttribute("indCompleDatos", indCompleDatosPadre);
-    	sesion.setAttribute("valorNombre", valorNombrePadre);
-    	sesion.setAttribute("codOperClie", codOperCliePadre);
-    	sesion.setAttribute("codEstaOper", codEstaOperPadre);
+    	
+    	sesion.setAttribute("codigoUsuario", temp.getCodUsua());
+    	sesion.setAttribute("codigoCliente", temp.getCodClie());
+    	sesion.setAttribute("codigoUsuarioPadre", temp.getCodUsua());
+    	sesion.setAttribute("codigoClientePadre", temp.getCodClie());
+    	sesion.setAttribute("indCompleDatos", temp.getIndCompDato());
+    	sesion.setAttribute("valorNombre", temp.getValNomb());
+    	sesion.setAttribute("codOperClie", temp.getCodOperClie());
+    	sesion.setAttribute("codEstaOper", temp.getCodEstaOper());
     	
 		try {
 			FacesContext.getCurrentInstance().getExternalContext().redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath()+PaginasPrivadasType.PAGINA_INICIO.getValor());
+		} catch (IOException e) {
+			e.printStackTrace();
+			LoggerUtil.getInstance().getLogger().error(e.getMessage());
+	        LoggerUtil.getInstance().getLogger().error(e);
+		}
+	}
+	
+	
+	public void redireccionarACrearPerfilEmpresa() {
+		
+		HttpSession sesion = ConeccionSesion.getSession();
+		
+//		codigoUsuarioPadre = (Integer) sesion.getAttribute("codigoUsuarioPadre");
+//		codigoClientePadre = (Integer) sesion.getAttribute("codigoClientePadre");
+//		indCompleDatosPadre = (Integer) sesion.getAttribute("indCompleDatosPadre");
+//		valorNombrePadre = (String) sesion.getAttribute("valorNombrePadre");
+//		codOperCliePadre = (Integer) sesion.getAttribute("codOperCliePadre");
+//		codEstaOperPadre = (Integer) sesion.getAttribute("codEstaOperPadre");
+    	
+		// Para crear un nuevo perfil solo se necesita los codigos padres
+		sesion.setAttribute("codigoUsuario", null);
+		sesion.setAttribute("codigoCliente", null);
+    	sesion.setAttribute("codigoUsuarioPadre", codigoUsuarioPadre);
+    	sesion.setAttribute("codigoClientePadre", codigoClientePadre);
+//    	sesion.setAttribute("indCompleDatos", indCompleDatosPadre);
+//    	sesion.setAttribute("valorNombre", valorNombrePadre);
+//    	sesion.setAttribute("codOperClie", codOperCliePadre);
+//    	sesion.setAttribute("codEstaOper", codEstaOperPadre);
+    	
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect(FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath()+PaginasPrivadasType.PAGINA_DATOS_PERFIL_EMPRESA.getValor());
 		} catch (IOException e) {
 			e.printStackTrace();
 			LoggerUtil.getInstance().getLogger().error(e.getMessage());
@@ -125,13 +179,17 @@ public class ElegirPerfilBean {
 //    	usuario = (String) sesion.getAttribute("usuario");
 //    	ideUsuaEmai = (String) sesion.getAttribute("ideUsuaEmai");
     	codigoUsuario = tpClienDto.getTpUsuar().getCodUsua();
+    	codigoUsuarioPadre = tpClienDto.getTpUsuar().getCodUsuaPadr();
     	codigoCliente = tpClienDto.getCodClie();
     	indCompleDatos = NumerosType.INDICADOR_POSITIVO_UNO.getValor();
     	valorNombre = tpClienDto.getValNombPerf();
     	codOperClie = tpClienDto.getTpUsuar().getCodOperClie();
     	codEstaOper = tpClienDto.getTpUsuar().getCodEstaOper(); 
     	
+    	
+    	
     	sesion.setAttribute("codigoUsuario", codigoUsuario);
+    	sesion.setAttribute("codigoUsuarioPadre", codigoUsuarioPadre);
 //    	sesion.setAttribute("usuario", usuario);
     	sesion.setAttribute("codigoCliente", codigoCliente);
     	sesion.setAttribute("indCompleDatos", indCompleDatos);

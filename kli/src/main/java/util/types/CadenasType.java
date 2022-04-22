@@ -26,7 +26,10 @@ public enum CadenasType {
 	BACK_SLASH("\\"),
 	CADENA_USUARIO("U"),
 	CADENA_USUARIO_SISTEMA("SYSTEM_APP"),
-	CORREO_DE_ADMINISTRACION("rfloresp@icreando.com");
+	CORREO_DE_ADMINISTRACION("rfloresp@icreando.com"),
+	DOMINIO_WEB("www.kambio.online"),
+//	DOMINIO_WEB("http://localhost:8080/kli"),
+	NOMBRE_COMERCIO("Kambio Online");
 	private String valor;
 
 	private CadenasType(String valor) {

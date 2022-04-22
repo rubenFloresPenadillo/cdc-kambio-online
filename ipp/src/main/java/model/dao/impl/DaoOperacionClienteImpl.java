@@ -247,7 +247,7 @@ public class DaoOperacionClienteImpl implements DaoOperacionCliente {
         sb.append("toc.monReci, toc.valTipoCambUsad, toc.indCompVent, toc.tpEstadOpera.codEstaOper, toc.tpEstadOpera.desEstaOper, ");
         sb.append("toc.tpClien.tpUsuar.ideUsuaEmai, toc.tpClien.valPrimNombPers, toc.tpClien.valSeguNombPers, toc.tpClien.valPrimApelPers, toc.tpClien.valSeguApelPers, ");
         sb.append("toc.tpClien.valRazoSociPers, toc.tpClien.tpTipoDocumPerso.tpTipoPerso.codTipoPers, toc.tpCuentBancoByCodCuenBancClieOrig.codCuenBanc, toc.tpCuentBancoByCodCuenBancCome.codCuenBanc, toc.tpCuentBancoByCodCuenBancClieReci.codCuenBanc, ");
-        sb.append("toc.fecInicOper, toc.fecVeriOper, toc.fecFinaOper, toc.usuApliFinaOper, toc.fecCancOper, toc.usuApliCancOper, toc.valTextComeCanc, toc.tpClien.tpUsuar.codUsuaPadr, toc.tpClien.valNombPerf, toc.tpClien.valDocuEmpr, toc.tpClien.valTelePers  ");
+        sb.append("toc.fecInicOper, toc.fecVeriOper, toc.fecFinaOper, toc.usuApliFinaOper, toc.fecCancOper, toc.usuApliCancOper, toc.valTextComeCanc, toc.tpClien.tpUsuar.codUsuaPadr, toc.tpClien.valNombPerf, toc.tpClien.valDocuEmpr, toc.tpClien.valTelePers, toc.tpClien.tpUsuar.emaUsuaAuxi  ");
         sb.append(" from TpOperaClien toc");
         sb.append(" where 1=1 ");
         sb.append(" and toc.indEsta = :indEsta ");
@@ -260,7 +260,6 @@ public class DaoOperacionClienteImpl implements DaoOperacionCliente {
             sb.append(" and toc.codUnicOperClie = :codUnicOperClie ");        	
         }
        
-        
         sb.append(" order by toc.codOperClie desc");
         
         Query query = session.createQuery(sb.toString());

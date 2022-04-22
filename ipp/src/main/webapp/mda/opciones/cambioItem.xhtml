@@ -37,18 +37,25 @@
 		<div class="contenedor">
 			
 			<a  href="../../mda/index.xhtml">
-				<img src="../../resources/imagenes/logoHorizontal390x120.png" alt="Logo Rhaak"/>
+				<img class="claseImagenLogoHorizontal"  src="../../resources/imagenes/logoHorizontal390x120.png" alt="Logo Rhaak"/>
 			</a>
 
 			<h:selectBooleanCheckbox  id="menu-bar"/>
 			<label class="icon-down-dir" for="menu-bar" id="idFlechaAbajo" ></label> 
 			<h:outputLabel id="idSeccionUsuario" class="icon-user-circle" for="menu-bar" value="#{mAlias.valorNombre}"/>
 			
-
 			<nav class="menu">
-				<a class="claseControl" href="../panelPrincipal.xhtml">Panel de Control</a>
-				<a class="claseReportes" href="#">Reportes</a>
-				<a href="#" id="idEnlaceCerrarSesion" onclick="mostrarPopupCerrarSesion();" >Cerrar Sesion</a>
+				<ul>
+					<li onclick="window.location.href='../panelPrincipal.xhtml'">
+						<a class="claseControl" href="../panelPrincipal.xhtml">Panel de Control</a>
+					</li>
+<!-- 					<li> -->
+<!-- 						<a class="claseReportes" href="#" >Reportes</a> -->
+<!-- 					</li>	 -->	
+					<li>
+						<a href="#" id="idEnlaceCerrarSesion" onclick="mostrarPopupCerrarSesion();" >Cerrar Sesion</a>
+					</li>	
+				</ul>
 			</nav>
 
 			<a id="idBotonCerrarSesion"  class="btn botonCerrarSesion icon-power" href="#" title="Cerrar sesión" onclick="mostrarPopupCerrarSesion();" />

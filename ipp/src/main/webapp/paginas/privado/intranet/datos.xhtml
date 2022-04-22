@@ -132,6 +132,10 @@
 				
 				<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<div class="form-group">
+						<p:outputPanel rendered="#{mAlias.codigoCliente ne null}"  styleClass="alert claseCampoObligatorios"> 
+							Si deseas actualizar tus datos y estos aparecen como no editables, por favor solicita la actualización a la administración del sitio.
+						</p:outputPanel>
+						
 						<p:outputPanel rendered="#{!mAlias.indOperacionEnCurso}"  styleClass="alert claseCampoObligatorios"> 
 							Los campos con * son obligatorios.
 						</p:outputPanel>
@@ -257,7 +261,7 @@
 					<div class="form-group">
 						<p:outputLabel value="País (Residencia) *" />
 						
-						<h:selectOneMenu  id="idComboPais"  styleClass="custom-select form-control claseComboFormulario"
+						<h:selectOneMenu  id="idComboPais"  styleClass="custom-select form-control claseComboFormulario" disabled="#{mAlias.codigoCliente ne null}"
 							value="#{mAlias.clienteFormulario.tpPaisByCodPaisResi.codPais}">
 							<f:selectItem itemLabel="Seleccione..." itemValue="-1"/>
 							<f:selectItems value="#{mAlias.listaComboPais}" />

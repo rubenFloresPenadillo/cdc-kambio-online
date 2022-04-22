@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+	<link rel="shortcut icon" href="../../resources/imagenes/favicon.ico" />	
+	
+	<link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.css"/>
+	
+<!-- 	<script type="text/javascript"   src="../../resources/js/jquery-3.2.1.slim.min.js"></script> -->
+	<script type="text/javascript" src="../../resources/js/popper.min.js"></script>
+	<script type="text/javascript" src="../../resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../resources/js/principalRestableceCuentaEnviado.js"></script>
+	
+	<!-- Iconos del formulario login y registro -->
+	<link rel="stylesheet" type="text/css" href="../../resources/css/all.css"/>
+	<link rel="stylesheet" type="text/css" href="../../resources/css/estilosRestableceCuentaEnviado.css"/>
+	<link rel="stylesheet" type="text/css" href="../../resources/css/fontello.css"/>
+	
+	
+	
+	<title>Envio de Enlace de Restablecimiento</title>
+</h:head>
+<h:body>
+
+	<ui:param name="mAlias" value="#{restablecerCuentaEnviadoBean}" />
+		
+	<main>
+
+	<section id="seccionLogin">
+		<div class="contenedor row">
+			
+			<div class="claseContieneImagen text-center col-xs-12 col-sm-12 col-md-5 col-lg-4">
+				<a href="../../" class="d-none d-sm-block d-sm-none d-md-block"> 
+				<img class="imagenLogoPaginaLogin"
+					src="../../resources/imagenes/logoKambioOnlineOficial.png" alt="Logo Icambio"/>
+				</a>
+				
+				<a href="../../" class="d-block d-sm-none"> 
+				<img class="imagenLogoHorizontalPaginaLogin"
+					src="../../resources/imagenes/logoIcambio.png" alt="Logo Icambio"/>
+				</a>
+
+<!-- 				<label class="seccionRegistrateYa">¡ ACTIVACIÓN DE CUENTA !</label> -->
+			</div>
+
+			<div class="claseContieneLogin text-center col-xs-12 col-sm-12 col-md-7 col-lg-4">
+				<div class="col-lg-12">
+					<label class="seccionRegistrateYa">¡ TE HEMOS ENVIADO UN ENLACE PARA RESTABLECER TU CONTRASEÑA !</label>
+					<label class="claseMensajeActivacion">El enlace fue enviado al correo #{mAlias.ideUsuaEmai}</label>
+				</div>
+				
+				<div class="col-lg-12">
+					<img 
+					src="../../resources/imagenes/candadoSeguridad200x200.png" alt="Enlace enviado" />
+				</div>
+				
+				<div class="col-lg-12">
+<!-- 					<p:commandButton  styleClass="btn btn-success btn-enviar"  value="Ingresar"  -->
+<!-- 					 	action="../../index?faces-redirect=true" /> -->
+					 <a href="../../paginas/privado/ingreso.xhtml" class="btn btn-success btn-enviar">Ir al login</a>	
+				</div>				
+
+			</div>
+		</div>
+	</section>
+	</main>
+
+</h:body>
+
+</html>

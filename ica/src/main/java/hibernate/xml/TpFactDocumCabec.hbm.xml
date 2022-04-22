@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 7 ago. 2021 06:38:33 by Hibernate Tools 5.2.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="hibernate.xml.TpFactDocumCabec" optimistic-lock="version" polymorphism="implicit" schema="public" select-before-update="false" table="tp_fact_docum_cabec">
+        <comment>TABLA FACTURACION DOCUMENTOS CABECERA</comment>
+        <id name="codFactDocuCabec" type="java.lang.Integer">
+            <column name="cod_fact_docu_cabec"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="tipOper" optimistic-lock="true" type="string" unique="false">
+            <column length="4" name="tip_oper" not-null="true">
+                <comment>TIPO DE OPERACION</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="fecEmis" optimistic-lock="true" type="string" unique="false">
+            <column length="10" name="fec_emis" not-null="true">
+                <comment>FECHA DE EMISION</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="horEmis" optimistic-lock="true" type="string" unique="false">
+            <column length="14" name="hor_emis" not-null="true">
+                <comment>HORA DE EMISION</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="fecVenc" optimistic-lock="true" type="string" unique="false">
+            <column length="10" name="fec_venc">
+                <comment>FECHA DE VENCIMIENTO</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="codDomiFisc" optimistic-lock="true" type="string" unique="false">
+            <column length="3" name="cod_domi_fisc">
+                <comment>CODIGO DEL DOMICILIO FISCAL O DE LOCAL ANEXO DEL EMISOR</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="tipDocuIden" optimistic-lock="true" type="string" unique="false">
+            <column length="1" name="tip_docu_iden">
+                <comment>TIPO DE DOCUMENTO DE IDENTIDAD DEL ADQUIRENTE O USUARIO</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="numDocuIden" optimistic-lock="true" type="string" unique="false">
+            <column length="15" name="num_docu_iden">
+                <comment>NUMERO DE DOCUMENTO DE IDENTIDAD DEL ADQUIRENTE O USUARIO</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="nomRazoSociUsua" optimistic-lock="true" type="string" unique="false">
+            <column length="1500" name="nom_razo_soci_usua">
+                <comment>APELLIDOS Y NOMBRES, DENOMINACION O RAZON SOCIAL DEL ADQUIRENTE O USUARIO</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="tipMone" optimistic-lock="true" type="string" unique="false">
+            <column length="3" name="tip_mone" not-null="true">
+                <comment>TIPO DE MONEDA EN LA CUAL SE EMITE LA FACTURA ELECTRONICA</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="sumTrib" optimistic-lock="true" type="string" unique="false">
+            <column length="15" name="sum_trib" not-null="true">
+                <comment>SUMATORIA TRIBUTOS</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="totValoVent" optimistic-lock="true" type="string" unique="false">
+            <column length="15" name="tot_valo_vent" not-null="true">
+                <comment>TOTAL VALOR DE VENTA</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="totPrecVent" optimistic-lock="true" type="string" unique="false">
+            <column length="15" name="tot_prec_vent">
+                <comment>TOTAL PRECIO DE VENTA</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="totDesc" optimistic-lock="true" type="string" unique="false">
+            <column length="15" name="tot_desc">
+                <comment>TOTAL DESCUENTOS</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="sumOtroCarg" optimistic-lock="true" type="string" unique="false">
+            <column length="15" name="sum_otro_carg">
+                <comment>SUMATORIA OTROS CARGOS</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="totAnti" optimistic-lock="true" type="string" unique="false">
+            <column length="15" name="tot_anti">
+                <comment>TOTAL ANTICIPOS</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="impTotaVent" optimistic-lock="true" type="string" unique="false">
+            <column length="15" name="imp_tota_vent" not-null="true">
+                <comment>IMPORTE TOTAL DE LA VENTA, CESION EN USO O DEL SERVICIO PRESTADO</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="verUbl" optimistic-lock="true" type="string" unique="false">
+            <column length="3" name="ver_ubl" not-null="true">
+                <comment>VERSION UBL</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="cusDocu" optimistic-lock="true" type="string" unique="false">
+            <column length="3" name="cus_docu" not-null="true">
+                <comment>CUSTOMIZATION DOCUMENTO</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="indEsta" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="ind_esta" not-null="true">
+                <comment>ESTADO EN EL QUE SE ENCUENTRA EL REGISTRO, ACTIVO = 1 E INACTIVO = 0</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="usuApliCrea" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="usu_apli_crea" not-null="true">
+                <comment>USUARIO DE APLICACION QUE REALIZO LA CREACION DEL REGISTRO</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="fecCreaRegi" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="29" name="fec_crea_regi" not-null="true">
+                <comment>FECHA DE CREACION DEL REGISTRO</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="usuApliModi" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="usu_apli_modi">
+                <comment>USUARIO DE APLICACION QUE REALIZO LA ACTUALIZACION DEL REGISTRO</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="fecModiRegi" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="29" name="fec_modi_regi">
+                <comment>FECHA DE MODIFICACION DEL REGISTRO</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

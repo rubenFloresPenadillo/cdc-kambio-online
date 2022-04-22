@@ -1,14 +1,15 @@
 
 #comoFunciona{
-	background: #f7f9ff;
+	background: #f9f9f9;
 	text-align: center;
 	padding: 20px;
 }
 
-#comoFunciona h2{
+#comoFunciona h1{
 	margin-top: 30px;
-	color: #5763eb !important;
+	color: #000000 !important;
     font-weight: bold;
+    margin-bottom: 30px;
 }
 
 #comoFunciona h3{
@@ -24,15 +25,18 @@
 }
 
 .comoFunciona-item{
-	margin: 30px;
+	margin-right: 70px;
+	margin-left: 70px;
+	margin-bottom: 40px;
+	margin-top: 40px;
 }
 
 .comoFunciona-item img{
-	width: 290px;
-	height: 290px;
+   height: 85px;
+   margin-bottom: 20px;
 }
 
 .comoFunciona-item p{
-	color: #5763eb;
+	color: #000000;
 	font-weight: bold;
 }

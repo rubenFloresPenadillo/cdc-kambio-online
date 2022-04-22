@@ -9,6 +9,7 @@ import cadenas.util.ValidacionesString;
 import dto.TpReclaQuejaDto;
 import loggerUtil.LoggerUtil;
 import util.notificaciones.NotificacionUtil;
+import util.types.CadenasType;
 import util.types.PlantillasType;
 
 public class CorreoEnvioHilo implements Runnable {
@@ -25,6 +26,8 @@ public class CorreoEnvioHilo implements Runnable {
 	private String datoAsuntoCorreo;
 	private String datoMensaje;
 	private TpReclaQuejaDto tpReclaQuejaDto;
+	private String parametroComercio;
+	private String parametroDominioWeb;
 
 //    public CorreoEnvioHilo (PlantillasType plantillasType, String identificadorHilo, String token, String email, ) {
 //    	this.plantillasType = plantillasType;
@@ -40,6 +43,8 @@ public class CorreoEnvioHilo implements Runnable {
 		this.nombreCliente = nombreCliente;
 		this.codigoUnicoOperacion = codigoUnicoOperacion;
 		this.token = token;
+		this.parametroComercio = CadenasType.NOMBRE_COMERCIO.getValor();
+		this.parametroDominioWeb = CadenasType.DOMINIO_WEB.getValor();
 	}
     
     public CorreoEnvioHilo (PlantillasType plantillasType, String identificadorHilo, String datoNombreCompleto, 
@@ -51,6 +56,8 @@ public class CorreoEnvioHilo implements Runnable {
 		this.datoCorreoElectronico = datoCorreoElectronico;
 		this.datoAsuntoCorreo = datoAsuntoCorreo;
 		this.datoMensaje = datoMensaje;
+		this.parametroComercio = CadenasType.NOMBRE_COMERCIO.getValor();
+		this.parametroDominioWeb = CadenasType.DOMINIO_WEB.getValor();
 	}
 
     public CorreoEnvioHilo (PlantillasType plantillasType, String identificadorHilo, TpReclaQuejaDto tpReclaQuejaDto, String emailDestino) {
@@ -86,23 +93,28 @@ public class CorreoEnvioHilo implements Runnable {
     	this.tpReclaQuejaDto.setIndEsta(tpReclaQuejaDto.getIndEsta());
     	this.tpReclaQuejaDto.setFecCreaRegi(tpReclaQuejaDto.getFecCreaRegi());
     	this.tpReclaQuejaDto.setUsuApliCrea(tpReclaQuejaDto.getUsuApliCrea());
+    	this.parametroComercio = CadenasType.NOMBRE_COMERCIO.getValor();
+		this.parametroDominioWeb = CadenasType.DOMINIO_WEB.getValor();
     	
 	}
     
 	public void enviarCorreoActivacionCuenta() {
     	Map<String, String> datamodel = new HashMap<String, String>();
     	datamodel.put("token", token );
+    	datamodel.put("parametroComercio", parametroComercio);
     	LoggerUtil.getInstance().getLogger().info("token "+token);
-    	String asunto = "Activación de tu cuenta - Kambio Online.";
+    	String asunto = "Activación de tu cuenta - "+CadenasType.NOMBRE_COMERCIO.getValor();
     	NotificacionUtil.enviarCorreo(datamodel, PlantillasType.PLANTILLA_ENVIAR_ENLACE_ACTIVACION_CUENTA.getNombre(), asunto, emailDestino);
     }
 	
 	public void enviarCorreoActivacionCuentaCodigo() {
     	Map<String, String> datamodel = new HashMap<String, String>();
     	datamodel.put("codigoVerifiacion", token );
-    	datamodel.put("nombreCliente", nombreCliente);
+    	datamodel.put("parametroNombre", nombreCliente);
+    	datamodel.put("parametroComercio", parametroComercio);
+    	datamodel.put("parametroDominioWeb", parametroDominioWeb);
     	LoggerUtil.getInstance().getLogger().info("codigoVerifiacion "+token);
-    	String asunto = "Activación de tu cuenta - Código de Verificación | Kambio Online.";
+    	String asunto = "Activación de tu cuenta - Código de Verificación | "+CadenasType.NOMBRE_COMERCIO.getValor();
     	NotificacionUtil.enviarCorreo(datamodel, PlantillasType.PLANTILLA_ENVIAR_ENLACE_ACTIVACION_CUENTA_CODIGO.getNombre(), asunto, emailDestino);
     }
 	
@@ -110,8 +122,10 @@ public class CorreoEnvioHilo implements Runnable {
     	Map<String, String> datamodel = new HashMap<String, String>();
     	datamodel.put("token", token );
     	datamodel.put("usuaEmail", emailDestino );
+    	datamodel.put("parametroDominioWeb", parametroDominioWeb);
+    	datamodel.put("parametroComercio", parametroComercio);
     	LoggerUtil.getInstance().getLogger().info("token "+token);
-    	String asunto = "Solicitud de restablecimiento de contraseña - Kambio Online.";
+    	String asunto = "Solicitud de restablecimiento de contraseña - "+CadenasType.NOMBRE_COMERCIO.getValor();
     	NotificacionUtil.enviarCorreo(datamodel, PlantillasType.PLANTILLA_ENVIAR_ENLACE_RESTABLECER_CUENTA.getNombre(), asunto, emailDestino);
     }
     
@@ -120,6 +134,8 @@ public class CorreoEnvioHilo implements Runnable {
     	Map<String, String> datamodel = new HashMap<String, String>();
     	datamodel.put("parametroNombre", nombreCliente);
     	datamodel.put("parametroCodigoOperacion", codigoUnicoOperacion);
+    	datamodel.put("parametroDominioWeb", parametroDominioWeb);
+    	datamodel.put("parametroComercio", parametroComercio);
     	String asunto = "Operación con código "+codigoUnicoOperacion+ " registrada, pendiente de verificación.";
     	NotificacionUtil.enviarCorreo(datamodel, PlantillasType.PLANTILLA_ENVIAR_REGISTRO_OPERACION.getNombre(), asunto, emailDestino);
 	}
@@ -128,6 +144,8 @@ public class CorreoEnvioHilo implements Runnable {
     	Map<String, String> datamodel = new HashMap<String, String>();
     	datamodel.put("parametroNombre", nombreCliente);
     	datamodel.put("parametroCodigoOperacion", codigoUnicoOperacion);
+    	datamodel.put("parametroDominioWeb", parametroDominioWeb);
+    	datamodel.put("parametroComercio", parametroComercio);
     	String asunto = "Operación con código "+codigoUnicoOperacion+ " finalizada con éxito.";
     	NotificacionUtil.enviarCorreo(datamodel, PlantillasType.PLANTILLA_ENVIAR_FINALIZO_OPERACION.getNombre(), asunto, emailDestino);
     }
@@ -135,6 +153,8 @@ public class CorreoEnvioHilo implements Runnable {
     public void enviarCorreoOperacionCancelada() {
     	Map<String, String> datamodel = new HashMap<String, String>();
     	datamodel.put("parametroNombre", nombreCliente);
+    	datamodel.put("parametroDominioWeb", parametroDominioWeb);
+    	datamodel.put("parametroComercio", parametroComercio);
     	String asunto = null;
     	if(ValidacionesString.esNuloOVacio(codigoUnicoOperacion)) {
         	datamodel.put("parametroCodigoOperacion", "No procesado");
@@ -148,7 +168,6 @@ public class CorreoEnvioHilo implements Runnable {
     }
     
 	public void enviarCorreoAComercioDesdeContacto() {
-//    	String asunto = "Activación de tu cuenta - Kambio Online.";
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append("Correo: "+datoCorreoElectronico);
@@ -177,13 +196,15 @@ public class CorreoEnvioHilo implements Runnable {
     	datamodel.put("paramCodigoOperacion", tpReclaQuejaDto.getCodUnicOperClie());
     	datamodel.put("paramTipoRegistro", tpReclaQuejaDto.getValTipoDescReclQuej());
     	datamodel.put("paramDescripcion", tpReclaQuejaDto.getValDescReclQuej());
+    	datamodel.put("parametroDominioWeb", parametroDominioWeb);
     	
     	Format f = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
     	String fechaDeRegistro = f.format(tpReclaQuejaDto.getFecCreaRegi());
     	
     	datamodel.put("paramFechaCreacion", fechaDeRegistro);
+    	datamodel.put("parametroComercio", parametroComercio);
     	
-    	String asunto = "Registro de Queja o Reclamo - Kambio Online.";
+    	String asunto = "Registro de Queja o Reclamo - "+CadenasType.NOMBRE_COMERCIO.getValor();
     	NotificacionUtil.enviarCorreo(datamodel, PlantillasType.PLANTILLA_ENVIAR_REGISTRO_RECLAMO_CLIENTE.getNombre(), asunto, emailDestino);
     	
 	}
@@ -206,13 +227,15 @@ public class CorreoEnvioHilo implements Runnable {
     	datamodel.put("paramCodigoOperacion", tpReclaQuejaDto.getCodUnicOperClie());
     	datamodel.put("paramTipoRegistro", tpReclaQuejaDto.getValTipoDescReclQuej());
     	datamodel.put("paramDescripcion", tpReclaQuejaDto.getValDescReclQuej());
+    	datamodel.put("parametroDominioWeb", parametroDominioWeb);
     	
     	Format f = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
     	String fechaDeRegistro = f.format(tpReclaQuejaDto.getFecCreaRegi());
     	
     	datamodel.put("paramFechaCreacion", fechaDeRegistro);
+    	datamodel.put("parametroComercio", parametroComercio);
     	
-    	String asunto = "Se registró una Queja o Reclamo- Kambio Online.";
+    	String asunto = "Se registró una Queja o Reclamo - "+CadenasType.NOMBRE_COMERCIO.getValor();
     	NotificacionUtil.enviarCorreo(datamodel, PlantillasType.PLANTILLA_ENVIAR_REGISTRO_RECLAMO_ADMIN.getNombre(), asunto, emailDestino);
     	
 	}

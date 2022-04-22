@@ -51,6 +51,7 @@ public class TpClien implements java.io.Serializable {
 	private String valPepoInst;
 	private String valPepoRol;
 	private String valNombPerf;
+	private Integer codCliePadr;
 
 	public TpClien() {
 		tpDepar = new TpDepar();
@@ -393,4 +394,14 @@ public class TpClien implements java.io.Serializable {
 		this.valNombPerf = valNombPerf;
 	}
 
+	@Column(name = "cod_clie_padr")
+	public Integer getCodCliePadr() {
+		return codCliePadr;
+	}
+
+	public void setCodCliePadr(Integer codCliePadr) {
+		this.codCliePadr = codCliePadr;
+	}
+
+	
 }
