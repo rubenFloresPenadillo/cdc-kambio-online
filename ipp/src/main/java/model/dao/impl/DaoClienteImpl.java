@@ -157,7 +157,7 @@ public class DaoClienteImpl implements DaoCliente {
         StringBuilder sb = new StringBuilder();
         sb.append("select tcb.codCuenBanc, tcb.valCuenBanc, tcb.aliCuen, tcb.indCuenProp, tcb.tpBanco.codBanc, tcb.tpBanco.codCortBanc, tcb.tpBanco.nomBanc, tcb.tpDivis.codDivi, ");
         sb.append(" tcb.tpDivis.codIsoDivi, tcb.tpDivis.simDivi, tcb.tpDivis.nomDiviSing, tcb.tpTipoCuent.codTipoCuen, tcb.tpTipoCuent.desTipoCuen, tcb.valCuenInte, ");
-        sb.append(" tcb.indEsta, tcb.usuApliCrea, tcb.fecCreaRegi, tcb.usuApliModi, tcb.fecModiRegi ");
+        sb.append(" tcb.indEsta, tcb.usuApliCrea, tcb.fecCreaRegi, tcb.usuApliModi, tcb.fecModiRegi");
         sb.append(" from TpCuentBanco tcb ");
         sb.append(" where tcb.tpClien.codClie = :codClie ");
         sb.append(" and tcb.tpBanco.indEsta = :indEstaBanco ");
@@ -191,7 +191,7 @@ public class DaoClienteImpl implements DaoCliente {
         StringBuilder sb = new StringBuilder();
         sb.append("select tcba.codCuenBanc, tcba.valCuenBanc, tcba.valCuenInte, tcba.tpBanco.codCortBanc, tcba.tpBanco.nomBanc, tcba.tpDivis.codIsoDivi, tcba.tpDivis.simDivi, ");
         sb.append(" tcba.tpClien.tpTipoDocumPerso.tpTipoPerso.codTipoPers, tcba.tpClien.tpTipoDocumPerso.nomTipoDocuPers, tcba.tpClien.valPrimNombPers, tcba.tpClien.valSeguNombPers, tcba.tpClien.valPrimApelPers, tcba.tpClien.valSeguApelPers, ");
-        sb.append(" tcba.tpClien.valRazoSociPers, tcba.tpClien.valDocuPers, tcba.tpTipoCuent.desTipoCuen, tcba.aliCuen ");
+        sb.append(" tcba.tpClien.valRazoSociPers, tcba.tpClien.valDocuPers, tcba.tpTipoCuent.desTipoCuen, tcba.aliCuen, tcba.tpClien.valDocuEmpr ");
         sb.append(" from TpCuentBanco tcba");
         sb.append(" where tcba.indEsta = :indEsta ");
         sb.append(" and tcba.tpBanco.indEsta = :indEsta ");
@@ -380,10 +380,28 @@ public class DaoClienteImpl implements DaoCliente {
 	        	}else {
 	        		codClie = (Integer) session.save(tpClien);
 	        		result = CadenasType.INDICADOR_PROCESO_OK.getValor();
+	        		
+	        		if (CadenasType.INDICADOR_PROCESO_OK.getValor().equals(result)) {
+	        			StringBuilder sb = new StringBuilder();
+		                sb.append(" update TpUsuar ");
+		                sb.append("set codClie = :codClie");
+		                sb.append(" where codUsua = :codUsua ");
+		                
+		                Query query = session.createQuery(sb.toString());
+					    query.setParameter("codClie", codClie);
+					    query.setParameter("codUsua", codUsua);
+					    int registrosAfectados = query.executeUpdate();
+					    
+					    if(registrosAfectados != NumerosType.INDICADOR_POSITIVO_UNO.getValor().intValue()) {
+					    	result = "Error: Se han actualizado "+registrosAfectados+" registros, Verifique.";
+					    }else {
+					    	result = CadenasType.INDICADOR_PROCESO_OK.getValor()+CadenasType.GUION.getValor()+codClie;
+					    }
+					    
+	        		}
+
 	        	}	        	
-	            
-	        	
-	        	
+	            	        	
 	            tx.commit();
 	            session.close();
 	            
@@ -403,7 +421,7 @@ public class DaoClienteImpl implements DaoCliente {
 	public List<Object[]> getListaPerfilesEmpresa(TpClienDto tpClienDto) {
 
 		StringBuilder sb = new StringBuilder();
-		sb.append("select tpc.codClie, tpc.valRazoSociPers, tpc.valNombPerf, tpc.tpUsuar.codUsua, tpc.tpUsuar.codOperClie, tpc.tpUsuar.codEstaOper ");
+		sb.append("select tpc.codClie, tpc.valRazoSociPers, tpc.valNombPerf, tpc.tpUsuar.codUsua, tpc.tpUsuar.codOperClie, tpc.tpUsuar.codEstaOper, tpc.codCliePadr, tpc.tpUsuar.codUsuaPadr  ");
 		sb.append(" from TpClien tpc");
 		sb.append(" where tpc.tpUsuar.codUsuaPadr = :codUsuaPadr");
 		sb.append(" and tpc.indEsta = :indEsta ");

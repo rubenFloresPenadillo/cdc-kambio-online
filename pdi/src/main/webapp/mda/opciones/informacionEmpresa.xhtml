@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<link rel="shortcut icon" href="../../resources/imagenes/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.css" />
+
+	<script type="text/javascript" src="../../resources/js/popper.min.js"></script>
+	<script type="text/javascript" src="../../resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../resources/js/principalInformacionEmpresa.js"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="../../resources/css/fontello.css" />
+	<link rel="stylesheet" type="text/css" href="../../resources/css/datatables.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../resources/css/estilosInformacionEmpresa.css"/> 
+	
+
+ 
+	<script type="text/javascript" src="../../resources/js/datatables.min.js"></script>
+
+
+
+	<title>Información Empresa</title>
+	
+</h:head>
+<h:body>
+
+	<ui:param name="mAlias" value="#{informacionEmpresaBean}" />
+
+	<header>
+		<div class="contenedor">
+			
+			<a  href="../../mda/index.xhtml">
+				<img class="claseImagenLogoHorizontal" src="../../resources/imagenes/logoPreciso.png" alt="Logo Preciso"/>
+			</a>
+
+			<h:selectBooleanCheckbox  id="menu-bar"/>
+			<label class="icon-down-dir" for="menu-bar" id="idFlechaAbajo" ></label> 
+			<h:outputLabel id="idSeccionUsuario" class="icon-user-circle" for="menu-bar" value="#{mAlias.valorNombre}"/>
+			
+			<nav class="menu">
+				<ul>
+					<li onclick="window.location.href='../panelPrincipal.xhtml'">
+						<a class="claseControl" href="../panelPrincipal.xhtml">Panel de Control</a>
+					</li>
+<!-- 					<li> -->
+<!-- 						<a class="claseReportes" href="#" >Reportes</a> -->
+<!-- 					</li>	 -->	
+					<li>
+						<a href="#" id="idEnlaceCerrarSesion" onclick="mostrarPopupCerrarSesion();" >Cerrar Sesion</a>
+					</li>	
+				</ul>
+			</nav>
+
+			<a id="idBotonCerrarSesion"  class="btn botonCerrarSesion icon-power" href="#" title="Cerrar sesión" onclick="mostrarPopupCerrarSesion();" />
+
+		</div>
+	</header>
+
+	<main>
+	<section id="idSeccionInformacionEmpresa">
+	
+		<!-- Modal cerrar sesion-->
+		<div class="modal fade" id="idModalConfirmacionCerrarSesion" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body"> ¿Estás seguro de cerrar sesión?</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal" onclick="ejecutarCerrarSesionRemoto();">Aceptar</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" >Cancelar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal Confirmacion-->
+		<div class="modal fade" id="idModalConfirmacionGuardaTipoCambio" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body"> ¿Está seguro de los datos a guardar?</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal" onclick="ejecutarGuardarTipoCambio();">Aceptar</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" >Cancelar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<h:form id="idFormInformacionEmpresa" method="post" role="form"
+			class="form-horizontal">
+			
+			<p:remoteCommand name="ejecutarCerrarSesionRemoto" actionListener="#{mAlias.procesarCerrarSesion()}"/>
+			<p:remoteCommand name="ejecutarGuardarTipoCambio" actionListener="#{mAlias.procesarGuardarTipoCambio()}" update="idFormInformacionEmpresa"/>
+			<p:remoteCommand name="ejecutarRegresar" actionListener="#{mAlias.regresar()}"/>
+			
+			<div class="row mx-auto">
+				
+				<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 claseTituloIzquierda" >
+					<p class="claseTitulo">Panel de Control → Datos Empresa</p>
+				</div>
+				
+				<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 claseTituloDerecha">
+					<a class="btn botonRegresar icon-undo" href="cambio.xhtml" title="Regresar a Panel de Control"/>
+				</div>
+				
+			</div>
+			
+			<div class="row" >
+				
+				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+					<div class="form-group">
+						<p:outputPanel styleClass="alert claseCampoObligatorios"> 
+							Los campos con * son obligatorios.
+						</p:outputPanel>
+						
+					</div>
+				</div>
+
+			</div>
+			
+			<div class="row">
+			
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="form-group">
+							<p:outputLabel value="Razón Social *" />
+							<p:inputText id="idTxtRazonSocial" styleClass="form-control" value="" disabled="#{mAlias.indicadorModoConsulta}"/>
+							<div id="idMensajeRazonSocial" > </div>
+						</div>
+					</div>	
+					
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="form-group">
+							<p:outputLabel value="RUC *" />
+							<p:inputText id="idTxtRuc" styleClass="form-control" value="" disabled="#{mAlias.indicadorModoConsulta}"/>
+							<div id="idMensajeRuc" > </div>
+						</div>
+					</div>	
+					
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="form-group">
+							<p:outputLabel value="Dirección *" />
+							<p:inputText id="idTxtDireccionEmpresa" styleClass="form-control" value="" disabled="#{mAlias.indicadorModoConsulta}"/>
+							<div id="idMensajeDireccionEmpresa" > </div>
+						</div>
+					</div>	
+			</div>
+				
+			<div class="row">
+					
+<!-- 					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4"> -->
+<!-- 						<div class="form-group"> -->
+<!-- 							<p:outputLabel value="Registro SBS" /> -->
+<!-- 							<p:inputText id="idTxtRegistroSbs" styleClass="form-control" value="" disabled="#{mAlias.indicadorModoConsulta}"/> -->
+<!-- 							<div id="idMensajeRegistroSBS" > </div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+					
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="form-group">
+							<p:outputLabel value="Telefono fijo" />
+							<p:inputText id="idTxtTelefonoFijo" styleClass="form-control" value="" disabled="#{mAlias.indicadorModoConsulta}"/>
+							<div id="idMensajeTelefonoFijo" > </div>
+						</div>
+					</div>
+	
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="form-group">
+							<p:outputLabel value="Telefono celular" />
+							<p:inputText id="idTxtTelefonoCelular" styleClass="form-control" value="" disabled="#{mAlias.indicadorModoConsulta}"/>
+							<div id="idMensajeTelefonoCelular" > </div>
+						</div>
+					</div>
+				
+			</div>
+			
+			<div class="row">
+					
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="form-group">
+							<p:outputLabel value="Número Whatsapp" />
+							<p:inputText id="idTxtNumeroWhatsapp" styleClass="form-control" value="" disabled="#{mAlias.indicadorModoConsulta}"/>
+							<div id="idMensajeNumeroWhatsapp" > </div>
+						</div>
+					</div>
+
+				
+			</div>
+			
+			<p:outputPanel rendered="#{mAlias.indicadorModoConsulta}">
+				<div class="row">
+
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Fec. de creación" />
+									<h:inputText styleClass="form-control" value="#{mAlias.tipoCambioItem.fecCreaRegi}" disabled="true">
+										<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" timeZone="America/Lima"/>
+									</h:inputText>
+							</div>
+					   </div>
+					   
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Usu. de creación" />
+								<p:inputText styleClass="form-control" value="#{mAlias.tipoCambioItem.usuApliCrea}" disabled="true"/>
+							</div>
+						</div>
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Fec. de modificación" />
+								<h:inputText styleClass="form-control" value="#{mAlias.tipoCambioItem.fecModiRegi}" disabled="true">
+										<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" timeZone="America/Lima"/>
+								</h:inputText>
+							</div>
+						</div>
+						
+						
+		
+				</div>
+				<div class="row">
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Usu. de modificación" />
+								<p:inputText styleClass="form-control" value="#{mAlias.tipoCambioItem.usuApliModi}" disabled="true"/>
+							</div>
+					</div>
+				
+				</div>
+			
+			</p:outputPanel>
+			
+			
+			
+			<div class="row">
+				<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+				</div>
+				
+				<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6 text-right">
+					<div class="form-group">
+							<p:commandButton  onclick="enviar(event);" styleClass="btn btn-success btn-guardar-datos"  value="Guardar Datos" rendered="#{!mAlias.indicadorModoConsulta}"/>
+					</div>
+				</div>
+			
+			</div>
+			
+			
+			<!-- Modal Guardar Divisa Exitosa -->
+			<div class="modal fade" id="idModalGuardarTipoCambioExito" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">El tipo de cambio se guardó exitosamente.</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-success" data-dismiss="modal"  onclick="ejecutarRegresar();">Aceptar</button>
+<!-- 							<button type="button" class="btn btn-success" data-dismiss="modal">Agregar otro</button> -->
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		
+			<!-- Modal Error-->
+			<div class="modal fade" id="idModalErrorSistema" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title mensajeTituloError">¡ Mensaje del Sistema - ERROR !</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body mensajeCuerpoError">#{mAlias.resultadoProcesoError} <strong>Comuníquese con el área de Soporte.</strong></div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</h:form>
+	
+	
+		
+
+	</section>
+
+
+	</main>
+
+	<footer>
+		<div class="contenedor"></div>
+	</footer>
+
+</h:body>
+
+</html>

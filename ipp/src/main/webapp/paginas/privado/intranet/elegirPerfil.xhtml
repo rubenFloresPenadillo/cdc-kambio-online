@@ -75,7 +75,8 @@
 
 		<h:form id="idFormDatosPersonales" method="post" role="form" class="form-horizontal text-center">
 			<p:remoteCommand name="ejecutarCerrarSesionRemoto" actionListener="#{mAlias.procesarCerrarSesion()}"/>
-			<p:remoteCommand name="ejecutarIrAlInicio" actionListener="#{mAlias.redireccionarAlInicioOperaciones()}"/>
+			<p:remoteCommand name="ejecutarIrAlInicioPerfilPrincipal" actionListener="#{mAlias.redireccionarAlInicioOperaciones()}"/>
+			<p:remoteCommand name="ejecutarIrCrearEmpresa" actionListener="#{mAlias.redireccionarACrearPerfilEmpresa()}"/>
 			<div class="row">
 				<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				
@@ -96,7 +97,7 @@
 	         <ul class="list-of-profiles">
 	            <li class="profile personal">
 	               <div>
-	                  <a role="link" tabindex="0" class="profile-link" onclick="ejecutarIrAlInicio();">
+	                  <a role="link" tabindex="0" class="profile-link" onclick="ejecutarIrAlInicioPerfilPrincipal();">
 	                     <div class="avatar-wrapper">
 	                        <div class="profile-icon"></div>
 	                     </div>
@@ -127,7 +128,7 @@
 	           
 	            <li class="profile add">
 	               <div>
-	                  <a href="datosEmpresa.xhtml" class="profile-link nuevo-perfil-empresa" role="link" tabindex="0">
+	                  <a class="profile-link nuevo-perfil-empresa" role="link" tabindex="0" onclick="ejecutarIrCrearEmpresa();">
 	                     <div class="avatar-wrapper">
 	                        <div class="profile-icon"></div>
 	                     </div>

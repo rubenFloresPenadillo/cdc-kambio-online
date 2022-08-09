@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+		<!-- Required meta tags -->
+		<title>Blog - ítem</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+			
+		<link rel="shortcut icon" href="../../resources/imagenes/favicon.ico" />	
+		<link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.css" />
+
+
+		<script type="text/javascript"   src="../../resources/js/popper.min.js"></script>
+		<script type="text/javascript"   src="../../resources/js/bootstrap.min.js"></script>
+		<script type="text/javascript"   src="../../resources/js/principalBlog.js"></script>
+		
+		
+		<link rel="stylesheet" type="text/css" href="../../resources/css/all.css"/>
+		
+		<link rel="stylesheet" type="text/css" href="../../resources/css/fontello.css"/> 
+		<link rel="stylesheet" type="text/css" href="../../resources/css/estilosBlogItem.css"/> 
+		
+</h:head>
+<h:body>
+
+<header>
+
+		<ui:param name="mAlias" value="#{blogItemBean}" />
+				
+		<div class="contenedor">
+			<a  href="../../index.xhtml">
+				<img class="imagenLogo" src="../../resources/imagenes/logoPreciso.png" alt="Logo Preciso"/>
+			</a>
+			
+			<h:selectBooleanCheckbox  id="menu-bar"/>
+			<label class="icon-menu" for="menu-bar"></label> 
+
+			<nav class="menu">
+				<ul>
+					<li onclick="window.location.href='nosotros.xhtml'">
+						<a href="nosotros.xhtml">Nosotros</a> 
+					</li>
+					<li>
+						<a href="#"  class="claseBlogMarcado"  >Blog</a>
+					</li>
+					<li onclick="window.location.href='contacto.xhtml'">
+						<a href="contacto.xhtml" >Contacto</a> 
+					</li>
+					<li>
+						<a href="#">Ayuda</a> 
+					</li>
+					<li onclick="window.location.href='../../paginas/privado/ingreso.xhtml'">
+						<a class="btn btn-success botonIniciarOperacionGeneral icon-user" href="../../paginas/privado/ingreso.xhtml">INICIAR SESIÓN</a> 
+					</li>
+				</ul>
+			</nav>
+
+		</div>
+</header>
+
+		<main>
+			<section>
+				<div class="contenedor contenedorTitulo ">
+					
+					<div class="row justify-content-center" >
+						<div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+							<p:outputLabel class="claseTituloEntradaItem" value="#{mAlias.entradaConsulta.titEntr}"></p:outputLabel>
+						</div>
+					</div>
+					
+					<div class="row text-lg-left" >
+						<div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+							<p:outputLabel class="claseCategoriaEntradaItem" value="#{mAlias.entradaConsulta.catEntr}"></p:outputLabel>
+						</div>
+					</div>
+					
+					<div class="row text-lg-left" >
+						<div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+							<p:outputLabel class="claseFechaEntradaItem" value="Publicado: #{mAlias.entradaConsulta.fecCreaFormPrev}"></p:outputLabel>
+						</div>
+					</div>
+					
+					<div class="row justify-content-center" >
+						<div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+							<a class="d-block mb-4 h-100">
+								<figure class="flow-image">
+									<h:graphicImage styleClass="claseObjetoBlog" value="#{mAlias.entradaConsulta.imaEntrCont}" />
+								</figure>
+							</a>
+						</div>
+					</div>
+					
+					<div class="row justify-content-center" >
+						<div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+							<p:outputLabel class="claseContenidoEntradaItem" value="#{mAlias.entradaConsulta.conEntr}"></p:outputLabel>
+						</div>
+					</div>
+					
+				</div>
+			</section>
+		</main>
+		
+		<!-- Footer -->
+		<ui:include src="/footer.xhtml" />
+		  
+		  <ui:include src="/estatus.xhtml" />
+
+<button onclick="enlaceWhatsapp();" id="myBtn" title="Escribenos" />
+</h:body>
+</html>

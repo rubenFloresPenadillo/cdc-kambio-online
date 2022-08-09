@@ -356,6 +356,8 @@ public class DatosBean {
 				sesion.setAttribute("codigoCliente", codigoCliente);
 				sesion.setAttribute("valorNombre", valorNombre);
 				sesion.setAttribute("indCompleDatos", indCompleDatos);
+				sesion.setAttribute("codigoUsuarioPadre", codigoUsuario);
+				sesion.setAttribute("codigoClientePadre", codigoCliente);
         	}
         	
 //        	resultadoProcesoExito = "Datos guardados con éxito.";

@@ -1,0 +1,230 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;500;600&display=swap');
+
+
+
+body {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 0.85rem;
+	background: rgba(0,75,173,1);
+	background: -moz-linear-gradient(45deg, rgba(0,75,173,1) 0%, rgba(0,75,173,1) 26%, rgba(0,75,173,1) 49%, rgba(252,199,39,1) 100%);
+	background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(0,75,173,1)), color-stop(26%, rgba(0,75,173,1)), color-stop(49%, rgba(0,75,173,1)), color-stop(100%, rgba(252,199,39,1)));
+	background: -webkit-linear-gradient(45deg, rgba(0,75,173,1) 0%, rgba(0,75,173,1) 26%, rgba(0,75,173,1) 49%, rgba(252,199,39,1) 100%);
+	background: -o-linear-gradient(45deg, rgba(0,75,173,1) 0%, rgba(0,75,173,1) 26%, rgba(0,75,173,1) 49%, rgba(252,199,39,1) 100%);
+	background: -ms-linear-gradient(45deg, rgba(0,75,173,1) 0%, rgba(0,75,173,1) 26%, rgba(0,75,173,1) 49%, rgba(252,199,39,1) 100%);
+	background: linear-gradient(45deg, rgba(0,75,173,1) 0%, rgba(0,75,173,1) 26%, rgba(0,75,173,1) 49%, rgba(252,199,39,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#004bad', endColorstr='#fcc727', GradientType=1 );
+}
+
+/*Para el Login */
+
+
+#seccionLogin {
+	min-height: 100vh;
+}
+
+
+section {
+    width: 88%;
+    margin: auto;
+    padding-left: 2%;
+    padding-right: 2%;
+	background: #fff;
+}
+
+.main-section{
+	 margin: 0 auto;
+	 margin-top: 50px;
+	 padding: 0;
+}
+
+.formContenidoIngreso{
+	padding: 0 5px;
+	border-radius: 10px;
+	background: rgba(0,0,0,1);
+	background: -moz-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(171,171,171,1) 50%, rgba(0,0,0,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,0,0,1)), color-stop(50%, rgba(171,171,171,1)), color-stop(100%, rgba(0,0,0,1)));
+	background: -webkit-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(171,171,171,1) 50%, rgba(0,0,0,1) 100%);
+	background: -o-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(171,171,171,1) 50%, rgba(0,0,0,1) 100%);
+	background: -ms-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(171,171,171,1) 50%, rgba(0,0,0,1) 100%);
+	background: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(171,171,171,1) 50%, rgba(0,0,0,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=1 );
+}
+
+.user-img{
+	margin-top: -60px;
+	margin-bottom: 30px;
+}
+
+.form-group{
+	margin-top: -20px;
+}
+
+.form-group input{
+	border-radius: 5px;
+	border: 0;
+	padding-left: 35px;
+}
+
+.form-group i::before{
+	position: absolute;
+	font-size: 20px;
+	padding-top: 15px;
+	left: 25px;
+	color: #5763eb;
+}
+
+.form-input button{
+	width: 60%;
+	margin: 5px 0 25px;
+}
+
+.btn-enviar{
+	width: 60%;
+	margin: 5px 0 25px;
+}
+
+.btn-success{
+	background-color: #054CEF;
+	border-radius: 5px;
+	padding: 7px 14px;
+	border: 1px solid #ffffff;	
+}
+
+.btn-success:hover{
+	background-color: #012068;
+	border: 1px solid #ffffff;
+}
+
+.forgot{
+	padding: 5px 0 25px;
+}
+
+.forgot a{
+	color: #ffffff;
+}
+
+.contenidoEnlaceRegistro{
+	padding: 5px 0 25px;
+	border: none;
+}
+
+.seccionTipoPersoneria label{
+	color: #ffffff;
+}
+
+/*boton por activo con hover*/
+.btn-primary {
+	background-color: #B6B7B8 !important;
+	border-color: #DDDDDD !important;
+	border-radius: 5px !important;
+}
+
+/*boton por activo con hover*/
+.btn-primary:hover {
+	background-color: #00871E !important;
+}
+
+.btnNatural{
+	margin-right: 5px;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active{
+	background-color: #19A712 !important;
+	border-color: #00A65F !important;		
+}
+
+.imagenLogoPaginaLogin{
+	width: 250px;
+	height: 250px;
+}
+
+
+.imagenLogoHorizontalPaginaLogin{
+		width: 320px !important;
+}
+	
+@media 	(max-width: 450px) {
+	.imagenLogoHorizontalPaginaLogin{
+			width: 240px !important;
+	}
+}
+
+
+@media 	(max-width: 767px) {
+	.claseContieneImagen{
+		margin-top: 20px;
+	}
+}
+
+
+@media 	(min-width: 768px) {
+	.claseContieneImagen{
+		margin-top: 190px;
+	}
+	.claseContieneLogin{
+		margin-top: 100px;
+	}
+}
+
+.seccionRegistrateYa{
+	display: block;
+	margin-bottom: 30px;
+	margin-top: 15px;
+	color: blue;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+#seccionLogin .contenedor{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+#result{
+	display: none;
+}
+
+.botonIniciarOperacionGeneral{
+	color: #fff !important;
+	font-weight: bold !important;
+	padding-right: 20px;
+    padding-left: 20px;
+	padding-bottom: 10px !important;
+	padding-top: 10px !important;
+	display: initial !important;
+}
+
+.botonIniciarOperacionGeneral:before {
+    margin-left: 0em;
+}
+
+.botonIniciarOperacionGeneral span {
+    display: inline-block !important;
+    padding: .3em 0em .3em 0.5em !important;
+}
+
+
+.btn-primary-kli {
+    color: #004aad !important;
+    background-color: #fcc825;
+    border-color: #fcc825;
+    border-radius: 65px 65px 65px 65px;
+}
+
+.btn-primary-kli:hover {
+    background-color: #ECB300 !important;
+    border-bottom: 3px solid #ECB300 !important;
+}
+
+.btn-secondary-kli {
+    color: #fff;
+    background-color: #219cd3;
+    border-color: #219cd3;
+}
+
+.btn-secondary-kli:hover {
+    background-color: #007db3;
+	border-bottom: 3px solid #007db3 !important;
+}

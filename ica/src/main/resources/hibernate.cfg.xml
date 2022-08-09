@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+
+		<property name="hibernate.connection.datasource">java:comp/env/jdbc/bdicambio</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
+        
+        <mapping class="hibernate.entidades.TpParamGener"/>
+        <mapping class="hibernate.entidades.TpPais" />
+        <mapping class="hibernate.entidades.TpDepar" />
+        <mapping class="hibernate.entidades.TpProvi" />
+        <mapping class="hibernate.entidades.TpDistr" />
+        <mapping class="hibernate.entidades.TpDivis" />
+        <mapping class="hibernate.entidades.TpTipoPerso" /> 
+        <mapping class="hibernate.entidades.TpTipoDocumPerso" /> 
+        <mapping class="hibernate.entidades.TpBanco" />
+        <mapping class="hibernate.entidades.TpUsuar" />
+		<mapping class="hibernate.entidades.TpClien" />
+		<mapping class="hibernate.entidades.TpTipoCuent" />
+		<mapping class="hibernate.entidades.TpCuentBanco" />
+		<mapping class="hibernate.entidades.TpEstadOpera" />
+		<mapping class="hibernate.entidades.TpTipoCambi" /> 
+		<mapping class="hibernate.entidades.AudiTpTipoCambi" /> 
+		<mapping class="hibernate.entidades.TpOperaClien" /> 
+		<mapping class="hibernate.entidades.TpEntra" /> 
+		<mapping class="hibernate.entidades.TpSuscr" /> 
+		<mapping class="hibernate.entidades.TpReclaQueja" /> 
+		<mapping class="hibernate.entidades.TpOrigeFondo" /> 
+		<mapping class="hibernate.entidades.TpSectoEcono" /> 
+		<mapping class="hibernate.entidades.TpActivEcono" /> 
+		<mapping class="hibernate.entidades.TpTipoPregu" /> 
+		<mapping class="hibernate.entidades.TpAyudaPregu" /> 
+		<mapping class="hibernate.entidades.TpCupon" /> 
+		<mapping class="hibernate.entidades.TpOperaCupon" />
+    </session-factory>
+</hibernate-configuration>

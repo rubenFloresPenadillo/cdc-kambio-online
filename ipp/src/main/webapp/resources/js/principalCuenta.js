@@ -99,6 +99,11 @@ function enviar(event) {
     $("#idMensajeNumeroCuenta").addClass( "hidden" );
 	$("#idMensajeNumeroCuenta").css("display","block");  
 	
+	$("#idMensajeNumeroCCI").empty();
+	$("#idMensajeNumeroCCI").removeClass( "alert alert-danger claseMensajeResultado" )
+    $("#idMensajeNumeroCCI").addClass( "hidden" );
+	$("#idMensajeNumeroCCI").css("display","block");  
+	
 	$("#idMensajeResultadoAlias").empty();
 	$("#idMensajeResultadoAlias").removeClass( "alert alert-danger claseMensajeResultado" )
     $("#idMensajeResultadoAlias").addClass( "hidden" );
@@ -111,6 +116,7 @@ function enviar(event) {
 	$("[id='idFormCuentaItem:idComboDivisa']").removeClass( "claseErrorFormulario");
 	$("[id='idFormCuentaItem:idComboTipoCuenta']").removeClass( "claseErrorFormulario");
 	$("[id='idFormCuentaItem:idTxtNumeroCuenta']").removeClass( "claseErrorFormulario");
+	$("[id='idFormCuentaItem:idTxtNumeroCCI']").removeClass( "claseErrorFormulario");
 	$("[id='idFormCuentaItem:idTxtAlias']").removeClass( "claseErrorFormulario");
 	
 	/*Captura valores*/
@@ -119,6 +125,7 @@ function enviar(event) {
     var idComboDivisa = $("[id='idFormCuentaItem:idComboDivisa']").val();
     var idComboTipoCuenta = $("[id='idFormCuentaItem:idComboTipoCuenta']").val();
     var idTxtNumeroCuenta = $("[id='idFormCuentaItem:idTxtNumeroCuenta']").val();
+	var idTxtNumeroCCI = $("[id='idFormCuentaItem:idTxtNumeroCCI']").val();
     var idTxtAlias = $("[id='idFormCuentaItem:idTxtAlias']").val();
     
     if (idComboBanco == null || idComboBanco == '-1'){ 
@@ -153,7 +160,15 @@ function enviar(event) {
     	$("[id='idFormCuentaItem:idTxtNumeroCuenta']").focus();
     	$("[id='idFormCuentaItem:idTxtNumeroCuenta']").addClass( "claseErrorFormulario" );
     	event.preventDefault();
-    } else if (idTxtAlias == null || idTxtAlias == ''){ 
+    } else if (idTxtNumeroCCI == null || idTxtNumeroCCI == ''){
+    	$("#idMensajeNumeroCCI").text("El CCI es obligatorio.");
+    	$("#idMensajeNumeroCCI").addClass( "alert alert-danger claseMensajeResultado" )
+        $("#idMensajeNumeroCCI").removeClass( "hidden" );
+    	$("#idMensajeNumeroCCI").fadeOut(6000);
+    	$("[id='idFormCuentaItem:idTxtNumeroCCI']").focus();
+    	$("[id='idFormCuentaItem:idTxtNumeroCCI']").addClass( "claseErrorFormulario" );
+    	event.preventDefault();
+    }else if (idTxtAlias == null || idTxtAlias == ''){ 
     	$("#idMensajeResultadoAlias").text("El alias es obligatorio.");
     	$("#idMensajeResultadoAlias").addClass( "alert alert-danger claseMensajeResultado" )
         $("#idMensajeResultadoAlias").removeClass( "hidden" );

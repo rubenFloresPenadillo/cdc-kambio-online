@@ -1,0 +1,88 @@
+
+#beneficios{
+	background: #ffffff !important;
+	text-align: center;
+	padding: 20px;
+}
+
+#beneficios h2{
+	margin-top: 30px;
+	color: #004aad !important;
+    font-weight: 500;
+    font-size: 45px;
+}
+
+#beneficios h4{
+	text-align: left;
+	color: #004aad !important;
+}
+
+    
+
+    
+.contenedorBeneficios p{
+	color: #726a84;
+	font-size: 16px;
+    margin-top: 0;
+}    
+    
+#beneficios .contenedorBeneficios{
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: auto;
+	display: inline-flex;
+	margin-top: 30px;
+}
+
+
+.line-shape {
+    margin-left: calc(50% - 50px);
+}
+.line-shape, .line-shape-white {
+    width: 100px;
+    height: 4px;
+    background-color: #fcc825;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.claseItemBeneficios img {
+	width: 80px;
+}
+
+/* .claseImagenBeneficios img{ */
+/* 	border-bottom: 30px; */
+/* } */
+
+.claseItemBeneficios .column{
+	margin-top: 55px;
+	text-align: left;
+}
+
+.claseItemBeneficios .columnaImagen{
+	text-align: center;
+}
+
+.claseTitulo{
+	text-align: left;
+}
+
+@media (max-width:768px) {
+
+	.claseItemBeneficios .column{
+		text-align: center;
+	}
+	
+	.claseTitulo{
+		text-align: center;
+	}
+	
+	.claseDetallebeneficios{
+		margin-top: 40px;
+	}
+	
+	#beneficios h4{
+		text-align: center;
+	}
+	
+}

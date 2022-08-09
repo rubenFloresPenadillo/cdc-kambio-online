@@ -269,8 +269,20 @@ public class OperacionesControlItemBean {
         		PrimeFaces.current().executeScript("operacionFinalizadaExitosa();");
         		
         		LoggerUtil.getInstance().getLogger().info("Iniciando Hilo Principal");
+        		
+        		String correoDestino = operacionControlItem.getTpClien().getTpUsuar().getIdeUsuaEmai();
+        		
+        		if(ValidacionesString.esNuloOVacio(correoDestino)) {
+        			correoDestino = operacionControlItem.getTpClien().getTpUsuar().getEmaUsuaAuxi();
+        		}
 
-    			CorreoEnvioHilo hiloEnvioOperacionesControlItemBean1 = new CorreoEnvioHilo(PlantillasType.PLANTILLA_ENVIAR_FINALIZO_OPERACION , "hiloEnvioOperacionesControlItemBean1", operacionControlItem.getTpClien().getTpUsuar().getIdeUsuaEmai() , operacionControlItem.getTpClien().getValPrimNombPers(), operacionControlItem.getCodUnicOperClie(), null);
+        		String nombreDestinatario = operacionControlItem.getTpClien().getValRazoSociPers();
+        		
+        		if(ValidacionesString.esNuloOVacio(nombreDestinatario)) {
+        			nombreDestinatario = operacionControlItem.getTpClien().getValPrimNombPers();
+        		}
+        		
+    			CorreoEnvioHilo hiloEnvioOperacionesControlItemBean1 = new CorreoEnvioHilo(PlantillasType.PLANTILLA_ENVIAR_FINALIZO_OPERACION , "hiloEnvioOperacionesControlItemBean1", correoDestino , nombreDestinatario, operacionControlItem.getCodUnicOperClie(), null);
     			 
     			Thread nuevoHiloEnvioCorreo = new Thread(hiloEnvioOperacionesControlItemBean1);
     			 
@@ -313,8 +325,20 @@ public class OperacionesControlItemBean {
         		PrimeFaces.current().executeScript("operacionCanceladaExitosa();");
         		
         		LoggerUtil.getInstance().getLogger().info("Iniciando Hilo Principal");
+        		
+        		String correoDestino = operacionControlItem.getTpClien().getTpUsuar().getIdeUsuaEmai();
+        		
+        		if(ValidacionesString.esNuloOVacio(correoDestino)) {
+        			correoDestino = operacionControlItem.getTpClien().getTpUsuar().getEmaUsuaAuxi();
+        		}
 
-    			CorreoEnvioHilo hiloEnvioOperacionesControlBean2 = new CorreoEnvioHilo(PlantillasType.PLANTILLA_ENVIAR_CANCELA_OPERACION , "hiloEnvioOperacionesControlBean2", operacionControlItem.getTpClien().getTpUsuar().getIdeUsuaEmai() , operacionControlItem.getTpClien().getValPrimNombPers(), operacionControlItem.getCodUnicOperClie(), null);
+        		String nombreDestinatario = operacionControlItem.getTpClien().getValRazoSociPers();
+        		
+        		if(ValidacionesString.esNuloOVacio(nombreDestinatario)) {
+        			nombreDestinatario = operacionControlItem.getTpClien().getValPrimNombPers();
+        		}
+
+    			CorreoEnvioHilo hiloEnvioOperacionesControlBean2 = new CorreoEnvioHilo(PlantillasType.PLANTILLA_ENVIAR_CANCELA_OPERACION , "hiloEnvioOperacionesControlBean2", correoDestino , nombreDestinatario, operacionControlItem.getCodUnicOperClie(), null);
     			 
     			Thread nuevoHiloEnvioCorreo = new Thread(hiloEnvioOperacionesControlBean2);
     			 

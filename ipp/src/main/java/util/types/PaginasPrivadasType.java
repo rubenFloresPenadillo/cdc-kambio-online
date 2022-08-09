@@ -17,6 +17,7 @@ public enum PaginasPrivadasType {
 	PAGINA_CUENTA_PENDIENTE_ACTIVACION("/paginas/privado/cuentaPendienteActivacion.xhtml"),
 	PAGINA_CUENTA_RESTABLECER_CONTRASENIA("/paginas/privado/restablerCuentaEnviado.xhtml"),
 	PAGINA_CUENTA_CONFIRMA_CUENTA_CODIGO("/paginas/privado/confirmaCuentaRegistrada.xhtml"),
+	PAGINA_DATOS_PERFIL_EMPRESA("/paginas/privado/intranet/datosEmpresa.xhtml"),
 	// Personal
 	PAGINA_INDEX_PERSONAL("/mda/index.xhtml"),
 	PAGINA_PANEL_PRINCIPAL("/mda/panelPrincipal.xhtml"),

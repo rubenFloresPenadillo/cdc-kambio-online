@@ -176,6 +176,7 @@ public class ServiceOperacionClienteImpl  implements ServiceOperacionCliente{
 			dto.getTpClien().setValNombPerf( (String) temp[28]);
 			dto.getTpClien().setValDocuEmpr((String) temp[29]);
 			dto.getTpClien().setValTelePers((String) temp[30]);
+			dto.getTpClien().getTpUsuar().setEmaUsuaAuxi((String) temp[31]);
 //			if(ValidacionesString.esNuloOVacio(dto.getTpClien().getValNombPerf())) {
 //				dto.getTpClien().setValNombPerf(CadenasType.VACIO.getValor());
 //			}

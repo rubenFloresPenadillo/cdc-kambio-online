@@ -147,5 +147,10 @@
                 <comment>FECHA DE MODIFICACION DEL REGISTRO</comment>
             </column>
         </property>
+        <property generated="never" lazy="false" name="codCliePadr" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="cod_clie_padr">
+                <comment>CODIGO DE CLIENTE PADRE ASOCIADO</comment>
+            </column>
+        </property>
     </class>
 </hibernate-mapping>

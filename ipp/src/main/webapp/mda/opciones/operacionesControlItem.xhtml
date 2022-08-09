@@ -229,7 +229,7 @@
 				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
 						<div class="form-group">
 							<p:outputLabel value="Correo" />
-							<p:inputText id="idTxtCorreo" styleClass="form-control" value="#{mAlias.operacionControlItem.tpClien.tpUsuar.ideUsuaEmai}" disabled="true"/>
+							<p:inputText id="idTxtCorreo" styleClass="form-control" value="#{mAlias.operacionControlItem.tpClien.tpUsuar.ideUsuaEmai ne null ? mAlias.operacionControlItem.tpClien.tpUsuar.ideUsuaEmai :  mAlias.operacionControlItem.tpClien.tpUsuar.emaUsuaAuxi }" disabled="true"/>
 						</div>
 				</div>
 				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
@@ -272,7 +272,7 @@
 						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
 							<div class="form-group">
 								<p:outputLabel value="Tipo de cuenta" styleClass="claseTituloCuentaClienteRecibe"/>
-								<p:inputText  styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieOrig.tpTipoCuent.desTipoCuen} - #{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieReci.tpDivis.codIsoDivi} " disabled="true"/>
+								<p:inputText  styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieOrig.tpTipoCuent.desTipoCuen} - #{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieOrig.tpDivis.codIsoDivi} " disabled="true"/>
 							</div>
 						</div>
 	
@@ -290,17 +290,28 @@
 						
 						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
 							<div class="form-group">
+								<p:outputLabel value="CCI" styleClass="claseTituloCuentaClienteRecibe"/>
+								<p:inputText  styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieOrig.valCuenInte}" disabled="true"/>
+							</div>
+						</div>	
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
 								<p:outputLabel value="Títular de la cuenta" styleClass="claseTituloCuentaClienteRecibe"/>
 								<p:inputText styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieOrig.nombreTitularVista}" disabled="true"/>
 							</div>
 						</div>
 						
-					
+	
+				</div>
+				
+				<div class="row">
+						
 						
 						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
 							<div class="form-group">
 								<p:outputLabel value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieOrig.tpClien.tpTipoDocumPerso.nomTipoDocuPerso} del titular" styleClass="claseTituloCuentaClienteRecibe"/>
-								<p:inputText styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieOrig.tpClien.valDocuPers}" disabled="true"/>
+								<p:inputText styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieOrig.tpClien.valDocuPers eq null ? mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieOrig.tpClien.valDocuEmpr : mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieOrig.tpClien.valDocuPers }" disabled="true"/>
 							</div>
 						</div>
 	
@@ -422,6 +433,14 @@
 							</div>
 						</div>	
 						
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="CCI" styleClass="claseTituloCuentaClienteRecibe"/>
+								<p:inputText id="idTxtCCIRecibe" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieReci.valCuenInte}" disabled="true"/>
+							</div>
+						</div>	
+						
 						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
 							<div class="form-group">
 								<p:outputLabel value="Títular de la cuenta" styleClass="claseTituloCuentaClienteRecibe"/>
@@ -429,12 +448,17 @@
 							</div>
 						</div>
 						
-					
-						
+	
+				</div>
+				
+				
+				<div class="row">
+
 						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
 							<div class="form-group">
 								<p:outputLabel value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieReci.tpClien.tpTipoDocumPerso.nomTipoDocuPerso} del titular" styleClass="claseTituloCuentaClienteRecibe"/>
-								<p:inputText id="idTxtDocumentoTitularRecibe" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieReci.tpClien.valDocuPers}" disabled="true"/>
+								<p:inputText id="idTxtDocumentoTitularRecibe" styleClass="form-control" 
+								value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieReci.tpClien.valDocuPers eq null ? mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieReci.tpClien.valDocuEmpr : mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieReci.tpClien.valDocuPers }" disabled="true"/>
 							</div>
 						</div>
 	

@@ -78,7 +78,7 @@
 					
 					<div class="form-group margenCuenta">
 						<p class="clasesCamposFormulario claseEtiquetaFormulario" >#{mAlias.cuentaClienteUsoDetalle.tpClien.tpTipoDocumPerso.nomTipoDocuPerso} del titular</p>
-						<p:outputLabel value="#{mAlias.cuentaClienteUsoDetalle.tpClien.valDocuPers}"/>
+						<p:outputLabel value="#{mAlias.cuentaClienteUsoDetalle.tpClien.valDocuPers eq null ? mAlias.cuentaClienteUsoDetalle.tpClien.valDocuEmpr : mAlias.cuentaClienteUsoDetalle.tpClien.valDocuPers}"/>
 					</div>
 				</div>
 				

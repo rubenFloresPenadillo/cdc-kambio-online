@@ -57,6 +57,7 @@ public class DatosEmpresaBean {
 	private Integer valorFechaNaciMes;
 	private Integer valorFechaNaciAnio;
 	private Integer codigoUsuario;
+	private Integer codigoUsuarioPadre;
 	private Integer codigoCliente;
 	private Integer codigoClientePadre;
 	
@@ -93,7 +94,7 @@ public class DatosEmpresaBean {
 //		clienteFormulario.setIndPepo(NumerosType.NUMERO_MINIMO_CERO.getValor());
 		mostrarSelecionUbigeo = Boolean.TRUE;
 		indSeleccionPep = NumerosType.NUMERO_MINIMO_CERO.getValor(); 
-		datosClientePadre = new TpClienDto();
+//		datosClientePadre = new TpClienDto();
 	}
 	
     /**
@@ -109,6 +110,7 @@ public class DatosEmpresaBean {
     		valorNombre = CadenasType.CADENA_USUARIO.getValor();
     	}
     	codigoUsuario = (Integer) sesion.getAttribute("codigoUsuario");
+    	codigoUsuarioPadre = (Integer) sesion.getAttribute("codigoUsuarioPadre");
     	codigoCliente = (Integer) sesion.getAttribute("codigoCliente");
     	codigoClientePadre = (Integer) sesion.getAttribute("codigoClientePadre");
     	
@@ -175,9 +177,7 @@ public class DatosEmpresaBean {
     	datosClientePadre = serviceCliente.get(codigoClientePadre);
 		
 	}
-	
-	
-	
+		
     private void getDatosCliente() {
     	
     	ServiceCliente serviceCliente = new ServiceClienteImpl(); 
@@ -298,7 +298,7 @@ public class DatosEmpresaBean {
 	
 	public void procesarGuardarDatoEmpresa() {
 
-		System.out.println("Entro a validar");
+		System.out.println("Entro a procesarGuardarDatoEmpresa");
 		String result = null;
 
 		TpUsuarDto usuario = new TpUsuarDto();
@@ -308,13 +308,14 @@ public class DatosEmpresaBean {
 		usuario.setIndEsta(RegistroActivoType.ACTIVO.getLlave());
 		// usuario.setValTokeCuen(codigoVerificacion.toString());
 		// usuarioFormulario.setValTokeCuen(uuid.toString());
-		usuario.setFecCreaToke(new Date());
+//		usuario.setFecCreaToke(new Date());
 		usuario.setCodPerfUsua(PerfilesType.CLIENTE.getIdElemento());
 		usuario.setUsuApliCrea(ideUsuaEmai);
 		usuario.setFecCreaRegi(new Date());
 		usuario.getTpTipoPerso().setCodTipoPers(ElementosTablasType.TIPO_PERSONERIA_JURIDICA.getIdElemento());
 		usuario.setIndCompDato(RegistroActivoType.ACTIVO.getLlave());
-		usuario.setCodUsuaPadr(codigoUsuario);
+		usuario.setCodUsuaPadr(codigoUsuarioPadre);
+		usuario.setEmaUsuaAuxi(ideUsuaEmai);
 
 		// ServiceUsuario serviceUsuarioRegistro = new ServiceUsuarioImpl();
 		// result = serviceUsuarioRegistro.insertUpdate(usuario);
@@ -355,13 +356,17 @@ public class DatosEmpresaBean {
 		clienteFormulario.setValSeguNombPers(datosClientePadre.getValSeguNombPers());
 		clienteFormulario.setValPrimApelPers(datosClientePadre.getValPrimApelPers());
 		clienteFormulario.setValSeguApelPers(datosClientePadre.getValSeguApelPers());
+		clienteFormulario.setValTelePers(datosClientePadre.getValTelePers());
+		clienteFormulario.setCodCliePadr(codigoClientePadre);
+		
+		clienteFormulario.setIndPepo(RegistroActivoType.INACTIVO.getLlave());
 
 		ServiceCliente serviceCliente = new ServiceClienteImpl();
 		result = serviceCliente.insertUpdateEnterprise(usuario, clienteFormulario);
 
 		if (result.startsWith(CadenasType.INDICADOR_PROCESO_OK.getValor())) {
 
-			if (ValidacionesNumeros.esCeroONuloEntero(codigoCliente)) {
+//			if (ValidacionesNumeros.esCeroONuloEntero(codigoCliente)) {
 //				String[] respuesta = result.split(CadenasType.GUION.getValor());
 //				codigoCliente = Integer.parseInt(respuesta[1]);
 //				valorNombre = String.valueOf(respuesta[2]);
@@ -370,7 +375,7 @@ public class DatosEmpresaBean {
 //				sesion.setAttribute("codigoCliente", codigoCliente);
 //				sesion.setAttribute("valorNombre", valorNombre);
 //				sesion.setAttribute("indCompleDatos", indCompleDatos);
-			}
+//			}
 			PrimeFaces.current().executeScript("operacionDatosGuardadosExito();");
 
 		} else if (result.startsWith(CadenasType.INDICADOR_PROCESO_ACTUALIZA_OK.getValor())) {
@@ -384,15 +389,15 @@ public class DatosEmpresaBean {
 
 	}
 	
-	public void habilitarDatosPep() {
-		if(NumerosType.INDICADOR_POSITIVO_UNO.getValor().equals(indSeleccionPep)) {
-			mostrarDatosSeleccionPep  = Boolean.TRUE;
-			clienteFormulario.setIndPepo(NumerosType.INDICADOR_POSITIVO_UNO.getValor());
-		}else {
-			mostrarDatosSeleccionPep  = Boolean.FALSE;
-			clienteFormulario.setIndPepo(NumerosType.NUMERO_MINIMO_CERO.getValor());
-		}
-	}
+//	public void habilitarDatosPep() {
+//		if(NumerosType.INDICADOR_POSITIVO_UNO.getValor().equals(indSeleccionPep)) {
+//			mostrarDatosSeleccionPep  = Boolean.TRUE;
+//			clienteFormulario.setIndPepo(NumerosType.INDICADOR_POSITIVO_UNO.getValor());
+//		}else {
+//			mostrarDatosSeleccionPep  = Boolean.FALSE;
+//			clienteFormulario.setIndPepo(NumerosType.NUMERO_MINIMO_CERO.getValor());
+//		}
+//	}
 	
 	
     public void procesarCerrarSesion() {
