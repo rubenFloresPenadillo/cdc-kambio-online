@@ -10,6 +10,7 @@ public class FinalizaTransaccion implements Job{
 	public void execute(JobExecutionContext context) throws JobExecutionException {
 		System.out.println("CERRANDO TRANSACCION NO FINALIZADA");
 		//LOGICA DEL JOB
+		
 	}
 
 }

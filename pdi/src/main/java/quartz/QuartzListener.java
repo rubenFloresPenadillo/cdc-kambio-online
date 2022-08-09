@@ -29,6 +29,7 @@ public class QuartzListener extends QuartzInitializerListener {
             scheduler.start();
         } catch (Exception e) {
             ctx.log("Error en el job.", e);
+            
         }
     }
 }
