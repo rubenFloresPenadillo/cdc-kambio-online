@@ -123,6 +123,7 @@
 							<th scope="col">Divisa</th>
 							<th scope="col">Tipo de cuenta</th>
 							<th scope="col">Nro de cuenta</th>
+							<th scope="col">CCI</th>
 							<th scope="col">Fec. creación</th>
 							<th scope="col">Usu. creación</th>
 							<th scope="col">Fec. ult modificación</th>
@@ -140,6 +141,7 @@
 									<td>#{item.tpDivis.nomDiviSing}</td>
 									<td>#{item.tpTipoCuent.desTipoCuen}</td>
 									<td>#{item.valCuenBanc}</td>
+									<td>#{ (item.valCuenInte eq null or item.valCuenInte eq '') ? '-' : item.valCuenInte}</td>
 									<td>
 										<h:outputText value="#{item.fecCreaRegi}">
 										  <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" timeZone="America/Lima"/>

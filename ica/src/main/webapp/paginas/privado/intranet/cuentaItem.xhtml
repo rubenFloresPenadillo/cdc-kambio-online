@@ -197,6 +197,14 @@
 					
 					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
 						<div class="form-group">
+							<p:outputLabel value="Código de cuenta interbancaria" />
+							<p:inputText id="idTxtNumeroCuentaCCI" styleClass="form-control" value="#{mAlias.cuentaItem.valCuenInte}" disabled="#{mAlias.indicadorModoConsulta}"/>
+							<div id="idMensajeNumeroCuentaCCI" > </div>
+						</div>
+					</div>
+					
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="form-group">
 							<p:outputLabel value="Alias" styleClass="clasesCamposFormulario" />
 							<p:inputText id="idTxtAlias" styleClass="form-control" value="#{mAlias.cuentaItem.aliCuen}" />
 							<div id="idMensajeResultadoAlias" > </div>

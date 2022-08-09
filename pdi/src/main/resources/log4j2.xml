@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<Configuration>
+	<Properties>
+<!--          <Property name="BASE_DIR">D:/cdcBases/precisoBase/log</Property> -->
+         <Property name="BASE_DIR">/etc/precisoBase/log</Property>
+    </Properties>
+    <Appenders>
+    	<Console name="console" >
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} %-5p %c{36} (%F:%L) - %m%n" />
+        </Console>
+        <RollingFile name = "sucesos" fileName = "${BASE_DIR}/logPreciso.out" 
+        		filePattern = "${BASE_DIR}/logPreciso-%d{MM-dd-yyyy}-%i.out.zip" >
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} %-5p %c{36} (%F:%L) - %m%n"/>
+            <Policies>
+<!--                 <TimSeBasedTriggeringPolicy interval = "1" modulate = "true"/> -->
+                <TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="250 MB"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+    
+    <Loggers>
+		<Logger name="org.hibernate" level="info" additivity="false">
+	        <AppenderRef ref="console"/>
+            <AppenderRef ref="sucesos"/> 
+	    </Logger>
+        <Root level="debug">
+        	<AppenderRef ref="console"/>
+            <AppenderRef ref="sucesos"/>            
+        </Root>
+    </Loggers>
+    
+</Configuration>

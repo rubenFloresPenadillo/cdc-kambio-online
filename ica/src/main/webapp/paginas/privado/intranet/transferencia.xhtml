@@ -52,6 +52,8 @@
 				      <th scope="col">Tipo de Cambio</th>
 				      <th scope="col">Cliente Envía</th>
 				      <th scope="col">Cliente Recibirá</th>
+				      <th scope="col">Cupón Aplicado</th>
+				      <th scope="col">Desct. Cupón</th>
 				    </tr>
 				 </thead>
 				 <tbody>
@@ -60,6 +62,8 @@
 				      <td>#{mAlias.tipoCambioUsado}</td>
 				      <td>#{mAlias.cadenaDivisaCantidadEnvioInformacion}</td>
 				      <td>#{mAlias.cadenaDivisaCantidadReciboInformacion}</td>
+				      <td>#{mAlias.operacionClienteFormulario.nomCupoUsad eq '' ? '-' : mAlias.operacionClienteFormulario.nomCupoUsad}</td>
+				      <td>#{mAlias.operacionClienteFormulario.monDescCupoUsad eq null ? '-' : mAlias.operacionClienteFormulario.monDescCupoUsad}</td>
 				    </tr>
 				 </tbody>
 			  </table>
@@ -94,6 +98,20 @@
 				    <tr>
 				      <td>#{mAlias.cadenaDivisaCantidadEnvioInformacion}</td>
 				      <td>#{mAlias.cadenaDivisaCantidadReciboInformacion}</td>
+				    </tr>
+				 </tbody>
+			  </table>
+			  <table class="table">
+				<thead>
+				    <tr>
+				      <th scope="col">Cupón Aplicado</th>
+				      <th scope="col">Desct. Cupón</th>
+				    </tr>
+				 </thead>
+				 <tbody>
+				    <tr>
+				      <td>#{mAlias.operacionClienteFormulario.nomCupoUsad eq '' ? '-' : mAlias.operacionClienteFormulario.nomCupoUsad}</td>
+				      <td>#{mAlias.operacionClienteFormulario.monDescCupoUsad eq null ? '-' : mAlias.operacionClienteFormulario.monDescCupoUsad}</td>
 				    </tr>
 				 </tbody>
 			  </table>

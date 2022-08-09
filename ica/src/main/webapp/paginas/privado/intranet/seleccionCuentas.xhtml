@@ -183,10 +183,41 @@
 					</div>
 					
 				</p:outputPanel>
+				
+				
+				<p:outputPanel class="row setup-content justify-content-center">
+				
+					<p:outputPanel class="column col-xs-12 col-sm-12 col-md-10 col-lg-10 setup-content justify-content-center alert alert-info" role="alert" rendered="#{mAlias.indAplicoCupon}">
+					  Cupón <strong>#{mAlias.operacionClienteFormulario.nomCupoUsad}</strong> aplicado. Descuento de <strong> s/. #{mAlias.operacionClienteFormulario.monDescCupoUsad} </strong>
+					</p:outputPanel>
+					
+					<p:outputPanel class="column col-xs-12 col-sm-12 col-md-10 col-lg-10 setup-content justify-content-center" rendered="#{!mAlias.indAplicoCupon}">
+						<div class="promo-code ng-tns-c340-7 ng-star-inserted" style="flex-direction: row; box-sizing: border-box; display: flex;">
+						    <div fxflex="80" class="code-ticket ng-tns-c340-7" style="flex: 1 1 100%; box-sizing: border-box; max-width: 80%;">
+						      <p:inputText matinput="" placeholder="¿Tienes un cupón? Ingrésalo" autocomplete="off" class="mat-input-element mat-form-field-autofill-control 
+						      ng-tns-c340-7 cdk-text-field-autofill-monitored ng-untouched ng-pristine ng-valid" id="mat-input-1" aria-invalid="false" aria-required="false"
+						      value="#{mAlias.operacionClienteFormulario.nomCupoUsad}" >
+						      </p:inputText>
+						    </div>
+						    <div flex="" fxlayout="row" fxlayoutalign="end stretch" class="ng-tns-c340-7" style="flex-direction: row; box-sizing: border-box; display: flex; place-content: stretch flex-end; align-items: stretch; max-height: 100%;">
+						      <p:remoteCommand name="metodoRemotoAplicaCupon"  actionListener="#{mAlias.validarAplicaCupon}" update="idPanelGeneral"/>
+						      <button mat-button="" type="button" class="mat-focus-indicator ticket-button ng-tns-c340-7 mat-button mat-button-base" onclick="metodoRemotoAplicaCupon();">
+						        <span class="mat-button-wrapper">Aplicar
+						        </span>
+						        <div matripple="" class="mat-ripple mat-button-ripple">
+						        </div>
+						        <div class="mat-button-focus-overlay">
+						        </div>
+						      </button>
+						    </div>
+						</div>
+					</p:outputPanel>
+					
+					  
+				</p:outputPanel>
 
 			</div>
 
-			
 			<div class="row col-xs-12 col-sm-12 col-md-11 col-lg-11 mx-auto mt-2">
 
 				<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-8">
@@ -234,6 +265,41 @@
 			</div>
 		</div>
 	</div>
+	
+		<!-- Modal Aplicacion de Cupon Exitoso-->
+		<div class="modal fade" id="idModalAplicaCuponExitoso" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body"> El cupón ha sido aplicado de forma satisfactoria</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal" >Aceptar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	<!-- Modal Aplicacion de Cupon Errado -->
+	<div class="modal fade" id="idModalAplicaCuponError" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title mensajeTituloError">¡ Mensaje del Sistema !</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body mensajeCuerpoError"><strong>El cupón no ha sido reconocido. Por favor verifica que el código ingresado sea el correcto.</strong></div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+				</div>
+			</div>
+		</div>
+	</div>		
+		
 	
 </ui:composition>
 

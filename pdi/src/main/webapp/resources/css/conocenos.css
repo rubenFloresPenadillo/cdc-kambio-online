@@ -1,0 +1,51 @@
+
+#conocenos{
+	background: #ffffff !important;
+	text-align: center;
+	padding: 20px;
+}
+
+#conocenos h2{
+	margin-top: 30px;
+	color: #1d2b38 !important;
+    font-weight: 500;
+    font-size: 45px;
+}
+
+#conocenos h3{
+	margin-top: 30px;
+	color: #004aad !important;
+}
+
+#conocenos .contenedorConocenos{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: auto;
+}
+
+
+.conocenos-item{
+	margin: 30px;
+}
+
+.conocenos-item img{
+	width: 290px;
+	height: 290px;
+}
+
+.conocenos-item p{
+	color: #1d2b38;
+	font-size: 23px;
+}
+
+.line-shape {
+    margin-left: calc(50% - 50px);
+}
+.line-shape, .line-shape-white {
+    width: 100px;
+    height: 4px;
+    background-color: #69B42D;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}

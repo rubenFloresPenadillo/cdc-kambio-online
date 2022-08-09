@@ -155,6 +155,8 @@
 								<th scope="col">A recibir</th>
 								<th scope="col">Operación</th>
 								<th scope="col">Tipo de Cambio</th>
+								<th scope="col">Cupón Aplicado</th>
+				      		    <th scope="col">Desct. Cupón</th>
 								<th scope="col">Estado</th>
 								<th scope="col">Acción</th>
 							</tr>
@@ -172,6 +174,8 @@
 								<td>#{mAlias.operacionEnProceso.indCompVent == 0 ? 'COMPRA' :
 									'VENTA'}</td>
 								<td>#{mAlias.operacionEnProceso.valTipoCambUsad}</td>
+								<td>#{mAlias.operacionEnProceso.nomCupoUsad eq '' ? '-' : mAlias.operacionEnProceso.nomCupoUsad}</td>
+				      			<td>#{mAlias.operacionEnProceso.monDescCupoUsad eq null ? '-' : mAlias.operacionEnProceso.monDescCupoUsad}</td>
 								<td class="#{mAlias.operacionEnProceso.tpEstadOpera.codEstaOper == 1 ? 'claseOperacionIniciada' : 'claseOperacionVerificacion'}">#{mAlias.operacionEnProceso.tpEstadOpera.desEstaOper}</td>
 								<td>
 									<p:commandButton class="btn botonDetalle icon-search" value="Detalle" 
@@ -215,6 +219,8 @@
 							<th scope="col">A recibir</th>
 							<th scope="col">Operación</th>
 							<th scope="col">Tipo de Cambio</th>
+							<th scope="col">Cupón Aplicado</th>
+				      		<th scope="col">Desct. Cupón</th>
 							<th scope="col">Estado</th>
 						</tr>
 					</thead>
@@ -236,7 +242,8 @@
 									<td>#{oc.monReci} #{oc.indCompVent == 1 ? 'Dolares' : 'Soles'}</td>
 									<td>#{oc.indCompVent == 0 ? 'COMPRA' : 'VENTA'}</td>
 									<td>#{oc.valTipoCambUsad}</td>
-									
+									<td>#{oc.nomCupoUsad eq '' ? '-' : oc.nomCupoUsad}</td>
+				      				<td>#{oc.monDescCupoUsad eq null ? '-' : oc.monDescCupoUsad}</td>
 									<td class="#{oc.tpEstadOpera.codEstaOper == 1 ? 'claseOperacionIniciada' :  (oc.tpEstadOpera.codEstaOper == 2 ? 'claseOperacionVerificacion' : (oc.tpEstadOpera.codEstaOper == 3 ? 'claseOperacionFinalizada' : 'claseOperacionCancelada') )  }" >#{oc.tpEstadOpera.desEstaOper}</td>
 								</tr>
 

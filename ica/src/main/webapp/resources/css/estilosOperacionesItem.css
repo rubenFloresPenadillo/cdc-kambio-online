@@ -412,26 +412,48 @@ table.dataTable {
 	box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.4) !important;
 }
 
-.claseCuentaClienteEnvia{
-	-webkit-box-shadow: 0px 0px 6px 1px rgba(224,73,27,1);
-	-moz-box-shadow: 0px 0px 6px 1px rgba(224,73,27,1);
-	box-shadow: 0px 0px 6px 1px rgba(224,73,27,1);
+/* .claseCuentaClienteEnvia{ */
+/* 	-webkit-box-shadow: 0px 0px 6px 1px rgba(224,73,27,1); */
+/* 	-moz-box-shadow: 0px 0px 6px 1px rgba(224,73,27,1); */
+/* 	box-shadow: 0px 0px 6px 1px rgba(224,73,27,1); */
+/* 	margin-bottom: 15px; */
+/* } */
+
+/* .claseTituloCuentaClienteEnvia{ */
+/* 	color: rgba(224,73,27,1) !important; */
+/* } */
+
+/* .claseCuentaClienteRecibe{ */
+/* 	-webkit-box-shadow: 0px 0px 6px 1px rgba(18,141,179,1); */
+/* 	-moz-box-shadow: 0px 0px 6px 1px rgba(18,141,179,1); */
+/* 	box-shadow: 0px 0px 6px 1px rgba(18,141,179,1); */
+/* 	margin-bottom: 15px; */
+/* } */
+
+/* .claseTituloCuentaClienteRecibe{ */
+/* 	color: rgba(18,141,179,1) !important; */
+/* } */
+
+.claseAlternativaPrimaria{
+	-webkit-box-shadow: 0px 0px 6px 1px rgba(224,168,0,1);
+	-moz-box-shadow: 0px 0px 6px 1px rgba(224,168,0,1);
+	box-shadow: 0px 0px 6px 1px rgba(224,168,0,1);
 	margin-bottom: 15px;
 }
 
-.claseTituloCuentaClienteEnvia{
-	color: rgba(224,73,27,1) !important;
+.claseTituloAlternativaPrimaria{
+	color: rgba(224,168,0,1) !important;
 }
 
-.claseCuentaClienteRecibe{
-	-webkit-box-shadow: 0px 0px 6px 1px rgba(18,141,179,1);
-	-moz-box-shadow: 0px 0px 6px 1px rgba(18,141,179,1);
-	box-shadow: 0px 0px 6px 1px rgba(18,141,179,1);
+.claseAlternativaSecundaria{
+	-webkit-box-shadow: 0px 0px 6px 1px rgba(0,75,173,1);
+	-moz-box-shadow: 0px 0px 6px 1px rgba(0,75,173,1);
+	box-shadow: 0px 0px 6px 1px rgba(0,75,173,1);
 	margin-bottom: 15px;
 }
 
-.claseTituloCuentaClienteRecibe{
-	color: rgba(18,141,179,1) !important;
+.claseTituloAlternativaSecundaria{
+	color: rgba(0,75,173,1) !important;
 }
 
 .claseCodigoUnicoBuscar{

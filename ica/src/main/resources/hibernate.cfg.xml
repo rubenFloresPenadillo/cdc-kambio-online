@@ -34,5 +34,7 @@
 		<mapping class="hibernate.entidades.TpActivEcono" /> 
 		<mapping class="hibernate.entidades.TpTipoPregu" /> 
 		<mapping class="hibernate.entidades.TpAyudaPregu" /> 
+		<mapping class="hibernate.entidades.TpCupon" /> 
+		<mapping class="hibernate.entidades.TpOperaCupon" />
     </session-factory>
 </hibernate-configuration>

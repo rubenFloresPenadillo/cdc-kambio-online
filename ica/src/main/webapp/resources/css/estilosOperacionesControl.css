@@ -11,7 +11,7 @@
 
 body {
 	font-family: 'Montserrat', sans-serif;
-	font-size: 0.85rem;
+	font-size: 0.85rem !important;
 	background: rgba(0,75,173,1);
 	background: -moz-linear-gradient(45deg, rgba(0,75,173,1) 0%, rgba(0,75,173,1) 26%, rgba(0,75,173,1) 49%, rgba(252,199,39,1) 100%);
 	background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(0,75,173,1)), color-stop(26%, rgba(0,75,173,1)), color-stop(49%, rgba(0,75,173,1)), color-stop(100%, rgba(252,199,39,1)));
@@ -20,6 +20,14 @@ body {
 	background: -ms-linear-gradient(45deg, rgba(0,75,173,1) 0%, rgba(0,75,173,1) 26%, rgba(0,75,173,1) 49%, rgba(252,199,39,1) 100%);
 	background: linear-gradient(45deg, rgba(0,75,173,1) 0%, rgba(0,75,173,1) 26%, rgba(0,75,173,1) 49%, rgba(252,199,39,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#004bad', endColorstr='#fcc727', GradientType=1 );
+}
+
+.ui-widget .ui-widget {
+    font-size: 0.85rem !important;
+}
+
+.ui-widget{
+    font-size: 0.85rem !important;
 }
 
 section{
@@ -142,6 +150,14 @@ header {
 	margin-top: 3rem;
 /* 	margin: auto; */
 }
+
+
+#idFormReporteOperacionesControl{
+	display: inline-block;
+	width: 100%;
+	margin-top: 3rem;
+}
+
 
 .column {
     float: left;
@@ -434,6 +450,28 @@ table.dataTable {
 	color: rgba(18,141,179,1) !important;
 }
 
+.claseAlternativaPrimaria{
+	-webkit-box-shadow: 0px 0px 6px 1px rgba(224,168,0,1);
+	-moz-box-shadow: 0px 0px 6px 1px rgba(224,168,0,1);
+	box-shadow: 0px 0px 6px 1px rgba(224,168,0,1);
+	margin-bottom: 15px;
+}
+
+.claseTituloAlternativaPrimaria{
+	color: rgba(224,168,0,1) !important;
+}
+
+.claseAlternativaSecundaria{
+	-webkit-box-shadow: 0px 0px 6px 1px rgba(0,75,173,1);
+	-moz-box-shadow: 0px 0px 6px 1px rgba(0,75,173,1);
+	box-shadow: 0px 0px 6px 1px rgba(0,75,173,1);
+	margin-bottom: 15px;
+}
+
+.claseTituloAlternativaSecundaria{
+	color: rgba(0,75,173,1) !important;
+}
+
 .claseCodigoUnicoBuscar{
 	width: 170px; 
 	height: 30px; 
@@ -463,3 +501,36 @@ table.dataTable {
 .btn-danger:hover  {
     background-color: #ECB300 !important;
 }
+
+.ui-state-default .ui-icon {
+    background-image: url(/ica/javax.faces.resource/images/ui-icons_3d80b3_256x240.png.xhtml?ln=primefaces-cupertino&v=10.0.0&e=10.0.0) !important;
+}
+
+.ui-icon {
+    width: 16px !important;
+    height: 16px !important;
+    background-image: url(/ica/javax.faces.resource/images/ui-icons_72a7cf_256x240.png.xhtml?ln=primefaces-cupertino&v=10.0.0&e=10.0.0) !important;
+}
+
+.form-control {
+    border: 0px solid !important;
+}   
+    
+.imagenBotonIconoExcel256x256 {
+	background-image: url(../../resources/imagenes/iconoExcel30x30.png) !important;
+	background-repeat: no-repeat !important;
+	background-position: center !important;
+	width: 30px;
+	height: 28px;
+}
+
+.claseBotonReporte{
+	width: 30px;
+	height: 28px;
+	cursor: pointer;
+	border: none !important;
+}
+
+/* span button{ */
+/* 	margin-left: 2px !important; */
+/* } */

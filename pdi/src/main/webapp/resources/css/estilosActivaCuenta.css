@@ -1,0 +1,253 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;500;600&display=swap');
+
+
+body {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 0.85rem;
+	background: rgba(29,43,56,1);
+	background: -moz-linear-gradient(45deg, rgba(29,43,56,1) 0%, rgba(29,43,56,1) 9%, rgba(76,126,32,1) 100%);
+	background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(29,43,56,1)), color-stop(9%, rgba(29,43,56,1)), color-stop(100%, rgba(76,126,32,1)));
+	background: -webkit-linear-gradient(45deg, rgba(29,43,56,1) 0%, rgba(29,43,56,1) 9%, rgba(76,126,32,1) 100%);
+	background: -o-linear-gradient(45deg, rgba(29,43,56,1) 0%, rgba(29,43,56,1) 9%, rgba(76,126,32,1) 100%);
+	background: -ms-linear-gradient(45deg, rgba(29,43,56,1) 0%, rgba(29,43,56,1) 9%, rgba(76,126,32,1) 100%);
+	background: linear-gradient(45deg, rgba(29,43,56,1) 0%, rgba(29,43,56,1) 9%, rgba(76,126,32,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1d2b38', endColorstr='#4c7e20', GradientType=1 );
+}
+
+/*Para el Login */
+
+
+#seccionLogin {
+/*     margin-top: 65px; */
+/*     position: relative; */
+/* 	height: auto !important; */
+	min-height: 100vh;
+}
+
+
+section {
+    width: 88%;
+    margin: auto;
+    padding-left: 2%;
+    padding-right: 2%;
+/*     background: #fff; */
+/* 	background: rgba(210,255,82,1); */
+/* 	background: -moz-linear-gradient(-45deg, rgba(210,255,82,1) 0%, rgba(56,173,140,1) 100%); */
+/* 	background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(210,255,82,1)), color-stop(100%, rgba(56,173,140,1))); */
+/* 	background: -webkit-linear-gradient(-45deg, rgba(210,255,82,1) 0%, rgba(56,173,140,1) 100%); */
+/* 	background: -o-linear-gradient(-45deg, rgba(210,255,82,1) 0%, rgba(56,173,140,1) 100%); */
+/* 	background: -ms-linear-gradient(-45deg, rgba(210,255,82,1) 0%, rgba(56,173,140,1) 100%); */
+/* 	background: linear-gradient(135deg, rgba(210,255,82,1) 0%, rgba(56,173,140,1) 100%); */
+/* 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#38ad8c', GradientType=1 ); */
+
+	background: #ffffff;
+	
+/* 	background: rgba(255,255,255,1); */
+/* 	background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(219,219,219,1) 84%, rgba(209,209,209,1) 100%); */
+/* 	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(84%, rgba(219,219,219,1)), color-stop(100%, rgba(209,209,209,1))); */
+/* 	background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(219,219,219,1) 84%, rgba(209,209,209,1) 100%); */
+/* 	background: -o-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(219,219,219,1) 84%, rgba(209,209,209,1) 100%); */
+/* 	background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(219,219,219,1) 84%, rgba(209,209,209,1) 100%); */
+/* 	background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(219,219,219,1) 84%, rgba(209,209,209,1) 100%); */
+/* 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#d1d1d1', GradientType=1 ); */
+}
+
+.main-section{
+/* 	 background: red;  */
+	 margin: 0 auto;
+	 margin-top: 50px;
+	 padding: 0;
+}
+
+.formContenidoIngreso{
+	padding: 0 5px;
+	border-radius: 10px;
+	background: rgba(29,43,56,1);
+	background: -moz-linear-gradient(45deg, rgba(29,43,56,1) 0%, rgba(29,43,56,1) 9%, rgba(76,126,32,1) 100%);
+	background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(29,43,56,1)), color-stop(9%, rgba(29,43,56,1)), color-stop(100%, rgba(76,126,32,1)));
+	background: -webkit-linear-gradient(45deg, rgba(29,43,56,1) 0%, rgba(29,43,56,1) 9%, rgba(76,126,32,1) 100%);
+	background: -o-linear-gradient(45deg, rgba(29,43,56,1) 0%, rgba(29,43,56,1) 9%, rgba(76,126,32,1) 100%);
+	background: -ms-linear-gradient(45deg, rgba(29,43,56,1) 0%, rgba(29,43,56,1) 9%, rgba(76,126,32,1) 100%);
+	background: linear-gradient(45deg, rgba(29,43,56,1) 0%, rgba(29,43,56,1) 9%, rgba(76,126,32,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1d2b38', endColorstr='#4c7e20', GradientType=1 );
+}
+
+.user-img{
+	margin-top: -60px;
+	margin-bottom: 30px;
+}
+
+.form-group{
+	margin-top: -20px;
+}
+
+.form-group input{
+/* 	height: 42px; */
+	border-radius: 5px;
+	border: 0;
+/* 	font-size: 18px; */
+/* 	letter-spacing: 2px; */
+	padding-left: 35px;
+}
+
+.form-group i::before{
+	position: absolute;
+	font-size: 20px;
+	padding-top: 15px;
+	left: 25px;
+	color: #69B42D;
+}
+
+.form-input button{
+	width: 60%;
+	margin: 5px 0 25px;
+}
+
+.btn-enviar{
+	width: 60%;
+	margin: 15px 0 25px;
+}
+
+.btn-success{
+	background-color: #054CEF;
+	border-radius: 5px;
+	padding: 7px 14px;
+	border: 1px solid #ffffff;	
+}
+
+.btn-success:hover{
+	background-color: #012068;
+	border: 1px solid #ffffff;
+}
+
+.forgot{
+	padding: 5px 0 25px;
+}
+
+.forgot a{
+	color: #ffffff;
+}
+
+.contenidoEnlaceRegistro{
+	padding: 5px 0 25px;
+	border: none;
+}
+
+.seccionTipoPersoneria label{
+	color: #ffffff;
+}
+
+/*boton por activo con hover*/
+.btn-primary {
+	background-color: #B6B7B8 !important;
+	border-color: #DDDDDD !important;
+	border-radius: 5px !important;
+}
+
+/*boton por activo con hover*/
+.btn-primary:hover {
+	background-color: #00871E !important;
+}
+
+.btnNatural{
+	margin-right: 5px;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active{
+	background-color: #19A712 !important;
+	border-color: #00A65F !important;		
+}
+
+.imagenLogoPaginaLogin{
+/* 	float: left; */
+	width: 250px;
+	height: 250px;
+}
+
+
+.imagenLogoHorizontalPaginaLogin{
+		width: 320px !important;
+}
+	
+@media 	(max-width: 450px) {
+	.imagenLogoHorizontalPaginaLogin{
+			width: 240px !important;
+	}
+}
+
+.imagenCheckCuentaActiva{
+		width: 320px !important;
+}
+	
+@media 	(max-width: 450px) {
+	.imagenCheckCuentaActiva{
+			width: 240px !important;
+	}
+}
+
+@media 	(max-width: 380px) {
+/* 	section{ */
+/* 		width: 100%; */
+/* 	} */
+}
+
+@media 	(max-width: 767px) {
+	.claseContieneImagen{
+		margin-top: 20px;
+	}
+}
+
+
+@media 	(min-width: 768px) {
+	.claseContieneImagen{
+		margin-top: 190px;
+	}
+	.claseContieneLogin{
+		margin-top: 135px;
+	}
+}
+
+/* @media 	(max-width: 768px) { */
+/* 	.claseContieneLogin{ */
+/* 		margin-top: 50px; */
+/* 	} */
+/* } */
+
+.seccionRegistrateYa{
+	display: block;
+	margin-bottom: 15px;
+	margin-top: 20px;
+	color: #1d2b38;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.claseMensajeActivacion{
+	display: block;
+	margin-bottom: 15px;
+	margin-top: 20px;
+	color: blue;
+/* 	font-weight: bold; */
+	font-size: 18px;
+}
+
+#seccionLogin .contenedor{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+/* 	margin-top: 25px; */
+}
+
+#result{
+	display: none;
+}
+
+.modal-title{
+    color: #004aad !important;
+	font-weight: bold !important;
+}
+
+.modal-content{
+	margin-top: 70px !important;
+}

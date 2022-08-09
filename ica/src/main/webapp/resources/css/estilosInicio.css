@@ -214,7 +214,7 @@ header {
 }
 
 .inputCalculadora{
-	height: 90px;
+	height: 80px;
 	text-align: right;
 	font-weight: bold;
 	font-size: 30px !important;
@@ -321,7 +321,7 @@ header {
 
 /*Separa las filas de las 2 banderas*/
 .contenedoraInferior{
-	margin-top: 85px;
+	margin-top: 74px;
 }
 
 .nav-tabs{
@@ -736,3 +736,164 @@ header {
     background-color: #002D6B !important;
 }
 
+/* Inicio Estilos cupon */
+
+/* CSS styles */
+
+:root {
+    --primary-blue: #0032ff;
+    --secondary-blue: #000096;
+    --tertiary-blue: #c3d4ff;
+    --quaternary-blue: #3a559f;
+    --quinary-blue: #0077b7;
+    --primary-lightblue: #00c8ff;
+    --secondary-lightblue: #f7f9ff;
+    --tertiary-lightblue: #e5f1ff;
+    --quaternary-lightblue: #316ff8;
+    --quinary-lightblue: #0fa4c5;
+    --sextary-lightblue: #5a99d4;
+    --primary-orange: #ff6e00;
+    --secondary-orange: #f90;
+    --tertiary-orange: rgba(255,110,0,0.6);
+    --quaternary-orange: #ffd3b3;
+    --primary-green: #2bd346;
+    --secondary-green: #05be50;
+    --tertiary-green: #eafbed;
+    --quaternary-green: #4aa582;
+    --quinary-green: #46dba3;
+    --primary-yellow: #ffe600;
+    --secondary-yellow: #f7b600;
+    --tertiary-yellow: #d0e139;
+    --quaternary-yellow: #f9c943;
+    --primary-red: #ff2e00;
+    --secondary-red: #e43b30;
+    --primary-white: #fff;
+    --secondary-white: #ededed;
+    --primary-black: #000;
+    --secondary-black: #3e4045;
+    --primary-gray: #707e9b;
+    --secondary-gray: #cdd6e0;
+    --tertiary-gray: #8e8e8e;
+    --quaternary-gray: #c1c1c3;
+    --quinary-gray: #f6f9ff;
+    --primary-pink: #ff0f64;
+    --primary-purple: #662974;
+    --secondary-purple: #9f1fac;
+    --tertiary-purple: #8a2be2;
+    --quaternary-purple: #8098ff;
+    --primary-shadow-black: rgba(0,0,0,0.25);
+    --secondary-shadow-black: rgba(0,0,0,0.87);
+    --tertiary-shadow-black: rgba(0,50,255,0);
+    --primary-shadow-gray: rgba(145,150,163,0.5);
+    --secondary-shadow-gray: rgba(187,195,214,0.4);
+    --primary-shadow-blue: rgba(90,153,212,0.5);
+    --secondary-shadow-blue: rgba(36,80,220,0.5);
+    --tertiary-shadow-blue: rgba(0,50,255,0.7);
+    --primary-shadow-green: rgba(86,255,44,0.5);
+    --secondary-shadow-green: rgba(74,165,130,0.2);
+    --tertiary-shadow-green: rgba(70,219,163,0.2);
+    --primary-shadow-yellow: rgba(208,225,57,0.2);
+    --primary-shadow-orange: rgba(249,201,67,0.2);
+    --secondary-shadow-orange: rgba(254,184,70,0.2);
+    --tertiary-shadow-orange: rgba(255,154,72,0.2);
+}
+
+.promo-code {
+    margin-top: 0.4em;
+}
+
+.mat-drawer-container {
+    background-color: #fafafa;
+    color: rgba(0,0,0,.87);
+}
+
+
+.promo-code .code-ticket {
+    border-radius: 5px 0 0 5px;
+    border-color: var(--primary-gray);
+    border-right: 2px dashed;
+    padding: 12px;
+    border: 2px dashed var(--primary-shadow-gray);
+    border-right: var(--primary-shadow-gray);
+}
+
+
+.mat-drawer-container {
+    background-color: #fafafa;
+    color: rgba(0,0,0,.87);
+}
+
+.promo-code .code-ticket input {
+    font: inherit;
+    background: rgba(0,0,0,0);
+    color: currentColor;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    vertical-align: bottom;
+    text-align: inherit;
+    font-size: 14px;
+}
+
+.cdk-text-field-autofill-monitored:not(:-webkit-autofill) {
+    -webkit-animation: cdk-text-field-autofill-end 0s 1ms;
+    animation: cdk-text-field-autofill-end 0s 1ms;
+}
+
+.mat-input-element {
+    caret-color: #2962ff;
+}
+
+.promo-code .ticket-button {
+    border-radius: 0 5px 5px 0;
+    border: 1px solid var(--secondary-gray);
+    background-color: var(--tertiary-lightblue);
+    color: var(--primary-blue);
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
+    box-sizing: border-box;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+    vertical-align: baseline;
+    text-align: center;
+    margin: 0;
+    min-width: 64px;
+    line-height: 36px;
+    padding: 0 16px;
+    border-radius: 4px;
+    overflow: visible;
+}
+
+.mat-button, .mat-icon-button, .mat-stroked-button {
+    color: inherit;
+    background: rgba(0,0,0,0);
+}
+
+.promo-code .code-ticket {
+    border-radius: 5px 0 0 5px;
+    border-color: var(--primary-gray);
+    border-right: 2px dashed;
+    padding: 12px;
+    border: 2px dashed var(--primary-shadow-gray);
+    border-right: var(--primary-shadow-gray);
+}
+
+/* Fin estilos cupon*/

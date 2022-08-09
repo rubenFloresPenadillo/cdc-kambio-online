@@ -286,6 +286,20 @@ table.dataTable {
 	background-position: center !important;
 }
 
+.imagenBotonCupon64x64 {
+	background-image: url(../../resources/imagenes/cupones64x64.png) !important;
+	background-repeat: no-repeat !important;
+	background-position: center !important;
+}
+
+/*Para reportes*/
+.imagenBotonOperacionesReporte64x64 {
+	background-image: url(../../resources/imagenes/reportesOperaciones64x64.png) !important;
+	background-repeat: no-repeat !important;
+	background-position: center !important;
+}
+
+
 .claseBotonElementoMenu{
 	width: 100px;
 	height: 100px;

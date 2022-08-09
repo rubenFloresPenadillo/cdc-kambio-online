@@ -49,9 +49,9 @@
 					<li onclick="window.location.href='../panelPrincipal.xhtml'">
 						<a class="claseControl" href="../panelPrincipal.xhtml">Panel de Control</a>
 					</li>
-<!-- 					<li> -->
-<!-- 						<a class="claseReportes" href="#" >Reportes</a> -->
-<!-- 					</li>	 -->	
+					<li onclick="window.location.href='../reportesPrincipal.xhtml'">
+						<a href="../reportesPrincipal.xhtml" >Reportes</a>
+					</li>
 					<li>
 						<a href="#" id="idEnlaceCerrarSesion" onclick="mostrarPopupCerrarSesion();" >Cerrar Sesion</a>
 					</li>	
@@ -128,6 +128,8 @@
 							<th scope="col">Cliente recibe</th>
 							<th scope="col">Operación</th>
 							<th scope="col">Tipo de Cambio</th>
+							<th scope="col">Cupón Aplicado</th>
+				      		<th scope="col">Desct. Cupón</th>
 							<th scope="col">Estado</th>
 							<th scope="col">Acciones</th>
 						</tr>
@@ -152,6 +154,8 @@
 									<td>#{oc.monReci} #{oc.indCompVent == 1 ? 'Dolares' : 'Soles'}</td>
 									<td>#{oc.indCompVent == 0 ? 'COMPRA' : 'VENTA'}</td>
 									<td>#{oc.valTipoCambUsad}</td>
+									<td>#{oc.nomCupoUsad eq '' ? '-' : oc.nomCupoUsad}</td>
+				      				<td>#{oc.monDescCupoUsad eq null ? '-' : oc.monDescCupoUsad}</td>
 									<td class="#{oc.tpEstadOpera.codEstaOper == 1 ? 'claseOperacionIniciada' :  (oc.tpEstadOpera.codEstaOper == 2 ? 'claseOperacionVerificacion' : (oc.tpEstadOpera.codEstaOper == 3 ? 'claseOperacionFinalizada' : 'claseOperacionCancelada') )  }" >#{oc.tpEstadOpera.desEstaOper}</td>
 									<td> 
 

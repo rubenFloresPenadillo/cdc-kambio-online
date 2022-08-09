@@ -20,6 +20,11 @@ function operacionVerificacionError(){
 	$('#modalVerificacionError').modal('show');
 }
 
+function operacionIngresoDatos(){
+	$('#modalIngresoDeDatos').modal({backdrop: 'static', keyboard: false})  
+	$('#modalIngresoDeDatos').modal('show');
+}
+
 function operacionSeleccionarCuentaError(){
 	$('#modalSelecionarCuentaError').modal({backdrop: 'static', keyboard: false})  
 	$('#modalSelecionarCuentaError').modal('show');
@@ -194,3 +199,15 @@ function alineaNumeroB(){
 		idInputInferior.value = Number(idInputInferior.value);
 	}
 }
+
+
+function confirmaAplicaCuponExitoso(){
+	$('#idModalAplicaCuponExitoso').modal({backdrop: 'static', keyboard: false})  
+	$('#idModalAplicaCuponExitoso').modal('show');
+}
+
+function confirmaAplicaCuponError(){
+	$('#idModalAplicaCuponError').modal({backdrop: 'static', keyboard: false})  
+	$('#idModalAplicaCuponError').modal('show');
+}
+

@@ -40,7 +40,7 @@
 		</div>
 	</div>
 
-	<h:form id="idFormVerificacion" method="post" role="form" class="form-horizontal">
+	<h:form id="idFormVerificacion" method="post" role="form" class="form-horizontal" enctype="multipart/form-data">
 			
 			<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-9 mx-auto">
 				<p align="justify">Después de que hayas realizado la transferencia a nuestra cuenta, necesitamos comprobarla con el Banco para poder transferir  <strong>#{mAlias.cadenaDivisaCantidadRecibo}</strong> a tu cuenta. Realizaremos la transferencia a la siguiente cuenta:</p>
@@ -84,13 +84,42 @@
 				
 				<div class="column col-xs-12 col-sm-10 col-md-6 col-lg-5 mx-auto claseContenedorComunicacion">
 
-					<div class="form-group margenCuenta">
-						<p>Envianos el comprobante de la transferencia al correo  <strong class="cursorPointer"> pagos@icambio.pe </strong> </p> 
-					</div>
+<!-- 					<div class="form-group margenCuenta"> -->
+<!-- 						<p>Envianos el comprobante de la transferencia al correo  <strong class="cursorPointer"> pagos@icambio.pe </strong> </p>  -->
+<!-- 					</div> -->
 
-					<div class="form-group margenCuenta">
-						<p >O al whatsapp  <strong>  <a class="icon-whatsapp cursorPointer"  onclick="enlaceWhatsappVerificacion();" >981148030</a>  </strong> </p> 
-					</div>
+<!-- 					<div class="form-group margenCuenta"> -->
+<!-- 						<p >O al whatsapp  <strong>  <a class="icon-whatsapp cursorPointer"  onclick="enlaceWhatsappVerificacion();" >981148030</a>  </strong> </p>  -->
+<!-- 					</div> -->
+					
+					
+					<p:outputPanel id="idContenedorConstanciaTransferencia">
+						<p:outputPanel rendered="#{mAlias.mostrarCampoOperacion}">
+							<div class="row">
+								<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-8">
+									<div class="form-group">
+										<p:outputLabel value="Ingrese el codigo de su operación bancaria *" />
+										<p:inputText id="idTxtCodigoOperacion" styleClass="form-control" value="#{mAlias.operacionClienteFormulario.codTranBanc}"/>
+										<p:tooltip for="idTxtCodigoOperacion" value="Este código lo puede ubicar dentro de la constancia de transferencia de su entidad bancaria" position="bottom"/>
+										<div id="idMensajeCodigoOperacion" > </div>
+									</div>
+								</div>			
+							</div>
+						</p:outputPanel>
+						
+<!-- 						<p:outputPanel rendered="#{mAlias.mostrarCampoSubeImagenOperacion}"> -->
+<!-- 							<div class="row"> -->
+<!-- 								<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12"> -->
+<!-- 									<div class="form-group"> -->
+<!-- 										<p:outputLabel value="Sube la imagen de constancia de transferencia *" /> -->
+<!-- 										<p:fileUpload value="#{mAlias.file}" mode="simple" skinSimple="true"/> -->
+							
+<!-- 										<div id="idMensajeFileOperacion" > </div> -->
+<!-- 									</div> -->
+<!-- 								</div>			 -->
+<!-- 							</div> -->
+<!-- 						</p:outputPanel> -->
+					</p:outputPanel>
 					
 					<div class="contenedorImagenSeguridad">
 						<img class="imagenVerificacionSeguridad"
@@ -156,5 +185,22 @@
 		</div>
 	</div>
 
+		<!-- Modal Ingreso de Datos-->
+		<div class="modal fade" id="modalIngresoDeDatos" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body"> <strong>#{mAlias.resultadoProcesoError}</strong></div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal" >Aceptar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
 </ui:composition>
 

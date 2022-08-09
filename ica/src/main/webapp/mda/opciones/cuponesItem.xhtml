@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<link rel="shortcut icon" href="../../resources/imagenes/favicon.ico" />	
+	<link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.css" />
+
+	<script type="text/javascript" src="../../resources/js/popper.min.js"></script>
+	<script type="text/javascript" src="../../resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../resources/js/principalCupones.js"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="../../resources/css/fontello.css" />
+	<link rel="stylesheet" type="text/css" href="../../resources/css/datatables.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../resources/css/primefaces-cupertino/theme.css"/>
+	<link rel="stylesheet" type="text/css" href="../../resources/css/estilosCupones.css"/> 
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet"/>
+	<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+	
+
+ 
+	<script type="text/javascript" src="../../resources/js/datatables.min.js"></script>
+
+
+	<script type="text/javascript">
+	    PrimeFaces.locales['es'] = {
+	        closeText: 'Cerrar',
+	        prevText: 'Anterior',
+	        nextText: 'Siguiente',
+	        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+	        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+	        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+	        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+	        dayNamesMin: ['D', 'L', 'M', 'Mi', 'J', 'V', 'S'],
+	        weekHeader: 'Semana',
+	        firstDay: 1,
+	        isRTL: false,
+	        showMonthAfterYear: false,
+	        yearSuffix: '',
+	        timeOnlyTitle: 'Sólo hora',
+	        timeText: 'Tiempo',
+	        hourText: 'Hora',
+	        minuteText: 'Minuto',
+	        secondText: 'Segundo',
+	        millisecondText: 'Milisegundo',
+	        currentText: 'Fecha actual',
+	        ampm: false,
+	        month: 'Mes',
+	        week: 'Semana',
+	        day: 'Día',
+	        allDayText: 'Todo el día',
+	        today: 'Hoy',
+	        clear: 'Claro'
+	    };
+	</script>
+	
+	<title>Cupon - Nuevo</title>
+	
+</h:head>
+<h:body>
+
+	<ui:param name="mAlias" value="#{cuponItemBean}" />
+
+	<header>
+		<div class="contenedor">
+			
+			<a  href="../../mda/index.xhtml">
+				<img class="claseImagenLogoHorizontal" src="../../resources/imagenes/logoIcambio.png" alt="Logo Icambio"/>
+			</a>
+
+			<h:selectBooleanCheckbox  id="menu-bar"/>
+			<label class="icon-down-dir" for="menu-bar" id="idFlechaAbajo" ></label> 
+			<h:outputLabel id="idSeccionUsuario" class="icon-user-circle" for="menu-bar" value="#{mAlias.valorNombre}"/>
+			
+
+			<nav class="menu">
+				<ul>
+					<li onclick="window.location.href='../panelPrincipal.xhtml'">
+						<a class="claseControl" href="../panelPrincipal.xhtml">Panel de Control</a>
+					</li>
+<!-- 					<li> -->
+<!-- 						<a class="claseReportes" href="#" >Reportes</a> -->
+<!-- 					</li>	 -->
+					<li>
+						<a href="#" id="idEnlaceCerrarSesion" onclick="mostrarPopupCerrarSesion();" >Cerrar Sesion</a>
+					</li>	
+				</ul>
+			</nav>
+
+			<a id="idBotonCerrarSesion"  class="btn botonCerrarSesion icon-power" href="#" title="Cerrar sesión" onclick="mostrarPopupCerrarSesion();" />
+
+		</div>
+	</header>
+
+	<main>
+	<section id="idSeccionCuponItem">
+	
+		<!-- Modal cerrar sesion-->
+		<div class="modal fade" id="idModalConfirmacionCerrarSesion" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body"> ¿Estás seguro de cerrar sesión?</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal" onclick="ejecutarCerrarSesionRemoto();">Aceptar</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" >Cancelar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal Confirmacion-->
+		<div class="modal fade" id="idModalConfirmacionGuardaCupon" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body"> ¿Está seguro de los datos a guardar?</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal" onclick="ejecutarGuardarCupon();">Aceptar</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" >Cancelar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<h:form id="idFormCuponItem" method="post" role="form"
+			class="form-horizontal">
+			
+			<p:remoteCommand name="ejecutarCerrarSesionRemoto" actionListener="#{mAlias.procesarCerrarSesion()}"/>
+			<p:remoteCommand name="ejecutarGuardarCupon" actionListener="#{mAlias.procesarGuardarCupon()}" update="idFormCuponItem"/>
+			<p:remoteCommand name="ejecutarRegresar" actionListener="#{mAlias.regresar()}"/>
+			
+			<div class="row mx-auto">
+				
+				<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 claseTituloIzquierda" >
+					<p class="claseTitulo">Panel de Control → Administración de Cupones → Nuevo Cupón</p>
+				</div>
+				
+				<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 claseTituloDerecha">
+					<a class="btn botonRegresar icon-undo" href="cupones.xhtml" title="Regresar a Administración de Cupones"/>
+				</div>
+				
+			</div>
+			
+			<div class="row" >
+				
+				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+					<div class="form-group">
+						<p:outputPanel styleClass="alert claseCampoObligatorios"> 
+							Los campos con * son obligatorios.
+						</p:outputPanel>
+						
+					</div>
+				</div>
+
+			</div>
+			
+			<div class="row">
+			
+			
+					<div class="column col-xs-12 col-sm-12 col-md-3 col-lg-3">
+						<div class="form-group">
+							<p:outputLabel value="Aplica Tipo de perfil *" />
+
+							<h:selectOneMenu id="idComboTipoPerfil" styleClass="custom-select form-control claseComboFormulario"
+								value="#{mAlias.cuponItem.codTipoPersApli}"  disabled="#{mAlias.indicadorModoConsulta}">
+								<f:selectItem itemLabel="Todos" itemValue="0"/> 
+								<f:selectItems value="#{mAlias.listaComboTipoPerfilCuenta}" />
+							</h:selectOneMenu>
+							<div id="idMensajeTipoPerfil" > </div>
+						</div>
+					</div>	
+					
+					
+					<div class="column col-xs-12 col-sm-12 col-md-3 col-lg-3">
+						<div class="form-group">
+							<p:outputLabel value="Aplica tipo de operación *" />
+
+							<h:selectOneMenu id="idComboTipoOperacion" styleClass="custom-select form-control claseComboFormulario"
+								value="#{mAlias.cuponItem.codTipoOperApli}"  disabled="#{mAlias.indicadorModoConsulta}">
+								<f:selectItem itemLabel="Todos" itemValue="0"/> 
+								<f:selectItems value="#{mAlias.listaComboTipoOperacion}" />
+							</h:selectOneMenu>
+							
+							<div id="idMensajeTipoOperacion" > </div>
+						</div>
+					</div>	
+					
+					<div class="column col-xs-12 col-sm-12 col-md-3 col-lg-3">
+						<div class="form-group">
+							<p:outputLabel value="Email cliente" />
+							<p:inputText id="idTxtEmailCliente" styleClass="form-control" value="#{mAlias.cuponItem.emaClieCupo}" disabled="#{mAlias.indicadorModoConsulta}"/>
+							<div id="idMensajeEmailCliente" > </div>
+						</div>
+					</div>
+					
+					<div class="column col-xs-12 col-sm-12 col-md-3 col-lg-3">
+						<div class="form-group">
+							<p:outputLabel value="Nombre de Cupón *" />
+							<p:inputText id="idTxtNombreCupon" styleClass="form-control" value="#{mAlias.cuponItem.nomCupo}" disabled="#{mAlias.indicadorModoConsulta || mAlias.indicadorModoEdicion}"/>
+							<div id="idMensajeNombreCupon" > </div>
+						</div>
+					</div>
+
+			</div>
+			
+			
+			<div class="row">
+			
+					<div class="column col-xs-12 col-sm-12 col-md-3 col-lg-3">
+						<div class="form-group">
+							<p:outputLabel value="Fecha Inicio Vigencia *" />
+							<p:datePicker id="idFechaInicioVigencia" value="#{mAlias.cuponItem.fecInicVige}" showIcon="true" styleClass="form-control classInputSinBorde" disabled="#{mAlias.indicadorModoConsulta || mAlias.indicadorModoEdicion}"/>
+							<div id="idMensajeFechaInicioVigencia" > </div>
+						</div>
+					</div>
+					
+
+					<div class="column col-xs-12 col-sm-12 col-md-3 col-lg-3">
+						<div class="form-group">
+							<p:outputLabel value="Fecha Fin Vigencia" />
+							<p:datePicker id="idFechaFinVigencia" value="#{mAlias.cuponItem.fecFinaVige}" showIcon="true" styleClass="form-control classInputSinBorde"/>
+							<div id="idMensajeFechaFinVigencia" > </div>
+						</div>
+					</div>
+					
+					<div class="column col-xs-12 col-sm-12 col-md-3 col-lg-3">
+						<div class="form-group">
+							<p:outputLabel value="Cantidad de cupones" />
+							<p:inputText id="idTxtCantidadCupon" styleClass="form-control" value="#{mAlias.cuponItem.canCupo}" disabled="#{mAlias.indicadorModoConsulta}"/>
+							<div id="idMensajeCantidadCupon" > </div>
+						</div>
+					</div>
+					
+					<div class="column col-xs-12 col-sm-12 col-md-3 col-lg-3">
+						<div class="form-group">
+							<p:outputLabel value="Descuento cupon *" />
+							<p:inputNumber id="idTxtDescuentoCupon" styleClass="form-control classInputSinBorde" value="#{mAlias.cuponItem.monDescCupo}" disabled="#{mAlias.indicadorModoConsulta}"
+								decimalPlaces="5" />
+							<div id="idMensajeDescuentoCupon" > </div>
+						</div>
+					</div>
+
+			</div>
+			
+			
+			<div class="row">
+			
+					
+			
+					<div class="column col-xs-12 col-sm-12 col-md-3 col-lg-3">
+						<div class="form-group">
+							<p:outputLabel value="¿Es cupón es reutilizable?" />
+							
+							<h:inputText style="display:none;"  value="#{mAlias.indSeleccionReutiCliente}"  id="idIndicadorReu"/>
+							 
+					        <input id="idReutClie"  type="checkbox" data-toggle="toggle" 
+					        data-onstyle="si-toogle" data-offstyle="no-toogle" data-on="Sí" data-off="No" data-size="sm"/>
+					        
+					        <p:remoteCommand name="metodoRemotoHabilitarIndReutClie" actionListener="#{mAlias.habilitarIndReutClie()}" />
+					        
+						</div>
+					</div>
+					
+					
+					<div class="column col-xs-12 col-sm-12 col-md-3 col-lg-3">
+						<div class="form-group">
+							<p:outputLabel value="Activo" />
+							
+							 <h:inputText style="display:none;"  value="#{mAlias.indCuponActivo}"  id="idIndicadorActivo"/>
+							 
+					        <input id="idIndActivo"  type="checkbox" data-toggle="toggle" 
+					        data-onstyle="si-toogle" data-offstyle="no-toogle" data-on="Sí" data-off="No" data-size="sm"/>
+					        
+					        <p:remoteCommand name="metodoRemotoHabilitarIndActivo" actionListener="#{mAlias.habilitarIndicadorActivo()}" />
+					        
+						</div>
+					</div>
+					
+			</div>
+			
+			<p:outputPanel rendered="#{mAlias.indicadorModoConsulta}">
+				<div class="row">
+
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Fec. de creación" />
+								<h:inputText styleClass="form-control" value="#{mAlias.cuponItem.fecCreaRegi}" disabled="true">
+									<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" timeZone="America/Lima"/>
+								</h:inputText>
+							</div>
+					   </div>
+					   
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Usu. de creación" />
+								<p:inputText styleClass="form-control" value="#{mAlias.cuponItem.usuApliCrea}" disabled="true"/>
+							</div>
+						</div>
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Fec. de modificación" />
+								<h:inputText styleClass="form-control" value="#{mAlias.cuponItem.fecModiRegi}" disabled="true">
+										<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" timeZone="America/Lima"/>
+								</h:inputText>
+							</div>
+						</div>
+						
+						
+		
+				</div>
+				<div class="row">
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Usu. de modificación" />
+								<p:inputText styleClass="form-control" value="#{mAlias.cuponItem.usuApliModi}" disabled="true"/>
+							</div>
+					</div>
+				
+				</div>
+			
+			</p:outputPanel>
+			
+			<div class="row">
+				<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+				</div>
+				
+				<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6 text-right">
+					<div class="form-group">
+							<p:commandButton  onclick="enviar(event);" styleClass="btn btn-success btn-guardar-datos"  value="Guardar Datos" rendered="#{!mAlias.indicadorModoConsulta}"/>
+					</div>
+				</div>
+			
+			</div>
+			
+			
+			<!-- Modal Guardar Cupon Exitoso -->
+			<div class="modal fade" id="idModalGuardarCuponExito" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">El cupón se guardó exitosamente.</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-success" data-dismiss="modal"  onclick="ejecutarRegresar();">Aceptar</button>							
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		
+			<!-- Modal Error-->
+			<div class="modal fade" id="idModalErrorSistema" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title mensajeTituloError">¡ Mensaje del Sistema - ERROR !</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body mensajeCuerpoError">#{mAlias.resultadoProcesoError} <strong>Comuníquese con el área de Soporte.</strong></div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</h:form>
+	
+	
+		
+
+	</section>
+
+
+	</main>
+
+	<footer>
+		<div class="contenedor"></div>
+	</footer>
+
+</h:body>
+
+</html>

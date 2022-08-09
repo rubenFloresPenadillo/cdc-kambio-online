@@ -27,8 +27,8 @@ public enum CadenasType {
 	CADENA_USUARIO("U"),
 	CADENA_USUARIO_SISTEMA("SYSTEM_APP"),
 	CORREO_DE_ADMINISTRACION("icreandope@gmail.com"), // LLevara la gestion del libro de reclamaciones
-	DOMINIO_WEB("www.icambio.pe"),
-//	DOMINIO_WEB("http://localhost:8080/ica"),
+//	DOMINIO_WEB("www.icambio.pe"),
+	DOMINIO_WEB("http://localhost:8080/ica"),
 	NOMBRE_COMERCIO("Icambio");
 	
 	
