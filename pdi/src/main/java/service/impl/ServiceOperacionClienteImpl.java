@@ -261,6 +261,12 @@ public class ServiceOperacionClienteImpl  implements ServiceOperacionCliente{
 		return resultado;
 	}
 
+	@Override
+	public String cancelarOperacionPorLimiteDeTiempo(Integer valorTiempoLimite) {
+		String result = daoOperacionCliente.cancelarOperacionPorLimiteDeTiempo(valorTiempoLimite);
+        return result;
+	}
+
 
 
 }

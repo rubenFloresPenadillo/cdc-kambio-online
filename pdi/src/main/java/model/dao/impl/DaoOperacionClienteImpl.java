@@ -376,5 +376,67 @@ public class DaoOperacionClienteImpl implements DaoOperacionCliente {
 		
 		return resultado;
 	}
+
+	@Override
+	public String cancelarOperacionPorLimiteDeTiempo(Integer valorTiempoLimite) {
+		
+		String result = null;
+
+        try {
+        		
+        		StringBuilder sbTpOperaClien = new StringBuilder();
+        		sbTpOperaClien.append(" UPDATE TpOperaClien "); 
+        		sbTpOperaClien.append(" SET tpEstadOpera.codEstaOper = :codEstaOperNuevo, ");
+        		sbTpOperaClien.append(" fecModiRegi = now(), "); 
+        		sbTpOperaClien.append(" usuApliModi = 'QUARTZCANCELAOPERACION', ");
+        		sbTpOperaClien.append(" fecCancOper = now(), ");
+        		sbTpOperaClien.append(" usuApliCancOper = 'QUARTZCANCELAOPERACION', ");
+        		sbTpOperaClien.append(" valTextComeCanc = 'Se cancela de forma automatica por exceder el tiempo limite de :valorTiempoLimite min' ");
+        		sbTpOperaClien.append(" WHERE date_part('day' ,now() - fecInicOper )*24*60 + date_part('hours', now() - fecInicOper)*60  + date_part('minutes', now() - fecInicOper)  >= :valorTiempoLimite ");
+        		sbTpOperaClien.append(" AND tpEstadOpera.codEstaOper = :codEstaOperAntes ");
+        		
+        		Query queryTpOperaClien = session.createQuery(sbTpOperaClien.toString());
+        		
+        		queryTpOperaClien.setParameter("codEstaOperNuevo", ElementosTablasType.ESTADO_OPERACION_CANCELADA_AUTOMATICA.getIdElemento());
+        		queryTpOperaClien.setParameter("valorTiempoLimite", valorTiempoLimite);
+        		queryTpOperaClien.setParameter("codEstaOperAntes", ElementosTablasType.ESTADO_OPERACION_INICIADA.getIdElemento());
+        		
+        		
+			    int registrosAfectados = queryTpOperaClien.executeUpdate();
+			    
+			    result = CadenasType.INDICADOR_PROCESO_OK.getValor()+" Se han actualizado "+registrosAfectados+" registros en la tabla Tp_Opera_Clien";
+			    
+			    if (registrosAfectados > NumerosType.NUMERO_MINIMO_CERO.getValor()) {
+			    	
+	        		StringBuilder sbTpUsuar = new StringBuilder();
+	        		sbTpUsuar.append(" update TpUsuar ");
+	        		sbTpUsuar.append("set codEstaOper = null ");
+	        		sbTpUsuar.append(", codOperClie = null");
+	        		sbTpUsuar.append(" where codEstaOper = :codEstaOperAntes ");
+	        		sbTpUsuar.append(" and codOperClie is not null ");
+			    	
+			    	Query queryTpUsuar = session.createQuery(sbTpUsuar.toString());
+	        		
+				    queryTpUsuar.setParameter("codEstaOperAntes", ElementosTablasType.ESTADO_OPERACION_INICIADA.getIdElemento());
+				    
+				    int registrosAfectadosTablaUsuario = queryTpUsuar.executeUpdate();
+				    
+				    result = result + " ,Se han actualizado "+registrosAfectadosTablaUsuario+" registros en la tabla Tp_Usuar ";
+			    }
+			    
+        		
+			    
+        	if(result.startsWith(CadenasType.INDICADOR_PROCESO_OK.getValor())) {
+        		tx.commit();
+        	}
+            
+        } catch (HibernateException e) {
+            result = e.getMessage();
+            tx.rollback();
+        }
+
+        return result;
+        
+	}
 	
 }

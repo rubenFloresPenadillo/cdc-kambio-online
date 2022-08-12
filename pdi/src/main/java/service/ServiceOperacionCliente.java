@@ -12,6 +12,7 @@ public interface ServiceOperacionCliente {
 	public String insertUpdate(TpOperaClienDto tpOperaClienDto);
 	public String actualizarEstadoOperacionCliente(TpOperaClienDto tpOperaClienDto);
 	public List<TpOperaClienDto> getOperacionesCliente(TpOperaClienDto tpOperaClienDto);
+	public String cancelarOperacionPorLimiteDeTiempo(Integer valorTiempoLimite);
 	public BigInteger getCodigoUnicoOperacion();
 	
 }

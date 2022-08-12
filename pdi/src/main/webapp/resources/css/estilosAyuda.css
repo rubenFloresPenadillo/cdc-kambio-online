@@ -100,7 +100,7 @@ section{
 }
 
 .claseAyudaMarcado{
-	border-bottom: 3px solid #69B42D;
+	color: #69B42D !important;
     text-decoration: none;
 }
 
@@ -496,16 +496,18 @@ h4{text-align:center;margin:30px 0;color:#444}
 .line-shape {
     margin-left: calc(50% - 50px);
 }
+
 .line-shape, .line-shape-white {
     width: 100px;
-    height: 4px;
+    height: 5px;
     background-color: #69B42D;
     margin-top: 15px;
     margin-bottom: 30px;
+    border-radius: 100px;
 }
 
 .imagenLogoFooter {
-    width: 230px;
+    width: 140px;
     margin-bottom: 20px;
 }
 
@@ -615,10 +617,7 @@ a:hover {
 .line-shape {
     margin-left: calc(50% - 50px);
 }
-.line-shape, .line-shape-white {
-    width: 100px;
-    height: 4px;
-    background-color: #69B42D;
-    margin-top: 15px;
-    margin-bottom: 30px;
+
+.claseIconosFooter img{
+	width: 25px;
 }

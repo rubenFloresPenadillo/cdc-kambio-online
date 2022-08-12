@@ -179,7 +179,7 @@ section{
 }
 
 .claseContactoMarcado{
-	border-bottom: 3px solid #69B42D;
+  	color: #69B42D !important;
     text-decoration: none;
 }
 
@@ -445,16 +445,18 @@ footer hr{
 .line-shape {
     margin-left: calc(50% - 50px);
 }
+
 .line-shape, .line-shape-white {
     width: 100px;
-    height: 4px;
+    height: 5px;
     background-color: #69B42D;
     margin-top: 15px;
     margin-bottom: 30px;
+    border-radius: 100px;
 }
 
 .imagenLogoFooter {
-    width: 230px;
+    width: 140px;
     margin-bottom: 20px;
 }
 
@@ -479,4 +481,8 @@ footer hr{
 
 .btn-danger:hover  {
     background-color: #1D2A37 !important;
+}
+
+.claseIconosFooter img{
+	width: 25px;
 }

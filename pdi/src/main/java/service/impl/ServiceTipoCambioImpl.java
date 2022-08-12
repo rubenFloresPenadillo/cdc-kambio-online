@@ -22,9 +22,9 @@ public class ServiceTipoCambioImpl  implements ServiceTipoCambio{
 
     public ServiceTipoCambioImpl() {
         session =  HibernateUtil.getSessionFactory().openSession();
-        LoggerUtil.getInstance().getLogger().error("Despues del HibernateUtil.getSessionFactory().openSession");
+        LoggerUtil.getInstance().getLogger().info("Despues del HibernateUtil.getSessionFactory().openSession");
         daoTipoCambio = new DaoTipoCambioImpl(session);
-        LoggerUtil.getInstance().getLogger().error("Despues del DaoTipoCambioImpl(session)");
+        LoggerUtil.getInstance().getLogger().info("Despues del DaoTipoCambioImpl(session)");
     }
 
 	@Override

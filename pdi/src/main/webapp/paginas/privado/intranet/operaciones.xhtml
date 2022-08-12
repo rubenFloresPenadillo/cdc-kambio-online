@@ -150,7 +150,7 @@
 						<thead>
 							<tr>
 								<th scope="col">Codigo</th>
-								<th scope="col">Fecha</th>
+								<th scope="col">Fecha Inicio de Operación</th>
 								<th scope="col">A enviar</th>
 								<th scope="col">A recibir</th>
 								<th scope="col">Operación</th>
@@ -165,7 +165,7 @@
 							<tr>
 								<td><strong>#{mAlias.operacionEnProceso.codUnicOperClie ne null ? mAlias.operacionEnProceso.codUnicOperClie : 'Por definir' }</strong></td>
 								<td>
-									<h:outputText value="#{mAlias.operacionEnProceso.fecCreaRegi}">
+									<h:outputText value="#{mAlias.operacionEnProceso.fecInicOper}">
 										<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" timeZone="America/Lima"/>
 									</h:outputText>
 								</td>
@@ -214,7 +214,7 @@
 						<tr>
 							<th scope="col">#</th>
 							<th scope="col">Codigo</th>
-							<th scope="col">Fecha</th>
+							<th scope="col">Fecha Inicio de Operación</th>
 							<th scope="col">A enviar</th>
 							<th scope="col">A recibir</th>
 							<th scope="col">Operación</th>
@@ -234,7 +234,7 @@
 									<td><strong>#{oc.codUnicOperClie ne null ? oc.codUnicOperClie : 'No procesado' }</strong></td>
 									<td>
 									
-									<h:outputText value="#{oc.fecCreaRegi}">
+									<h:outputText value="#{oc.fecInicOper}">
 									  <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" timeZone="America/Lima"/>
 									</h:outputText>
 									</td>
