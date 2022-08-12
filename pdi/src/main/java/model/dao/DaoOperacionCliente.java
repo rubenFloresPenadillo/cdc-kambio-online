@@ -14,4 +14,5 @@ public interface DaoOperacionCliente {
     public String actualizarEstadoOperacionCliente(TpOperaClien tpOperaClien);
     public List<Object[]> getOperacionesCliente (TpOperaClienDto tpOperaClienDto);
     public BigInteger getCodigoUnicoOperacion();
+    public String cancelarOperacionPorLimiteDeTiempo(Integer valorTiempoLimite);
 }

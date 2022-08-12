@@ -609,7 +609,7 @@ public class InicioBean {
     	Integer temp = validarCuentaReciboCliente();
     	Integer tempOrigen = validarCuentaOrigenCliente();
     	if(operacionClienteFormulario.getTpCuentBancoByCodCuenBancClieOrig().getCodCuenBanc() == null) {
-    		result = "Debes seleccionar la cuenta de donde envï¿½as tu dinero.";
+    		result = "Debes seleccionar la cuenta de donde enviarás tu dinero.";
     	}else if(operacionClienteFormulario.getTpCuentBancoByCodCuenBancClieReci().getCodCuenBanc() == null) {
     		result = "Debes seleccionar la cuenta a donde te enviaremos tu dinero.";
     	}else if(operacionClienteFormulario.getTpCuentBancoByCodCuenBancClieOrig().getCodCuenBanc() == 

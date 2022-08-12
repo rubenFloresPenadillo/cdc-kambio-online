@@ -15,8 +15,8 @@
 #comoFunciona h2{
 	margin-top: 30px;
 	color: #1d2b38 !important;
-    font-weight: 500;
-    font-size: 45px;
+    font-weight: bold;
+/*     font-size: 45px; */
 }
 
 #comoFunciona h3{
@@ -41,7 +41,7 @@
 
 
 .comoFunciona-item{
-	margin: 45px;
+	margin: 100px;
 	transition: transform .3s;
 }
 
@@ -55,17 +55,29 @@
 	margin-top: 20px;
 }
 
+.comoFunciona-subtitulo p{
+	color: #1D2A37;
+	font-size: 16px;
+}
+
+
 .line-shape {
     margin-left: calc(50% - 50px);
 }
 .line-shape, .line-shape-white {
     width: 100px;
-    height: 4px;
+    height: 5px;
     background-color: #69B42D;
     margin-top: 15px;
     margin-bottom: 30px;
+    border-radius: 100px;
 }
 
 .comoFunciona-item:hover{
 	transform: scale(1.1);
 }	
+
+.comoFunciona-item h5{
+	font-weight: bold;
+}
+

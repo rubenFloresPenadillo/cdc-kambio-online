@@ -119,7 +119,7 @@
 						<tr>
 							<th scope="col">#</th>
 							<th scope="col">Código</th>
-							<th scope="col">Fecha</th>
+							<th scope="col">Fecha Inicio de Operaciones</th>
 							<th scope="col">Cliente</th>
 							<th scope="col">Perfil</th>
 							<th scope="col">Nomb. Perfil</th>
@@ -142,7 +142,7 @@
 									<td><strong>#{oc.codUnicOperClie ne null ? oc.codUnicOperClie : 'No procesado' }</strong></td>
 									<td>
 									
-									<h:outputText value="#{oc.fecCreaRegi}">
+									<h:outputText value="#{oc.fecInicOper}">
 									  <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" timeZone="America/Lima"/>
 									</h:outputText>
 									</td>

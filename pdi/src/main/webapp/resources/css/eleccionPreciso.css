@@ -1,0 +1,30 @@
+
+#eleccionPreciso{
+/* 	background: #1d2b38 !important; */
+/* 	color: #fff; */
+	padding: 45px;
+}
+
+#eleccionPreciso .clasePersonajeApoyado{
+	width: 350px;
+}
+
+.claseItem img{
+	width: 60px;
+}
+
+.claseItem{
+	margin-top: 50px;
+}
+
+.claseItem h5{
+	font-weight: bold;
+}
+
+#eleccionPreciso h2{
+	font-weight: bold;
+}
+
+.claseItem p{
+	font-size: 14px;
+}

@@ -450,7 +450,7 @@ footer hr{
 }
 
 .imagenLogoFooter {
-    width: 230px;
+    width: 140px;
     margin-bottom: 20px;
 }
 
@@ -479,10 +479,11 @@ footer hr{
 
 .line-shape, .line-shape-white {
     width: 100px;
-    height: 4px;
+    height: 5px;
     background-color: #69B42D;
     margin-top: 15px;
     margin-bottom: 30px;
+    border-radius: 100px;
 }
 
 .btn-success {
