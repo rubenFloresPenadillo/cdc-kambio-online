@@ -33,25 +33,40 @@
 	<section id="seccionLogin">
 	
 		<div class="contenedor row">
-			<div class="claseContieneImagen text-center col-xs-12 col-sm-12 col-md-5 col-lg-4">
-				<a href="../../" class="d-none d-sm-block d-sm-none d-md-block"> 
-				<img class="imagenLogoPaginaLogin"
-					src="../../resources/imagenes/logoPrecisoOficial.png" alt="Logo Preciso"/>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<a  href="../../index.xhtml">
+					<img class="imagenLogo" src="../../resources/imagenes/logoWeb320x80.jpg" alt="Logo Web"/>
 				</a>
+			</div>
+		</div>
+		
+		<div class="contenedor row align-items-center justify-content-center ">
+			
+			<div class="claseDetalleSustento col-xs-12 col-sm-12 col-md-5 col-lg-8 imagenLineasLogo">
+				<h5 >¿Por qué validar mi correo?</h5>
 				
-				<a href="../../" class="d-block d-sm-none"> 
-				<img class="imagenLogoHorizontalPaginaLogin"
-					src="../../resources/imagenes/logoPreciso.png" alt="Logo Preciso"/>
-				</a>
-
-				<label class="seccionRegistrateYa">¡ ACTIVA TU CUENTA !</label>
+				<h5 class="mt-5">Comprobantes</h5>
+				<p >Te enviaremos el <span class="claseColorSecundarioBanner">estado de tu operacion </span> y tu <br></br><span class="claseColorSecundarioBanner">comprobante de pago.</span></p>
+				
+				<h5 class="mt-5">Beneficios</h5>
+				<p >Conocerás todos los <span class="claseColorSecundarioBanner">beneficios</span> que tiene Preci$o<br></br> para ti.</p> 
 			</div>
 
 			<div class="claseContieneLogin text-center col-xs-12 col-sm-12 col-md-7 col-lg-4">
 				
-				<label class="claseMensajePerdioPassword">Tu cuenta esta pendiente de verificación, por favor ingresa el código que hemos enviado a tu correo.</label>
+<!-- 				<label class="claseMensajePerdioPassword">Tu cuenta esta pendiente de verificación, por favor ingresa el código que hemos enviado a tu correo.</label> -->
 				
-				<div class="claseCronometro">Tiempo para verificación <span id="time" >06:00</span> minutos</div>
+<!-- 				<div class="claseCronometro">Tiempo para verificación <span id="time" >06:00</span> minutos</div> -->
+
+				<div class="form-group">
+					<h5 class="claseRegistrate">¡Enviamos un código de<br></br> <span class="claseColorSecundarioBanner">verificación</span> a tu correo!</h5>
+									 
+					<div class="col-12 claseSubtituloRegistrate">
+							Código de verificación
+					</div>
+				</div>
+				
+				
 				
 				<div class="col-lg-12 main-section">
 					<div class="modal-content formContenidoIngreso">
@@ -83,11 +98,15 @@
 								<div class="form-group">
 								
 									<div id="idMensajeResultadoCodigo" > </div>
-									
+									<p:remoteCommand name="metodoRemotoEnviarFormulario" actionListener="#{mAlias.enviar()}" update="idMensajeResultadoProceso" />
+									<p:commandButton onclick="enviar(event);" styleClass="btn btn-primary-kli botonFormularioLogin"  value="Validar correo" />
 								</div>
 								
 								
-								
+								<div class="col-12 forgot claseSubtituloRegistrate">
+										¿Deseas <a href="../privado/ingreso.xhtml"><span class="claseColorSecundarioBanner">Inicia sesión </span>?</a>
+									</div>
+									
 								<div id="idMensajeResultado" > </div>
 								
 								<p:outputPanel id="idMensajeResultadoProceso" >
@@ -96,9 +115,7 @@
 									</p:outputPanel>
 								</p:outputPanel>
 								
-								<p:remoteCommand name="metodoRemotoEnviarFormulario" actionListener="#{mAlias.enviar()}" update="idMensajeResultadoProceso" />
 								
-								<p:commandButton onclick="enviar(event);" styleClass="btn btn-primary-kli botonIniciarOperacionGeneral"  value="ENVIAR CÓDIGO" />
 
 
 							

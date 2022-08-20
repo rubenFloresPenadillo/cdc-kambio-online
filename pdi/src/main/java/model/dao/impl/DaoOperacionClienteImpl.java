@@ -140,6 +140,10 @@ public class DaoOperacionClienteImpl implements DaoOperacionCliente {
 				sbOperacionCliente.append(", toc.usuApliModi = :usuApliModi");
 				sbOperacionCliente.append(", toc.fecModiRegi = :fecModiRegi");
 				
+				if(!ValidacionesString.esNuloOVacio(tpOperaClien.getNumOperBancCome())) {
+					sbOperacionCliente.append(", toc.numOperBancCome = :numOperBancCome");
+				}
+				
 				if(!ValidacionesString.esNuloOVacio(tpOperaClien.getCodTranBanc())) {
 					sbOperacionCliente.append(", toc.codTranBanc = :codTranBanc");
 				}
@@ -169,6 +173,10 @@ public class DaoOperacionClienteImpl implements DaoOperacionCliente {
 				queryOperacionCliente.setParameter("codEstaOper", tpOperaClien.getTpEstadOpera().getCodEstaOper());
 				queryOperacionCliente.setParameter("usuApliModi", tpOperaClien.getUsuApliModi());
 				queryOperacionCliente.setParameter("fecModiRegi", tpOperaClien.getFecModiRegi());
+				
+				if(!ValidacionesString.esNuloOVacio(tpOperaClien.getNumOperBancCome())) {
+					queryOperacionCliente.setParameter("numOperBancCome", tpOperaClien.getNumOperBancCome());
+				}
 				
 				if(!ValidacionesString.esNuloOVacio(tpOperaClien.getCodTranBanc())) {
 					queryOperacionCliente.setParameter("codTranBanc", tpOperaClien.getCodTranBanc());
@@ -300,7 +308,8 @@ public class DaoOperacionClienteImpl implements DaoOperacionCliente {
         sb.append("toc.tpClien.tpUsuar.ideUsuaEmai, toc.tpClien.valPrimNombPers, toc.tpClien.valSeguNombPers, toc.tpClien.valPrimApelPers, toc.tpClien.valSeguApelPers, ");
         sb.append("toc.tpClien.valRazoSociPers, toc.tpClien.tpTipoDocumPerso.tpTipoPerso.codTipoPers, toc.tpCuentBancoByCodCuenBancClieOrig.codCuenBanc, toc.tpCuentBancoByCodCuenBancCome.codCuenBanc, toc.tpCuentBancoByCodCuenBancClieReci.codCuenBanc, ");
         sb.append("toc.fecInicOper, toc.fecVeriOper, toc.fecFinaOper, toc.usuApliFinaOper, toc.fecCancOper, toc.usuApliCancOper, toc.valTextComeCanc, toc.tpClien.tpUsuar.codUsuaPadr, toc.tpClien.valNombPerf, toc.tpClien.valDocuEmpr, ");
-        sb.append("toc.codCupoUsad, toc.nomCupoUsad, toc.monDescCupoUsad, toc.valCambCompCupo, toc.valCambVentCupo, toc.codTranBanc, toc.tpClien.valTelePers ");
+        sb.append("toc.codCupoUsad, toc.nomCupoUsad, toc.monDescCupoUsad, toc.valCambCompCupo, toc.valCambVentCupo, toc.codTranBanc, toc.tpClien.valTelePers, toc.numOperBancCome, ");
+        sb.append("toc.tpClien.valDocuPers, toc.tpClien.tpTipoDocumPerso.codTipoDocuPers, toc.tpClien.valDirePers ");
         sb.append(" from TpOperaClien toc");  
         sb.append(" where 1=1 ");
         sb.append(" and toc.indEsta = :indEsta ");
@@ -391,7 +400,7 @@ public class DaoOperacionClienteImpl implements DaoOperacionCliente {
         		sbTpOperaClien.append(" usuApliModi = 'QUARTZCANCELAOPERACION', ");
         		sbTpOperaClien.append(" fecCancOper = now(), ");
         		sbTpOperaClien.append(" usuApliCancOper = 'QUARTZCANCELAOPERACION', ");
-        		sbTpOperaClien.append(" valTextComeCanc = 'Se cancela de forma automatica por exceder el tiempo limite de :valorTiempoLimite min' ");
+        		sbTpOperaClien.append(" valTextComeCanc = :textoCancelaTiempoLimite ");
         		sbTpOperaClien.append(" WHERE date_part('day' ,now() - fecInicOper )*24*60 + date_part('hours', now() - fecInicOper)*60  + date_part('minutes', now() - fecInicOper)  >= :valorTiempoLimite ");
         		sbTpOperaClien.append(" AND tpEstadOpera.codEstaOper = :codEstaOperAntes ");
         		
@@ -399,6 +408,7 @@ public class DaoOperacionClienteImpl implements DaoOperacionCliente {
         		
         		queryTpOperaClien.setParameter("codEstaOperNuevo", ElementosTablasType.ESTADO_OPERACION_CANCELADA_AUTOMATICA.getIdElemento());
         		queryTpOperaClien.setParameter("valorTiempoLimite", valorTiempoLimite);
+        		queryTpOperaClien.setParameter("textoCancelaTiempoLimite", "Se cancela de forma automatica por exceder el tiempo limite de "+valorTiempoLimite+" min");
         		queryTpOperaClien.setParameter("codEstaOperAntes", ElementosTablasType.ESTADO_OPERACION_INICIADA.getIdElemento());
         		
         		

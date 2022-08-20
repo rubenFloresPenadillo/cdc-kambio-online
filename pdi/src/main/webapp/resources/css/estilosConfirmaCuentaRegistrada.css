@@ -16,6 +16,12 @@ body {
 
 /*Para el Login */
 
+.imagenLogo{
+	float: left;
+	margin-top: 30px;
+	width: 211.25px;
+}
+
 
 #seccionLogin {
 	min-height: 100vh;
@@ -28,6 +34,10 @@ section {
     padding-left: 2%;
     padding-right: 2%;
 	background: #fff;
+}
+
+.contenedor {
+    margin: auto;
 }
 
 .claseMensajePerdioPassword{
@@ -66,16 +76,13 @@ section {
 }
 
 .formContenidoIngreso{
-	padding: 0 5px;
-	border-radius: 10px;
-	background: rgba(29,43,56,1);
-	background: -moz-linear-gradient(45deg, rgba(29,43,56,1) 0%, rgba(29,43,56,1) 9%, rgba(76,126,32,1) 100%);
-	background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(29,43,56,1)), color-stop(9%, rgba(29,43,56,1)), color-stop(100%, rgba(76,126,32,1)));
-	background: -webkit-linear-gradient(45deg, rgba(29,43,56,1) 0%, rgba(29,43,56,1) 9%, rgba(76,126,32,1) 100%);
-	background: -o-linear-gradient(45deg, rgba(29,43,56,1) 0%, rgba(29,43,56,1) 9%, rgba(76,126,32,1) 100%);
-	background: -ms-linear-gradient(45deg, rgba(29,43,56,1) 0%, rgba(29,43,56,1) 9%, rgba(76,126,32,1) 100%);
-	background: linear-gradient(45deg, rgba(29,43,56,1) 0%, rgba(29,43,56,1) 9%, rgba(76,126,32,1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1d2b38', endColorstr='#4c7e20', GradientType=1 );
+	border: 0;
+}
+
+@media (min-width: 1024px){
+	.contenedor {
+		width: 90%;
+	}
 }
 
 /* .user-img{ */
@@ -102,7 +109,7 @@ section {
 }
 
 .form-input{
-	margin-top: 50px;	
+	margin-top: 20px;	
 }
 
 .form-input button{
@@ -196,14 +203,14 @@ section {
 }
 
 
-@media 	(min-width: 768px) {
-	.claseContieneImagen{
-		margin-top: 190px;
-	}
-	.claseContieneLogin{
-		margin-top: 100px;
-	}
-}
+/* @media 	(min-width: 768px) { */
+/* 	.claseContieneImagen{ */
+/* 		margin-top: 190px; */
+/* 	} */
+/* 	.claseContieneLogin{ */
+/* 		margin-top: 100px; */
+/* 	} */
+/* } */
 
 .seccionRegistrateYa{
 	display: block;
@@ -229,7 +236,8 @@ section {
 } 
 
 .claseCodigoVerificaItem input{
-	color: #004aad;
+	border: 1px solid #1d2b38;
+	color: #1d2b38;
 	width: 60px !important;	
 	text-align: center;
     height: 50px;
@@ -306,16 +314,16 @@ section {
     border-radius: 65px 65px 65px 65px;
 }
 
+.btn-primary-kli {
+    color: #fff !important;
+    background-color: #69b42d;
+    border-color: #69b42d;
+    border-radius: 65px 65px 65px 65px;
+}
+
 .btn-primary-kli:hover {
     background-color: #426C1C !important;
     border-bottom: 3px solid #426C1C !important;
-}
-
-.btn-secondary-kli {
-    color: #fff !important;
-    background-color: #69B42D;
-    border-color: #69B42D;
-    border-radius: 65px 65px 65px 65px;
 }
 
 .btn-secondary-kli:hover {
@@ -347,3 +355,46 @@ section {
 }
 
  
+.imagenLineasLogo{
+/*     position: absolute; */
+/*     top: 0; */
+/*     left: 0; */
+/*     right: 0; */
+    height: 100%;
+    width: 100%;
+	background-image: url(../../resources/imagenes/isotipo-preciso-contorno.png) !important;
+    background: rgba(255, 255, 255, 1);
+    background-position: bottom;
+    background-repeat: no-repeat;
+} 
+
+
+.claseDetalleSustento{
+ 	padding: 20vh;
+}
+
+.claseDetalleSustento h5{
+ 	font-weight: bold;
+}
+
+.claseColorSecundarioBanner{
+	color: #69B42D;
+	font-weight: bold;
+}
+
+.botonFormularioLogin{
+	width: 100%;
+}
+
+.claseRegistrate{
+	font-weight: bold;
+	text-align: center;	
+}
+
+.claseSubtituloRegistrate{
+	text-align: center;	
+}
+
+.claseBold{
+	font-weight: bold;
+}

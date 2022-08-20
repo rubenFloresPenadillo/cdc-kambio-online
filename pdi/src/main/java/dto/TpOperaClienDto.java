@@ -36,6 +36,7 @@ public class TpOperaClienDto implements java.io.Serializable {
 	private Double monDescCupoUsad;
 	private Double valCambCompCupo;
 	private Double valCambVentCupo;
+	private String numOperBancCome;
 	private Integer indEsta;
 	private String usuApliCrea;
 	private Date fecCreaRegi;
@@ -297,6 +298,14 @@ public class TpOperaClienDto implements java.io.Serializable {
 
 	public void setValCambVentCupo(Double valCambVentCupo) {
 		this.valCambVentCupo = valCambVentCupo;
+	}
+
+	public String getNumOperBancCome() {
+		return numOperBancCome;
+	}
+
+	public void setNumOperBancCome(String numOperBancCome) {
+		this.numOperBancCome = numOperBancCome;
 	}
 
 }

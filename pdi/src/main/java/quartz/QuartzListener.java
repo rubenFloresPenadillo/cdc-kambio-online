@@ -21,12 +21,22 @@ public class QuartzListener extends QuartzInitializerListener {
         ServletContext ctx = sce.getServletContext();
         StdSchedulerFactory factory = (StdSchedulerFactory) ctx.getAttribute(QUARTZ_FACTORY_KEY);
         try {
-            Scheduler scheduler = factory.getScheduler();
-            JobDetail jobDetail = JobBuilder.newJob(FinalizaTransaccion.class).build();
-            Trigger trigger = TriggerBuilder.newTrigger().withIdentity("TrgFinaliza").withSchedule(
-                    CronScheduleBuilder.cronSchedule("0 0/1 * * * ? *")).startNow().build();
-            scheduler.scheduleJob(jobDetail, trigger);
-            scheduler.start();
+        	/*Tarea para Cancelar Operacion INICIADA por limite de tiempo*/
+            Scheduler schedulerCancelaOperacion = factory.getScheduler();
+            JobDetail jobDetailCancelaOperacion = JobBuilder.newJob(FinalizaTransaccion.class).build();
+            Trigger triggerCancelaOperacion = TriggerBuilder.newTrigger().withIdentity("TrgCancelaOperacionIniciada").withSchedule(
+                    CronScheduleBuilder.cronSchedule("0 0/30 * * * ? *")).startNow().build();
+            schedulerCancelaOperacion.scheduleJob(jobDetailCancelaOperacion, triggerCancelaOperacion);
+            schedulerCancelaOperacion.start();
+            
+            /*Tarea para ejecutar envio de CPE al PSE u OSE*/
+            Scheduler schedulerFacturacionElectronica = factory.getScheduler();
+            JobDetail jobDetailFacturacionElectronica = JobBuilder.newJob(FacturacionElectronica.class).build();
+            Trigger triggerFacturacionElectronica = TriggerBuilder.newTrigger().withIdentity("TrgEnvioComprobantesElectronicos").withSchedule(
+                    CronScheduleBuilder.cronSchedule("0 0/60 * * * ? *")).startNow().build();
+            schedulerFacturacionElectronica.scheduleJob(jobDetailFacturacionElectronica, triggerFacturacionElectronica);
+            schedulerFacturacionElectronica.start();
+ 
         } catch (Exception e) {
             ctx.log("Error en el job.", e);
             

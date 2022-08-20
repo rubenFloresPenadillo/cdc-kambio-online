@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 17 ago. 2022 04:53:44 by Hibernate Tools 5.2.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="hibernate.xml.TpFactuDocumDetal" optimistic-lock="version" polymorphism="implicit" schema="public" select-before-update="false" table="tp_factu_docum_detal">
+        <id name="codFactDocuDetal" type="java.lang.Integer">
+            <column name="cod_fact_docu_detal"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="hibernate.xml.TpFactuDocumCabec" embed-xml="true" fetch="select" insert="true" name="tpFactuDocumCabec" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="cod_fact_docu_cabec" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="unidadDeMedida" optimistic-lock="true" type="string" unique="false">
+            <column length="5" name="unidad_de_medida" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="codigo" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="codigo"/>
+        </property>
+        <property generated="never" lazy="false" name="descripcion" optimistic-lock="true" type="string" unique="false">
+            <column length="250" name="descripcion" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="cantidad" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="cantidad" not-null="true" precision="17" scale="17"/>
+        </property>
+        <property generated="never" lazy="false" name="valorUnitario" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="valor_unitario" not-null="true" precision="17" scale="17"/>
+        </property>
+        <property generated="never" lazy="false" name="precioUnitario" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="precio_unitario" not-null="true" precision="17" scale="17"/>
+        </property>
+        <property generated="never" lazy="false" name="descuento" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="descuento" precision="17" scale="17"/>
+        </property>
+        <property generated="never" lazy="false" name="subtotal" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="subtotal" not-null="true" precision="17" scale="17"/>
+        </property>
+        <property generated="never" lazy="false" name="tipoDeIgv" optimistic-lock="true" type="short" unique="false">
+            <column name="tipo_de_igv" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="igv" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="igv" not-null="true" precision="17" scale="17"/>
+        </property>
+        <property generated="never" lazy="false" name="total" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="total" not-null="true" precision="17" scale="17"/>
+        </property>
+        <property generated="never" lazy="false" name="anticipoRegularizacion" optimistic-lock="true" type="short" unique="false">
+            <column name="anticipo_regularizacion" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="anticipoDocumentoSerie" optimistic-lock="true" type="string" unique="false">
+            <column length="4" name="anticipo_documento_serie"/>
+        </property>
+        <property generated="never" lazy="false" name="anticipoDocumentoNumero" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="anticipo_documento_numero"/>
+        </property>
+        <property generated="never" lazy="false" name="codigoProductoSunat" optimistic-lock="true" type="string" unique="false">
+            <column length="8" name="codigo_producto_sunat"/>
+        </property>
+        <property generated="never" lazy="false" name="indEsta" optimistic-lock="true" type="short" unique="false">
+            <column name="ind_esta" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="usuApliCrea" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="usu_apli_crea" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="fecCreaRegi" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="29" name="fec_crea_regi" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="usuApliModi" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="usu_apli_modi"/>
+        </property>
+        <property generated="never" lazy="false" name="fecModiRegi" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="29" name="fec_modi_regi"/>
+        </property>
+    </class>
+</hibernate-mapping>

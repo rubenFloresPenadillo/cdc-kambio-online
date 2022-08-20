@@ -1,5 +1,5 @@
 package hibernate.entidades;
-// Generated 29 jul. 2022 18:08:09 by Hibernate Tools 5.2.12.Final
+// Generated 13 ago. 2022 19:54:26 by Hibernate Tools 5.2.12.Final
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -52,6 +52,7 @@ public class TpOperaClien implements java.io.Serializable {
 	private Double monDescCupoUsad;
 	private Double valCambCompCupo;
 	private Double valCambVentCupo;
+	private String numOperBancCome;
 	private Integer indEsta;
 	private String usuApliCrea;
 	private Date fecCreaRegi;
@@ -100,8 +101,8 @@ public class TpOperaClien implements java.io.Serializable {
 			BigDecimal monReci, Integer indCompVent, Double valTipoCambUsad, String codTranBanc, String rutImagTranBanc,
 			Date fecInicOper, Date fecVeriOper, Date fecFinaOper, String usuApliFinaOper, Date fecCancOper,
 			String usuApliCancOper, String valTextComeCanc, Integer codCupoUsad, String nomCupoUsad,
-			Double monDescCupoUsad, Double valCambCompCupo, Double valCambVentCupo, Integer indEsta, String usuApliCrea,
-			Date fecCreaRegi, String usuApliModi, Date fecModiRegi) {
+			Double monDescCupoUsad, Double valCambCompCupo, Double valCambVentCupo, String numOperBancCome,
+			Integer indEsta, String usuApliCrea, Date fecCreaRegi, String usuApliModi, Date fecModiRegi) {
 		this.codOperClie = codOperClie;
 		this.tpClien = tpClien;
 		this.tpCuentBancoByCodCuenBancClieReci = tpCuentBancoByCodCuenBancClieReci;
@@ -131,6 +132,7 @@ public class TpOperaClien implements java.io.Serializable {
 		this.monDescCupoUsad = monDescCupoUsad;
 		this.valCambCompCupo = valCambCompCupo;
 		this.valCambVentCupo = valCambVentCupo;
+		this.numOperBancCome = numOperBancCome;
 		this.indEsta = indEsta;
 		this.usuApliCrea = usuApliCrea;
 		this.fecCreaRegi = fecCreaRegi;
@@ -412,6 +414,15 @@ public class TpOperaClien implements java.io.Serializable {
 
 	public void setValCambVentCupo(Double valCambVentCupo) {
 		this.valCambVentCupo = valCambVentCupo;
+	}
+
+	@Column(name = "num_oper_banc_come", length = 40)
+	public String getNumOperBancCome() {
+		return this.numOperBancCome;
+	}
+
+	public void setNumOperBancCome(String numOperBancCome) {
+		this.numOperBancCome = numOperBancCome;
 	}
 
 	@Column(name = "ind_esta", nullable = false)

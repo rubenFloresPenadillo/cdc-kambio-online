@@ -36,13 +36,11 @@
 <table-filter match-schema="public" match-name="tp_ayuda_pregu"/>
 <table-filter match-schema="public" match-name="tp_cupon"/>
 <table-filter match-schema="public" match-name="tp_opera_cupon"/>
+<table-filter match-schema="public" match-name="tp_factu_tipo_docum_elect"/>
+<table-filter match-schema="public" match-name="tp_factu_serie_corre"/>
+<table-filter match-schema="public" match-name="tp_factu_docum_cabec"/>
+<table-filter match-schema="public" match-name="tp_factu_docum_detal"/>
 
-<table name="tp_fact_docum_detal">
-	 <foreign-key constraint-name="fk_tp_fact_docum_detal_1">
-	 	<set exclude="true"/>
-	 </foreign-key>
-</table>
-  
 <table name="tp_usuar">
 	 <foreign-key constraint-name="fk_tp_usuar_1">
 	 	<set exclude="true"/>
@@ -175,5 +173,16 @@
 	 </foreign-key>	 
 </table>
 
+<table name="tp_factu_serie_corre">
+	 <foreign-key constraint-name="fk_tp_factu_serie_corre_1">
+	 	<set exclude="true"/>
+	 </foreign-key>
+</table>
+
+<table name="tp_factu_docum_detal">
+	 <foreign-key constraint-name="fk_tp_factu_docum_detal_1">
+	 	<set exclude="true"/>
+	 </foreign-key>
+</table>
 
 </hibernate-reverse-engineering>

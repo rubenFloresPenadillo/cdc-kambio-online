@@ -1,14 +1,13 @@
 package mangedBean;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -20,37 +19,35 @@ import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.CategoryAxis;
 import org.primefaces.model.chart.ChartSeries;
-import org.primefaces.model.chart.DateAxis;
 import org.primefaces.model.chart.LineChartModel;
-import org.primefaces.model.chart.LineChartSeries;
 
-import cadenas.util.ValidacionesString;
 import dto.AudiTpTipoCambiDto;
 import dto.TpEntraDto;
 import dto.TpSuscrDto;
 import dto.TpTipoCambiDto;
 import fecha.util.FechaUtil;
 import loggerUtil.LoggerUtil;
-import managedThread.CorreoEnvioHilo;
 import numeros.util.ValidacionesNumeros;
-import service.ServiceBanco;
 import service.ServiceEntrada;
 import service.ServiceSuscripcion;
 import service.ServiceTipoCambio;
-import service.impl.ServiceBancoImpl;
 import service.impl.ServiceEntradaImpl;
 import service.impl.ServiceSuscripcionImpl;
 import service.impl.ServiceTipoCambioImpl;
 import util.types.CadenasType;
 import util.types.DivisaType;
 import util.types.PaginasPrivadasType;
-import util.types.PlantillasType;
 import util.types.RegistroActivoType;
 
 @ManagedBean(name="principalBean")
 @ViewScoped
-public class PrincipalBean {
+public class PrincipalBean implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private static final int CANTIDAD_ENVIO_INICIAL = 100;
 //	private String resultadoProcesoError;
 	private Double tipoCambioCompraDolar;
@@ -98,8 +95,6 @@ public class PrincipalBean {
     	
     	try {
     		getTipoCambioDolar();
-    		getUltimasEntradas();
-//    		creaModeloLineal();
 		} catch (Exception e) {
 			e.printStackTrace();
 			LoggerUtil.getInstance().getLogger().error(e.getMessage());

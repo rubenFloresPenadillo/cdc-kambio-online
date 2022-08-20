@@ -185,30 +185,31 @@ header label {
 /*    font-size: 1em !important; */
 }
 
-.botonIniciarOperacionGeneral{
-	color: #fff !important;
-	font-weight: bold !important;
-	padding-right: 20px;
-    padding-left: 20px;
-	padding-bottom: 10px !important;
-	padding-top: 10px !important;
-	display: initial !important;
-}
+/* .botonIniciarOperacionGeneral{ */
+/* 	color: #fff !important; */
+/* 	font-weight: bold !important; */
+/* 	padding-right: 20px; */
+/*     padding-left: 20px; */
+/* 	padding-bottom: 10px !important; */
+/* 	padding-top: 10px !important; */
+/* 	display: initial !important; */
+/* } */
 
-.botonIniciarOperacionGeneral:before {
-    margin-left: 0em;
-}
+/* .botonIniciarOperacionGeneral:before { */
+/*     margin-left: 0em; */
+/* } */
 
-.botonIniciarOperacionGeneral span {
-    display: inline-block !important;
-    padding: .3em 0em .3em 0.5em !important;
-}
+/* .botonIniciarOperacionGeneral span { */
+/*     display: inline-block !important; */
+/*     padding: .3em 0em .3em 0.5em !important; */
+/* } */
+
 
 
 .btn-primary-kli {
     color: #fff !important;
-    background-color: #4D7F21;
-    border-color: #4D7F21;
+    background-color: #69b42d;
+    border-color: #69b42d;
     border-radius: 65px 65px 65px 65px;
 }
 
@@ -216,6 +217,11 @@ header label {
     background-color: #426C1C !important;
     border-bottom: 3px solid #426C1C !important;
 }
+
+.botonFormulario{
+	width: 100%;
+}
+
 
 .btn-secondary-kli {
     color: #fff !important;
@@ -227,4 +233,9 @@ header label {
 .btn-secondary-kli:hover {
     background-color: #63A82B;
 	border-bottom: 3px solid #63A82B !important;
+}
+
+
+.claseBold{
+	font-weight: bold;
 }

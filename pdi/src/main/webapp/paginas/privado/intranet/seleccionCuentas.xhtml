@@ -8,117 +8,51 @@
 
 	<div class="container">
 		
-		<div class="row">
+		<div class="row justify-content-center">
 		
 			<div class="text-center column col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<p:outputLabel styleClass="claseTituloPaso" value="COTIZA"/>
+				<p:outputLabel styleClass="claseTituloPaso" value="Cotiza"/>
 			</div>
 			
-			<div class="f1-steps column col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="f1-steps column col-xs-12 col-sm-12 col-md-12 col-lg-6">
 				<div class="f1-progress">
 					<div class="f1-progress-line" data-now-value="16.66"
 						data-number-of-steps="3" style="width: 16.66%;"></div>
 				</div>
 				<div class="f1-step active">
 					<div class="f1-step-icon">
-						<i class="fas fa-calculator"></i> 
+<!-- 						<i class="fas fa-calculator"></i>  -->
+						<img class="claseIconoPasos" src="../../../resources/imagenes/1-cotiza.png" alt="cotiza"/>
 					</div>
-					<p>1</p>
+<!-- 					<p>1</p> -->
 				</div>
 				<div class="f1-step">
 					<div class="f1-step-icon">
-						<i class="fas fa-location-arrow"></i> 
+<!-- 						<i class="fas fa-location-arrow"></i>  -->
+						<img class="claseIconoPasos" src="../../../resources/imagenes/2-transfiere.png" alt="cotiza"/>
 					</div>
-					<p>2</p>
+<!-- 					<p>2</p> -->
 				</div>
 				<div class="f1-step">
 					<div class="f1-step-icon">
-						<i class="fas fa-check"></i> 
+<!-- 						<i class="fas fa-check"></i>  -->
+						<img class="claseIconoPasos" src="../../../resources/imagenes/3-recibe-tu-cambio.png" alt="cotiza"/>
 					</div>
-					<p>3</p>
+<!-- 					<p>3</p> -->
 				</div>
 			</div>
 		</div>
 
 	</div>
 	
-	<h:form id="idFormIniciaOperacion" method="post" role="form"
-		class="form-horizontal">
+	<h:form id="idFormIniciaOperacion" method="post" role="form" 
+		class="form-horizontal mt-5">
 
-		<div class="row setup-content justify-content-center" id="step-1">
-			<div class="column col-xs-12 col-sm-9 col-md-7 col-lg-5">
-				
-				<div class="form-group">
-
-					<p:outputLabel value="¿Desde que cuenta nos envias tu dinero?"
-						styleClass="clasesCamposFormulario" />
-
-					<h:selectOneMenu id="idComboCuentaBancariaE" styleClass="custom-select form-control" 
-							value="#{mAlias.operacionClienteFormulario.tpCuentBancoByCodCuenBancClieOrig.codCuenBanc}">
-						<f:selectItem itemLabel="Seleccione..." itemValue="-1" />
-						<f:selectItems value="#{mAlias.listaComboCuentasBancariasEnvi}" />
-						<p:ajax update="idContenedorMensajeClienteCCI" event="change" listener="#{mAlias.validarMensajeClienteCCI}" />
-					</h:selectOneMenu>
-					<div id="idMensajeResultadoCuentaBancariaE" > </div>
-					
-				</div>
-				
-				<p:outputPanel id="idContenedorMensajeClienteCCI">
-					<p:outputPanel styleClass="claseMensajeCCI"  rendered="#{mAlias.mostrarMensajeClienteCCI}">
-						<p:outputLabel value="(Deberás realizar una operación interbancaria)" />
-					</p:outputPanel>
-				</p:outputPanel>
-				
-				<div class="form-group contenerdorEnlaceCuentas">
-					<h:link styleClass="enlaceCuentas btn-link" value="Añade una cuenta aquí" outcome="cuentaItem.xhtml" />
-				</div>
-
-				<div class="form-group">
-
-					<p:outputLabel value="¿A que cuenta te enviamos tu dinero?"
-						styleClass="clasesCamposFormulario" />
-
-					<h:selectOneMenu id="idComboCuentaBancariaR" styleClass="custom-select form-control" 
-							value="#{mAlias.operacionClienteFormulario.tpCuentBancoByCodCuenBancClieReci.codCuenBanc}">
-						<f:selectItem itemLabel="Seleccione..." itemValue="-1"/>
-						<f:selectItems value="#{mAlias.listaComboCuentasBancariasReci}" />
-						<p:ajax update="idContenedorMensajeCCI" event="change" listener="#{mAlias.validarMensajeCCI}" />
-					</h:selectOneMenu>
-					
-					<div id="idMensajeResultadoCuentaBancariaR"> </div>
-
-				</div>
-
-				<p:outputPanel id="idContenedorMensajeCCI">
-					<p:outputPanel styleClass="claseMensajeCCI"  rendered="#{mAlias.mostrarMensajeCCI}">
-						<p:outputLabel value="(Representa una operación interbancaria para Preciso)" />
-					</p:outputPanel>
-				</p:outputPanel>
-				
-				<div class="form-group contenerdorEnlaceCuentas">
-					<h:link styleClass="enlaceCuentas btn-link" value="Añade una cuenta aquí" outcome="cuentaItem.xhtml" />
-				</div>
-				
-				
-				<p:outputPanel id="idContenedorOrigenFondos">	
-					<p:outputPanel rendered="#{mAlias.indHabilitarOrigenFondo}">		
-						<div class="form-group">
+		<div class="row setup-content justify-content-center mt-4" id="step-1">
 		
-							<p:outputLabel value="Origen de fondos"
-								styleClass="clasesCamposFormulario" />
-		
-							<h:selectOneMenu id="idComboOrigenFondo" styleClass="custom-select form-control" 
-								value="#{mAlias.operacionClienteFormulario.tpOrigeFondo.codOrigFond}">
-								<f:selectItem itemLabel="Seleccione..." itemValue="-1"/>
-								<f:selectItems value="#{mAlias.listaComboOrigenFondo}" />
-							</h:selectOneMenu>
-							
-							<div id="idMensajeResultadoOrigenFondos"> </div>
-		
-						</div>
-					</p:outputPanel>
-				</p:outputPanel>
+			<div class="column col-xs-12 col-sm-9 col-md-7 col-lg-4">
 				
+
 				<p:outputPanel styleClass="row claseSeccionTipoCambio">
 
 					<div class="claseCompraVenta">
@@ -216,6 +150,77 @@
 					  
 				</p:outputPanel>
 
+				<div class="form-group mt-4">
+
+					<p:outputLabel value="¿Desde que cuenta nos envias tu dinero?"
+						styleClass="clasesCamposFormulario" />
+
+					<h:selectOneMenu id="idComboCuentaBancariaE" styleClass="custom-select form-control" 
+							value="#{mAlias.operacionClienteFormulario.tpCuentBancoByCodCuenBancClieOrig.codCuenBanc}">
+						<f:selectItem itemLabel="Seleccione..." itemValue="-1" />
+						<f:selectItems value="#{mAlias.listaComboCuentasBancariasEnvi}" />
+						<p:ajax update="idContenedorMensajeClienteCCI" event="change" listener="#{mAlias.validarMensajeClienteCCI}" />
+					</h:selectOneMenu>
+					<div id="idMensajeResultadoCuentaBancariaE" > </div>
+					
+				</div>
+				
+				<p:outputPanel id="idContenedorMensajeClienteCCI">
+					<p:outputPanel styleClass="claseMensajeCCI"  rendered="#{mAlias.mostrarMensajeClienteCCI}">
+						<p:outputLabel value="(Deberás realizar una operación interbancaria)" />
+					</p:outputPanel>
+				</p:outputPanel>
+				
+				<div class="form-group contenerdorEnlaceCuentas">
+					<h:link styleClass="enlaceCuentas btn-link" value="Añade una cuenta aquí" outcome="cuentaItem.xhtml" />
+				</div>
+
+				<div class="form-group mt-4">
+
+					<p:outputLabel value="¿A que cuenta te enviamos tu dinero?"
+						styleClass="clasesCamposFormulario" />
+
+					<h:selectOneMenu id="idComboCuentaBancariaR" styleClass="custom-select form-control" 
+							value="#{mAlias.operacionClienteFormulario.tpCuentBancoByCodCuenBancClieReci.codCuenBanc}">
+						<f:selectItem itemLabel="Seleccione..." itemValue="-1"/>
+						<f:selectItems value="#{mAlias.listaComboCuentasBancariasReci}" />
+						<p:ajax update="idContenedorMensajeCCI" event="change" listener="#{mAlias.validarMensajeCCI}" />
+					</h:selectOneMenu>
+					
+					<div id="idMensajeResultadoCuentaBancariaR"> </div>
+
+				</div>
+
+				<p:outputPanel id="idContenedorMensajeCCI">
+					<p:outputPanel styleClass="claseMensajeCCI"  rendered="#{mAlias.mostrarMensajeCCI}">
+						<p:outputLabel value="(Representa una operación interbancaria para Preciso)" />
+					</p:outputPanel>
+				</p:outputPanel>
+				
+				<div class="form-group contenerdorEnlaceCuentas">
+					<h:link styleClass="enlaceCuentas btn-link" value="Añade una cuenta aquí" outcome="cuentaItem.xhtml" />
+				</div>
+				
+				
+				<p:outputPanel id="idContenedorOrigenFondos">	
+					<p:outputPanel rendered="#{mAlias.indHabilitarOrigenFondo}">		
+						<div class="form-group mt-4">
+		
+							<p:outputLabel value="Origen de fondos"
+								styleClass="clasesCamposFormulario" />
+		
+							<h:selectOneMenu id="idComboOrigenFondo" styleClass="custom-select form-control" 
+								value="#{mAlias.operacionClienteFormulario.tpOrigeFondo.codOrigFond}">
+								<f:selectItem itemLabel="Seleccione..." itemValue="-1"/>
+								<f:selectItems value="#{mAlias.listaComboOrigenFondo}" />
+							</h:selectOneMenu>
+							
+							<div id="idMensajeResultadoOrigenFondos"> </div>
+		
+						</div>
+					</p:outputPanel>
+				</p:outputPanel>
+				
 			</div>
 
 			<div class="row col-xs-12 col-sm-12 col-md-11 col-lg-11 mx-auto mt-2">
@@ -235,7 +240,7 @@
 					</p:outputPanel>
 
 				</div>
-
+		   
 				<div class="col text-right col-xs-12 col-sm-12 col-md-6 col-lg-4">
 					<p:remoteCommand name="metodoRemotoEnviarFormulario"  actionListener="#{mAlias.validarSeleccionCuenta}" update="idPanelGeneral"/>
 					<p:commandButton class="btn btn-success  botonIniciarOperacionGeneral icon-right-big" disabled="#{mAlias.indFueraDeHorario == 1 ? 'true' : 'false'}" value="Empieza" onclick="enviar(event);"/>

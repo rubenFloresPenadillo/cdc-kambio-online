@@ -234,6 +234,13 @@
 						</div>
 					</div>
 					
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="form-group">
+							<p:outputLabel value="Cuenta de correo" />
+							<p:inputText id="idTxtCuentaCorreo" styleClass="form-control" value="#{mAlias.operacionControlItem.tpClien.tpUsuar.ideUsuaEmai}" disabled="true"/>
+						</div>
+					</div>
+					
 
 			</div>
 			
@@ -534,6 +541,19 @@
 
 			</div>
 			
+			
+			<div class="row">
+					
+					<p:outputPanel rendered="#{mAlias.indMostrarVistaFinalizar or (mAlias.indicadorModoConsulta and mAlias.operacionControlItem.numOperBancCome ne null)}"  styleClass="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="form-group">
+							<p:outputLabel value="Nro de Operación de Comercio" />
+							<p:inputText id="idTxtNumOperaComercio" styleClass="form-control" value="#{mAlias.operacionControlItem.numOperBancCome}" disabled="#{mAlias.indicadorModoConsulta}"/>
+							<div id="idMensajeNumOperaComercio" > </div>
+					  	</div>
+					</p:outputPanel>
+
+			</div>
+			
 			<p:outputPanel id="idCamposAuditoriaDinamicos">
 			
 				<p:outputPanel rendered="#{mAlias.operacionControlItem.usuApliFinaOper ne null}">
@@ -566,7 +586,7 @@
 							<p:outputPanel rendered="#{mAlias.operacionControlItem.usuApliFinaOper eq null}" styleClass="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
 									<div class="form-group">
 										<p:outputLabel value="Motivo Cancelación *" />
-										<p:inputText id="idTxtMotivoCancelacion" styleClass="form-control" value="#{mAlias.operacionControlItem.valTextComeCanc}" />
+										<p:inputText id="idTxtMotivoCancelacion" styleClass="form-control" value="#{mAlias.operacionControlItem.valTextComeCanc}" disabled="#{mAlias.indicadorModoConsulta}"/>
 										<div id="idMensajeMotivoCancelacion" > </div>
 									</div>
 							</p:outputPanel>

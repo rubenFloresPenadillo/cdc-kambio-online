@@ -424,10 +424,9 @@ footer hr{
 }
 
 #mapaContacto h2{
-	margin-top: 30px;
+ 	margin-top: 30px;
 	color: #1d2b38 !important;
-    font-weight: 500;
-    font-size: 45px;
+    font-weight: bold;
 }
 
 #mapaContacto h3{

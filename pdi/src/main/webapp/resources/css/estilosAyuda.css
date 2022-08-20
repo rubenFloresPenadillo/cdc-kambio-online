@@ -415,9 +415,8 @@ h4{text-align:center;margin:30px 0;color:#444}
 
 #idAyuda h2{
 	margin-top: 30px;
-	color: #004aad !important;
-    font-weight: 500;
-    font-size: 45px;
+	color: #1d2b38 !important;
+    font-weight: bold;
 }
 
 /* #idAyuda .contenedorConocenos{ */
@@ -434,9 +433,9 @@ h4{text-align:center;margin:30px 0;color:#444}
 }
 
 #imagenTienda h2{
-	color: #004aad !important;
-    font-weight: 500;
-    font-size: 45px;
+    margin-top: 30px;
+	color: #1d2b38 !important;
+    font-weight: bold;
 }
 
 .claseImagenTienda{
@@ -469,9 +468,9 @@ h4{text-align:center;margin:30px 0;color:#444}
 }
 
 #idVision h2{
-	color: #004aad !important;
-    font-weight: 500;
-    font-size: 45px;
+ 	margin-top: 30px;
+	color: #1d2b38 !important;
+    font-weight: bold;
 }
 
 #idVision .claseContenedorMisionVision {
@@ -588,10 +587,9 @@ a:hover {
 }
 
 #idFrecuentes h2{
-	margin-top: 30px;
+ 	margin-top: 30px;
 	color: #1d2b38 !important;
-    font-weight: 500;
-    font-size: 45px;
+    font-weight: bold;
 }
 
 #idFrecuentes .claseContenedorFrecuentes {

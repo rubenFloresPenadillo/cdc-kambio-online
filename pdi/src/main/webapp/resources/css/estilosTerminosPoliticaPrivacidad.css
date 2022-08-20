@@ -280,10 +280,9 @@ footer hr{
 }
 
 #idTerminosCondiciones h2{
-	margin-top: 30px;
+ 	margin-top: 30px;
 	color: #1d2b38 !important;
-    font-weight: 500;
-    font-size: 45px;
+    font-weight: bold;
 }
 
 .claseFilaContenido{
@@ -292,7 +291,7 @@ footer hr{
 }
 
 .claseFilaContenido h4{
-	color: #4D7F21;
+	color: #1d2b38;
 }
 
 .line-shape {
@@ -306,4 +305,8 @@ footer hr{
     margin-top: 15px;
     margin-bottom: 30px;
     border-radius: 100px;
+}
+
+.claseIconosFooter img {
+    width: 25px;
 }

@@ -99,13 +99,6 @@ public class NotificacionUtil {
 			messageBodyPart.setContent(cuerpoMail, "text/html");
 			// add it
 			multipart.addBodyPart(messageBodyPart);
-			// second part (the image)
-			messageBodyPart = new MimeBodyPart();
-			DataSource fds = new FileDataSource(RutasBaseType.RUTA_BASE_IMAGENES.getValor()+IMAGEN_LOGO);
-			messageBodyPart.setDataHandler(new DataHandler(fds));
-			messageBodyPart.setHeader("Content-ID", "<image>");
-			// add image to the multipart
-			multipart.addBodyPart(messageBodyPart);
 			// put everything together
 			message.setContent(multipart);
 			// Send message

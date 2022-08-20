@@ -83,7 +83,7 @@ header {
 }
 
 .contenedor{
-	width: 98%;
+/* 	width: 90%; */
 	margin: auto;
 }
 
@@ -144,7 +144,7 @@ header {
 }
 
 .clasesCamposFormulario{
-	color: #4D7F21;
+	color: #1d2b38;
 	font-weight: bold;
 	margin-right: 10px;
 /* 	font-size: 1rem !important; */
@@ -212,7 +212,7 @@ header {
 	text-align: right;
 	font-weight: bold;
 	font-size: 30px !important;
-	color: #4D7F21;
+	color: #1d2b38;
 	position: absolute;
 /* 	z-index: 1; */
 	
@@ -253,33 +253,33 @@ header {
 /* } */
 
 #idTabCompra{
-	color: 	#4D7F21 !important;
+	color: 	#1d2b38 !important;
 }
 
 #idTabVenta{
-	color: 	#4D7F21 !important;
+	color: 	#1d2b38 !important;
 }
 
 .activoVisual{
 	background: #FAFAFA !important;
-    border-top: 2px solid #4D7F21 !important;
-    border-right: 2px solid #4D7F21 !important;
-    border-left: 2px solid #4D7F21 !important;
+    border-top: 2px solid #1d2b38 !important;
+    border-right: 2px solid #1d2b38 !important;
+    border-left: 2px solid #1d2b38 !important;
     border-top-left-radius: 0.4em !important;
     border-top-right-radius: 0.4em !important;
 }
 
 .inputSuperior{
-	border: 2px solid #4D7F21;
+	border: 2px solid #1d2b38;
 	border-radius: 0rem;
 	border-top-left-radius: 0.25em !important;
     border-top-right-radius: 0.25em !important;
 }
 
 .inputInferior{
-	border-bottom: 2px solid #4D7F21;
-	border-left: 2px solid #4D7F21;
-	border-right: 2px solid #4D7F21;
+	border-bottom: 2px solid #1d2b38;
+	border-left: 2px solid #1d2b38;
+	border-right: 2px solid #1d2b38;
 	border-radius: 0rem;
 	border-bottom-left-radius: 0.25em;
     border-bottom-right-radius: 0.25em;
@@ -467,15 +467,15 @@ header {
 	width: 33.333333%; 
 	padding: 0 5px; 
 	text-align: center;
-	margin-top: 6px;
+/* 	margin-top: 6px; */
 }
 
 .f1-step-icon {
 	display: inline-block; 
-	width: 40px; 
-	height: 40px; 
+/* 	width: 40px;  */
+/* 	height: 40px;  */
 	margin-top: 4px; 
-	background: #ddd;
+/* 	background: #ddd; */
 	font-size: 16px; 
 	color: #fff; 
 	line-height: 40px;
@@ -484,8 +484,8 @@ header {
 	border-radius: 50%;
 }
 .f1-step.activated .f1-step-icon {
-	background: #fff; 
-	border: 1px solid #4D7F21; 
+/* 	background: #fff;  */
+/* 	border: 1px solid #4D7F21;  */
 	color: #4D7F21; 
 	line-height: 38px;
 }
@@ -493,7 +493,7 @@ header {
 	width: 48px; 
 	height: 48px; 
 	margin-top: 0; 
-	background: #4D7F21; 
+/* 	background: #4D7F21;  */
 	font-size: 22px; 
 	line-height: 48px;
 }
@@ -671,7 +671,7 @@ header {
 .claseTituloPaso{
 	font-size: 1.2rem;
 	font-weight: bold;
-	color: #4D7F21;
+	color: #1d2b38;
 	margin-top: 45px;
 }
 
@@ -892,3 +892,7 @@ header {
 }
 
 /* Fin estilos cupon*/
+
+.claseIconoPasos{
+	width: 60px;
+}

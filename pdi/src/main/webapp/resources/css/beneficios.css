@@ -8,13 +8,12 @@
 #beneficios h2{
 	margin-top: 30px;
 	color: #1d2b38 !important;
-    font-weight: 500;
-    font-size: 45px;
+    font-weight: bold;
 }
 
 #beneficios h4{
 	text-align: left;
-	color: #4D7F21 !important;
+	color: #1d2b38 !important;
 }
 
 .contenedorBeneficios p{

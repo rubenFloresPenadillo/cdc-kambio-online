@@ -2,8 +2,6 @@ package dto;
 
 import java.util.Date;
 
-import hibernate.entidades.TpTipoPerso;
-
 public class TpUsuarDto implements java.io.Serializable {
 
 	private static final long serialVersionUID = -5321353534569609827L;

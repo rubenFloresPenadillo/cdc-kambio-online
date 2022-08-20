@@ -16,20 +16,30 @@ import org.primefaces.PrimeFaces;
 
 import cadenas.util.ValidacionesString;
 import dto.TpCuentBancoDto;
+import dto.TpFactuDocumCabecDto;
+import dto.TpFactuDocumDetalDto;
 import dto.TpOperaClienDto;
+import hibernate.entidades.TpFactuDocumDetal;
 import loggerUtil.LoggerUtil;
 import managedThread.CorreoEnvioHilo;
 import numeros.util.ValidacionesNumeros;
 import service.ServiceCliente;
+import service.ServiceFacturacionElectronica;
 import service.ServiceOperacionCliente;
 import service.impl.ServiceClienteImpl;
+import service.impl.ServiceFacturacionElectronicaImpl;
 import service.impl.ServiceOperacionClienteImpl;
+import util.constantes.Constants;
 import util.sesion.ConeccionSesion;
 import util.types.CadenasType;
 import util.types.ElementosTablasType;
+import util.types.EstadosInternosDocumentosFEType;
 import util.types.NumerosType;
 import util.types.PaginasPrivadasType;
 import util.types.PlantillasType;
+import util.types.RegistroActivoType;
+import util.types.TipoDocumentoElectronicoType;
+import util.types.TipoOperacionCambioType;
 
 @ManagedBean(name="operacionesControlItemBean")
 @ViewScoped
@@ -92,6 +102,10 @@ public class OperacionesControlItemBean {
 				indMostrarVistaFinalizar = Boolean.TRUE;
 			}else if(operacionControlItem.getTpEstadOpera().getCodEstaOper().equals(ElementosTablasType.ESTADO_OPERACION_INICIADA.getIdElemento())) {
 				estadoFuturoOperacion = ElementosTablasType.ESTADO_OPERACION_CANCELADA_OPERACION.getIdElemento();
+				indMostrarVistaFinalizar = Boolean.FALSE;
+			}else if(operacionControlItem.getTpEstadOpera().getCodEstaOper().equals(ElementosTablasType.ESTADO_OPERACION_CANCELADA_AUTOMATICA.getIdElemento()) ||
+					operacionControlItem.getTpEstadOpera().getCodEstaOper().equals(ElementosTablasType.ESTADO_OPERACION_CANCELADA_OPERACION.getIdElemento()) ||
+					operacionControlItem.getTpEstadOpera().getCodEstaOper().equals(ElementosTablasType.ESTADO_OPERACION_CANCELADA_CLIENTE.getIdElemento()) ) {
 				indMostrarVistaFinalizar = Boolean.FALSE;
 			}
 			
@@ -227,8 +241,19 @@ public class OperacionesControlItemBean {
     }
     
     public void procesarMostrarDialogConfirmacionFinOpera() {
-    	indMostrarVistaFinalizar = Boolean.TRUE;
-    	PrimeFaces.current().executeScript("mostrarPopupConfirmaFinalizar();");
+    	
+    	resultadoProcesoError = CadenasType.VACIO.getValor();
+    	
+    	if(operacionControlItem!=null && !ValidacionesString.esNuloOVacio(operacionControlItem.getNumOperBancCome())) {
+    		indMostrarVistaFinalizar = Boolean.TRUE;
+            PrimeFaces.current().executeScript("mostrarPopupConfirmaFinalizar();");
+        }else {
+        	resultadoProcesoError = "El número de operación del comercio es obligatorio, verifique por favor.";
+        	LoggerUtil.getInstance().getLogger().error(resultadoProcesoError);
+        	PrimeFaces.current().executeScript("procesoConError();");
+        }
+    		
+    	
     }
     
     
@@ -248,7 +273,7 @@ public class OperacionesControlItemBean {
     	resultadoProcesoError = CadenasType.VACIO.getValor();
     	
     	if(operacionControlItem!=null) {
-    		System.out.println("Ejecutar"+operacionControlItem.getCodOperClie());
+//    		System.out.println("Ejecutar"+operacionControlItem.getCodOperClie());
     		
     		ServiceOperacionCliente serviceOperacionCliente = new ServiceOperacionClienteImpl();
 
@@ -259,11 +284,18 @@ public class OperacionesControlItemBean {
     		operacionControlItem.setUsuApliFinaOper(ideUsuaEmai);
         	operacionControlItem.setFecFinaOper(new Date());
     		
+//        	String result = "OK";
         	String result = serviceOperacionCliente.actualizarEstadoOperacionCliente(operacionControlItem);
 
         	if(result.startsWith(CadenasType.INDICADOR_PROCESO_OK.getValor())) {
         		
-//        		getOperacionesCliente();
+        		try {
+        			grabaDatosFacturacionElectronica();
+				} catch (Exception e) {
+					LoggerUtil.getInstance().getLogger().error(e);
+					e.getStackTrace();
+				}
+        		
         		
         		indicadorModoConsulta = Boolean.TRUE;
         		indMostrarListaCambiarEstado = Boolean.FALSE;
@@ -288,6 +320,113 @@ public class OperacionesControlItemBean {
     		
     	}
     }
+    
+    public void grabaDatosFacturacionElectronica() {
+    	
+    	TpFactuDocumCabecDto tpFactuDocumCabecDto = new TpFactuDocumCabecDto();
+    	
+    	String tipoDocumentoExterno = CadenasType.VACIO.getValor();
+    	String valorDocumento = CadenasType.VACIO.getValor();
+    	String valorNombreDenominacion = CadenasType.VACIO.getValor();
+    	short tipoComprobanteAGenerar = NumerosType.NUMERO_MINIMO_CERO.getValor().shortValue();
+    	String desCortTipoDocuElec = CadenasType.VACIO.getValor();
+    	
+    	if (ElementosTablasType.TIPO_DOCUMENTO_PERSONA_DNI.getIdElemento().equals(operacionControlItem.getTpClien().getTpTipoDocumPerso().getCodTipoDocuPers())) {
+    		tipoDocumentoExterno = Constants.FACTURACION_ELECTRONICA_TIPO_DOCUMENTO_DNI; 
+    		valorDocumento = operacionControlItem.getTpClien().getValDocuPers();
+    		valorNombreDenominacion = operacionControlItem.getTpClien().getValNombreCompleto();
+    		tipoComprobanteAGenerar = Constants.FACTURACION_ELECTRONICA_TIPO_COMPROBANTE_BOLETA;
+    		desCortTipoDocuElec = TipoDocumentoElectronicoType.BOLETA.getCodigoCorto();
+    		
+    	}else if (ElementosTablasType.TIPO_DOCUMENTO_PERSONA_RUC.getIdElemento().equals(operacionControlItem.getTpClien().getTpTipoDocumPerso().getCodTipoDocuPers())) {
+    		tipoDocumentoExterno = Constants.FACTURACION_ELECTRONICA_TIPO_DOCUMENTO_RUC; 
+    		valorDocumento = operacionControlItem.getTpClien().getValDocuEmpr();
+    		valorNombreDenominacion = operacionControlItem.getTpClien().getValRazoSociPers();
+    		tipoComprobanteAGenerar = Constants.FACTURACION_ELECTRONICA_TIPO_COMPROBANTE_FACTURA;
+    		desCortTipoDocuElec = TipoDocumentoElectronicoType.FACTURA.getCodigoCorto(); 
+    	}
+    	
+		tpFactuDocumCabecDto.setCodOperClie(operacionControlItem.getCodOperClie());
+		tpFactuDocumCabecDto.setTipoDeComprobante(tipoComprobanteAGenerar);  // revisar, debe ser de acuerdo al perfil
+		tpFactuDocumCabecDto.setClienteTipoDeDocumento(tipoDocumentoExterno);
+		tpFactuDocumCabecDto.setClienteNumeroDeDocumento(valorDocumento);
+		tpFactuDocumCabecDto.setClienteDenominacion(valorNombreDenominacion);
+		tpFactuDocumCabecDto.setClienteDireccion(operacionControlItem.getTpClien().getValDirePers());
+		tpFactuDocumCabecDto.setClienteEmail(operacionControlItem.getTpClien().getTpUsuar().getIdeUsuaEmai());
+//		tpFactuDocumCabecDto.setClienteEmail1(tpFactuDocumCabecDto.getClienteEmail1());
+//		tpFactuDocumCabecDto.setClienteEmail2(tpFactuDocumCabecDto.getClienteEmail2());
+		tpFactuDocumCabecDto.setFechaDeEmision(new Date());
+//		tpFactuDocumCabecDto.setFechaDeVencimiento(tpFactuDocumCabecDto.getFechaDeVencimiento());
+//		tpFactuDocumCabecDto.setTipoDeCambio(tpFactuDocumCabecDto.getTipoDeCambio());
+//		tpFactuDocumCabecDto.setDescuentoGlobal(tpFactuDocumCabecDto.getDescuentoGlobal());
+//		tpFactuDocumCabecDto.setTotalDescuento(tpFactuDocumCabecDto.getTotalDescuento());
+//		tpFactuDocumCabecDto.setTotalAnticipo(tpFactuDocumCabecDto.getTotalAnticipo());
+//		tpFactuDocumCabecDto.setTotalGravada(tpFactuDocumCabecDto.getTotalGravada());
+		tpFactuDocumCabecDto.setTotalInafecta(operacionControlItem.getMonReci().doubleValue());
+//		tpFactuDocumCabecDto.setTotalExonerada(tpFactuDocumCabecDto.getTotalExonerada());
+//		tpFactuDocumCabecDto.setTotalIgv(tpFactuDocumCabecDto.getTotalIgv());
+//		tpFactuDocumCabecDto.setTotalGratuita(tpFactuDocumCabecDto.getTotalGratuita());
+//		tpFactuDocumCabecDto.setTotalOtrosCargos(tpFactuDocumCabecDto.getTotalOtrosCargos());
+//		tpFactuDocumCabecDto.setTotalIsc(tpFactuDocumCabecDto.getTotalIsc());
+		tpFactuDocumCabecDto.setTotal(operacionControlItem.getMonReci().doubleValue());
+//		tpFactuDocumCabecDto.setPercepcionTipo(tpFactuDocumCabecDto.getPercepcionTipo());
+//		tpFactuDocumCabecDto.setPercepcionBaseImponible(tpFactuDocumCabecDto.getPercepcionBaseImponible());
+//		tpFactuDocumCabecDto.setTotalPercepcion(tpFactuDocumCabecDto.getTotalPercepcion());
+//		tpFactuDocumCabecDto.setTotalIncluidoPercepcion(tpFactuDocumCabecDto.getTotalIncluidoPercepcion());
+//		tpFactuDocumCabecDto.setObservaciones(tpFactuDocumCabecDto.getObservaciones());
+//		tpFactuDocumCabecDto.setDocumentoQueSeModificaTipo(tpFactuDocumCabecDto.getDocumentoQueSeModificaTipo());
+//		tpFactuDocumCabecDto.setDocumentoQueSeModificaSerie(tpFactuDocumCabecDto.getDocumentoQueSeModificaSerie());
+//		tpFactuDocumCabecDto.setDocumentoQueSeModificaNumero(tpFactuDocumCabecDto.getDocumentoQueSeModificaNumero());
+//		tpFactuDocumCabecDto.setTipoDeNotaDeCredito(tpFactuDocumCabecDto.getTipoDeNotaDeCredito());
+//		tpFactuDocumCabecDto.setTipoDeNotaDeDebito(tpFactuDocumCabecDto.getTipoDeNotaDeDebito());
+//		tpFactuDocumCabecDto.setCodigoUnico(tpFactuDocumCabecDto.getCodigoUnico());
+//		tpFactuDocumCabecDto.setCondicionesDePago(tpFactuDocumCabecDto.getCondicionesDePago());
+//		tpFactuDocumCabecDto.setMedioDePago(tpFactuDocumCabecDto.getMedioDePago());
+//		tpFactuDocumCabecDto.setPlacaVehiculo(tpFactuDocumCabecDto.getPlacaVehiculo());
+//		tpFactuDocumCabecDto.setOrdenCompraServicio(tpFactuDocumCabecDto.getOrdenCompraServicio());
+		
+		tpFactuDocumCabecDto.setCodEstaDocu(EstadosInternosDocumentosFEType.PENDIENTE_ENVIO.getIdElemento().shortValue());
+		tpFactuDocumCabecDto.setDesCortDocuGene(desCortTipoDocuElec);
+		tpFactuDocumCabecDto.setFecCreaRegi(new Date());
+		tpFactuDocumCabecDto.setIndEsta(RegistroActivoType.ACTIVO.getLlave().shortValue());
+		tpFactuDocumCabecDto.setUsuApliCrea(String.valueOf(ideUsuaEmai));
+		
+		
+    	
+    	
+		TpFactuDocumDetalDto tpFactuDocumDetalDto = new TpFactuDocumDetalDto();
+		
+		tpFactuDocumDetalDto.setTpFactuDocumCabec(tpFactuDocumCabecDto);
+		tpFactuDocumDetalDto.setCodigo(NumerosType.NUMERO_MINIMO_CERO.getValor().equals(operacionControlItem.getIndCompVent()) ? TipoOperacionCambioType.COMPRA_DOLARES.getCodigo() : TipoOperacionCambioType.VENTA_DOLARES.getCodigo() );
+		tpFactuDocumDetalDto.setDescripcion(NumerosType.NUMERO_MINIMO_CERO.getValor().equals(operacionControlItem.getIndCompVent()) ? 
+				TipoOperacionCambioType.COMPRA_DOLARES.getDescripcion()+CadenasType.GUION.getValor()+operacionControlItem.getNumOperBancCome() : 
+					TipoOperacionCambioType.VENTA_DOLARES.getDescripcion()+CadenasType.GUION.getValor()+operacionControlItem.getNumOperBancCome() );
+		tpFactuDocumDetalDto.setCantidad(operacionControlItem.getMonEnvi().doubleValue());
+		tpFactuDocumDetalDto.setValorUnitario(operacionControlItem.getValTipoCambUsad());
+		tpFactuDocumDetalDto.setPrecioUnitario(operacionControlItem.getValTipoCambUsad());
+//		tpFactuDocumDetalDto.setDescuento(tpFactuDocumDetalDto.getDescuento());
+		tpFactuDocumDetalDto.setSubtotal(operacionControlItem.getMonReci().doubleValue());
+		tpFactuDocumDetalDto.setTotal(operacionControlItem.getMonReci().doubleValue());
+//		tpFactuDocumDetalDto.setAnticipoDocumentoSerie(tpFactuDocumDetalDto.getAnticipoDocumentoSerie());
+//		tpFactuDocumDetalDto.setAnticipoDocumentoNumero(tpFactuDocumDetalDto.getAnticipoDocumentoNumero());
+//		tpFactuDocumDetalDto.setCodigoProductoSunat(tpFactuDocumDetalDto.getCodigoProductoSunat());
+		tpFactuDocumDetalDto.setFecCreaRegi(new Date());
+		tpFactuDocumDetalDto.setIndEsta(RegistroActivoType.ACTIVO.getLlave().shortValue());
+		tpFactuDocumDetalDto.setUsuApliCrea(String.valueOf(ideUsuaEmai));
+		
+		List<TpFactuDocumDetalDto> listTpFactuDocumDetalDto = new ArrayList<TpFactuDocumDetalDto>();
+		listTpFactuDocumDetalDto.add(tpFactuDocumDetalDto);
+		
+		
+		ServiceFacturacionElectronica serviceFacturacionElectronica = new ServiceFacturacionElectronicaImpl();
+    	String result = serviceFacturacionElectronica.generarComprobanteElectronico(tpFactuDocumCabecDto, listTpFactuDocumDetalDto);
+
+    	LoggerUtil.getInstance().getLogger().info("Registro comprobante: "+result);
+		
+    }
+    
+    
+    
     
     public void procesarCancelarOperacion() {
     	

@@ -2,7 +2,7 @@ package util.types;
 
 public enum RegistroActivoType {
 	
-	ACTIVO(1,"A","Activo","SÃ­"),
+	ACTIVO(1,"A","Activo","Sí"),
 	INACTIVO(0,"I","Inactivo","No");
 	
 	private Integer llave;

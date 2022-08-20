@@ -119,8 +119,9 @@
 						<tr>
 							<th scope="col">#</th>
 							<th scope="col">Código</th>
-							<th scope="col">Fecha Inicio de Operaciones</th>
+							<th scope="col">Fecha Inicio Operacion</th>
 							<th scope="col">Cliente</th>
+							<th scope="col">Cuenta de correo</th>
 							<th scope="col">Perfil</th>
 							<th scope="col">Nomb. Perfil</th>
 							<th scope="col">Razón Social</th>
@@ -147,6 +148,7 @@
 									</h:outputText>
 									</td>
 									<td>#{oc.tpClien.valNombreCompleto}</td>
+									<td>#{oc.tpClien.tpUsuar.ideUsuaEmai}</td> 
 									<td>#{oc.tpClien.tpUsuar.codUsuaPadr ne null ? 'Empresa' : 'Persona'}</td> 
 									<td>#{oc.tpClien.valNombPerf eq null ? '-' : oc.tpClien.valNombPerf}</td> 
 									<td>#{oc.tpClien.valRazoSociPers eq null ? '-' : oc.tpClien.valRazoSociPers} </td> 

@@ -30,6 +30,7 @@ public enum ElementosTablasType {
 	TIPO_PREGUNTA_SEGURIDAD(3,"SEGUIRDAD"),
 	TIPO_PREGUNTA_OTRAS(4,"OTRAS PREGUNTAS");
 	
+	
 	private final Integer idElemento;
 	private final String nombreElemento;
 	

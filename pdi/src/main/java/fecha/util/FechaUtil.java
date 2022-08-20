@@ -25,6 +25,11 @@ public class FechaUtil implements Serializable{
 		return fechaInput == null  ? CadenasType.VACIO.getValor() : formatoDate.format(fechaInput);
 	}
 	
+	public static String formatoFechaGuiones(Date fechaInput){
+		DateFormat formatoDate = new SimpleDateFormat("dd-MM-yyyy");
+		return fechaInput == null  ? CadenasType.VACIO.getValor() : formatoDate.format(fechaInput);
+	}
+	
 	public static String formatoFechaDiaMes(Date fechaInput){
 		DateFormat formatoDate = new SimpleDateFormat("dd/MM");
 		return fechaInput == null  ? CadenasType.VACIO.getValor() : formatoDate.format(fechaInput);

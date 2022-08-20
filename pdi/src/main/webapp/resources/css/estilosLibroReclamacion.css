@@ -174,7 +174,7 @@ section{
 }
 
 .form-group label{
-	color: #4D7F21;
+	color: #1d2b38;
 	font-weight: bold;
 	font-size: 0.85rem;
 }
@@ -456,10 +456,10 @@ footer hr{
 
 
 .claseSeccionLibroReclamacion h2{
+	margin-top: 30px;
 	color: #1d2b38 !important;
-	text-align: center;
-    font-weight: 500;
-    font-size: 45px;
+    font-weight: bold;
+    text-align: center;
 }
 
 /* .claseSeccionLibroReclamacion { */
@@ -508,4 +508,8 @@ footer hr{
 
 .btn-danger:hover  {
     background-color: #1D2A37 !important;
+}
+
+.claseIconosFooter img {
+    width: 25px;
 }

@@ -3,8 +3,6 @@ package dto;
 
 import java.util.Date;
 
-import hibernate.entidades.TpActivEcono;
-
 
 public class TpClienDto implements java.io.Serializable {
 

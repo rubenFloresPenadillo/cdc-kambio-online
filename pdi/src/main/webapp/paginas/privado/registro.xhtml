@@ -32,86 +32,76 @@
 	<main>
 
 	<section id="seccionLogin">
+	
 		<div class="contenedor row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<a  href="../../index.xhtml">
+					<img class="imagenLogo" src="../../resources/imagenes/logoWeb320x80.jpg" alt="Logo Web"/>
+				</a>
+			</div>
+		</div>
+		<div class="contenedor row align-items-center justify-content-center">
 			
-			<div class="claseContieneImagen text-center col-xs-12 col-sm-12 col-md-5 col-lg-4">
-				<a href="../../" class="d-none d-sm-block d-sm-none d-md-block"> 
-				<img class="imagenLogoPaginaLogin"
-					src="../../resources/imagenes/logoPrecisoOficial.png" alt="Logo Preciso"/>
-				</a>
+			<div class="claseDetalleSustento col-xs-12 col-sm-12 col-md-5 col-lg-8 imagenLineasLogo">
+				<h5 >Cotiza tu operación</h5>
+				<p >Utiliza la calculadora para verificar el <span class="claseColorSecundarioBanner">tipo de cambio  </span><br></br> en tiempo real.</p>
 				
-				<a href="../../" class="d-block d-sm-none"> 
-				<img class="imagenLogoHorizontalPaginaLogin"
-					src="../../resources/imagenes/logoPreciso.png" alt="Logo Preciso"/>
-				</a>
-
-				<label class="seccionRegistrateYa">¡ TU SEGURIDAD ES NUESTRO COMPROMISO !</label>
+				<h5 class="mt-5">Realiza la Transferencia</h5>
+				<p >Envía desde tu banco el dinero que desees <span class="claseColorSecundarioBanner">cambiar a la <br></br>cuenta de Preci$o</span> indicada.</p>
+				
+				<h5 class="mt-5">Obtén tu dinero</h5>
+				<p >El dinero será <span class="claseColorSecundarioBanner">depositado en tu cuenta </span> destino</p>
 			</div>
 
 			<div class="claseContieneLogin text-center col-xs-12 col-sm-12 col-md-7 col-lg-4">
 				<div class="col-lg-12 main-section">
 					<div class="modal-content formContenidoIngreso">
-						<div class="col-lg-12 user-img">
-							<img src="../../resources/imagenes/loginColors.png" alt="Login"/>
-						</div>
-
+				
 						<div class="col-12 form-input">
 							<h:form id="idFormRegistro" method="post" role="form" class="form-horizontal">
 							
 							<p:remoteCommand name="ejecutarIrAlLogin" actionListener="#{mAlias.redireccionarLogin()}"/>
 
-<!-- 								<div class="seccionTipoPersoneria"> -->
-<!-- 									<label>¿Eres una persona?</label> -->
-<!-- 								</div> -->
-								
-<!-- 								<div class="btn-group seccionBotonesTipoPersoneria" data-toggle="buttons"> -->
-								
-<!-- 									 <h:inputText style="display:none;"  value="#{mAlias.tipoPersoneria}"  id="idTipoPersoneria"/> -->
 
-<!-- 									<label class="btn btn-primary active btnNatural" onclick="seleccionarPersoneriaN();">  -->
-<!-- 										<input type="radio" name="opcionesPersoneria" id="inputOpcionNatural" -->
-<!-- 											autocomplete="off" checked="true" hidden="true" />NATURAL -->
-<!-- 									</label>  -->
-<!-- 									<label class="btn btn-primary btnJuridica"  onclick="seleccionarPersoneriaJ();">  -->
-<!-- 										<input type="radio" name="opcionesPersoneria" id="inputOpcionJuridica"  -->
-<!-- 											autocomplete="off" hidden="true"/>JURÍDICA -->
-<!-- 									</label> -->
-<!-- 								</div> -->
 								<div class="form-group">
-									<i class="pi pi-user" style="font-size: 2rem"></i>  
+									
+									<h5 class="claseRegistrate">¡Regístrate!</h5>
+									 
+									<div class="col-12 forgot claseSubtituloRegistrate">
+										¿Ya tienes una cuenta? <a href="../privado/ingreso.xhtml"><span class="claseColorSecundarioBanner">Inicia sesión </span></a>
+									</div>
+						 
+									<p:outputLabel value="Nombre" styleClass="claseBold"/>
+									
+									<i class="pi pi-user" style="font-size: 1rem"></i> 
 									<p:inputText id="idTxtNombre" class="form-control" value="#{mAlias.usuarioFormulario.valNombRegi}"/>
-									<p:watermark for="idTxtNombre" value="Ingresa tu nombre" />
+									<p:watermark for="idTxtNombre" value="Escribe tu nombre" />
 									
 								</div>
 								
 								
-								<div class="form-group">
-									<i class="pi pi-envelope" style="font-size: 2rem"></i> 
+								<div class="form-group mt-4">
+									<p:outputLabel value="Correo" styleClass="claseBold" />
+									<i class="pi pi-envelope" style="font-size: 1rem"></i> 
 									<p:inputText id="idTxtEmail" class="form-control" value="#{mAlias.usuarioFormulario.ideUsuaEmai}"/>
 									<p:watermark for="idTxtEmail" value="Ingresa tu correo" />
 									
 								</div>
-								<div class="form-group">
-									<i class="pi pi-lock" style="font-size: 2rem"></i> 
+								<div class="form-group mt-4">
+									<p:outputLabel value="Contraseña"  styleClass="claseBold" />
+									<i class="pi pi-lock" style="font-size: 1rem"></i> 
 									<p:password id="idTxtPassword1" class="form-control" value="#{mAlias.usuarioFormulario.codClav}"/>
-									<p:watermark for="idTxtPassword1" value="Ingresa un password" />
+									<p:watermark for="idTxtPassword1" value="Escribe una contraseña" />
 										
 								</div>
-								<div class="form-group">
-									<i class="pi pi-lock" style="font-size: 2rem"></i> 
+								<div class="form-group mt-4">
+									<p:outputLabel value="Confirma tu contraseña"  styleClass="claseBold" />
+									<i class="pi pi-lock" style="font-size: 1rem"></i> 
 									<p:password id="idTxtPassword2" class="form-control" value="#{mAlias.usuarioFormulario.codClavConf}"/>
-									<p:watermark for="idTxtPassword2" value="Confirma tu password" />
+									<p:watermark for="idTxtPassword2" value="Confirma tu contraseña" />
 									
 								</div>
 								
-								<div class="claseTerminosPolitica">
-									<p>
-									Al clickear "Enviar Datos", aceptas nuestros <a href="../privado/terminos.xhtml" target="_blank">Terminos y condiciones</a> y <a href="../privado/politicaPrivacidad.xhtml" target="_blank">Políticas de privacidad</a>
-									</p>
-								</div>
-
-								<div id="idMensajeResultado" > </div>
-
 								<p:outputPanel id="idMensajeResultadoProceso" >
 									<p:outputPanel styleClass="alert alert-success" rendered="#{not empty mAlias.resultadoProcesoExito}"> 
 										<p:outputLabel value="#{mAlias.resultadoProcesoExito}" />
@@ -122,8 +112,20 @@
 									</p:outputPanel>
 								</p:outputPanel>
 								
-								<p:remoteCommand name="metodoRemotoEnviarFormulario" actionListener="#{mAlias.validar()}" />
-								<p:commandButton onclick="enviar(event);" styleClass="btn btn-primary-kli botonIniciarOperacionGeneral"  value="ENVIAR DATOS" />
+								<div class="form-group mt-5">
+									<p:remoteCommand name="metodoRemotoEnviarFormulario" actionListener="#{mAlias.validar()}" />
+									<p:commandButton onclick="enviar(event);" styleClass="btn btn-primary-kli botonFormularioLogin"  value="Registrarme" />
+								</div>
+								
+								
+								<div class="claseTerminosPolitica">
+									<p>
+									Al clickear "Registrame", aceptas nuestros <a href="../privado/terminos.xhtml" target="_blank">Terminos y condiciones</a> y <a href="../privado/politicaPrivacidad.xhtml" target="_blank">Políticas de privacidad</a>
+									</p>
+								</div>
+
+								<div id="idMensajeResultado" > </div>
+
 								
 		
 								<!-- Modal Guardar Banco Exitoso -->
@@ -166,9 +168,7 @@
 								
 						</div>
 
-						<div class="col-12 forgot">
-							<a href="../privado/ingreso.xhtml">¿Deseas iniciar sesión?</a>
-						</div>
+						
 					</div>
 				</div>
 			</div>

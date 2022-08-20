@@ -52,20 +52,28 @@ function procesoConError(){
 }
 
 function enviarFinalizar(event) {
+		
+	$("#idMensajeNumOperaComercio").empty();
+	$("#idMensajeNumOperaComercio").removeClass( "alert alert-danger claseMensajeResultado" )
+    $("#idMensajeNumOperaComercio").addClass( "hidden" );
+	$("#idMensajeNumOperaComercio").css("display","block");
+	
+	$("[id='idFormOperacionControlItem:idTxtNumOperaComercio']").removeClass( "claseErrorFormulario" );
+	
+    var idTxtNumOperaComercio = $("[id='idFormOperacionControlItem:idTxtNumOperaComercio']").val();
     
-//    if (idComboBanco == null || idComboBanco == '-1'){ 
-//    	$("#idMensajeComboBanco").text("El banco es obligarotio.");
-//    	$("#idMensajeComboBanco").addClass( "alert alert-danger claseMensajeResultado" )
-//        $("#idMensajeComboBanco").removeClass( "hidden" );
-//    	$("#idMensajeComboBanco").fadeOut(6000);
-//    	$("[id='idFormCuentaBancariaAdminItem:idComboBanco']").focus().select();
-//    	$("[id='idFormCuentaBancariaAdminItem:idComboBanco']").addClass( "claseErrorFormulario" );
-//    	event.preventDefault();
-//    } else{
-//    	mostrarPopupConfirmaGuardarOperaControlItem();
-//    }
-    	
-		mostrarDialogConfirmacionFinOpera();
+    if (idTxtNumOperaComercio == null || idTxtNumOperaComercio == ''){
+    	$("#idMensajeNumOperaComercio").text("El numero de operación del comercio es obligatorio.");
+    	$("#idMensajeNumOperaComercio").addClass( "alert alert-danger claseMensajeResultado" )
+        $("#idMensajeNumOperaComercio").removeClass( "hidden" );
+    	$("#idMensajeNumOperaComercio").fadeOut(6000);
+    	$("[id='idFormOperacionControlItem:idTxtNumOperaComercio']").focus();
+    	$("[id='idFormOperacionControlItem:idTxtNumOperaComercio']").addClass( "claseErrorFormulario" );
+    	event.preventDefault();
+    }else{
+    	mostrarDialogConfirmacionFinOpera();
+    }
+
 }
 
 function enviarCancelar(event) {

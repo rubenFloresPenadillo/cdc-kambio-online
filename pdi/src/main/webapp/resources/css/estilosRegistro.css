@@ -17,6 +17,11 @@ body {
 
 /*Para el Login */
 
+.imagenLogo{
+	float: left;
+	margin-top: 30px;
+	width: 211.25px;
+}
 
 #seccionLogin {
 	min-height: 100vh;
@@ -29,6 +34,10 @@ section {
     padding-left: 2%;
     padding-right: 2%;
 	background: #fff;
+}
+
+.contenedor{
+	margin: auto;
 }
 
 /*Inicio estilos para el procesando*/
@@ -58,17 +67,15 @@ section {
 }
 
 .formContenidoIngreso{
-	padding: 0 5px;
-	border-radius: 10px;
-	background: rgba(29,43,56,1);
-	background: -moz-linear-gradient(45deg, rgba(29,43,56,1) 0%, rgba(29,43,56,1) 9%, rgba(76,126,32,1) 100%);
-	background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(29,43,56,1)), color-stop(9%, rgba(29,43,56,1)), color-stop(100%, rgba(76,126,32,1)));
-	background: -webkit-linear-gradient(45deg, rgba(29,43,56,1) 0%, rgba(29,43,56,1) 9%, rgba(76,126,32,1) 100%);
-	background: -o-linear-gradient(45deg, rgba(29,43,56,1) 0%, rgba(29,43,56,1) 9%, rgba(76,126,32,1) 100%);
-	background: -ms-linear-gradient(45deg, rgba(29,43,56,1) 0%, rgba(29,43,56,1) 9%, rgba(76,126,32,1) 100%);
-	background: linear-gradient(45deg, rgba(29,43,56,1) 0%, rgba(29,43,56,1) 9%, rgba(76,126,32,1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1d2b38', endColorstr='#4c7e20', GradientType=1 );
+	border: 0;
 }
+
+@media (min-width: 1024px){
+	.contenedor {
+		width: 90%;
+	}
+}
+
 
 .user-img{
 	margin-top: -60px;
@@ -80,23 +87,26 @@ section {
 }
 
 .form-group{
-	margin-top: -20px;
+	margin-top: -10px;
+	text-align: left !important;
 }
 
 .form-group input{
-	border-radius: 5px;
-	border: 0;
+	border-radius: 10px;
 	padding-left: 35px;
 }
 
 .form-group i::before{
 	position: absolute;
-	font-size: 20px;
-	padding-top: 15px;
+/* 	font-size: 20px; */
+	padding-top: 20px;
 	left: 25px;
 	color: #69B42D;
 }
 
+.form-control{
+	font-size: 0.85rem;
+}
 /* .form-input button{ */
 /* 	width: 60%; */
 /* 	margin: 5px 0 25px; */
@@ -185,22 +195,6 @@ section {
 }
 
 
-@media 	(max-width: 767px) {
-	.claseContieneImagen{
-		margin-top: 20px;
-	}
-}
-
-
-@media 	(min-width: 768px) {
-	.claseContieneImagen{
-		margin-top: 190px;
-	}
-	.claseContieneLogin{
-		margin-top: 100px;
-	}
-}
-
 .seccionRegistrateYa{
 	display: block;
 	margin-bottom: 30px;
@@ -234,13 +228,13 @@ section {
 }
 
 .claseTerminosPolitica{
-	color: #fff;
+/* 	color: #fff; */
 	margin-top: 25px;
 	margin-bottom: 25px;	
 }
 
 .claseTerminosPolitica a{
-	color: #FFF552;
+	color: #69b42d;
 }
 
 
@@ -266,8 +260,8 @@ section {
 
 .btn-primary-kli {
     color: #fff !important;
-    background-color: #4D7F21;
-    border-color: #4D7F21;
+    background-color: #69b42d;
+    border-color: #69b42d;
     border-radius: 65px 65px 65px 65px;
 }
 
@@ -276,10 +270,16 @@ section {
     border-bottom: 3px solid #426C1C !important;
 }
 
+
+.botonFormularioLogin{
+	width: 100%;
+}
+
+
 .btn-secondary-kli {
     color: #fff !important;
-    background-color: #69B42D;
-    border-color: #69B42D;
+    background-color: #69b42d;
+    border-color: #69b42d;
     border-radius: 65px 65px 65px 65px;
 }
 
@@ -297,4 +297,44 @@ section {
 
 .btn-success:hover {
     background-color: #002D6B !important;
+}
+
+.claseDetalleSustento{
+ 	padding: 20vh;
+}
+
+.claseDetalleSustento h5{
+ 	font-weight: bold;
+}
+
+.claseColorSecundarioBanner{
+	color: #69B42D;
+	font-weight: bold;
+}
+
+
+.imagenLineasLogo{
+/*     position: absolute; */
+/*     top: 0; */
+/*     left: 0; */
+/*     right: 0; */
+    height: 100%;
+    width: 100%;
+	background-image: url(../../resources/imagenes/isotipo-preciso-contorno.png) !important;
+    background: rgba(255, 255, 255, 1);
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+.claseRegistrate{
+	font-weight: bold;
+	text-align: center;	
+}
+
+.claseSubtituloRegistrate{
+	text-align: center;	
+}
+
+.claseBold{
+	font-weight: bold;
 }

@@ -127,13 +127,18 @@
 			
 			<p:remoteCommand name="ejecutarCerrarSesionRemoto" actionListener="#{mAlias.procesarCerrarSesion()}"/>
 			<p:remoteCommand name="ejecutarIrAInicioOperacion" actionListener="#{mAlias.redireccionarInicioOperacion()}"/>
-			
-			<div class="row">
+
+			<div class="row justify-content-center">
 				
-				<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-3">
 					<div class="form-group">
-						<p:outputPanel rendered="#{!mAlias.indOperacionEnCurso}"  styleClass="alert claseCampoObligatorios"> 
-							Los campos con * son obligatorios.
+					
+						<p:outputPanel rendered="#{!mAlias.indOperacionEnCurso}"  > 
+							<h4 class="text-center claseBold">¡Comencemos!</h4>
+						</p:outputPanel>
+						
+						<p:outputPanel rendered="#{!mAlias.indOperacionEnCurso}"  styleClass="text-center mt-3 mb-3"> 
+							Completa todos los campos, son obligatorios.
 						</p:outputPanel>
 						
 						<p:outputPanel rendered="#{mAlias.indOperacionEnCurso}"  styleClass="alert claseCampoObligatorios"> 
@@ -145,45 +150,53 @@
 				
 			</div>
 			
-			<div class="row">
-				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+			<div class="row justify-content-center">
+				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
 					<div class="form-group">
 						<p:outputLabel value="Primer Nombre *" />
 						<p:inputText id="idTxtNombre1" styleClass="form-control" value="#{mAlias.clienteFormulario.valPrimNombPers}" disabled="#{mAlias.codigoCliente ne null}"/>
+						<p:watermark for="idTxtNombre1" value="Ingresa tu primer nombre" />
 						<div id="idMensajeResultadoNombre1" > </div>
 					</div>
 				</div>
-				
-				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+			</div>	
+			<div class="row justify-content-center">
+				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
 					<div class="form-group">
-						<p:outputLabel value="Segundo Nombre" />
+						<p:outputLabel value="Segundo Nombre" styleClass="mt-3"/>
 						<p:inputText id="idTxtNombre2" styleClass="form-control" value="#{mAlias.clienteFormulario.valSeguNombPers}" disabled="#{mAlias.codigoCliente ne null}"/>
+						<p:watermark for="idTxtNombre2" value="Ingresa tu segundo nombre" />
 						<div id="idMensajeResultadoNombre2" > </div>
 					</div>
 				</div>
-
-				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+			</div>
+			<div class="row justify-content-center">
+				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
 					<div class="form-group">
-						<p:outputLabel value="Primer Apellido *" />
+						<p:outputLabel value="Primer Apellido *" styleClass="mt-3"/>
 						<p:inputText id="idTxtApellido1" styleClass="form-control" value="#{mAlias.clienteFormulario.valPrimApelPers}" disabled="#{mAlias.codigoCliente ne null}"/>
+						<p:watermark for="idTxtApellido1" value="Ingresa tu primer apellido" />
 						<div id="idMensajeResultadoApellido1" > </div>
 					</div>
 				</div>			
 			</div>
 			
-			<div class="row">
-				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+			<div class="row justify-content-center">
+				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
 					<div class="form-group">
-						<p:outputLabel value="Segundo Apellido *" />
+						<p:outputLabel value="Segundo Apellido *" styleClass="mt-3"/>
 						<p:inputText id="idTxtApellido2" styleClass="form-control"  value="#{mAlias.clienteFormulario.valSeguApelPers}" disabled="#{mAlias.codigoCliente ne null}"/>
+						<p:watermark for="idTxtApellido2" value="Ingresa tu segundo apellido" />
 						<div id="idMensajeResultadoApellido2" > </div>
 					</div>
 				</div>
-				
-				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+			</div>
+			
+			<div class="row justify-content-center">	
+				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
 					<div class="form-group">
 
-						<p:outputLabel value="Tipo de documento *" />
+						<p:outputLabel value="Tipo de documento *" styleClass="mt-3"/>
 
 						<h:selectOneMenu id="idTipoDocumento" styleClass="custom-select form-control claseComboFormulario" 
 							value="#{mAlias.clienteFormulario.tpTipoDocumPerso.codTipoDocuPers}" disabled="#{mAlias.codigoCliente ne null}">
@@ -196,11 +209,15 @@
 
 					</div>
 				</div>
-
-				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+			</div>
+			
+			
+			<div class="row justify-content-center">
+				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
 					<div class="form-group">
-						<p:outputLabel value="Documento *" />
+						<p:outputLabel value="Documento *" styleClass="mt-3"/>
 						<p:inputText id="idTxtDocumento" styleClass="form-control" value="#{mAlias.clienteFormulario.valDocuPers}" disabled="#{mAlias.codigoCliente ne null}"/>
+						<p:watermark for="idTxtDocumento" value="Documento" />
 						<div id="idMensajeResultadoDocumento" > </div>
 					</div>
 				</div>
@@ -208,10 +225,12 @@
 			</div>
 
 
-			<div class="row">
-				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+			<div class="row justify-content-center">
+			
+			
+				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
 					<div class="form-group">
-						<p:outputLabel value="Fecha de nacimiento *" />
+						<p:outputLabel value="Fecha de nacimiento *" styleClass="mt-3"/>
 						<div class="form-group">
 							
 							<h:selectOneMenu id="idFechaNacAnio"  styleClass="custom-select claseComboFecha claseComboFormulario" disabled="#{mAlias.codigoCliente ne null}"
@@ -240,9 +259,12 @@
 					</div>
 				</div>
 				
-				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+		  </div>	
+		  
+		  <div class="row justify-content-center">
+				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
 					<div class="form-group">
-						<p:outputLabel value="Nacionalidad *" />
+						<p:outputLabel value="Nacionalidad *" styleClass="mt-3"/>
 
 						<h:selectOneMenu id="idComboNacionalidad" styleClass="custom-select form-control claseComboFormulario" disabled="#{mAlias.codigoCliente ne null}"
 							value="#{mAlias.clienteFormulario.tpPaisByCodPaisNaci.codPais}">
@@ -252,10 +274,12 @@
 						<div id="idMensajeResultadoNacionalidad" > </div>
 					</div>
 				</div>
-				
-				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+		  </div>
+		  
+		  <div class="row justify-content-center">		
+				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
 					<div class="form-group">
-						<p:outputLabel value="País (Residencia) *" />
+						<p:outputLabel value="País (Residencia) *" styleClass="mt-3"/>
 						
 						<h:selectOneMenu  id="idComboPais"  styleClass="custom-select form-control claseComboFormulario"
 							value="#{mAlias.clienteFormulario.tpPaisByCodPaisResi.codPais}">
@@ -273,11 +297,11 @@
 			
 				<p:outputPanel rendered="#{mAlias.mostrarSelecionUbigeo}">
 				
-					<div class="row">
+					<div class="row justify-content-center">
 		
-						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
 							<div class="form-group">
-								<p:outputLabel value="Departamento (Residencia) *" />
+								<p:outputLabel value="Departamento (Residencia) *" styleClass="mt-3"/>
 								<h:selectOneMenu id="idComboDepartamento" styleClass="custom-select form-control claseComboFormulario" value="#{mAlias.valorCodigoDepartamento}">
 									<f:selectItem itemLabel="Seleccione..." itemValue="-1"/>
 									<f:selectItems value="#{mAlias.listaComboDepartamentos}" />
@@ -286,10 +310,12 @@
 								<div id="idMensajeResultadoDepartamento" > </div>
 							</div>
 						</div>
-						
-						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+					</div>
+					
+					<div class="row justify-content-center">	
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
 							<div class="form-group">
-								<p:outputLabel value="Provincia (Residencia) *" />
+								<p:outputLabel value="Provincia (Residencia) *" styleClass="mt-3"/>
 								<h:selectOneMenu id="idComboProvincia" styleClass="custom-select form-control claseComboFormulario" value="#{mAlias.valorCodigoProvincia}">
 									<f:selectItem itemLabel="Seleccione..." itemValue="-1"/>
 									<f:selectItems value="#{mAlias.listaComboProvincias}" />
@@ -298,10 +324,12 @@
 								<div id="idMensajeResultadoProvincia" > </div>
 							</div>
 						</div>
-						
-						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+					</div>	
+					
+					<div class="row justify-content-center">
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
 							<div class="form-group">
-								<p:outputLabel value="Distrito (Residencia) *" />
+								<p:outputLabel value="Distrito (Residencia) *" styleClass="mt-3"/>
 								<h:selectOneMenu id="idComboDistrito" styleClass="custom-select form-control claseComboFormulario" value="#{mAlias.valorCodigoDistrito}">
 									<f:selectItem itemLabel="Seleccione..." itemValue="-1"/>
 									<f:selectItems value="#{mAlias.listaComboDistritos}" />
@@ -315,37 +343,36 @@
 			</p:outputPanel>
 			
 			
-			<div class="row">
+			<div class="row justify-content-center">
 					
 					
-					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
 						<div class="form-group">
-							<p:outputLabel value="Dirección *" />
+							<p:outputLabel value="Dirección *" styleClass="mt-3"/>
 							<p:inputText id="idTxtDireccion"  styleClass="form-control" value="#{mAlias.clienteFormulario.valDirePers}" />
+							<p:watermark for="idTxtDireccion" value="Indica tu dirección" />
 							<div id="idMensajeResultadoDireccion" > </div>
 						</div>
 					</div>
-					
-					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+			</div>	
+			<div class="row justify-content-center">	
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
 						<div class="form-group">
-							<p:outputLabel value="Teléfono *" />
+							<p:outputLabel value="Teléfono *" styleClass="mt-3"/>
 							<p:inputText id="idTxtTelefono" styleClass="form-control" value="#{mAlias.clienteFormulario.valTelePers}"/>
+							<p:watermark for="idTxtTelefono" value="Escribe tu número de contacto" />
 							<div id="idMensajeResultadoTelefono" > </div>
 						</div>
 					</div>
-					
-					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
-					</div>
-					
 			</div>
 				
 		
-			<div class="row">
+			<div class="row justify-content-center">
 					
 					
-					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
 						<div class="form-group">
-							<p:outputLabel value="¿Es usted una Persona Expuesta Políticamente (P.E.P.)?" />
+							<p:outputLabel value="¿Es usted una Persona Expuesta Políticamente (P.E.P.)?" styleClass="mt-3"/>
 							
 							 <h:inputText style="display:none;"  value="#{mAlias.indSeleccionPep}"  id="idIndicadorPep"/>
 							 
@@ -361,19 +388,22 @@
 			
 			<p:outputPanel id="idPanelContenedorDatosPep">
 						<p:outputPanel rendered="#{mAlias.mostrarDatosSeleccionPep}">
-							<div class="row">
-								<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="row justify-content-center">
+								<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
 									<div class="form-group">
-										<p:outputLabel value="Institución *" />
+										<p:outputLabel value="Institución *" styleClass="mt-3"/>
 										<p:inputText id="idTxtInstitucion" styleClass="form-control" value="#{mAlias.clienteFormulario.valPepoInst}"/>
+										<p:watermark for="idTxtInstitucion" value="Indica tu institución" />
 										<div id="idMensajeResultadoInstitucion" > </div>
 									</div>
 								</div>
-								
-								<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							</div>	
+							<div class="row justify-content-center">
+								<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
 									<div class="form-group">
-										<p:outputLabel value="Rol *" />
+										<p:outputLabel value="Rol *" styleClass="mt-3"/>
 										<p:inputText id="idTxtRol" styleClass="form-control" value="#{mAlias.clienteFormulario.valPepoRol}"/>
+										<p:watermark for="idTxtInstitucion" value="Escribe tu rol" />
 										<div id="idMensajeResultadoRol" > </div>
 									</div>
 								</div>
@@ -381,28 +411,19 @@
 						</p:outputPanel>
 			</p:outputPanel>
 			
-			<div class="row">
-				<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6">
+			<div class="row justify-content-center">
+				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
 					<div class="form-group">
 							
 							<div id="idMensajeResultado" > </div>
-							
-<!-- 							<p:outputPanel id="idMensajeResultadoProceso" > -->
-<!-- 								<p:outputPanel styleClass="alert alert-success" rendered="#{not empty mAlias.resultadoProcesoExito}">  -->
-<!-- 									<p:outputLabel value="#{mAlias.resultadoProcesoExito}" /> -->
-<!-- 								</p:outputPanel> -->
-									
-<!-- 								<p:outputPanel styleClass="alert alert-danger" rendered="#{not empty mAlias.resultadoProcesoError}">  -->
-<!-- 									<p:outputLabel value="#{mAlias.resultadoProcesoError}" /> -->
-<!-- 								</p:outputPanel> -->
-<!-- 							</p:outputPanel> -->
 					</div>
 				</div>
-				
-				<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6 text-right">
+			</div>
+			<div class="row justify-content-center mt-4">	
+				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
 					<div class="form-group">
 							<p:remoteCommand name="metodoRemotoEnviarFormulario"  actionListener="#{mAlias.validar()}" update="idMensajeResultadoProceso,idSeccionUsuario" />
-							<p:commandButton   onclick="enviar(event);" styleClass="btn btn-primary-kli  botonIniciarOperacionGeneral"  value="Guardar Datos"   rendered="#{!mAlias.indOperacionEnCurso}"/>
+							<p:commandButton   onclick="enviar(event);" styleClass="btn btn-primary-kli botonFormulario"  value="Guardar Datos"   rendered="#{!mAlias.indOperacionEnCurso}"/>
 					</div>
 				</div>
 			

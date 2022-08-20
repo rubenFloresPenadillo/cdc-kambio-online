@@ -91,6 +91,7 @@ public class ServiceOperacionClienteImpl  implements ServiceOperacionCliente{
 		tpOperaClienEntidad.setNomCupoUsad(tpOperaClienDto.getNomCupoUsad());
 		tpOperaClienEntidad.setMonDescCupoUsad(tpOperaClienDto.getMonDescCupoUsad());
 		tpOperaClienEntidad.setCodTranBanc(tpOperaClienDto.getCodTranBanc());
+		tpOperaClienEntidad.setNumOperBancCome(tpOperaClienDto.getNumOperBancCome());
 		
 		if (tpOperaClienDto.getFecVeriOper() != null) {
 			tpOperaClienEntidad.setFecVeriOper(tpOperaClienDto.getFecVeriOper());
@@ -198,6 +199,15 @@ public class ServiceOperacionClienteImpl  implements ServiceOperacionCliente{
 			dto.setValCambVentCupo((Double) temp[34]);
 			dto.setCodTranBanc((String) temp[35]);
 			dto.getTpClien().setValTelePers((String) temp[36]);
+			dto.setNumOperBancCome((String) temp[37]);
+			dto.getTpClien().setValDocuPers((String) temp[38]);
+			dto.getTpClien().getTpTipoDocumPerso().setCodTipoDocuPers((Integer) temp[39]);
+			dto.getTpClien().setValDirePers((String) temp[40]);
+			
+			
+			//toc.tpClien.valDocuPers, toc.tpClien.tpTipoDocumPerso.codTipoDocuPers, toc.tpClien.valDirePers
+			
+			
 //			if(ValidacionesString.esNuloOVacio(dto.getTpClien().getValNombPerf())) {
 //				dto.getTpClien().setValNombPerf(CadenasType.VACIO.getValor());
 //			}
