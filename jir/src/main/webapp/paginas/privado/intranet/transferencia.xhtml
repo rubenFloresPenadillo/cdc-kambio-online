@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<div class="container">
+		
+		<div class="row justify-content-center">
+		
+			<div class="text-center column col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<p:outputLabel styleClass="claseTituloPaso" value="Realiza la transferencia"/>
+			</div>
+				
+			<div class="f1-steps column col-xs-12 col-sm-12 col-md-12 col-lg-6">
+				<div class="f1-progress">
+					<div class="f1-progress-line" data-now-value="16.66"
+						data-number-of-steps="3" style="width: 49.99333333333334%;"></div>
+				</div>
+				<div class="f1-step activated">
+					<div class="f1-step-icon">
+						<img class="claseIconoPasos" src="../../../resources/imagenes/1-cotiza.png" alt="cotiza"/>
+					</div>
+				</div>
+				<div class="f1-step active">
+					<div class="f1-step-icon">
+						<img class="claseIconoPasos" src="../../../resources/imagenes/2-transfiere.png" alt="cotiza"/>
+					</div>
+				</div>
+				<div class="f1-step">
+					<div class="f1-step-icon">
+						<img class="claseIconoPasos" src="../../../resources/imagenes/3-recibe-tu-cambio.png" alt="cotiza"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h:form id="idFormTransferencia" method="post" role="form" class="form-horizontal row justify-content-center">
+	
+		<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 mt-4">	
+			<img class="imagenPersonajeTransferencia"
+						src="../../../resources/imagenes/personaje-transferencia.png" alt="Realizar transferencia" />
+		</div>
+		
+		<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 mt-4">	
+		
+			<div id="idDetalleOperacionGrande" class="d-sm-block d-md-block mx-auto">
+			
+
+				<table class="table" id="g-table">
+
+				  <tbody>
+				    <tr class="espacio">
+				      <th scope="row">Tipo de Operación</th>
+				      <td>#{mAlias.operacionClienteFormulario.indCompVent == 0 ? 'Compra' : 'Venta'}</td>
+				    </tr>
+				    <tr class="espacio">
+				      <th scope="row">Tipo de cambio</th>
+				      <td>#{mAlias.tipoCambioUsado}</td>
+				    </tr>
+				    <tr class="espacio">
+				      <th scope="row">Cliente envía</th>
+				      <td>#{mAlias.cadenaDivisaCantidadEnvioInformacion}</td>
+				    </tr>
+				    <tr class="espacio">
+				      <th scope="row">Cliente recibirá</th>
+				      <td>#{mAlias.cadenaDivisaCantidadReciboInformacion}</td>
+				    </tr>
+				    <p:outputPanel rendered="#{not empty mAlias.operacionClienteFormulario.nomCupoUsad}">
+					    <tr class="espacio">
+					      <th scope="row">Cupón aplicado</th>
+					      <td>#{mAlias.operacionClienteFormulario.nomCupoUsad eq '' ? '-' : mAlias.operacionClienteFormulario.nomCupoUsad}</td>
+					    </tr>
+					    <tr class="espacio">
+					      <th scope="row">Descuento cupón</th>
+					      <td>#{mAlias.operacionClienteFormulario.monDescCupoUsad eq null ? '-' : mAlias.operacionClienteFormulario.monDescCupoUsad}</td>
+					    </tr>
+				    </p:outputPanel>
+				  </tbody>
+				</table>
+				
+				<div class="line-shape"></div>
+				
+				<p align="justify">Ahora desde la plataforma de <strong>tu banco</strong> realiza una transferencia de <strong>#{mAlias.cadenaDivisaCantidadEnvio}</strong>  a la cuenta indicada lineas abajo.
+								Deberás realizar la transferencia en un máximo de <strong>#{mAlias.valorTiempoLimite} minutos</strong> para mantener el tipo de cambio acordado.</p>
+			
+			</div>
+			
+			<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-5 p-0">	
+			
+				<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					<div class="form-group margenCuenta">
+						<p class="clasesCamposFormulario claseEtiquetaFormulario" >Banco</p>
+						<p:outputLabel value="#{mAlias.cuentaBancoAdminDetalle.tpBanco.nomBanc}" />
+					</div>
+	
+					<div class="form-group margenCuenta">
+						<p class="clasesCamposFormulario claseEtiquetaFormulario" >Tipo de cuenta</p>
+						<p:outputLabel value="#{mAlias.cuentaBancoAdminDetalle.tpTipoCuent.desTipoCuen} - #{mAlias.cuentaBancoAdminDetalle.tpDivis.codIsoDivi}"/>
+					</div>
+	
+					<div class="form-group margenCuenta">
+						<p class="clasesCamposFormulario claseEtiquetaFormulario" >Número de cuenta</p>
+						<p:outputLabel value="#{mAlias.cuentaBancoAdminDetalle.valCuenBanc}"/>
+					</div>
+					
+					
+				</div>
+	
+				<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6">	
+					<p:outputPanel rendered="#{not empty mAlias.cuentaBancoAdminDetalle.valCuenInte}">
+						<div class="form-group margenCuenta">
+							<p class="clasesCamposFormulario claseEtiquetaFormulario" >Código interbancario</p>
+							<p:outputLabel value="#{mAlias.cuentaBancoAdminDetalle.valCuenInte}"/>
+						</div>
+					</p:outputPanel>
+					
+					<div class="form-group margenCuenta">
+						<p class="clasesCamposFormulario claseEtiquetaFormulario" >Titular de la cuenta</p>
+						<p:outputLabel value="#{mAlias.cuentaBancoAdminDetalle.nombreTitularVista}"/>
+					</div>
+					
+					<div class="form-group margenCuenta">
+						<p class="clasesCamposFormulario claseEtiquetaFormulario" >RUC del titular</p>
+						<p:outputLabel value="#{mAlias.cuentaBancoAdminDetalle.tpClien.valDocuPers}"/>
+					</div>
+				</div>
+			
+			</div>
+
+		</div>
+
+		<div class="row col-xs-12 col-sm-12 col-md-11 col-lg-11 mx-auto">
+		
+			<div class="col text-left col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<p:commandButton class="btn botonRetornoOperacion icon-cancel" value="Cancelar Operación"
+					 actionListener="#{mAlias.cancelarOperacion}"  update="idPanelGeneral" onclick="window.scrollTo(0,0)"/>
+			</div>
+			
+			<div class="col text-right col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<p:commandButton class="btn btn-success botonIniciaOperacion icon-ok" value="Ya envie el dinero"  
+					actionListener="#{mAlias.validarTransferencia}" update="idPanelGeneral" onclick="window.scrollTo(0,0)"/>
+			</div>
+			
+		</div>
+
+<!-- 		<ui:include src="../../../estatus.xhtml" /> -->
+		
+	</h:form>
+
+</ui:composition>
+

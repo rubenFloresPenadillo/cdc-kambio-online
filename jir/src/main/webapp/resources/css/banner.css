@@ -1,0 +1,437 @@
+#banner{
+	margin-top: 65px;
+	position: relative;
+/* 	display: inline-block; */
+	display: flex;
+}
+
+@media (max-width:768px) {
+	#banner{
+		position: inherit;
+	}
+}
+
+/* para darle un tono ocapo a la imagen */
+#banner:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: #1f2f40;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.imagenBannerFondo{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+	background-image: url(../../resources/imagenes/plazaCajamarca.svg) !important;
+
+    background-position: bottom;
+    /* background-size: cover; */
+    background-repeat: repeat-x;
+}
+
+
+.contenedorBancosRegistroSBS{
+	margin-top: 25px;
+}
+
+@media 	(min-width: 800px) {
+	.contenedorBancosRegistroSBS{
+		margin-top: 45px;
+	}
+}
+
+.contenedorBancos{
+    width: 90%;
+    margin: auto;
+    text-align: right;
+}
+
+
+
+@media 	(max-width: 450px) {
+	.contenedorBancos{
+		text-align: left;
+	}
+	.imagenBanco {
+	    margin-left: 0px;
+	    margin-right: 10px;
+	    margin-bottom: 20px;
+	}
+
+}
+
+
+.imagenBanco{
+	margin-left: 8px;
+    height: 20px;
+}
+
+.contenedorRegistroSBS{
+	width: 90%;
+	margin: auto; 
+/* 	background: aqua; */
+	text-align: right;
+}
+
+.imagenRegistroSBS{
+	width: 150px;
+	background-size: 90%;
+}
+
+@media 	(max-width: 768px) {
+	
+	.filaBannerContenido {
+		margin-top: 100px ;
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+	
+	.text-encasa h4{
+		font-size: 1.8rem !important;
+	}
+	
+	.imagenRegistroSBSHome{
+		width: 35px !important;
+		margin-top: 5px;
+	}
+
+}
+
+@media 	(max-width: 400px) {
+	
+	.filaBannerContenido {
+		margin-top: -250px;
+	}
+	
+	#banner h2{
+		font-size: 26px !important;
+	}
+	
+	.claseTextoContamosConCuentas{
+		font-size: 14px !important;
+	}
+
+	.claseRapidoSeguro{
+		font-size: 18px !important;
+	}	
+	
+}
+
+.claseTextoContamosConCuentas {
+    font-size: 17px;
+}
+
+@media 	(max-width: 350px) {
+	
+	.filaBannerContenido {
+		margin-top: -150px;
+	}
+	
+	.claseEtiquetaCompraVenta,  .claseEtiquetaValorCompraVenta, .claseEtiquetaTextoCompraVentaUso, .claseEtiquetaValorCompraVentaUso{
+		font-size: 0.8rem;
+	}
+
+}
+
+@media 	(max-width: 320px) {
+	
+	.filaBannerContenido {
+		margin-top: -135px;
+	}
+
+}
+
+#banner .contenedor{
+	/*Para que el texto este siempre al medio verticalmente */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	color: white;
+}
+
+#banner h2{
+	font-size: 36px;
+}
+
+.claseRapidoSeguro{
+	font-size: 22px;
+}
+
+/* #banner a{ */
+/* 	display: block; */
+/* 	width: 195px; */
+/* 	color: #fff; */
+/* 	text-decoration: none; */
+/* 	padding: 8px; */
+/* 	margin-top: 10px; */
+/* 	margin-bottom: 15px; */
+/* 	border: 2px solid #fff; */
+/* 	border-radius: 5px 5px 5px 5px !important; */
+/* 	-moz-border-radius: 5px 5px 5px 5px !important; */
+/* 	-webkit-border-radius: 5px 5px 5px 5px !important; */
+/* 	font-size: 1.1rem; */
+/* } */
+
+#banner a:hover{
+	background: rgba(51,51,51,0.5);
+}
+
+@media 	(min-width: 768px) {
+	#banner {
+		height: 720px;
+		margin-bottom: 0px !important;
+	}
+}
+
+/*Estilos para la calculadora*/
+.seccionCalculadora{
+	margin-top: -20px;
+	text-align: center;	
+
+}
+
+.claseTextoEnvioRecibo{
+	color: #004aad !important;
+	font-weight: bold;
+	font-size: 0.9em;
+}
+
+.contenedora{
+	display: inline-block;
+	width: 90%;
+}
+
+/*Separa las filas de las 2 banderas*/
+.contenedoraInferior{
+	margin-top: 84px;
+}
+
+.filaBandera{
+	text-align: center;
+	position: relative
+}
+
+.datosEnvioRecibo{
+	position: absolute;
+    z-index: 1;
+    width: 100%;	
+}
+
+.imagenBanderaCalculadora{
+	position: absolute;
+/* 	font-size: 20px; */
+	padding-top: 25px;
+	left: 25px;
+	z-index: 2;
+	width: 95px;
+}
+
+.enlaceImagenCambioBandera{
+	z-index: 90;
+	position: absolute;
+	margin-top: 80px;
+	cursor: pointer;
+	margin-left: -25px;
+}
+
+.imagenCambioBandera{
+	width: 50px;
+	height: 50px;
+}
+
+.inputCalculadora{
+	height: 90px;
+	text-align: right;
+	font-weight: bold;
+	font-size: 30px !important;
+	color: #004aad;
+	position: absolute;
+    background: #FAFAFA;
+}
+
+.inputCalculadora:focus{
+	border-color: #004aad !important;
+	color: #004aad !important;
+	-webkit-box-shadow: 0 0 0 0.2rem rgba(0,116,0,0.47) !important;
+	-moz-box-shadow: 0 0 0 0.2rem rgba(0,116,0,0.47) !important;
+	box-shadow: 0 0 0 0.2rem rgba(0,116,0,0.47) !important;
+}
+
+
+@media (max-width: 650px){
+	.imagenBanderaCalculadora{
+		width: 60px ;
+		padding-top: 34px;
+/* 		left: 15px; */
+	}
+	
+	.imagenCambioBandera{
+		width: 40px !important;
+		height: 40px !important;
+	}
+	
+	.inputCalculadora{
+		font-size: 24px !important;
+	}
+	
+	.enlaceImagenCambioBandera{
+		margin-top: 83px !important;
+		margin-left: -20px !important;
+	}
+}
+
+@media (max-width: 350px){
+	.imagenBanderaCalculadora{
+		width: 55px !important;;
+		padding-top: 35px !important;
+	}
+	
+	.imagenCambioBandera{
+		width: 40px !important;
+		height: 40px !important;
+	}
+
+	.inputCalculadora{
+		font-size: 23px !important;
+	}
+	
+
+}
+
+.claseSeccionTipoCambio{
+	width: 90%;
+	margin:auto;
+	display: table;
+	margin-top: 5px !important;
+}
+
+.claseDescripcionTipoCambio{
+	background-color: #004aad;
+	text-align: center;
+	font-weight: bold;
+	border-radius: 3px 3px 3px 3px;
+	-moz-border-radius: 3px 3px 3px 3px;
+	-webkit-border-radius: 3px 3px 3px 3px;
+	border: 0px solid #000000;
+}
+
+.claseDescripcionTipoCambio label{
+	margin-bottom: 0 !important;	
+}
+
+.claseCompraVenta{
+	float: right;
+	margin-left: 20px;
+}
+
+.claseEtiquetaCompraVenta{
+	margin-bottom: 0 !important;
+	margin-right: 5px;	
+}
+
+.claseEtiquetaValorCompraVenta{
+	font-weight: bold;
+}
+
+.claseSeccionTipoCambioUso{
+	width: 90%;
+	margin:auto;
+	display: table;
+	margin-top: 85px;
+}
+
+.claseCompraVentaUso{
+	float: left;
+	margin-top: 4px;
+}
+
+.claseEtiquetaValorCompraVentaUso{
+	font-weight: bold;
+	margin-left: 5px;
+}
+
+.claseContenedorBotonOperacionGeneral{
+	margin: auto;
+	width: 90%;
+}
+
+.botonIniciarOperacionHome{
+	color: #fff;
+	font-weight: bold;
+	background: #FF7400;
+/* 	font-size: 1em; */
+	width: 100%;
+}
+
+.botonIniciarOperacionHome:before {
+    margin-left: 0em;
+}
+
+.botonIniciarOperacionHome span {
+    display: inline-block !important;
+    padding: .3em 0em .3em 0.5em !important;
+}
+
+.botonIniciarOperacionHome:hover {
+    color: #ffffff;
+    background-color: #ff920a;
+    border-color: #ff920a;
+}
+
+.claseColorSecundarioBannerOld{
+	color: #005fa0;
+	font-weight: bold;
+	
+	display: block;
+/* 	font-family: monospace; */
+	white-space: nowrap;
+/* 	border-right: 4px solid; */
+	width: 27ch;
+	animation: typing 1.5s steps(27), blink .5s infinite step-end alternate;
+	overflow: hidden;
+}
+
+
+.claseColorSecundarioBanner{
+	color: #005fa0;
+	font-weight: bold;
+}
+
+
+
+@keyframes typing { 
+	from {width: 0}
+}
+
+@keyframes blink { 
+	50% {border-color: transparent}
+}
+
+.claseSubtituloBanner {
+	text-align: left;
+}
+
+.claseSegundoSubtituloBanner{
+	text-align: left;
+	font-size: 1.3em;
+	font-style: oblique;
+}
+
+.claseParrafoItemBanner{
+	font-size: 13px;
+	text-align: left;
+}
+
+.clasePersonajeFlotando{
+	width: 450px;
+	margin-top: -70px;
+    margin-right: -150px;
+}

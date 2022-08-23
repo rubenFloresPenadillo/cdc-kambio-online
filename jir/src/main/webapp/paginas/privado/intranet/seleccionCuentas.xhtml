@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<div class="container">
+		
+		<div class="row justify-content-center">
+		
+			<div class="text-center column col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<p:outputLabel styleClass="claseTituloPaso" value="Cotiza"/>
+			</div>
+			
+			<div class="f1-steps column col-xs-12 col-sm-12 col-md-12 col-lg-6">
+				<div class="f1-progress">
+					<div class="f1-progress-line" data-now-value="16.66"
+						data-number-of-steps="3" style="width: 16.66%;"></div>
+				</div>
+				<div class="f1-step active">
+					<div class="f1-step-icon">
+<!-- 						<i class="fas fa-calculator"></i>  -->
+						<img class="claseIconoPasos" src="../../../resources/imagenes/1-cotiza.png" alt="cotiza"/>
+					</div>
+<!-- 					<p>1</p> -->
+				</div>
+				<div class="f1-step">
+					<div class="f1-step-icon">
+<!-- 						<i class="fas fa-location-arrow"></i>  -->
+						<img class="claseIconoPasos" src="../../../resources/imagenes/2-transfiere.png" alt="cotiza"/>
+					</div>
+<!-- 					<p>2</p> -->
+				</div>
+				<div class="f1-step">
+					<div class="f1-step-icon">
+<!-- 						<i class="fas fa-check"></i>  -->
+						<img class="claseIconoPasos" src="../../../resources/imagenes/3-recibe-tu-cambio.png" alt="cotiza"/>
+					</div>
+<!-- 					<p>3</p> -->
+				</div>
+			</div>
+		</div>
+
+	</div>
+	
+	<h:form id="idFormIniciaOperacion" method="post" role="form" 
+		class="form-horizontal mt-5">
+
+		<div class="row setup-content justify-content-center mt-4" id="step-1">
+		
+			<div class="column col-xs-12 col-sm-9 col-md-7 col-lg-4">
+				
+
+				<p:outputPanel styleClass="row claseSeccionTipoCambio">
+
+					<div class="claseCompraVenta">
+						<p:outputLabel styleClass="claseEtiquetaCompraVenta" value="Venta:"/>
+						<p:outputLabel styleClass="claseEtiquetaValorCompraVenta" value="#{mAlias.tipoCambioVentaDolar}"/>
+					</div>
+					
+					<div class="claseCompraVenta">
+						<p:outputLabel styleClass="claseEtiquetaCompraVenta" value="Compra:"/> 
+						<p:outputLabel styleClass="claseEtiquetaValorCompraVenta" value="#{mAlias.tipoCambioCompraDolar}"/>
+					</div>
+
+				</p:outputPanel>
+				
+				<p:outputPanel class="seccionCalculadora" id="idSeccionCalculadora">
+			
+					<p:remoteCommand name="metodoRemotoRotarVista"  actionListener="#{mAlias.rotarVista}" update="idSeccionCalculadora, idSeccionTipoCambioUso" />
+					<h:link styleClass="enlaceImagenCambioBandera" title="Rotar vista" outcome="#" onclick="metodoRemotoRotarVista();">
+						<h:graphicImage styleClass="imagenCambioBandera" value="../../../resources/imagenes/cambiarBanderas.png" />
+					</h:link>
+
+					
+					<div class="contenedora">
+						<div class="filaBandera">
+							<div class="datosEnvioRecibo">
+								<p:outputLabel value="Tu envías" />
+							</div>
+							<h:graphicImage styleClass="imagenBanderaCalculadora" value="../../../resources/imagenes/monedaSolesBandera120x50.png" rendered="#{!mAlias.mostrarCompra}"/>
+							<h:graphicImage styleClass="imagenBanderaCalculadora" value="../../../resources/imagenes/monedaDolaresBandera120x50.png" rendered="#{mAlias.mostrarCompra}"/>
+							<p:inputText class="form-control inputCalculadora inputSuperior" id="idInputSuperior"
+								value="#{mAlias.cantidadEnvio}"  onkeyup="$(this).val($(this).val().replace(/[^0-9.,]/g, ''));">
+								<p:ajax event="keyup" listener="#{mAlias.cargarValoresEnvioReciboA}" update="idInputInferior, idContenedorOrigenFondos" 
+								oncomplete="alineaNumeroA()" />
+							</p:inputText>
+							<p:remoteCommand name="metodoAlineaNumeroA"  actionListener="#{mAlias.cargarValoresEnvioReciboA}" update="idInputInferior, idContenedorOrigenFondos"/>
+						</div>
+					</div>
+
+					<div class="contenedora contenedoraInferior">
+						<div class="filaBandera">
+							<div class="datosEnvioRecibo">
+								<p:outputLabel value="Tu recibes" />
+							</div>
+							<h:graphicImage styleClass="imagenBanderaCalculadora" value="../../../resources/imagenes/monedaDolaresBandera120x50.png" rendered="#{!mAlias.mostrarCompra}"/>	
+							<h:graphicImage styleClass="imagenBanderaCalculadora" value="../../../resources/imagenes/monedaSolesBandera120x50.png" rendered="#{mAlias.mostrarCompra}"/>
+							<p:inputText class="form-control inputCalculadora inputInferior" id="idInputInferior"
+								value="#{mAlias.cantidadRecibo}"  onkeyup="$(this).val($(this).val().replace(/[^0-9.,]/g, ''));" >
+								<p:ajax event="keyup" listener="#{mAlias.cargarValoresEnvioReciboB}" update="idInputSuperior, idContenedorOrigenFondos"
+								oncomplete="alineaNumeroB()" />
+							</p:inputText>
+							<p:remoteCommand name="metodoAlineaNumeroB"  actionListener="#{mAlias.cargarValoresEnvioReciboB}" update="idInputSuperior, idContenedorOrigenFondos"/>
+						</div>
+					</div>
+
+
+				</p:outputPanel>
+				
+				<p:outputPanel styleClass="claseSeccionTipoCambioUso" id="idSeccionTipoCambioUso">
+					<div class="claseCompraVentaUso">
+						<p:outputLabel  value="Tipo de cambio de dolar usado:"/>
+						<p:outputLabel  styleClass="claseEtiquetaValorCompraVentaUso" value="#{mAlias.tipoCambioUsado}"/>
+					</div>
+					
+				</p:outputPanel>
+				
+				
+				<p:outputPanel class="row setup-content justify-content-center">
+				
+					<p:outputPanel class="column col-xs-12 col-sm-12 col-md-10 col-lg-10 setup-content justify-content-center alert alert-info" role="alert" rendered="#{mAlias.indAplicoCupon}">
+					  Cupón <strong>#{mAlias.operacionClienteFormulario.nomCupoUsad}</strong> aplicado. Descuento de <strong> s/. #{mAlias.operacionClienteFormulario.monDescCupoUsad} </strong>
+					</p:outputPanel>
+					
+					<p:outputPanel class="column col-xs-12 col-sm-12 col-md-10 col-lg-10 setup-content justify-content-center" rendered="#{!mAlias.indAplicoCupon}">
+						<div class="promo-code ng-tns-c340-7 ng-star-inserted" style="flex-direction: row; box-sizing: border-box; display: flex;">
+						    <div fxflex="80" class="code-ticket ng-tns-c340-7" style="flex: 1 1 100%; box-sizing: border-box; max-width: 80%;">
+						      <p:inputText matinput="" placeholder="¿Tienes un cupón? Ingrésalo" autocomplete="off" class="mat-input-element mat-form-field-autofill-control 
+						      ng-tns-c340-7 cdk-text-field-autofill-monitored ng-untouched ng-pristine ng-valid" id="mat-input-1" aria-invalid="false" aria-required="false"
+						      value="#{mAlias.operacionClienteFormulario.nomCupoUsad}" >
+						      </p:inputText>
+						    </div>
+						    <div flex="" fxlayout="row" fxlayoutalign="end stretch" class="ng-tns-c340-7" style="flex-direction: row; box-sizing: border-box; display: flex; place-content: stretch flex-end; align-items: stretch; max-height: 100%;">
+						      <p:remoteCommand name="metodoRemotoAplicaCupon"  actionListener="#{mAlias.validarAplicaCupon}" update="idPanelGeneral"/>
+						      <button mat-button="" type="button" class="mat-focus-indicator ticket-button ng-tns-c340-7 mat-button mat-button-base" onclick="metodoRemotoAplicaCupon();">
+						        <span class="mat-button-wrapper">Aplicar
+						        </span>
+						        <div matripple="" class="mat-ripple mat-button-ripple">
+						        </div>
+						        <div class="mat-button-focus-overlay">
+						        </div>
+						      </button>
+						    </div>
+						</div>
+					</p:outputPanel>
+					
+					  
+				</p:outputPanel>
+
+				<div class="form-group mt-4">
+
+					<p:outputLabel value="¿Desde que cuenta nos envias tu dinero?"
+						styleClass="clasesCamposFormulario" />
+
+					<h:selectOneMenu id="idComboCuentaBancariaE" styleClass="custom-select form-control" 
+							value="#{mAlias.operacionClienteFormulario.tpCuentBancoByCodCuenBancClieOrig.codCuenBanc}">
+						<f:selectItem itemLabel="Seleccione..." itemValue="-1" />
+						<f:selectItems value="#{mAlias.listaComboCuentasBancariasEnvi}" />
+						<p:ajax update="idContenedorMensajeClienteCCI" event="change" listener="#{mAlias.validarMensajeClienteCCI}" />
+					</h:selectOneMenu>
+					<div id="idMensajeResultadoCuentaBancariaE" > </div>
+					
+				</div>
+				
+				<p:outputPanel id="idContenedorMensajeClienteCCI">
+					<p:outputPanel styleClass="claseMensajeCCI"  rendered="#{mAlias.mostrarMensajeClienteCCI}">
+						<p:outputLabel value="(Deberás realizar una operación interbancaria)" />
+					</p:outputPanel>
+				</p:outputPanel>
+				
+				<div class="form-group contenerdorEnlaceCuentas">
+					<h:link styleClass="enlaceCuentas btn-link" value="Añade una cuenta aquí" outcome="cuentaItem.xhtml" />
+				</div>
+
+				<div class="form-group mt-4">
+
+					<p:outputLabel value="¿A que cuenta te enviamos tu dinero?"
+						styleClass="clasesCamposFormulario" />
+
+					<h:selectOneMenu id="idComboCuentaBancariaR" styleClass="custom-select form-control" 
+							value="#{mAlias.operacionClienteFormulario.tpCuentBancoByCodCuenBancClieReci.codCuenBanc}">
+						<f:selectItem itemLabel="Seleccione..." itemValue="-1"/>
+						<f:selectItems value="#{mAlias.listaComboCuentasBancariasReci}" />
+						<p:ajax update="idContenedorMensajeCCI" event="change" listener="#{mAlias.validarMensajeCCI}" />
+					</h:selectOneMenu>
+					
+					<div id="idMensajeResultadoCuentaBancariaR"> </div>
+
+				</div>
+
+				<p:outputPanel id="idContenedorMensajeCCI">
+					<p:outputPanel styleClass="claseMensajeCCI"  rendered="#{mAlias.mostrarMensajeCCI}">
+						<p:outputLabel value="(Representa una operación interbancaria para JirehPlus)" />
+					</p:outputPanel>
+				</p:outputPanel>
+				
+				<div class="form-group contenerdorEnlaceCuentas">
+					<h:link styleClass="enlaceCuentas btn-link" value="Añade una cuenta aquí" outcome="cuentaItem.xhtml" />
+				</div>
+				
+				
+				<p:outputPanel id="idContenedorOrigenFondos">	
+					<p:outputPanel rendered="#{mAlias.indHabilitarOrigenFondo}">		
+						<div class="form-group mt-4">
+		
+							<p:outputLabel value="Origen de fondos"
+								styleClass="clasesCamposFormulario" />
+		
+							<h:selectOneMenu id="idComboOrigenFondo" styleClass="custom-select form-control" 
+								value="#{mAlias.operacionClienteFormulario.tpOrigeFondo.codOrigFond}">
+								<f:selectItem itemLabel="Seleccione..." itemValue="-1"/>
+								<f:selectItems value="#{mAlias.listaComboOrigenFondo}" />
+							</h:selectOneMenu>
+							
+							<div id="idMensajeResultadoOrigenFondos"> </div>
+		
+						</div>
+					</p:outputPanel>
+				</p:outputPanel>
+				
+			</div>
+
+			<div class="row col-xs-12 col-sm-12 col-md-11 col-lg-11 mx-auto mt-2">
+
+				<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-8">
+
+					<p:outputPanel id="idMensajeResultadoProceso">
+						<p:outputPanel styleClass="claseMensajeSeleccionarCuenta alert alert-danger"
+							rendered="#{not empty mAlias.resultadoProcesoError}">
+							<p:outputLabel value="#{mAlias.resultadoProcesoError}" />
+						</p:outputPanel>
+					</p:outputPanel>
+
+					<p:outputPanel styleClass="claseMensajeSeleccionarCuenta alert alert-warning" rendered="#{mAlias.indFueraDeHorario == 1}">
+						<img src="../../../resources/imagenes/reloj-horario200x200.png" alt="Imagen de horario" width="40"/> 
+						#{mAlias.mensajeHorarioAtencion}
+					</p:outputPanel>
+
+				</div>
+		   
+				<div class="col text-right col-xs-12 col-sm-12 col-md-6 col-lg-4">
+					<p:remoteCommand name="metodoRemotoEnviarFormulario"  actionListener="#{mAlias.validarSeleccionCuenta}" update="idPanelGeneral"/>
+					<p:commandButton class="btn btn-success  botonIniciarOperacionGeneral icon-right-big" disabled="#{mAlias.indFueraDeHorario == 1 ? 'true' : 'false'}" value="Empieza" onclick="enviar(event);"/>
+				</div>
+				
+			</div>
+			
+		</div>
+		
+<!-- 		<ui:include src="../../../estatus.xhtml" /> -->
+	</h:form>
+
+
+	<!-- Modal -->
+	<div class="modal fade" id="modalSelecionarCuentaError" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title mensajeTituloError">¡ Mensaje del Sistema - ERROR !</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body mensajeCuerpoError"><strong>#{mAlias.resultadoProcesoError}</strong> Solo si lo considera, comuniquese por favor con el área de Soporte.</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+		<!-- Modal Aplicacion de Cupon Exitoso-->
+		<div class="modal fade" id="idModalAplicaCuponExitoso" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body"> El cupón ha sido aplicado de forma satisfactoria</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal" >Aceptar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	<!-- Modal Aplicacion de Cupon Errado -->
+	<div class="modal fade" id="idModalAplicaCuponError" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title mensajeTituloError">¡ Mensaje del Sistema !</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body mensajeCuerpoError"><strong>El cupón no ha sido reconocido. Por favor verifica que el código ingresado sea el correcto.</strong></div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+				</div>
+			</div>
+		</div>
+	</div>		
+		
+	
+</ui:composition>
+

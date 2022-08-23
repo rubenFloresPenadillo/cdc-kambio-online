@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<link rel="shortcut icon" href="../../../resources/imagenes/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="../../../resources/css/bootstrap.css" />
+
+	<script type="text/javascript" src="../../../resources/js/popper.min.js"></script>
+	<script type="text/javascript" src="../../../resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../../resources/js/principalOperaciones.js"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="../../../resources/css/fontello.css" />
+	<link rel="stylesheet" type="text/css" href="../../../resources/css/datatables.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../resources/css/estilosOperacionesItem.css"/> 
+	
+
+ 
+	<script type="text/javascript" src="../../../resources/js/datatables.min.js"></script>
+
+
+
+	<title>Operaciones Control - Detalle</title>
+	
+</h:head>
+<h:body>
+
+	<ui:param name="mAlias" value="#{operacionesClienteItemBean}" />
+
+	<header>
+		<div class="contenedor">
+			
+			<a  href="../../../mda/index.xhtml">
+				<img class="claseImagenLogoHorizontal" src="../../../resources/imagenes/logoJirehPlus.png" alt="Logo JirehPlus"/>
+			</a>
+
+			<h:selectBooleanCheckbox  id="menu-bar"/>
+			<label class="icon-down-dir" for="menu-bar" id="idFlechaAbajo" ></label> 
+			<h:outputLabel id="idSeccionUsuario" class="icon-user-circle" for="menu-bar" value="#{mAlias.valorNombre}"/>
+			
+
+			<nav class="menu">
+				<ul>
+					<li onclick="window.location.href='inicio.xhtml'">
+						<a class="claseInicio" href="inicio.xhtml">Inicia Operacion</a> 
+					</li>
+					<li onclick="window.location.href='datos.xhtml'">	
+						<a class="claseDatos" href="datos.xhtml">Mis Datos</a> 
+					</li>	
+					<li onclick="window.location.href='cuenta.xhtml'">	
+						<a class="claseCuentas" href="cuenta.xhtml">Mis Cuentas Bancarias</a> 
+					</li>	
+					<li onclick="window.location.href='operaciones.xhtml'">	
+						<a class="claseOperaciones" href="operaciones.xhtml">Mis Operaciones</a> 
+					</li>	
+					<li onclick="window.location.href='elegirPerfil.xhtml'"> 
+						<a href="elegirPerfil.xhtml" id="idEnlaceElegirPerfil" class="claseElegirPerfil btn btn-success botonIniciarOperacionPerfil icon-user">Elegir Perfil</a> 
+					</li>
+					<li id="idEnlaceCerrarSesion" onclick="mostrarPopupCerrarSesion();">	
+						<a href="#" onclick="mostrarPopupCerrarSesion();">Cerrar Sesion</a>
+					</li>	
+				</ul>
+			</nav>
+			
+			<a id="idBotonCerrarSesion"  class="btn botonCerrarSesion icon-power" href="#" title="Cerrar sesión" onclick="mostrarPopupCerrarSesion();" />
+
+		</div>
+	</header>
+
+	<main>
+	<section id="idSeccionOperacionControlItem">
+	
+		<!-- Modal cerrar sesion-->
+		<div class="modal fade" id="idModalConfirmacionCerrarSesion" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body"> ¿Estás seguro de cerrar sesión?</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal" onclick="ejecutarCerrarSesionRemoto();">Aceptar</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" >Cancelar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+<!-- 		Modal Confirmacion --> 
+<!-- 		<div class="modal fade" id="idModalConfirmacionGuardaOperaControlItem" tabindex="-1" role="dialog"> -->
+<!-- 			<div class="modal-dialog" role="document"> -->
+<!-- 				<div class="modal-content"> -->
+<!-- 					<div class="modal-header"> -->
+<!-- 						<h5 class="modal-title">¡ Mensaje del Sistema !</h5> -->
+<!-- 						<button type="button" class="close" data-dismiss="modal" -->
+<!-- 							aria-label="Close"></button> -->
+<!-- 					</div> -->
+<!-- 					<div class="modal-body"> ¿Está seguro de dar por atendida esta operación?</div> -->
+<!-- 					<div class="modal-footer"> -->
+<!-- 						<button type="button" class="btn btn-success" data-dismiss="modal" onclick="ejecutarGuardarOperacionControlItem();">Aceptar</button> -->
+<!-- 						<button type="button" class="btn btn-danger" data-dismiss="modal" >Cancelar</button> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+		
+		<!-- Modal Confirmacion Finalizar Operacion -->
+		<div class="modal fade" id="idModalConfirmacionFinalizar" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body"> ¿Esta seguro de finalizar esta operación? Recuerda que solo debes finalizarla si ya verificaste el monto en las cuentas de JirehPlus y si se envió el dinero y comprobante al cliente.</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal" onclick="ejecutarFinalizarOperacion();">Aceptar</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" >Cancelar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal Confirmacion Cancelar Operacion -->
+		<div class="modal fade" id="idModalConfirmacionCancelar" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body"> ¿Esta seguro de cancelar esta operación?</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal" onclick="ejecutarCancelarOperacion();">Aceptar</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" >Cancelar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<h:form id="idFormOperacionControlItem" method="post" role="form"
+			class="form-horizontal">
+			
+			<p:remoteCommand name="ejecutarCerrarSesionRemoto" actionListener="#{mAlias.procesarCerrarSesion()}"/>
+			<p:remoteCommand name="mostrarDialogConfirmacionFinOpera" actionListener="#{mAlias.procesarMostrarDialogConfirmacionFinOpera()}" update="idFormOperacionControlItem"/>
+			<p:remoteCommand name="mostrarDialogConfirmacionCanceOpera" actionListener="#{mAlias.procesarMostrarDialogConfirmacionCanceOpera()}" update="idFormOperacionControlItem"/>
+			<p:remoteCommand name="ejecutarFinalizarOperacion" actionListener="#{mAlias.procesarFinalizarOperacion()}" update="idFormOperacionControlItem" />
+			<p:remoteCommand name="ejecutarCancelarOperacion" actionListener="#{mAlias.procesarCancelarOperacion()}" update="idFormOperacionControlItem" />
+			
+			<p:remoteCommand name="ejecutarRegresar" actionListener="#{mAlias.regresar()}"/>
+			
+			<div class="row mx-auto">
+				
+				<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 claseTituloIzquierda" >
+					<p class="claseTitulo">Bandeja de Operaciones → Detalle de mi Operación en Curso</p>
+				</div>
+				
+				<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 claseTituloDerecha">
+					<a class="btn botonRegresar icon-undo" href="operaciones.xhtml" title="Regresar a bandeja de operaciones"/>
+				</div>
+				
+			</div>
+			
+			<div class="row" >
+				
+				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+					<div class="form-group">
+						<p:outputPanel rendered="#{!mAlias.indicadorModoConsulta and !mAlias.indMostrarVistaFinalizar}"  styleClass="alert claseCampoObligatorios"> 
+							Los campos con * son obligatorios.
+						</p:outputPanel>
+						
+					</div>
+				</div>
+
+			</div>
+			
+			<div class="row">
+					
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="form-group">
+							<p:outputLabel value="Código de Operación" />
+							<p:inputText id="idTxtCodigo" styleClass="form-control" value="#{mAlias.operacionControlItem.codUnicOperClie ne null ? mAlias.operacionControlItem.codUnicOperClie : 'No procesado' }" disabled="true"/>
+						</div>
+					</div>
+	
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="form-group">
+							<p:outputLabel value="Cliente" />
+							<p:inputText id="idTxtCliente" styleClass="form-control" value="#{mAlias.operacionControlItem.tpClien.valNombreCompleto}" disabled="true"/>
+						</div>
+					</div>
+
+					
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="form-group">
+							<p:outputLabel value="Operación - Tipo de Cambio" />
+							<p:inputText id="idTxtCompraVenta" styleClass="form-control" value="#{mAlias.operacionControlItem.indCompVent == 0 ? 'COMPRA' : 'VENTA'} - #{mAlias.operacionControlItem.valTipoCambUsad}" disabled="true"/>
+						</div>
+					</div>	
+
+			</div>
+			
+			<div class="row">
+						
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="form-group">
+							<p:outputLabel value="Cliente Envía" />
+							<p:inputText id="idTxtClienteEnvia" styleClass="form-control" value="#{mAlias.operacionControlItem.monEnvi} #{mAlias.operacionControlItem.indCompVent == 0 ? 'Dolares' : 'Soles'}" disabled="true"/>
+						</div>
+					</div>
+					
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="form-group">
+							<p:outputLabel value="Cliente Recibe" />
+							<p:inputText id="idTxtClienteRecibe" styleClass="form-control" value="#{mAlias.operacionControlItem.monReci} #{mAlias.operacionControlItem.indCompVent == 1 ? 'Dolares' : 'Soles'}" disabled="true"/>
+						</div>
+					</div>	
+					
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="form-group">
+							<p:outputLabel value="Estado Actual de Operación" />
+							<p:inputText id="idTxtEstadoOperacion" styleClass="form-control" value="#{mAlias.operacionControlItem.tpEstadOpera.desEstaOper}" disabled="true"/>
+						</div>
+					</div>
+
+			</div>
+			
+			<div class="row">
+							
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="form-group">
+							<p:outputLabel value="Cuenta desde donde Cliente Envía su Dinero" styleClass="claseTituloAlternativaPrimaria"/>
+						</div>
+					</div>
+			</div>
+			
+			<div class="claseAlternativaPrimaria">
+			
+				<div class="row">
+							
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Alias" styleClass="claseTituloAlternativaPrimaria"/>
+								<p:inputText styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieOrig.aliCuen}" disabled="true"/>
+							</div>
+						</div>
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Banco" styleClass="claseTituloAlternativaPrimaria"/>
+								<p:inputText styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieOrig.tpBanco.nomBanc}" disabled="true"/>
+							</div>
+						</div>	
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Tipo de cuenta" styleClass="claseTituloAlternativaPrimaria"/>
+								<p:inputText  styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieOrig.tpTipoCuent.desTipoCuen} - #{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieReci.tpDivis.codIsoDivi} " disabled="true"/>
+							</div>
+						</div>
+	
+				</div>
+				
+				
+				<div class="row">
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Número de la cuenta" styleClass="claseTituloAlternativaPrimaria"/>
+								<p:inputText  styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieOrig.valCuenBanc}" disabled="true"/>
+							</div>
+						</div>	
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Código de cuenta interbancaria" styleClass="claseTituloAlternativaPrimaria"/>
+								<p:inputText  styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieOrig.valCuenInte}" disabled="true"/>
+							</div>
+						</div>	
+						
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Títular de la cuenta" styleClass="claseTituloAlternativaPrimaria"/>
+								<p:inputText styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieOrig.nombreTitularVista}" disabled="true"/>
+							</div>
+						</div>
+
+				</div>
+				
+				<div class="row">
+				
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieOrig.tpClien.tpTipoDocumPerso.nomTipoDocuPerso} del titular" styleClass="claseTituloAlternativaPrimaria"/>
+								<p:inputText styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieOrig.tpClien.valDocuPers}" disabled="true"/>
+							</div>
+						</div>
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Codigo de Operación Bancaria" styleClass="claseTituloAlternativaPrimaria"/>
+								<p:inputText  styleClass="form-control" value="#{mAlias.operacionControlItem.codTranBanc}" disabled="true"/>
+							</div>
+						</div>	
+	
+				</div>
+				
+			</div>
+			
+			<div class="row">
+							
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="form-group">
+							<p:outputLabel value="Cuenta donde JirehPlus Recibe el Dinero" styleClass="claseTituloAlternativaSecundaria" />
+						</div>
+					</div>
+			</div>
+					
+				
+			<div class="claseAlternativaSecundaria">
+			
+				<div class="row">
+							
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Banco" styleClass="claseTituloAlternativaSecundaria"/>
+								<p:inputText id="idTxtBancoEnvia" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancCome.tpBanco.nomBanc}"  disabled="true"/>
+							</div>
+						</div>
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Tipo de Cuenta" styleClass="claseTituloAlternativaSecundaria"/>
+								<p:inputText id="idTxtTipoCuentaEnvia" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancCome.tpTipoCuent.desTipoCuen} - #{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancCome.tpDivis.codIsoDivi}" disabled="true"/>
+							</div>
+						</div>	
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Número de Cuenta" styleClass="claseTituloAlternativaSecundaria"/>
+								<p:inputText id="idTxtNumeroCuentaEnvia" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancCome.valCuenBanc}" disabled="true"/>
+							</div>
+						</div>
+	
+				</div>
+				
+				
+				<div class="row">
+							
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Código de cuenta interbancaria" styleClass="claseTituloAlternativaSecundaria"/>
+								<p:inputText id="idTxtCodigoInterbancarioEnvia" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancCome.valCuenInte}" disabled="true"/>
+							</div>
+						</div>
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Titular de la Cuenta" styleClass="claseTituloAlternativaSecundaria"/>
+								<p:inputText id="idTxtTitularCuentaEnvia" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancCome.nombreTitularVista}" disabled="true"/>
+							</div>
+						</div>	
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="RUC del Titular" styleClass="claseTituloAlternativaSecundaria"/>
+								<p:inputText id="idTxtRucTitularEnvia" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancCome.tpClien.valDocuPers}" disabled="true"/>
+							</div>
+						</div>
+	
+				</div>
+				
+			</div>
+			
+			<div class="row">
+							
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="form-group">
+							<p:outputLabel value="Cuenta donde Cliente Recibe su Dinero" styleClass="claseTituloAlternativaPrimaria"/>
+						</div>
+					</div>
+			</div>
+					
+				
+			<div class="claseAlternativaPrimaria">
+			
+				<div class="row">
+							
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Alias" styleClass="claseTituloAlternativaPrimaria"/>
+								<p:inputText id="idTxtAliasRecibe" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieReci.aliCuen}" disabled="true"/>
+							</div>
+						</div>
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Banco" styleClass="claseTituloAlternativaPrimaria"/>
+								<p:inputText id="idTxtBancoRecibe" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieReci.tpBanco.nomBanc}" disabled="true"/>
+							</div>
+						</div>	
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Tipo de cuenta" styleClass="claseTituloAlternativaPrimaria"/>
+								<p:inputText id="idTxtTipoCuentaRecibe" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieReci.tpTipoCuent.desTipoCuen} - #{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieReci.tpDivis.codIsoDivi} " disabled="true"/>
+							</div>
+						</div>
+	
+				</div>
+				
+				
+				<div class="row">
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Número de la Cuenta" styleClass="claseTituloAlternativaPrimaria"/>
+								<p:inputText id="idTxtNumeroCuentaRecibe" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieReci.valCuenBanc}" disabled="true"/>
+							</div>
+						</div>	
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Código de cuenta interbancaria" styleClass="claseTituloAlternativaPrimaria"/>
+								<p:inputText id="idTxtNumeroCuentaRecibeCCI" styleClass="form-control" value="#{ (mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieReci.valCuenInte eq null or mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieReci.valCuenInte eq '') ? '-' : mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieReci.valCuenInte }" disabled="true"/>
+							</div>
+						</div>
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Títular de la cuenta" styleClass="claseTituloAlternativaPrimaria"/>
+								<p:inputText id="idTxtTitularCuentaRecibe" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieReci.nombreTitularVista}" disabled="true"/>
+							</div>
+						</div>
+						
+					
+						
+						
+	
+				</div>
+				
+				<div class="row">
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieReci.tpClien.tpTipoDocumPerso.nomTipoDocuPerso} del titular" styleClass="claseTituloAlternativaPrimaria"/>
+								<p:inputText id="idTxtDocumentoTitularRecibe" styleClass="form-control" value="#{mAlias.operacionControlItem.tpCuentBancoByCodCuenBancClieReci.tpClien.valDocuPers}" disabled="true"/>
+							</div>
+						</div>
+				</div>
+				
+			</div>
+			
+			
+			<div class="row">
+							
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="form-group">
+							<p:outputLabel value="Datos de cupón utilizado" styleClass="claseTituloAlternativaSecundaria"/>
+						</div>
+					</div>
+			</div>
+					
+			<div class="claseAlternativaSecundaria">
+			
+				<div class="row">
+							
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Cupón Aplicado" styleClass="claseTituloAlternativaSecundaria"/>
+								<p:inputText id="idTxtCuponUtilizado" styleClass="form-control" value="#{mAlias.operacionControlItem.nomCupoUsad eq '' ? '-' : mAlias.operacionControlItem.nomCupoUsad}" disabled="true"/>
+							</div>
+						</div>
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Desct. Cupón" styleClass="claseTituloAlternativaSecundaria"/>
+								<p:inputText id="idTxtDesctCupon" styleClass="form-control" value="#{mAlias.operacionControlItem.monDescCupoUsad eq null ? '-' : mAlias.operacionControlItem.monDescCupoUsad}" disabled="true"/>
+							</div>
+						</div>	
+	
+				</div>
+				
+			</div>
+						
+			<div class="row">
+
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="form-group">
+							<p:outputLabel value="Fecha Inicio Operación" />
+							<p:inputText id="idTxtFechaInicioOpera" styleClass="form-control" value="#{mAlias.operacionControlItem.fecInicOper}" disabled="true">
+								<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" timeZone="America/Lima"/>
+							</p:inputText>
+						</div>
+					</div>
+
+					
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="form-group">
+							<p:outputLabel value="Fecha Registro de Verificación" />
+							<p:inputText id="idTxtFechaRegistroVerificacion" styleClass="form-control" value="#{mAlias.operacionControlItem.fecVeriOper ne null ? mAlias.operacionControlItem.fecVeriOper : 'No procesado'}" disabled="true">
+								<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" timeZone="America/Lima"/>
+							</p:inputText>
+						</div>
+					</div>	
+					
+					<p:outputPanel rendered="#{mAlias.indMostrarListaCambiarEstado}"  styleClass="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="form-group">
+							<p:outputLabel value="Cambiar Estado a" />
+							
+							<h:selectOneMenu id="idComboEstadosAtencion" styleClass="custom-select form-control claseComboFormulario"
+								 value="#{mAlias.estadoFuturoOperacion}"  >
+								<f:selectItems value="#{mAlias.listaComboNuevoEstado}" />
+								<p:ajax update="idFormOperacionControlItem" event="change" listener="#{mAlias.asignarValoresDinamicos}" />
+							</h:selectOneMenu>
+
+					  	</div>
+					</p:outputPanel>
+
+			</div>
+			
+			<p:outputPanel id="idCamposAuditoriaDinamicos">
+			
+				<p:outputPanel rendered="#{mAlias.operacionControlItem.usuApliFinaOper ne null}">
+				
+					<div class="row">
+		
+							<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+								<div class="form-group">
+									<p:outputLabel value="Fecha de Finalización" />
+									<p:inputText id="idTxtFechaFinaOpera" styleClass="form-control" value="#{mAlias.operacionControlItem.fecFinaOper}" disabled="true">
+										<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" timeZone="America/Lima"/>
+									</p:inputText>
+								</div>
+							</div>
+			
+							<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+								<div class="form-group">
+									<p:outputLabel value="Usuario de Finalización" />
+									<p:inputText id="idTxtUsuaFinalizacion" styleClass="form-control" value="#{mAlias.operacionControlItem.usuApliFinaOper}" disabled="true"/>
+								</div>
+							</div>
+		
+					</div>
+				</p:outputPanel>
+				
+			</p:outputPanel>
+			
+			
+			<p:outputPanel id="idBotonesDinamicosFinalizarCancelar">
+				<div class="row">
+					<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6">
+	
+					</div>
+					
+					<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6 text-right">
+						<div class="form-group">
+					
+									<p:commandButton  onclick="enviarFinalizar(event);" styleClass="btn btn-success"  
+										value="Finalizar Operación" rendered="#{mAlias.indMostrarVistaFinalizar and !mAlias.indicadorModoConsulta}" />
+									
+									<p:commandButton  onclick="enviarCancelar(event);" styleClass="btn btn-danger"  
+										value="Cancelar Operación" rendered="#{!mAlias.indMostrarVistaFinalizar and !mAlias.indicadorModoConsulta}" />
+						</div>
+					</div>
+					
+				</div>
+			</p:outputPanel>
+		
+		
+			<!-- Modal Error-->
+			<div class="modal fade" id="idModalErrorSistema" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title mensajeTituloError">¡ Mensaje del Sistema - ERROR !</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body mensajeCuerpoError">#{mAlias.resultadoProcesoError} <strong>Comuníquese con el área de Soporte.</strong></div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</h:form>
+	
+		<!-- Modal Operacion Finalizada Exitosa-->
+		<div class="modal fade" id="idModalOperacionFinalizada" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body">La operación ha sido culminada de forma satisfactoria. Se ha enviado una notificación al correo del cliente.</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal" onclick="ejecutarRegresar();">Ir a Operaciones de Clientes</button>
+						<button type="button" class="btn btn-success" data-dismiss="modal">Seguir aquí</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Modal Operacion Cancelada Exitosa-->
+		<div class="modal fade" id="idModalOperacionCancelada" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body">La operación ha sido cancelada de forma satisfactoria. Se ha enviado una notificación al correo del cliente.</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal" onclick="ejecutarRegresar();">Ir a Operaciones de Clientes</button>
+						<button type="button" class="btn btn-success" data-dismiss="modal">Seguir aquí</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
+		<!-- Modal Error-->
+		<div class="modal fade" id="idModalErrorSistema" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title mensajeTituloError">¡ Mensaje del Sistema - ERROR !</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body mensajeCuerpoError">#{mAlias.resultadoProcesoError} <strong>Comuníquese con el área de Soporte.</strong></div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+
+	</section>
+
+
+	</main>
+
+	<footer>
+		<div class="contenedor"></div>
+	</footer>
+
+</h:body>
+
+</html>

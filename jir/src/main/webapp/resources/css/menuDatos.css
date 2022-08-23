@@ -1,0 +1,241 @@
+
+#menu-bar {
+	display: none;
+}
+
+header label {
+	float: right;
+	font-size: 16px;
+	margin: 20px 0;  
+	cursor: pointer;
+}
+
+.menu {
+	position: absolute;
+	/*Para que comience despues del header*/
+	top: 65px; 
+	left: 0;
+	width: 90%;
+	height: 100vh;
+    background: rgba(210,227,241,1);
+	background: -moz-linear-gradient(left, rgba(210,227,241,1) 0%, rgba(92,155,208,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(210,227,241,1)), color-stop(100%, rgba(92,155,208,1)));
+	background: -webkit-linear-gradient(left, rgba(210,227,241,1) 0%, rgba(92,155,208,1) 100%);
+	background: -o-linear-gradient(left, rgba(210,227,241,1) 0%, rgba(92,155,208,1) 100%);
+	background: -ms-linear-gradient(left, rgba(210,227,241,1) 0%, rgba(92,155,208,1) 100%);
+	background: linear-gradient(to right, rgba(210,227,241,1) 0%, rgba(92,155,208,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2e3f1', endColorstr='#5c9bd0', GradientType=1 );	
+	/*Para el efecto del menu*/
+	transition: all 0.5s;
+	transform: translateX(-100%);
+}
+
+@media (min-width: 1024px){
+	.menu {
+	    top: 90px !important;
+	}
+}
+
+.menu ul{
+    margin-bottom: 0 !important;
+}
+
+.menu a{
+	color: #005fa0;
+}
+
+.menu a:hover {
+    border-bottom: 3px solid #005fa0;
+    text-decoration: none;
+}
+
+.menu li {
+    display: block;
+    color: #ffffff;
+    height: 60px;
+    width: 100%;
+    /* text-decoration: none; */
+    padding-top: 20px;
+    padding-left: 20px;
+    float: left;
+    border-bottom: 1px solid #ffffff;
+}
+
+.menu li:hover {
+    background: #ffffff;
+    color: white;
+    cursor: pointer;
+}
+
+.menu li:hover > a{
+	 color: white;
+	 cursor: pointer;
+}
+
+.claseDatos{
+	border-bottom: 3px solid #ffffff;
+    text-decoration: none;
+}
+
+#menu-bar:checked ~ .menu{
+	transform: translateX(0%);
+}
+
+/*Cuando sea para escritorio*/
+@media (min-width:1340px) {
+	.menu{
+		position: static;
+		width: auto;
+		height: auto;
+		transform: translateX(0%);
+		float: left;
+		display: flex;
+     	font-size: 0.9rem; 
+        background: #1d2b38 !important;
+	}
+	
+	#idEnlaceCerrarSesion{
+		display: none;
+	}
+	
+	#idFlechaAbajo{
+		display: none;
+	}
+	
+	/*Ocultamos el icono del menu*/
+	header label{
+/* 		display: none; */
+	}
+	
+	.menu li {
+	    width: auto;
+	    color: #ffffff;
+	    border-bottom: none;
+	    height: 64px;
+	    padding: 22px !important;
+	}
+	
+	.menu li:hover > a {
+	    color: #005fa0 !important;
+	    cursor: pointer;
+	}
+	
+	.menu li:hover{
+		background: none;
+	}
+
+}
+
+@media (max-width:1339px) {
+	#idBotonCerrarSesion{
+		display: none;
+	}
+	
+	#idBotonElefirPerfil{
+		display: none;
+	}
+
+}
+
+
+.botonCerrarSesion{
+    font-weight: bold;
+	padding: 0px !important;
+    color: #ffffff;
+    background-color: #FF0000;
+    border: 1.5px solid #FF0000;
+    width: 30px;
+    margin-right: 10px !important;
+}
+
+.botonCerrarSesion:before {
+	margin-left: 0em !important;
+	margin-right: 0em !important;
+}
+
+.botonCerrarSesion:hover{
+	color: #ffffff;
+	background-color: #C80000;
+	border: 1.5px solid #C80000;
+}
+
+#idBotonCerrarSesion{
+	float: right;
+    margin: 20px 0;
+}
+
+#idBotonElefirPerfil{
+	float: right;
+    margin: 20px 0;
+}
+
+
+.claseElegirPerfil {
+	margin-right: 15px !important;
+	color: #A95205;
+}
+
+.claseElegirPerfil:hover {
+	color: #A95205;
+}
+
+
+#idSeccionUsuario{
+   margin: 20.5 0;
+/*    font-size: 1em !important; */
+}
+
+/* .botonIniciarOperacionGeneral{ */
+/* 	color: #fff !important; */
+/* 	font-weight: bold !important; */
+/* 	padding-right: 20px; */
+/*     padding-left: 20px; */
+/* 	padding-bottom: 10px !important; */
+/* 	padding-top: 10px !important; */
+/* 	display: initial !important; */
+/* } */
+
+/* .botonIniciarOperacionGeneral:before { */
+/*     margin-left: 0em; */
+/* } */
+
+/* .botonIniciarOperacionGeneral span { */
+/*     display: inline-block !important; */
+/*     padding: .3em 0em .3em 0.5em !important; */
+/* } */
+
+
+
+.btn-primary-kli {
+    color: #fff !important;
+    background-color: #005fa0;
+    border-color: #005fa0;
+    border-radius: 65px 65px 65px 65px;
+}
+
+.btn-primary-kli:hover {
+    background-color: #426C1C !important;
+    border-bottom: 3px solid #426C1C !important;
+}
+
+.botonFormulario{
+	width: 100%;
+}
+
+
+.btn-secondary-kli {
+    color: #fff !important;
+    background-color: #005fa0;
+    border-color: #005fa0;
+    border-radius: 65px 65px 65px 65px;
+}
+
+.btn-secondary-kli:hover {
+    background-color: #63A82B;
+	border-bottom: 3px solid #63A82B !important;
+}
+
+
+.claseBold{
+	font-weight: bold;
+}

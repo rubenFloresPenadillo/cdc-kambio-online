@@ -1,0 +1,29 @@
+
+#nuestroProposito{
+	background: #1d2b38 !important;
+	color: #fff;
+	padding: 60px;
+}
+
+#nuestroProposito img{
+	width: 300px;
+}
+
+#nuestroProposito .contenedorImagen{
+	text-align: right;
+}
+
+
+.line-shape-nuestroProposito {
+    margin-left: 0px;
+}
+
+
+.line-shape-nuestroProposito, .line-shape-nuestroProposito-white {
+    width: 100px;
+    height: 5px;
+    background-color: #005fa0;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    border-radius: 100px;
+}

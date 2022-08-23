@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<link rel="shortcut icon" href="../../resources/imagenes/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.css" />
+
+	<script type="text/javascript" src="../../resources/js/popper.min.js"></script>
+	<script type="text/javascript" src="../../resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../resources/js/principalOperacionesControl.js"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="../../resources/css/fontello.css" />
+	<link rel="stylesheet" type="text/css" href="../../resources/css/datatables.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../resources/css/estilosOperacionesControl.css"/> 
+	
+
+ 
+	<script type="text/javascript" src="../../resources/js/datatables.min.js"></script>
+
+
+
+	<title>Cuentas</title>
+	
+</h:head>
+<h:body>
+
+	<ui:param name="mAlias" value="#{operacionesControlBean}" />
+
+	<header>
+		<div class="contenedor">
+			
+			<a  href="../../mda/index.xhtml">
+				<img class="claseImagenLogoHorizontal" src="../../resources/imagenes/logoJirehPlus.png" alt="Logo JirehPlus"/>
+			</a>
+
+			<h:selectBooleanCheckbox  id="menu-bar"/>
+			<label class="icon-down-dir" for="menu-bar" id="idFlechaAbajo" ></label> 
+			<h:outputLabel id="idSeccionUsuario" class="icon-user-circle" for="menu-bar" value="#{mAlias.valorNombre}"/>
+
+			<nav class="menu">
+				<ul>
+					<li onclick="window.location.href='../panelPrincipal.xhtml'">
+						<a class="claseControl" href="../panelPrincipal.xhtml">Panel de Control</a>
+					</li>
+					<li onclick="window.location.href='../reportesPrincipal.xhtml'">
+						<a href="../reportesPrincipal.xhtml" >Reportes</a>
+					</li>
+					<li>
+						<a href="#" id="idEnlaceCerrarSesion" onclick="mostrarPopupCerrarSesion();" >Cerrar Sesion</a>
+					</li>	
+				</ul>
+			</nav>
+			
+			<a id="idBotonCerrarSesion"  class="btn botonCerrarSesion icon-power" href="#" title="Cerrar sesión" onclick="mostrarPopupCerrarSesion();" />
+			
+		</div>
+	</header>
+
+	<main>
+	<section id="operacionesControl">
+		
+		<!-- Modal cerrar sesion-->
+		<div class="modal fade" id="idModalConfirmacionCerrarSesion" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body"> ¿Estás seguro de cerrar sesión?</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal" onclick="ejecutarCerrarSesionRemoto();">Aceptar</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" >Cancelar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		
+
+		<h:form id="idFormOperacionesControl" method="post" role="form"
+			class="form-horizontal">
+			
+			<p:remoteCommand name="ejecutarCerrarSesionRemoto" actionListener="#{mAlias.procesarCerrarSesion()}"/>
+			<p:remoteCommand name="ejecutarRefrescarOperaciones" actionListener="#{mAlias.procesarRefrescarOperaciones()}" update="idFormOperacionesControl" oncomplete="iniciarTablaYBotones();"/>
+			<p:remoteCommand name="ejecutarBuscarCodigo" actionListener="#{mAlias.procesarBuscarCodigo()}" update="idFormOperacionesControl" oncomplete="iniciarTablaYBotones();"/>
+			<div class="row mx-auto">
+				
+				<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 claseTituloIzquierda" >
+					<p class="claseTituloOperaciones">Panel de Control → Operaciones de Clientes</p>
+				</div>
+				
+				<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 claseTituloDerecha">
+					<a class="btn botonRefrescar icon-arrows-cw" href="#" title="Refrescar" onclick="ejecutarRefrescarOperaciones();" />
+					<a class="btn botonRegresar icon-undo" href="../panelPrincipal.xhtml" title="Regresar al Panel de Control"/>
+				</div>
+				
+			</div>
+			
+			<div class="row mx-auto" >
+					<p:inputText id="idTxtCodigoBuscar" styleClass="form-control claseCodigoUnicoBuscar" value="#{mAlias.codigoUnicoOperacionBuscar}"/>
+					<p:watermark for="idTxtCodigoBuscar" value="Ingrese código" />
+					<a class="btn botonBuscar icon-search" href="#" title="Buscar" onclick="ejecutarBuscarCodigo();" />
+			</div>
+			
+			<p:outputPanel id="idPanelListaOperacionesControl">
+			<div class="table-responsive">
+				<table id="idTablaOperacionesControl" class="table" data-page-length='10'>
+
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Código</th>
+							<th scope="col">Fecha Inicio Operacion</th>
+							<th scope="col">Cliente</th>
+							<th scope="col">Cuenta de correo</th>
+							<th scope="col">Perfil</th>
+							<th scope="col">Nomb. Perfil</th>
+							<th scope="col">Razón Social</th>
+							<th scope="col">Cliente envía</th>
+							<th scope="col">Cliente recibe</th>
+							<th scope="col">Operación</th>
+							<th scope="col">Tipo de Cambio</th>
+							<th scope="col">Cupón Aplicado</th>
+				      		<th scope="col">Desct. Cupón</th>
+							<th scope="col">Estado</th>
+							<th scope="col">Acciones</th>
+						</tr>
+					</thead>
+					<tbody>
+
+							<ui:repeat value="#{mAlias.listaOperacionesControl}" var="oc"  varStatus="status" >
+								<tr>
+									<td>#{status.index + 1}</td>
+									<td><strong>#{oc.codUnicOperClie ne null ? oc.codUnicOperClie : 'No procesado' }</strong></td>
+									<td>
+									
+									<h:outputText value="#{oc.fecInicOper}">
+									  <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" timeZone="America/Lima"/>
+									</h:outputText>
+									</td>
+									<td>#{oc.tpClien.valNombreCompleto}</td>
+									<td>#{oc.tpClien.tpUsuar.ideUsuaEmai}</td> 
+									<td>#{oc.tpClien.tpUsuar.codUsuaPadr ne null ? 'Empresa' : 'Persona'}</td> 
+									<td>#{oc.tpClien.valNombPerf eq null ? '-' : oc.tpClien.valNombPerf}</td> 
+									<td>#{oc.tpClien.valRazoSociPers eq null ? '-' : oc.tpClien.valRazoSociPers} </td> 
+									<td>#{oc.monEnvi} #{oc.indCompVent == 0 ? 'Dolares' : 'Soles'}</td>
+									<td>#{oc.monReci} #{oc.indCompVent == 1 ? 'Dolares' : 'Soles'}</td>
+									<td>#{oc.indCompVent == 0 ? 'COMPRA' : 'VENTA'}</td>
+									<td>#{oc.valTipoCambUsad}</td>
+									<td>#{oc.nomCupoUsad eq '' ? '-' : oc.nomCupoUsad}</td>
+				      				<td>#{oc.monDescCupoUsad eq null ? '-' : oc.monDescCupoUsad}</td>
+									<td class="#{oc.tpEstadOpera.codEstaOper == 1 ? 'claseOperacionIniciada' :  (oc.tpEstadOpera.codEstaOper == 2 ? 'claseOperacionVerificacion' : (oc.tpEstadOpera.codEstaOper == 3 ? 'claseOperacionFinalizada' : 'claseOperacionCancelada') )  }" >#{oc.tpEstadOpera.desEstaOper}</td>
+									<td> 
+
+										<p:commandButton class="btn botonAtender icon-up-hand" title="Atender" 
+											rendered="#{oc.tpEstadOpera.codEstaOper == 1 || oc.tpEstadOpera.codEstaOper == 2}"  
+											action="#{mAlias.seleccionarOperacionAtender(oc)}" />
+										
+										<p:commandButton class="btn botonCheck icon-search" title="Consultar" 
+											rendered="#{oc.tpEstadOpera.codEstaOper != 1 and oc.tpEstadOpera.codEstaOper != 2}" 
+											action="#{mAlias.seleccionarOperacionDetalle(oc)}" />	
+											 
+									</td>
+								</tr>
+
+							</ui:repeat>
+
+					</tbody>
+
+				</table>
+			</div>
+
+		</p:outputPanel>
+
+		</h:form>
+		
+		
+
+	</section>
+
+
+	</main>
+
+	<footer>
+		<div class="contenedor"></div>
+	</footer>
+
+</h:body>
+
+</html>

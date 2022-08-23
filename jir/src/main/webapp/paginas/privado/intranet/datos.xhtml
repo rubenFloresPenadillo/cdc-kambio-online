@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<link rel="shortcut icon" href="../../../resources/imagenes/favicon.ico" />	
+	<link rel="stylesheet" type="text/css" href="../../../resources/css/bootstrap.css" />
+
+<!-- 	<script type="text/javascript" src="../../../resources/js/jquery-3.2.1.min.js"></script> -->
+	<script type="text/javascript" src="../../../resources/js/popper.min.js"></script>
+	<script type="text/javascript" src="../../../resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../../resources/js/principalDatos.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="../../../resources/css/fontello.css" />
+	<link rel="stylesheet" type="text/css" href="../../../resources/css/estilosDatos.css"/> 
+	<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet"/>
+	<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+	<title>Mis Datos</title>
+
+		
+</h:head>
+<h:body>
+
+	<ui:param name="mAlias" value="#{datosBean}" />
+
+	<header>
+		<div class="contenedor">
+		
+			<a  href="../../../index.xhtml">
+				<img class="claseImagenLogoHorizontal" src="../../../resources/imagenes/logoJirehPlus.png" alt="Logo JirehPlus"/>
+			</a>
+			
+			<h:selectBooleanCheckbox  id="menu-bar"/>
+			<label class="icon-down-dir" for="menu-bar" id="idFlechaAbajo"></label> 
+			<h:outputLabel id="idSeccionUsuario" class="icon-user-circle" for="menu-bar" value="#{mAlias.valorNombre}"/>
+			
+			<nav class="menu">
+				<ul>
+					<li onclick="window.location.href='inicio.xhtml'"> 
+						<a class="claseInicio" href="inicio.xhtml">Inicia Operacion</a>  
+					</li>
+					<li onclick="window.location.href='datos.xhtml'"> 
+						<a class="claseDatos" href="datos.xhtml">Mis Datos</a> 
+					</li>
+					<li onclick="window.location.href='cuenta.xhtml'"> 
+						<a class="claseCuentas" href="cuenta.xhtml"> Mis Cuentas Bancarias</a> 
+					</li>
+					<li onclick="window.location.href='operaciones.xhtml'"> 
+						<a class="claseOperaciones" href="operaciones.xhtml">Mis Operaciones</a> 
+					</li>
+					<li class="#{mAlias.indCompleDatos eq 1  ? 'claseMostrarBoton' : 'claseNoMostrarBoton' }" onclick="window.location.href='elegirPerfil.xhtml'"> 
+						<a href="elegirPerfil.xhtml" id="idEnlaceElegirPerfil" class="claseElegirPerfil btn btn-success botonIniciarOperacionPerfil icon-user">Elegir Perfil</a> 
+					</li>
+					<li id="idEnlaceCerrarSesion" onclick="mostrarPopupCerrarSesion();"> 
+						<a href="#"  onclick="mostrarPopupCerrarSesion();" >Cerrar Sesion</a> 
+					</li>
+					
+				</ul>
+			</nav>
+			
+			<a id="idBotonCerrarSesion"  class="btn botonCerrarSesion icon-power" href="#" title="Cerrar sesión" onclick="mostrarPopupCerrarSesion();" />
+			
+<!-- 			<p:outputPanel rendered="#{mAlias.indCompleDatos eq 1}"> -->
+<!-- 				<a id="idBotonElefirPerfil"  class="claseElegirPerfil btn btn-success botonIniciarOperacionPerfil icon-user" href="elegirPerfil.xhtml">Elegir Perfil</a> -->
+<!-- 			</p:outputPanel> -->
+			
+		</div>
+		
+		
+	</header>
+
+	<main>
+	
+	
+		
+	<section id="datosPersonales" >
+		
+		<!-- Modal cerrar sesion-->
+		<div class="modal fade" id="idModalConfirmacionCerrarSesion" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body"> ¿Estás seguro de cerrar sesión?</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal" onclick="ejecutarCerrarSesionRemoto();">Aceptar</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" >Cancelar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<p:outputPanel rendered="#{mAlias.indCompleDatos eq 0}">
+
+			<!-- Modal -->
+			<div class="modal fade" id="modalBienvenido" tabindex="-1" role="dialog" >
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" >¡ Bienvenido !</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			        Completa tus datos para iniciar tu primera operación.
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		
+	  </p:outputPanel>
+
+
+		<h:form id="idFormDatosPersonales" method="post" role="form" class="form-horizontal">
+			
+			<p:remoteCommand name="ejecutarCerrarSesionRemoto" actionListener="#{mAlias.procesarCerrarSesion()}"/>
+			<p:remoteCommand name="ejecutarIrAInicioOperacion" actionListener="#{mAlias.redireccionarInicioOperacion()}"/>
+
+			<div class="row justify-content-center">
+				
+				<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-3">
+					<div class="form-group">
+					
+						<p:outputPanel rendered="#{!mAlias.indOperacionEnCurso}"  > 
+							<h4 class="text-center claseBold">¡Comencemos!</h4>
+						</p:outputPanel>
+						
+						<p:outputPanel rendered="#{!mAlias.indOperacionEnCurso}"  styleClass="text-center mt-3 mb-3"> 
+							Completa todos los campos, son obligatorios.
+						</p:outputPanel>
+						
+						<p:outputPanel rendered="#{mAlias.indOperacionEnCurso}"  styleClass="alert claseCampoObligatorios"> 
+							Recuerda que podras editar tus datos cuando culmines la operación que tienes en curso.
+						</p:outputPanel>
+						
+					</div>
+				</div>
+				
+			</div>
+			
+			<div class="row justify-content-center">
+				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+					<div class="form-group">
+						<p:outputLabel value="Primer Nombre *" />
+						<p:inputText id="idTxtNombre1" styleClass="form-control" value="#{mAlias.clienteFormulario.valPrimNombPers}" disabled="#{mAlias.codigoCliente ne null}"/>
+						<p:watermark for="idTxtNombre1" value="Ingresa tu primer nombre" />
+						<div id="idMensajeResultadoNombre1" > </div>
+					</div>
+				</div>
+			</div>	
+			<div class="row justify-content-center">
+				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+					<div class="form-group">
+						<p:outputLabel value="Segundo Nombre" styleClass="mt-3"/>
+						<p:inputText id="idTxtNombre2" styleClass="form-control" value="#{mAlias.clienteFormulario.valSeguNombPers}" disabled="#{mAlias.codigoCliente ne null}"/>
+						<p:watermark for="idTxtNombre2" value="Ingresa tu segundo nombre" />
+						<div id="idMensajeResultadoNombre2" > </div>
+					</div>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+					<div class="form-group">
+						<p:outputLabel value="Primer Apellido *" styleClass="mt-3"/>
+						<p:inputText id="idTxtApellido1" styleClass="form-control" value="#{mAlias.clienteFormulario.valPrimApelPers}" disabled="#{mAlias.codigoCliente ne null}"/>
+						<p:watermark for="idTxtApellido1" value="Ingresa tu primer apellido" />
+						<div id="idMensajeResultadoApellido1" > </div>
+					</div>
+				</div>			
+			</div>
+			
+			<div class="row justify-content-center">
+				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+					<div class="form-group">
+						<p:outputLabel value="Segundo Apellido *" styleClass="mt-3"/>
+						<p:inputText id="idTxtApellido2" styleClass="form-control"  value="#{mAlias.clienteFormulario.valSeguApelPers}" disabled="#{mAlias.codigoCliente ne null}"/>
+						<p:watermark for="idTxtApellido2" value="Ingresa tu segundo apellido" />
+						<div id="idMensajeResultadoApellido2" > </div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row justify-content-center">	
+				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+					<div class="form-group">
+
+						<p:outputLabel value="Tipo de documento *" styleClass="mt-3"/>
+
+						<h:selectOneMenu id="idTipoDocumento" styleClass="custom-select form-control claseComboFormulario" 
+							value="#{mAlias.clienteFormulario.tpTipoDocumPerso.codTipoDocuPers}" disabled="#{mAlias.codigoCliente ne null}">
+							<f:selectItem itemLabel="Seleccione..." itemValue="-1"  />
+							<f:selectItems value="#{mAlias.listaComboTipoDocumentosPerso}" />
+							<p:ajax update="idComboNacionalidad" event="change" listener="#{mAlias.asignarNacionalidadPeruana}" />
+						</h:selectOneMenu>
+						
+						<div id="idMensajeResultadoTipoDocumento" > </div>
+
+					</div>
+				</div>
+			</div>
+			
+			
+			<div class="row justify-content-center">
+				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+					<div class="form-group">
+						<p:outputLabel value="Documento *" styleClass="mt-3"/>
+						<p:inputText id="idTxtDocumento" styleClass="form-control" value="#{mAlias.clienteFormulario.valDocuPers}" disabled="#{mAlias.codigoCliente ne null}"/>
+						<p:watermark for="idTxtDocumento" value="Documento" />
+						<div id="idMensajeResultadoDocumento" > </div>
+					</div>
+				</div>
+							
+			</div>
+
+
+			<div class="row justify-content-center">
+			
+			
+				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+					<div class="form-group">
+						<p:outputLabel value="Fecha de nacimiento *" styleClass="mt-3"/>
+						<div class="form-group">
+							
+							<h:selectOneMenu id="idFechaNacAnio"  styleClass="custom-select claseComboFecha claseComboFormulario" disabled="#{mAlias.codigoCliente ne null}"
+								value="#{mAlias.valorFechaNaciAnio}">
+								<f:selectItem itemLabel="Año" itemValue="-1"/>
+								<f:selectItems value="#{mAlias.listaComboFechaAnio}" />
+								<p:ajax update="idFechaNacDia" event="change" listener="#{mAlias.asignarDiasPorAnio}" />
+							</h:selectOneMenu>
+							
+							<h:selectOneMenu id="idFechaNacMes"  styleClass="custom-select claseComboFecha margenComboFecha claseComboFormulario" disabled="#{mAlias.codigoCliente ne null}"
+								value="#{mAlias.valorFechaNaciMes}">
+								<f:selectItem itemLabel="Mes" itemValue="-1"  />
+								<f:selectItems value="#{mAlias.listaComboFechaMes}" />
+								<p:ajax update="idFechaNacDia" event="change" listener="#{mAlias.asignarDiasPorMes}" />
+							</h:selectOneMenu>
+							
+							<h:selectOneMenu id="idFechaNacDia" styleClass="custom-select claseComboFecha margenComboFecha claseComboFormulario" disabled="#{mAlias.codigoCliente ne null}"
+								value="#{mAlias.valorFechaNaciDia}">
+								<f:selectItem itemLabel="Día" itemValue="-1"  />
+								<f:selectItems value="#{mAlias.listaComboFechaDia}" />
+							</h:selectOneMenu>
+							
+							<div id="idMensajeResultadoFechaNacimiento" > </div>
+						</div>
+						
+					</div>
+				</div>
+				
+		  </div>	
+		  
+		  <div class="row justify-content-center">
+				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+					<div class="form-group">
+						<p:outputLabel value="Nacionalidad *" styleClass="mt-3"/>
+
+						<h:selectOneMenu id="idComboNacionalidad" styleClass="custom-select form-control claseComboFormulario" disabled="#{mAlias.codigoCliente ne null}"
+							value="#{mAlias.clienteFormulario.tpPaisByCodPaisNaci.codPais}">
+							<f:selectItem itemLabel="Seleccione..." itemValue="-1"/>
+							<f:selectItems value="#{mAlias.listaComboNacionalidad}" />
+						</h:selectOneMenu>
+						<div id="idMensajeResultadoNacionalidad" > </div>
+					</div>
+				</div>
+		  </div>
+		  
+		  <div class="row justify-content-center">		
+				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+					<div class="form-group">
+						<p:outputLabel value="País (Residencia) *" styleClass="mt-3"/>
+						
+						<h:selectOneMenu  id="idComboPais"  styleClass="custom-select form-control claseComboFormulario"
+							value="#{mAlias.clienteFormulario.tpPaisByCodPaisResi.codPais}">
+							<f:selectItem itemLabel="Seleccione..." itemValue="-1"/>
+							<f:selectItems value="#{mAlias.listaComboPais}" />
+							<p:ajax update="idSeccionUbigeo" event="change" listener="#{mAlias.asignarMostrarSelecionUbigeo}" />
+						</h:selectOneMenu>
+						<div id="idMensajeResultadoPais" > </div>
+					</div>
+					
+				</div>
+			</div>
+		
+			<p:outputPanel id="idSeccionUbigeo">
+			
+				<p:outputPanel rendered="#{mAlias.mostrarSelecionUbigeo}">
+				
+					<div class="row justify-content-center">
+		
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+							<div class="form-group">
+								<p:outputLabel value="Departamento (Residencia) *" styleClass="mt-3"/>
+								<h:selectOneMenu id="idComboDepartamento" styleClass="custom-select form-control claseComboFormulario" value="#{mAlias.valorCodigoDepartamento}">
+									<f:selectItem itemLabel="Seleccione..." itemValue="-1"/>
+									<f:selectItems value="#{mAlias.listaComboDepartamentos}" />
+									<p:ajax update="idComboProvincia,idComboDistrito" event="change" listener="#{mAlias.asignarProvincias}" />
+								</h:selectOneMenu>
+								<div id="idMensajeResultadoDepartamento" > </div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row justify-content-center">	
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+							<div class="form-group">
+								<p:outputLabel value="Provincia (Residencia) *" styleClass="mt-3"/>
+								<h:selectOneMenu id="idComboProvincia" styleClass="custom-select form-control claseComboFormulario" value="#{mAlias.valorCodigoProvincia}">
+									<f:selectItem itemLabel="Seleccione..." itemValue="-1"/>
+									<f:selectItems value="#{mAlias.listaComboProvincias}" />
+									<p:ajax update="idComboDistrito" event="change" listener="#{mAlias.asignarDistritos}"/>
+								</h:selectOneMenu>
+								<div id="idMensajeResultadoProvincia" > </div>
+							</div>
+						</div>
+					</div>	
+					
+					<div class="row justify-content-center">
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+							<div class="form-group">
+								<p:outputLabel value="Distrito (Residencia) *" styleClass="mt-3"/>
+								<h:selectOneMenu id="idComboDistrito" styleClass="custom-select form-control claseComboFormulario" value="#{mAlias.valorCodigoDistrito}">
+									<f:selectItem itemLabel="Seleccione..." itemValue="-1"/>
+									<f:selectItems value="#{mAlias.listaComboDistritos}" />
+								</h:selectOneMenu>
+								<div id="idMensajeResultadoDistrito" > </div>
+							</div>
+						</div>
+						
+					</div>
+				</p:outputPanel>
+			</p:outputPanel>
+			
+			
+			<div class="row justify-content-center">
+					
+					
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+						<div class="form-group">
+							<p:outputLabel value="Dirección *" styleClass="mt-3"/>
+							<p:inputText id="idTxtDireccion"  styleClass="form-control" value="#{mAlias.clienteFormulario.valDirePers}" />
+							<p:watermark for="idTxtDireccion" value="Indica tu dirección" />
+							<div id="idMensajeResultadoDireccion" > </div>
+						</div>
+					</div>
+			</div>	
+			<div class="row justify-content-center">	
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+						<div class="form-group">
+							<p:outputLabel value="Teléfono *" styleClass="mt-3"/>
+							<p:inputText id="idTxtTelefono" styleClass="form-control" value="#{mAlias.clienteFormulario.valTelePers}"/>
+							<p:watermark for="idTxtTelefono" value="Escribe tu número de contacto" />
+							<div id="idMensajeResultadoTelefono" > </div>
+						</div>
+					</div>
+			</div>
+				
+		
+			<div class="row justify-content-center">
+					
+					
+					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+						<div class="form-group">
+							<p:outputLabel value="¿Es usted una Persona Expuesta Políticamente (P.E.P.)?" styleClass="mt-3"/>
+							
+							 <h:inputText style="display:none;"  value="#{mAlias.indSeleccionPep}"  id="idIndicadorPep"/>
+							 
+					        <input id="idInputPep"  type="checkbox" data-toggle="toggle" 
+					        data-onstyle="si-toogle" data-offstyle="no-toogle" data-on="Sí" data-off="No" data-size="sm"/>
+					        
+					        <p:remoteCommand name="metodoRemotoDatosPepo" actionListener="#{mAlias.habilitarDatosPep()}" update="idPanelContenedorDatosPep" />
+					        
+						</div>
+					</div>
+
+			</div>
+			
+			<p:outputPanel id="idPanelContenedorDatosPep">
+						<p:outputPanel rendered="#{mAlias.mostrarDatosSeleccionPep}">
+							<div class="row justify-content-center">
+								<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+									<div class="form-group">
+										<p:outputLabel value="Institución *" styleClass="mt-3"/>
+										<p:inputText id="idTxtInstitucion" styleClass="form-control" value="#{mAlias.clienteFormulario.valPepoInst}"/>
+										<p:watermark for="idTxtInstitucion" value="Indica tu institución" />
+										<div id="idMensajeResultadoInstitucion" > </div>
+									</div>
+								</div>
+							</div>	
+							<div class="row justify-content-center">
+								<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+									<div class="form-group">
+										<p:outputLabel value="Rol *" styleClass="mt-3"/>
+										<p:inputText id="idTxtRol" styleClass="form-control" value="#{mAlias.clienteFormulario.valPepoRol}"/>
+										<p:watermark for="idTxtInstitucion" value="Escribe tu rol" />
+										<div id="idMensajeResultadoRol" > </div>
+									</div>
+								</div>
+							</div>
+						</p:outputPanel>
+			</p:outputPanel>
+			
+			<div class="row justify-content-center">
+				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+					<div class="form-group">
+							
+							<div id="idMensajeResultado" > </div>
+					</div>
+				</div>
+			</div>
+			<div class="row justify-content-center mt-4">	
+				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+					<div class="form-group">
+							<p:remoteCommand name="metodoRemotoEnviarFormulario"  actionListener="#{mAlias.validar()}" update="idMensajeResultadoProceso,idSeccionUsuario" />
+							<p:commandButton   onclick="enviar(event);" styleClass="btn btn-primary-kli botonFormulario"  value="Guardar Datos"   rendered="#{!mAlias.indOperacionEnCurso}"/>
+					</div>
+				</div>
+			
+			</div>
+
+			<!-- Modal Guardar Banco Exitoso -->
+			<div class="modal fade" id="idModalDatosGuardadosExito"
+				tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">Tus datos han sido guardados con éxito.</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-success" data-dismiss="modal" onclick="ejecutarIrAInicioOperacion();">Realizar mi primera operación</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Modal Actualizar Banco Exitoso -->
+			<div class="modal fade" id="idModalDatosActualizaExito"
+				tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">Tus datos han sido actualizados con éxito.</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-success" data-dismiss="modal" onclick="ejecutarIrAInicioOperacion();">Realizar una operación</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Modal Error-->
+			<p:outputPanel id="idMensajeResultadoProceso">
+				<div class="modal fade" id="idModalErrorSistema" tabindex="-1" role="dialog">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title mensajeTituloError">¡ Mensaje del Sistema - ERROR !</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body mensajeCuerpoError">
+								#{mAlias.resultadoProcesoError} <strong>Comuníquese con el área de Soporte.</strong>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</p:outputPanel>
+			
+			<ui:include src="../../../estatus.xhtml" />
+
+		</h:form>
+
+	</section>
+
+
+	</main>
+
+	<footer>
+		<div class="contenedor"></div>
+	</footer>
+
+</h:body>
+
+</html>

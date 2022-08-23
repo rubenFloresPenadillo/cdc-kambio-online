@@ -1,0 +1,919 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;500;600&display=swap');
+@import url(menuInicio.css);
+
+* {
+	margin: 0;
+	padding: 0;
+	/*El width y el height incluyen el padding y el border, pero no el margin. */
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 0.85rem;
+	background: rgba(29,43,56,1);
+	background: -moz-linear-gradient(45deg, rgba(29,43,56,1) 0%, rgba(29,43,56,1) 9%, rgba(76,126,32,1) 100%);
+	background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(29,43,56,1)), color-stop(9%, rgba(29,43,56,1)), color-stop(100%, rgba(76,126,32,1)));
+	background: -webkit-linear-gradient(45deg, rgba(29,43,56,1) 0%, rgba(29,43,56,1) 9%, rgba(76,126,32,1) 100%);
+	background: -o-linear-gradient(45deg, rgba(29,43,56,1) 0%, rgba(29,43,56,1) 9%, rgba(76,126,32,1) 100%);
+	background: -ms-linear-gradient(45deg, rgba(29,43,56,1) 0%, rgba(29,43,56,1) 9%, rgba(76,126,32,1) 100%);
+	background: linear-gradient(45deg, rgba(29,43,56,1) 0%, rgba(29,43,56,1) 9%, rgba(76,126,32,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1d2b38', endColorstr='#4c7e20', GradientType=1 );
+}
+
+section{
+	width: 88%;
+	margin: auto;
+	padding-left: 2%; 
+	padding-right: 2%;
+	background: #fff;
+}
+
+/*Inicio estilos para el procesando*/
+.ui-widget-overlay{
+	background: #2d5972 url(/app/javax.faces.resource/images/ui-bg_flat_0_2d5972_40x100.png.xhtml?ln=primefaces-aristo) 50% 50% repeat-x;
+    opacity: .30;
+    filter: Alpha(Opacity=30);
+}
+
+@media (min-width: 1024px){
+	header {
+	    height: 90px !important;
+	}
+}
+
+.ui-widget-content {
+    border: 1px solid #a8a8a8;
+    background: #fff;
+    color: #4f4f4f;
+    border-radius: 4px 4px 4px 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    border: 0px solid #000000;
+    font-family: Arial,sans-serif;
+    font-size: 1.1em;
+}
+/*Fin estilos para el procesando*/
+
+header {
+    width: 100%;
+    height: 65px;
+    color: #005fa0;
+    font-weight: 500;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+	background: #fff;
+	padding: .5rem 1.25rem;
+    box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+}
+
+
+@media (min-width: 1024px){
+	header {
+	    height: 90px !important;
+	}
+}
+
+@media (min-width: 1024px){
+	.menu {
+	    top: 90px !important;
+	}
+}
+
+.contenedor{
+/* 	width: 90%; */
+	margin: auto;
+}
+
+@media (max-width:1023px) {
+	.imagenLogo{
+		width: 150px !important;
+	}
+}
+
+.imagenLogo{
+	float: left;
+	margin-top: 5px;
+	width: 211.25px;
+}
+
+
+@media (min-width: 1024px){
+	.contenedor {
+		width: 90%;
+	}
+}
+
+#iniciaOperacion {
+    margin-top: 65px;
+/*     position: relative; */
+/* 	height: auto !important; */
+	min-height: 90vh;
+}
+
+.form-group {
+    margin-bottom: 0.5rem;
+}
+
+.margenCuenta{
+	 margin-bottom: 0.1rem !important;
+}
+
+@media (max-width: 768px){
+	.claseContenedorComunicacion{
+		 margin-top: 25px !important;
+	}
+	
+	.contenedorImagenTransferencia{
+		 margin-top: 15px !important;
+	}
+}
+
+.contenedorImagenSeguridad{
+	text-align: center;
+}
+/* .form-group label{ */
+/* 	color: #4D7F21; */
+/* 	font-weight: bold; */
+/* } */
+
+.form-control{
+	font-size: 0.85rem !important;
+}
+
+.clasesCamposFormulario{
+	color: #1d2b38;
+	font-weight: bold;
+	margin-right: 10px;
+/* 	font-size: 1rem !important; */
+}
+
+#idMensajeResultado{
+	margin-top: 10px !important;
+}
+
+.claseMensajeResultado{
+	margin-top: 10px !important;	
+}
+
+.claseErrorFormulario{
+	border-color: red !important;
+	box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.4) !important;
+}
+
+/*Estilos para la calculadora*/
+.seccionCalculadora{
+	margin-top: -20px;
+	text-align: center;	
+}
+
+.claseSeccionTipoCambio{
+	width: 90%;
+	margin:auto;
+	display: table;
+	
+}
+
+.claseSeccionTipoCambioUso{
+	width: 90%;
+	margin:auto;
+	display: table;
+	margin-top: 85px;
+}
+
+.claseCompraVenta{
+	float: right;
+	margin-left: 20px;
+}
+
+.claseCompraVentaUso{
+	float: left;
+	margin-top: 4px;
+}
+
+.claseEtiquetaValorCompraVenta{
+	font-weight: bold;
+}
+
+.claseEtiquetaValorCompraVentaUso{
+	font-weight: bold;
+	margin-left: 5px;
+}
+
+.claseEtiquetaCompraVenta{
+	margin-bottom: 0 !important;
+	margin-right: 5px;	
+}
+
+.inputCalculadora{
+	height: 80px;
+	text-align: right;
+	font-weight: bold;
+	font-size: 30px !important;
+	color: #1d2b38;
+	position: absolute;
+/* 	z-index: 1; */
+	
+/* 	border-width: 1px; */
+/*     border-style: solid; */
+/*     border-color: black; */
+    background: #FAFAFA;
+
+}
+
+.datosEnvioRecibo{
+	position: absolute;
+    z-index: 1;
+    width: 100%;	
+}
+
+.tabCalculadora{
+	width: 50%;
+/* 	height: 60px; */
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.enlaceTabCalculadora{
+	height: 70px;
+}
+
+/* .claseCompra{ */
+/*     background: #FAFAFA !important; */
+/*     border-top: 2px solid #4D7F21 !important; */
+/*     border-right: 2px solid #4D7F21 !important; */
+/*     border-left: 2px solid #4D7F21 !important; */
+/* } */
+
+/* .claseVenta{ */
+/*     background: #FFF !important; */
+/* } */
+
+#idTabCompra{
+	color: 	#1d2b38 !important;
+}
+
+#idTabVenta{
+	color: 	#1d2b38 !important;
+}
+
+.activoVisual{
+	background: #FAFAFA !important;
+    border-top: 2px solid #1d2b38 !important;
+    border-right: 2px solid #1d2b38 !important;
+    border-left: 2px solid #1d2b38 !important;
+    border-top-left-radius: 0.4em !important;
+    border-top-right-radius: 0.4em !important;
+}
+
+.inputSuperior{
+	border: 2px solid #1d2b38;
+	border-radius: 0rem;
+	border-top-left-radius: 0.25em !important;
+    border-top-right-radius: 0.25em !important;
+}
+
+.inputInferior{
+	border-bottom: 2px solid #1d2b38;
+	border-left: 2px solid #1d2b38;
+	border-right: 2px solid #1d2b38;
+	border-radius: 0rem;
+	border-bottom-left-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
+}
+
+.claseTextoEnvioRcibo{
+/* 	position: absolute; */
+}
+
+.filaBandera{
+	text-align: center;
+	position: relative
+}
+
+.claseTipoCambio{
+	display: block;
+	font-size: 15px;
+}
+
+.imagenBanderaCalculadora{
+	position: absolute;
+/* 	font-size: 20px; */
+	padding-top: 25px;
+	left: 25px;
+	z-index: 2;
+	width: 95px;
+}
+
+.contenedora{
+	display: inline-block;
+	width: 90%;
+}
+
+/*Separa las filas de las 2 banderas*/
+.contenedoraInferior{
+	margin-top: 74px;
+}
+
+.nav-tabs{
+	width: 90%;
+    margin: auto;
+}
+
+.tab-content{
+	width: 90%;
+    margin: auto;
+}
+
+.enlaceImagenCambioBandera{
+	z-index: 90;
+	position: absolute;
+	margin-top: 80px;
+	cursor: pointer;
+	margin-left: -25px;
+}
+
+
+
+.imagenCambioBandera{
+	width: 50px;
+	height: 50px;
+}
+
+.tab-pane{
+	margin-top: -16px;
+}
+
+.botonIniciaOperacion{
+	margin-bottom: 15px !important;
+	margin-top: 20px;
+	float: right !important;
+	width: 200px;
+}
+
+.botonIniciaOperacion:before {
+	margin-left: 0em;
+}
+
+.botonIniciaOperacion span {
+    display: inline-block !important;
+    padding: .3em 0em .3em 0.5em !important;
+}
+
+.botonRetornoOperacion{
+	font-weight: bold;
+	margin-bottom: 15px !important;
+	margin-top: 20px;
+	float: left !important;
+	color: #ffffff;
+	background-color: #1D2A37;
+/* 	border: 1.5px solid #4D7F21; */
+	border-radius: 65px 65px 65px 65px !important;
+	width: 210px;
+}
+
+.botonRetornoOperacion:before {
+	margin-left: 0em;
+}
+
+.botonRetornoOperacion span{
+	display: inline-block !important;
+	padding: .3em 0em .3em 0.5em !important;
+}
+
+.botonRetornoOperacion:hover{
+	background-color: #1d2b38;
+}
+
+@media (max-width: 650px){
+	.imagenBanderaCalculadora{
+		width: 60px ;
+		padding-top: 34px;
+/* 		left: 15px; */
+	}
+	
+	.imagenCambioBandera{
+		width: 40px !important;
+		height: 40px !important;
+	}
+	
+	.inputCalculadora{
+		font-size: 24px !important;
+	}
+	
+	.enlaceImagenCambioBandera{
+		margin-top: 83px !important;
+		margin-left: -20px !important;
+	}
+}
+
+
+@media (max-width: 350px){
+	.imagenBanderaCalculadora{
+		width: 55px !important;;
+		padding-top: 35px !important;
+	}
+	
+	.imagenCambioBandera{
+		width: 40px !important;
+		height: 40px !important;
+	}
+
+	.inputCalculadora{
+		font-size: 23px !important;
+	}
+	
+
+}
+
+
+/*Inicia estilos para otro step*/
+.f1 {
+	padding: 25px; 
+	background: #fff;
+	-moz-border-radius: 4px; 
+	-webkit-border-radius: 4px; 
+	border-radius: 4px;
+}
+
+.f1-steps { 
+	overflow: hidden; 
+	position: relative; 
+}
+
+.f1-progress { 
+	position: absolute; 
+	top: 30px; 
+	left: 0; 
+	width: 100%; 
+	height: 3px; 
+	background: #ddd;
+}
+
+.f1-progress-line { 
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	height: 3px; 
+	background: #4D7F21; 
+}
+
+.f1-step { 
+	position: relative; 
+	float: left; 
+	width: 33.333333%; 
+	padding: 0 5px; 
+	text-align: center;
+/* 	margin-top: 6px; */
+}
+
+.f1-step-icon {
+	display: inline-block; 
+/* 	width: 40px;  */
+/* 	height: 40px;  */
+	margin-top: 4px; 
+/* 	background: #ddd; */
+	font-size: 16px; 
+	color: #fff; 
+	line-height: 40px;
+	-moz-border-radius: 50%; 
+	-webkit-border-radius: 50%; 
+	border-radius: 50%;
+}
+.f1-step.activated .f1-step-icon {
+/* 	background: #fff;  */
+/* 	border: 1px solid #4D7F21;  */
+	color: #4D7F21; 
+	line-height: 38px;
+}
+.f1-step.active .f1-step-icon {
+	width: 48px; 
+	height: 48px; 
+	margin-top: 0; 
+/* 	background: #4D7F21;  */
+	font-size: 22px; 
+	line-height: 48px;
+}
+
+.f1-step p { 
+	color: #ccc; 
+}
+
+.f1-step.activated p { 
+	color: #4D7F21; 
+}
+
+.f1-step.active p { 
+	color: #4D7F21;
+/* 	color: #f35b3f;  */
+}
+
+/*fin de otro step*/
+
+.mensajeTituloError{
+    color: #c82333 !important;
+}
+
+.mensajeCuerpoError{
+	color: #dc3545 !important;
+}
+
+.modal-title{
+    color: #4D7F21 !important;
+	font-weight: bold !important;
+}
+
+.modal-content{
+	margin-top: 70px !important;
+}
+
+/*Estilos para transferencia*/
+
+.claseContenedoraBancoImagen{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.contenedorImagenTransferencia{
+	text-align: center;
+}
+
+.claseContenedorCuenta{
+	padding-top: 20px;
+    border-radius: 16px 16px 16px 16px;
+    box-shadow:  6px 6px 21px -1px #4D7F21;
+}
+
+.imagenRegistroSBS{
+	width: 120px;
+    margin-top: 15px;
+}
+
+.claseTextoRegistroSBS{
+	color: #100563 !important;
+	margin-top: 15px;
+	font-size: 0.8em !important;
+    font-weight: bold;
+    text-decoration: underline !important;
+}
+
+.contenedorImagenRegistroSBS{
+	width: 50%;
+    display: inline-block;
+    text-align: right;
+}
+
+.contenedorclaseTextoRegistroSBS{
+	width: 50%;
+    float: right;
+    margin-top: 25px;
+}
+
+
+.imagenPersonajeTransferencia{
+	width: 220px;
+}
+
+
+.imagenLogoTransferencia{
+	width: 220px;
+    margin-top: 30px;
+}
+
+.imagenVerificacionSeguridad{
+	width: 180px;
+    margin-top: 25px;
+}
+
+@media 	(max-width: 1100px) {
+	.imagenVerificacionSeguridad{
+		width: 200px;
+	    margin-top: 10px !important;
+	}
+}
+
+@media 	(max-width: 520px) {	
+	.imagenVerificacionSeguridad{
+		margin-top: 10px !important;
+		width: 200px;
+	    margin-bottom: 15px;
+	}
+}
+
+
+.claseEtiquetaFormulario{
+	margin-bottom: 0px !important;
+}
+
+   
+.table th{
+	border: #1d2b38 2px solid !important;
+    background: #1d2b38;
+    color: white;
+    border-radius: 65px 0px 0px 65px !important;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
+
+.table td{
+	border: #1d2b38 1px solid !important;
+	border-radius: 0px 65px 65px 0px !important;
+/* 	padding-left: 6rem; */
+    padding-right: 6rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
+
+.table {
+  border-spacing: 0 13px !important;
+  border-collapse: separate !important;
+}
+
+/*Para el check del correo*/
+
+.claseValorAliasCuentaCliente {
+	color: #4D7F21 !important;
+	font-weight: bold !important;
+}
+
+.claseCheckCorreo{
+	height: 1rem;
+	width: 1rem;
+	float: right !important;
+    margin-top: 3px !important;
+    margin-right: 10px !important;
+}
+
+.claseTextoCheckCorreo{
+	float: right;
+}
+
+.imagenEnvioRecibo{
+	margin-top: 35px;
+	margin-bottom: 15px;
+	height: 150px;
+	width: 150px;
+}
+
+/*Fin Estilos para transferencia*/
+
+.contenerdorEnlaceCuentas{
+	text-align: right;	
+}
+
+.enlaceCuentas{
+	color: #ED0600;
+	font-weight: bold;
+}
+
+.enlaceCuentas:hover{
+	color: #ED0600 !important; 
+}
+
+.claseTituloPaso{
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: #1d2b38;
+	margin-top: 45px;
+}
+
+.ui-dialog-mask {
+   background: #2d5972 url(/app/javax.faces.resource/images/ui-bg_flat_0_2d5972_40x100.png.xhtml?ln=primefaces-aristo) 50% 50% repeat-x !important; 
+    opacity: .30 !important; 
+}
+
+.ui-dialog{
+  background-color: #fff !important;
+} 
+
+.cursorPointer{
+	cursor: pointer;
+	font-weight: bold !important;
+	color: #4D7F21 !important;
+}
+
+/* .claseMensajeSeleccionarCuenta{ */
+/* 	margin-top: 20px; */
+/* } */
+
+.claseMensajeCCI label{
+/* 	font-weight: bold !important; */
+	color: #FF6743 !important;
+}
+
+
+.botonIniciarOperacionPerfil{
+	color: #fff !important;
+	padding: 0.14rem 0.60rem !important;
+    font-size: 0.9rem !important;
+}
+
+.botonIniciarOperacionPerfil:before {
+    margin-left: 0em;
+}
+
+.botonIniciarOperacionPerfil span {
+    display: inline-block !important;
+    padding: .3em 0em .3em 0.5em !important;
+}
+
+.botonIniciarOperacionPerfil:hover {
+    border-bottom: none !important;
+}
+
+.btn-success {
+    color: #ffffff !important;
+    font-weight: bold;
+    background-color: #005fa0 !important;
+    border-color: #005fa0 !important;
+    border-radius: 65px 65px 65px 65px !important;
+}
+
+.btn-success:hover {
+    background-color: #4D7F21 !important;
+}
+
+/* Inicio Estilos cupon */
+
+/* CSS styles */
+
+:root {
+    --primary-blue: #0032ff;
+    --secondary-blue: #000096;
+    --tertiary-blue: #c3d4ff;
+    --quaternary-blue: #3a559f;
+    --quinary-blue: #0077b7;
+    --primary-lightblue: #00c8ff;
+    --secondary-lightblue: #f7f9ff;
+    --tertiary-lightblue: #e5f1ff;
+    --quaternary-lightblue: #316ff8;
+    --quinary-lightblue: #0fa4c5;
+    --sextary-lightblue: #5a99d4;
+    --primary-orange: #ff6e00;
+    --secondary-orange: #f90;
+    --tertiary-orange: rgba(255,110,0,0.6);
+    --quaternary-orange: #ffd3b3;
+    --primary-green: #2bd346;
+    --secondary-green: #05be50;
+    --tertiary-green: #eafbed;
+    --quaternary-green: #4aa582;
+    --quinary-green: #46dba3;
+    --primary-yellow: #ffe600;
+    --secondary-yellow: #f7b600;
+    --tertiary-yellow: #d0e139;
+    --quaternary-yellow: #f9c943;
+    --primary-red: #ff2e00;
+    --secondary-red: #e43b30;
+    --primary-white: #fff;
+    --secondary-white: #ededed;
+    --primary-black: #000;
+    --secondary-black: #3e4045;
+    --primary-gray: #707e9b;
+    --secondary-gray: #cdd6e0;
+    --tertiary-gray: #8e8e8e;
+    --quaternary-gray: #c1c1c3;
+    --quinary-gray: #f6f9ff;
+    --primary-pink: #ff0f64;
+    --primary-purple: #662974;
+    --secondary-purple: #9f1fac;
+    --tertiary-purple: #8a2be2;
+    --quaternary-purple: #8098ff;
+    --primary-shadow-black: rgba(0,0,0,0.25);
+    --secondary-shadow-black: rgba(0,0,0,0.87);
+    --tertiary-shadow-black: rgba(0,50,255,0);
+    --primary-shadow-gray: rgba(145,150,163,0.5);
+    --secondary-shadow-gray: rgba(187,195,214,0.4);
+    --primary-shadow-blue: rgba(90,153,212,0.5);
+    --secondary-shadow-blue: rgba(36,80,220,0.5);
+    --tertiary-shadow-blue: rgba(0,50,255,0.7);
+    --primary-shadow-green: rgba(86,255,44,0.5);
+    --secondary-shadow-green: rgba(74,165,130,0.2);
+    --tertiary-shadow-green: rgba(70,219,163,0.2);
+    --primary-shadow-yellow: rgba(208,225,57,0.2);
+    --primary-shadow-orange: rgba(249,201,67,0.2);
+    --secondary-shadow-orange: rgba(254,184,70,0.2);
+    --tertiary-shadow-orange: rgba(255,154,72,0.2);
+}
+
+.promo-code {
+    margin-top: 0.4em;
+}
+
+.mat-drawer-container {
+    background-color: #fafafa;
+    color: rgba(0,0,0,.87);
+}
+
+
+.promo-code .code-ticket {
+    border-radius: 5px 0 0 5px;
+    border-color: var(--primary-gray);
+    border-right: 2px dashed;
+    padding: 12px;
+    border: 2px dashed var(--primary-shadow-gray);
+    border-right: var(--primary-shadow-gray);
+}
+
+
+.mat-drawer-container {
+    background-color: #fafafa;
+    color: rgba(0,0,0,.87);
+}
+
+.promo-code .code-ticket input {
+    font: inherit;
+    background: rgba(0,0,0,0);
+    color: currentColor;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    vertical-align: bottom;
+    text-align: inherit;
+    font-size: 14px;
+}
+
+.cdk-text-field-autofill-monitored:not(:-webkit-autofill) {
+    -webkit-animation: cdk-text-field-autofill-end 0s 1ms;
+    animation: cdk-text-field-autofill-end 0s 1ms;
+}
+
+.mat-input-element {
+    caret-color: #2962ff;
+}
+
+.promo-code .ticket-button {
+    border-radius: 0 5px 5px 0;
+    border: 1px solid var(--secondary-gray);
+    background-color: var(--tertiary-lightblue);
+    color: var(--primary-blue);
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
+    box-sizing: border-box;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+    vertical-align: baseline;
+    text-align: center;
+    margin: 0;
+    min-width: 64px;
+    line-height: 36px;
+    padding: 0 16px;
+    border-radius: 4px;
+    overflow: visible;
+}
+
+.mat-button, .mat-icon-button, .mat-stroked-button {
+    color: inherit;
+    background: rgba(0,0,0,0);
+}
+
+.promo-code .code-ticket {
+    border-radius: 5px 0 0 5px;
+    border-color: var(--primary-gray);
+    border-right: 2px dashed;
+    padding: 12px;
+    border: 2px dashed var(--primary-shadow-gray);
+    border-right: var(--primary-shadow-gray);
+}
+
+/* Fin estilos cupon*/
+
+.claseIconoPasos{
+	width: 60px;
+}
+
+.line-shape, .line-shape-white {
+    width: 100px;
+    height: 5px;
+    background-color: #005fa0;
+    margin-top: 25px !important;
+    margin-bottom: 30px !important;
+    border-radius: 100px;
+    margin: auto
+}
+
+.imagenMoney{
+	width: 350px;
+}

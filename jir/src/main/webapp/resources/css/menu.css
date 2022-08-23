@@ -1,0 +1,228 @@
+
+#menu-bar {
+	display: none;
+}
+
+header label {
+	float: right;
+	font-size: 28px;
+	margin: 5px 0;  
+	cursor: pointer;
+}
+
+.menu {
+	position: absolute;
+	/*Para que comience despues del header*/
+	top: 65px; 
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background: rgba(210,227,241,1);
+	background: -moz-linear-gradient(left, rgba(210,227,241,1) 0%, rgba(92,155,208,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(210,227,241,1)), color-stop(100%, rgba(92,155,208,1)));
+	background: -webkit-linear-gradient(left, rgba(210,227,241,1) 0%, rgba(92,155,208,1) 100%);
+	background: -o-linear-gradient(left, rgba(210,227,241,1) 0%, rgba(92,155,208,1) 100%);
+	background: -ms-linear-gradient(left, rgba(210,227,241,1) 0%, rgba(92,155,208,1) 100%);
+	background: linear-gradient(to right, rgba(210,227,241,1) 0%, rgba(92,155,208,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2e3f1', endColorstr='#5c9bd0', GradientType=1 );
+	/*Para el efecto del menu*/
+	transition: all 0.5s;
+	transform: translateX(-100%);
+}
+
+@media (min-width: 1024px){
+	.menu {
+	    top: 90px !important;
+	}
+}
+
+
+
+.menu ul{
+	margin-bottom: 0 !important;
+}
+
+.menu li{
+	display: block;
+	color: #004aad;
+	height: 60px;
+	width: 100%;
+	 /*Quita los subrayados*/
+/* 	text-decoration: none; */
+	padding-top: 20px;
+    padding-left: 20px;
+    float: left;
+	border-bottom: 1px solid #004aad;
+}
+
+.menu li:hover > a{
+	 color: white;
+	 cursor: pointer;
+}
+
+.menu li:hover{
+	background: #004aad;
+	 color: white;
+	 cursor: pointer;
+}
+
+.menu a{
+	font-weight: bold;
+	color: #005fa0;
+}
+
+.menu a:hover{
+	border-bottom: 3px solid #005fa0;
+    text-decoration: none;
+    color: #005fa0;
+}
+
+/* .claseDatos{ */
+/* 	background: #004aad; */
+/* 	color: #fff !important; */
+/* } */
+
+#menu-bar:checked ~ .menu{
+	transform: translateX(0%);
+}
+
+
+.botonIniciarOperacionGeneral{
+	color: #004aad !important;
+	font-weight: bold !important;
+	padding-right: 20px;
+    padding-left: 20px;
+	padding-bottom: 10px !important;
+	padding-top: 10px !important;
+	display: initial !important;
+}
+
+.botonIniciarOperacionGeneral:before {
+    margin-left: 0em;
+}
+
+.botonIniciarOperacionGeneral span {
+    display: inline-block !important;
+    padding: .3em 0em .3em 0.5em !important;
+}
+
+
+.btn-primary-kli {
+    color: #fff !important;
+    background-color: #4D7F21;
+    border-color: #4D7F21;
+    border-radius: 65px 65px 65px 65px;
+}
+
+.btn-primary-kli:hover {
+    background-color: #426C1C !important;
+    border-bottom: 3px solid #426C1C !important;
+}
+
+.btn-secondary-kli {
+    color: #fff !important;
+    background-color: #005fa0;
+    border-color: #005fa0;
+    border-radius: 65px 65px 65px 65px;
+}
+
+.btn-secondary-kli:hover {
+    background-color: #63A82B;
+	border-bottom: 3px solid #63A82B !important;
+}
+
+
+.btn-registrate {
+    color: #005fa0 !important;
+    background-color: #fff;
+    border-color: #005fa0;
+    border-radius: 12px 12px 12px 12px;
+    border: 2.5px solid #005fa0;
+}
+
+.btn-registrate:hover {
+	color: #fff !important;
+	background-color: #005fa0;
+    border-color: #fff;
+    border-radius: 12px 12px 12px 12px;
+    border: 2.5px solid #005fa0 !important;
+/* 	border-bottom: none !important; */
+}
+
+.btn-inicia-sesion {
+    color: #fff !important;
+    border-color: #fff;
+    border-radius: 12px 12px 12px 12px;
+    border: 2.5px solid #005fa0;
+    background: #005fa0;
+}
+
+.btn-inicia-sesion:hover {
+	color: #005fa0 !important;
+    background-color: #fff;
+    border-color: #005fa0;
+    border-radius: 12px 12px 12px 12px;
+    border: 2.5px solid #005fa0 !important;
+}
+
+.btn-inicia-operacion {
+    color: #fff !important;
+    background-color: #005fa0;
+    border-color: #005fa0;
+    border-radius: 65px 65px 65px 65px;
+}
+
+.btn-inicia-operacion:hover {
+    background-color: #426C1C !important;
+/*     border-bottom: 3px solid #426C1C !important; */
+}
+
+
+/*Cuando sea para escritorio*/
+@media (min-width:1340px) {
+	.menu{
+		position: static;
+		width: auto;
+		height: auto;
+		transform: translateX(0%);
+		float: right;
+		display: flex;
+		background: none;
+
+	}
+	
+	
+	.menu li{
+		width: auto;
+		color: #004aad; 
+		border-bottom: none;
+		height: 64px;
+		padding: 22px !important;
+	}
+	
+	.menu li:hover > a{
+		 color: #005fa0;
+	}
+
+	.menu li:hover{
+		background: none;
+	}
+
+	.menu a{
+		color: #005fa0;
+	}
+
+	/*Ocultamos el icono del menu*/
+	header label{
+		display: none;
+	}
+	
+}
+
+
+
+
+
+
+
+

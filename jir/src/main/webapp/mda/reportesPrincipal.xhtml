@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<link rel="shortcut icon" href="../resources/imagenes/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="../resources/css/bootstrap.css" />
+
+	<script type="text/javascript" src="../resources/js/popper.min.js"></script>
+	<script type="text/javascript" src="../resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../resources/js/principalControl.js"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="../resources/css/fontello.css" />
+	<link rel="stylesheet" type="text/css" href="../resources/css/datatables.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../resources/css/estilosControl.css"/> 
+	
+	<script type="text/javascript" src="../resources/js/datatables.min.js"></script>
+
+	<title>Panel de Control</title>
+	
+</h:head>
+<h:body>
+
+	<ui:param name="mAlias" value="#{reportesPrincipalBean}" />
+
+	<header>
+		<div class="contenedor">
+			
+			<a  href="../index.xhtml">
+				<img class="claseImagenLogoHorizontal" src="../resources/imagenes/logoJirehPlus.png" alt="Logo JirehPlus"/>
+			</a>
+
+			<h:selectBooleanCheckbox  id="menu-bar"/>
+			<label class="icon-down-dir" for="menu-bar" id="idFlechaAbajo" ></label> 
+			<h:outputLabel id="idSeccionUsuario" class="icon-user-circle" for="menu-bar" value="#{mAlias.valorNombre}"/>
+			
+			<nav class="menu">
+				<ul>
+					<li onclick="window.location.href='panelPrincipal.xhtml'">
+						<a href="panelPrincipal.xhtml">Panel de Control</a>
+					</li>
+					<li onclick="window.location.href='reportesPrincipal.xhtml'">
+						<a class="claseControl" href="reportesPrincipal.xhtml" >Reportes</a>
+					</li>	
+					<li>
+						<a href="#" id="idEnlaceCerrarSesion" onclick="mostrarPopupCerrarSesion();" >Cerrar Sesion</a>
+					</li>	
+				</ul>
+			</nav>
+
+			<a id="idBotonCerrarSesion"  class="btn botonCerrarSesion icon-power" href="#" title="Cerrar sesión" onclick="mostrarPopupCerrarSesion();" />
+
+		</div>
+	</header>
+
+	<main>
+	<section id="control">
+	
+		<!-- Modal cerrar sesion-->
+		<div class="modal fade" id="idModalConfirmacionCerrarSesion" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body"> ¿Estás seguro de cerrar sesión?</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal" onclick="ejecutarCerrarSesionRemoto();">Aceptar</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" >Cancelar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<h:form id="idFormControl" method="post" role="form" class="form-horizontal">
+		
+			<p:remoteCommand name="ejecutarCerrarSesionRemoto" actionListener="#{mAlias.procesarCerrarSesion()}"/>
+			
+			<div class="row mx-auto">
+					<p class="claseTitulo">Reportes del Sistema</p>
+			</div>
+			
+			<div class="contenedor">
+					
+					<div class="claseOpcionesPanel">
+						<p:commandButton value="" title="Operaciones"
+								styleClass="imagenBotonOperacionesReporte64x64 claseBotonElementoMenu"
+								action="opciones/operacionesControlReport?faces-redirect=true">
+						</p:commandButton>
+						<p class="claseSubtituloControl">Operaciones</p>
+					</div>
+
+<!-- 					<div class="claseOpcionesPanel"> -->
+<!-- 						<p:commandButton value="" title="Usuarios" -->
+<!-- 								styleClass="imagenBotonUsuarios64x64 claseBotonElementoMenu" -->
+<!-- 								action="opciones/usuarios?faces-redirect=true"> -->
+<!-- 						</p:commandButton> -->
+<!-- 						<p class="claseSubtituloControl">Usuarios</p> -->
+<!-- 					</div> -->
+<!-- 					<div class="claseOpcionesPanel"> -->
+<!-- 						<p:commandButton value="" title="Tipo de cambio" -->
+<!-- 								styleClass="imagenBotonCambio64x64 claseBotonElementoMenu" -->
+<!-- 								action="opciones/cambio?faces-redirect=true"> -->
+<!-- 						</p:commandButton> -->
+<!-- 						<p class="claseSubtituloControl">Cambio</p> -->
+<!-- 					</div> -->
+<!-- 					<div class="claseOpcionesPanel"> -->
+<!-- 						<p:commandButton value="" title="Bancos" -->
+<!-- 								styleClass="imagenBotonBancos64x64 claseBotonElementoMenu" -->
+<!-- 								action="opciones/bancos?faces-redirect=true"> -->
+<!-- 						</p:commandButton> -->
+<!-- 						<p class="claseSubtituloControl">Bancos</p> -->
+<!-- 					</div> -->
+<!-- 					<div class="claseOpcionesPanel"> -->
+<!-- 						<p:commandButton value="" title="Cuentas" -->
+<!-- 								styleClass="imagenBotonCuentasBancarias64x64 claseBotonElementoMenu" -->
+<!-- 								action="opciones/cuentasBancariasAdmin?faces-redirect=true"> -->
+<!-- 						</p:commandButton> -->
+<!-- 						<p class="claseSubtituloControl">Cuentas</p> -->
+<!-- 					</div> -->
+					
+<!-- 					<div class="claseOpcionesPanel"> -->
+<!-- 						<p:commandButton value="" title="Divisas" -->
+<!-- 								styleClass="imagenBotonDivisas64x64 claseBotonElementoMenu" -->
+<!-- 								action="opciones/divisas?faces-redirect=true"> -->
+<!-- 						</p:commandButton> -->
+<!-- 						<p class="claseSubtituloControl">Divisas</p> -->
+<!-- 					</div> -->
+					
+<!-- 					<div class="claseOpcionesPanel"> -->
+<!-- 						<p:commandButton value="" title="Configuración general" -->
+<!-- 								styleClass="imagenBotonConfiguracionSistema64x64 claseBotonElementoMenu" -->
+<!-- 								action="opciones/parametrosGenerales?faces-redirect=true"> -->
+<!-- 						</p:commandButton> -->
+<!-- 						<p class="claseSubtituloControl">Configuración</p> -->
+<!-- 					</div> -->
+					
+					
+<!-- 					<div class="claseOpcionesPanel"> -->
+<!-- 						<p:commandButton value="" title="Configuración general" -->
+<!-- 								styleClass="imagenPregunta64x64 claseBotonElementoMenu" -->
+<!-- 								action="opciones/ayudaConfiguracion?faces-redirect=true"> -->
+<!-- 						</p:commandButton> -->
+<!-- 						<p class="claseSubtituloControl">Ayuda</p> -->
+<!-- 					</div> -->
+					
+<!-- 					<div class="claseOpcionesPanel"> -->
+<!-- 						<p:commandButton value="" title="Editar Datos de la Empresa" -->
+<!-- 								styleClass="imagenBotonInformacionPersonal64x64 claseBotonElementoMenu" -->
+<!-- 								action="opciones/informacionEmpresa?faces-redirect=true"> -->
+<!-- 						</p:commandButton> -->
+<!-- 						<p class="claseSubtituloControl">Datos Empresa</p> -->
+<!-- 					</div> -->
+					
+<!-- 					<div class="claseOpcionesPanel"> -->
+<!-- 						<p:commandButton value="" title="Blog" -->
+<!-- 								styleClass="imagenBotonBlog64x64 claseBotonElementoMenu" -->
+<!-- 								action="opciones/blogGeneral?faces-redirect=true"> -->
+<!-- 						</p:commandButton> -->
+<!-- 						<p class="claseSubtituloControl">Blog</p> -->
+<!-- 					</div> -->
+<!-- 					<div class="claseOpcionesPanel"> -->
+<!-- 						<p:commandButton value="" title="Clientes" -->
+<!-- 								styleClass="imagenBotonClientes64x64 claseBotonElementoMenu" -->
+<!-- 								action="opciones/usuarios?faces-redirect=true"> -->
+<!-- 						</p:commandButton> -->
+<!-- 						<p class="claseSubtituloControl">Clientes</p> -->
+<!-- 					</div> -->					
+			</div>
+			
+
+		</h:form>
+
+	</section>
+
+
+	</main>
+
+	<footer>
+		<div class="contenedor"></div>
+	</footer>
+
+</h:body>
+
+</html>
