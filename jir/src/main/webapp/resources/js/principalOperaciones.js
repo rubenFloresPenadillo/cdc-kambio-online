@@ -49,6 +49,6 @@ function procesoConError(){
 }
 
 function enlaceWhatsappVerificacion(codigoOperacion) {
-	 var win = window.open('https://api.whatsapp.com/send?phone=51939722555&text=Hola,%20solicito%20información%20de%20mi%20operación%20con%20código%20'+codigoOperacion, '_blank');
+	 var win = window.open('https://api.whatsapp.com/send?phone=51992278011&text=Hola,%20solicito%20información%20de%20mi%20operación%20con%20código%20'+codigoOperacion, '_blank');
 	 win.focus();  
 }

@@ -263,6 +263,7 @@ public class ServiceClienteImpl  implements ServiceCliente{
 			resultado.getTpClien().setValDocuPers(String.valueOf(temporal[14]));
 			resultado.getTpTipoCuent().setDesTipoCuen(String.valueOf(temporal[15]));
 			resultado.setAliCuen(String.valueOf(temporal[16]));
+			resultado.getTpBanco().setCodBanc((Integer) temporal[17]);
 			
 			if(ElementosTablasType.TIPO_PERSONERIA_NATURAL.getIdElemento().equals(resultado.getTpClien().getTpTipoDocumPerso().getTpTipoPerso().getCodTipoPers())) {
 				StringBuilder sb = new StringBuilder();

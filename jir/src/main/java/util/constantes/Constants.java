@@ -40,10 +40,10 @@ public class Constants {
 	public static final String FACTURACION_ELECTRONICA_TIPO_DOCUMENTO_NO_DOMICILIADO_SIN_RUC= "0";
 	
 //  RUTA para enviar documentos
-	public static final String FACTURACION_ELECTRONICA_RUTA = "https://api.pse.pe/api/v1/f0cc06113d9a4d13ace55ab5e2716fe95ef57ac43d5b413c8c7e59299518dc80";
+	public static final String FACTURACION_ELECTRONICA_RUTA = "https://api.pse.pe/api/v1/b54a8e608f7a45eca725a88ae1ed51f9044369c00c68493b95786ec77e754a95";
     
 //  TOKEN para enviar documentos    
-	public static final String FACTURACION_ELECTRONICA_TOKEN = "eyJhbGciOiJIUzI1NiJ9.ImZhZmMxOGY1NzgzOTRiY2Y4OWJkNWJjYWRmNDRlZjc0YTYyN2NjMmZjNzRkNGJkYzhiYWMwZTViNDUxYjdhMmQi.JS403dX0e_bWrtFmPkqj90bGftRXXB7zVWT0BrFhnvU";
+	public static final String FACTURACION_ELECTRONICA_TOKEN = "eyJhbGciOiJIUzI1NiJ9.IjM2NjUxOWZiNjIzZDQ0ZWI4YmU4ZTkwNjUzYTU1ZTI3ODk5MTJmM2FmZWM1NGE3ODgxMTgyZGZkN2ZhZjM3MWEi.UjRTGr5Iv0P15118TAIV5psVossbNN20rf84ot6CIMI";
                  
 	
 	

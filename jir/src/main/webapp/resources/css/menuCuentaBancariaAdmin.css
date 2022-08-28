@@ -90,7 +90,7 @@ header label {
 		float: left;
 		display: flex;
      	font-size: 0.9rem; 
-        background: #1d2b38 !important;
+       background: #fff !important;
 	}
 	
 	#idEnlaceCerrarSesion{

@@ -6,7 +6,7 @@ $(document).ready(function() {
 });
 
 function enlaceWhatsappVerificacion() {
-	 var win = window.open('https://api.whatsapp.com/send?phone=51939722555&text=Hola,%20adjunto%20mi%20comprobante%20', '_blank');
+	 var win = window.open('https://api.whatsapp.com/send?phone=51992278011&text=Hola,%20adjunto%20mi%20comprobante%20', '_blank');
 	 win.focus();  
 }
 

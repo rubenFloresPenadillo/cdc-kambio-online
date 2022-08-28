@@ -11,12 +11,14 @@
 	}
 }
 
+
+
 /* para darle un tono ocapo a la imagen */
 #banner:before {
     content: '';
     width: 100%;
     height: 100%;
-    background: #1f2f40;
+/*     background: #1f2f40; */
     position: absolute;
     left: 0;
     top: 0;
@@ -29,11 +31,11 @@
     right: 0;
     height: 100%;
     width: 100%;
-	background-image: url(../../resources/imagenes/plazaCajamarca.svg) !important;
+	background-image: url(../../resources/imagenes/fondoPrincipalHome.png) !important;
 
     background-position: bottom;
-    /* background-size: cover; */
-    background-repeat: repeat-x;
+    background-size: cover;
+/*     background-repeat: repeat-x; */
 }
 
 
@@ -184,9 +186,16 @@
 	background: rgba(51,51,51,0.5);
 }
 
-@media 	(min-width: 768px) {
+@media 	(min-width: 992px) {
 	#banner {
-		height: 720px;
+		height: 690px;
+		margin-bottom: 0px !important;
+	}
+}
+
+@media screen and (min-width: 768px) and  (max-width: 991px) {	
+	#banner {
+		height: 500px;
 		margin-bottom: 0px !important;
 	}
 }
@@ -387,7 +396,7 @@
 }
 
 .claseColorSecundarioBannerOld{
-	color: #005fa0;
+	color: #019e84;
 	font-weight: bold;
 	
 	display: block;
@@ -401,11 +410,14 @@
 
 
 .claseColorSecundarioBanner{
-	color: #005fa0;
+	color: #019e84;
 	font-weight: bold;
 }
 
-
+.claseColorBanner{
+	background: #fff;
+/* 	border-radius: 12px 12px 12px 12px; */
+}
 
 @keyframes typing { 
 	from {width: 0}
@@ -431,7 +443,7 @@
 }
 
 .clasePersonajeFlotando{
-	width: 450px;
-	margin-top: -70px;
-    margin-right: -150px;
+	width: 250px;
+/* 	margin-top: 50px; */
+/*     margin-right: -150px; */
 }

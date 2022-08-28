@@ -265,13 +265,13 @@ section{
 }
 
 footer{
-	background: #1D2A37;
+	background: #005fa0;
 	color: #fff;
 	font-size: 0.85em;
 }
 
 footer hr{
-	border-top: 2px solid #005fa0 !important;
+	border-top: 2px solid #019e84 !important;
 }
 
 .claseEnlacePiePagina a {
@@ -450,8 +450,8 @@ footer hr{
 }
 
 .imagenLogoFooter {
-    width: 140px;
-    margin-bottom: 20px;
+	width: 180px;
+	margin-bottom: 30px;
 }
 
 

@@ -279,7 +279,7 @@ public class DaoOperacionClienteImpl implements DaoOperacionCliente {
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append("select toc.codOperClie, toc.tpEstadOpera.codEstaOper , toc.indCompVent, toc.valTipoCambUsad, toc.monEnvi, toc.monReci,  toc.tpDivisByCodDiviEnvi.codDivi, toc.tpCuentBancoByCodCuenBancClieReci.codCuenBanc, ");
-		sb.append(" toc.tpClien.valPrimNombPers, toc.codCupoUsad, toc.nomCupoUsad, toc.monDescCupoUsad, toc.valCambCompCupo, toc.valCambVentCupo, toc.codTranBanc ");
+		sb.append(" toc.tpClien.valPrimNombPers, toc.codCupoUsad, toc.nomCupoUsad, toc.monDescCupoUsad, toc.valCambCompCupo, toc.valCambVentCupo, toc.codTranBanc, toc.tpCuentBancoByCodCuenBancClieOrig.tpBanco.codBanc, toc.tpCuentBancoByCodCuenBancClieOrig.codCuenBanc ");
 		sb.append(" from TpOperaClien toc where 1=1 ");
 		if(!ValidacionesNumeros.esCeroONuloEntero(tpOperaClien.getCodOperClie())) {
 			sb.append("and toc.codOperClie = :codOperClie ");

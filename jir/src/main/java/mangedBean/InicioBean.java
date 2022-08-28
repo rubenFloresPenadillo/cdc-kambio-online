@@ -311,6 +311,14 @@ public class InicioBean {
     			        	cuentaBancoAdminDetalle.getTpDivis().setCodDivi(operacionClienteFormulario.getTpDivisByCodDiviEnvi().getCodDivi());
     			        	cuentaBancoAdminDetalle.getTpClien().setCodClie(NumerosType.INDICADOR_POSITIVO_UNO.getValor());
     			        	
+    			        	
+    			        	/* Obtenemos el codigo de banco de la cuenta bancaria desde donde el cliente envia su dinero*/
+    			        	ServiceCliente serviceClienteBancoOrigen = new ServiceClienteImpl();
+//    			        	operacionClienteFormulario.getTpCuentBancoByCodCuenBancClieOrig().getTpClien().setCodClie(codigoCliente);
+    			        	TpCuentBancoDto tpCuentBancoByCodCuenBancClieOrig = serviceClienteBancoOrigen.getCuentaBanco(operacionClienteFormulario.getTpCuentBancoByCodCuenBancClieOrig());
+    			        	
+    			        	cuentaBancoAdminDetalle.getTpBanco().setCodBanc(tpCuentBancoByCodCuenBancClieOrig.getTpBanco().getCodBanc());
+    			        	
     			        	ServiceCliente serviceCliente = new ServiceClienteImpl();
     			        	
     			        	cuentaBancoAdminDetalle = serviceCliente.getCuentaBanco(cuentaBancoAdminDetalle);
@@ -648,6 +656,13 @@ public class InicioBean {
         	cuentaBancoAdminDetalle.getTpDivis().setCodDivi(operacionClienteFormulario.getTpDivisByCodDiviEnvi().getCodDivi());
         	cuentaBancoAdminDetalle.getTpClien().setCodClie(NumerosType.INDICADOR_POSITIVO_UNO.getValor());
         	
+        	/* Obtenemos el codigo de banco de la cuenta bancaria desde donde el cliente envia su dinero*/
+        	ServiceCliente serviceClienteBancoOrigen = new ServiceClienteImpl();
+        	
+        	TpCuentBancoDto tpCuentBancoByCodCuenBancClieOrig = serviceClienteBancoOrigen.getCuentaBanco(operacionClienteFormulario.getTpCuentBancoByCodCuenBancClieOrig());
+        	
+        	cuentaBancoAdminDetalle.getTpBanco().setCodBanc(tpCuentBancoByCodCuenBancClieOrig.getTpBanco().getCodBanc());
+        			
         	ServiceCliente serviceCliente = new ServiceClienteImpl();
         	
         	cuentaBancoAdminDetalle = serviceCliente.getCuentaBanco(cuentaBancoAdminDetalle);

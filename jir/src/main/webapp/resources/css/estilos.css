@@ -119,18 +119,18 @@ section{
 
 
 footer{
-	background: #1D2A37;
+	background: #005fa0;
 	color: #fff;
 	font-size: 0.85em;
 }
 
 footer hr{
-	border-top: 2px solid #005fa0 !important;
+	border-top: 2px solid #019e84 !important;
 }
 
 .imagenLogoFooter{
-	width: 140px;
-	margin-bottom: 20px;	
+	width: 180px;
+	margin-bottom: 30px;	
 }
 
 .claseEnlacePiePagina a {
@@ -616,7 +616,7 @@ figure {
 }
 
 .tc-active {
-    color: #4D7F21;
+    color: #005fa0;
     font: bold;
     text-align: left;
 }
@@ -790,7 +790,7 @@ form.custom-form label span {
 
 .text-encasa h4 {
     font-weight: 600;
-    color: #fff;
+    color: #005fa0;
     font-family: Montserrat!important;
     font-size: 2.3rem;
     line-height: 1.25;
@@ -891,6 +891,20 @@ form.custom-form label span {
 	.icon-with-text p{
 		font-size: 0.85rem;
 	}
+	
+}
+
+
+@media (max-width: 767px){
+	#bancosEntidades{
+		margin-top: 560px !important;
+	}
+}
+
+@media (min-width: 768px){
+	#bancosEntidades{
+		margin-top: 20px;
+	}
 }
 
 
@@ -987,6 +1001,15 @@ section.supported-banks .other-banks {
 	.text-encasa{
 		padding-left: 35px;
 	}
+	
+	.claseItemTransferenciasBancos{
+		margin-top: 80px;
+	}
+	
+	.comoFunciona-item{
+		margin-top: 50px !important;
+		margin-bottom: 50px !important;
+	}
 }
 
 @media (min-width: 1120px){
@@ -1006,7 +1029,7 @@ section.supported-banks .other-banks {
 		display: none;
 	}	
 	.text-encasa{
-		margin-top: 180px;
+		margin-top: 40px;
 	}
 /* 	.header-content-icon-desktop{ */
 /* 		display: none; */
@@ -1034,3 +1057,7 @@ section.supported-banks .other-banks {
 .claseIconosFooter img{
 	width: 25px;
 }
+
+/* .claseIconosFooter div{ */
+/* 	width: 15% !important; */
+/* } */

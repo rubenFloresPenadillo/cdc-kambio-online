@@ -191,7 +191,7 @@ public class DaoClienteImpl implements DaoCliente {
         StringBuilder sb = new StringBuilder();
         sb.append("select tcba.codCuenBanc, tcba.valCuenBanc, tcba.valCuenInte, tcba.tpBanco.codCortBanc, tcba.tpBanco.nomBanc, tcba.tpDivis.codIsoDivi, tcba.tpDivis.simDivi, ");
         sb.append(" tcba.tpClien.tpTipoDocumPerso.tpTipoPerso.codTipoPers, tcba.tpClien.tpTipoDocumPerso.nomTipoDocuPers, tcba.tpClien.valPrimNombPers, tcba.tpClien.valSeguNombPers, tcba.tpClien.valPrimApelPers, tcba.tpClien.valSeguApelPers, ");
-        sb.append(" tcba.tpClien.valRazoSociPers, tcba.tpClien.valDocuPers, tcba.tpTipoCuent.desTipoCuen, tcba.aliCuen ");
+        sb.append(" tcba.tpClien.valRazoSociPers, tcba.tpClien.valDocuPers, tcba.tpTipoCuent.desTipoCuen, tcba.aliCuen, tcba.tpBanco.codBanc ");
         sb.append(" from TpCuentBanco tcba");
         sb.append(" where tcba.indEsta = :indEsta ");
         sb.append(" and tcba.tpBanco.indEsta = :indEsta ");

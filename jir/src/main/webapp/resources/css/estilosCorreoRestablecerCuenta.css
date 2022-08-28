@@ -251,8 +251,9 @@ section {
 }
 
 .btn-primary-kli:hover {
-    background-color: #426C1C !important;
-    border-bottom: 3px solid #426C1C !important;
+    background-color: #019e84 !important;
+    border-bottom: 1px solid #019e84 !important;
+    border-color: #019e84;
 }
 
 .btn-secondary-kli {

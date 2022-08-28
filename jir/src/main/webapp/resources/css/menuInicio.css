@@ -93,7 +93,7 @@ header label {
 		float: left;
 		display: flex;
      	font-size: 0.9rem; 
-        background: #1d2b38 !important;
+       background: #fff !important;
 	}
 	
 	#idEnlaceCerrarSesion{
@@ -202,8 +202,9 @@ header label {
 }
 
 .btn-primary-kli:hover {
-    background-color: #426C1C !important;
-    border-bottom: 3px solid #426C1C !important;
+    background-color: #019e84 !important;
+    border-bottom: 1px solid #019e84 !important;
+    border-color: #019e84;
 }
 
 .btn-secondary-kli {

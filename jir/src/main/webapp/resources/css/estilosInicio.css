@@ -144,7 +144,7 @@ header {
 }
 
 .clasesCamposFormulario{
-	color: #1d2b38;
+	color: #005fa0;
 	font-weight: bold;
 	margin-right: 10px;
 /* 	font-size: 1rem !important; */
@@ -185,6 +185,7 @@ header {
 
 .claseCompraVenta{
 	float: right;
+	color: #005fa0;
 	margin-left: 20px;
 }
 
@@ -212,7 +213,7 @@ header {
 	text-align: right;
 	font-weight: bold;
 	font-size: 30px !important;
-	color: #1d2b38;
+	color: #019e84;
 	position: absolute;
 /* 	z-index: 1; */
 	
@@ -222,6 +223,15 @@ header {
     background: #FAFAFA;
 
 }
+
+.inputCalculadora:focus {
+    color: #019e84;
+    background-color: #fff;
+    border-color: #019e84;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(1 158 132 / 25%);
+}
+
 
 .datosEnvioRecibo{
 	position: absolute;
@@ -270,16 +280,16 @@ header {
 }
 
 .inputSuperior{
-	border: 2px solid #1d2b38;
+	border: 2px solid #019e84;
 	border-radius: 0rem;
 	border-top-left-radius: 0.25em !important;
     border-top-right-radius: 0.25em !important;
 }
 
 .inputInferior{
-	border-bottom: 2px solid #1d2b38;
-	border-left: 2px solid #1d2b38;
-	border-right: 2px solid #1d2b38;
+	border-bottom: 2px solid #019e84;
+	border-left: 2px solid #019e84;
+	border-right: 2px solid #019e84;
 	border-radius: 0rem;
 	border-bottom-left-radius: 0.25em;
     border-bottom-right-radius: 0.25em;
@@ -458,7 +468,7 @@ header {
 	top: 0; 
 	left: 0; 
 	height: 3px; 
-	background: #4D7F21; 
+	background: #005fa0; 
 }
 
 .f1-step { 
@@ -467,15 +477,15 @@ header {
 	width: 33.333333%; 
 	padding: 0 5px; 
 	text-align: center;
-/* 	margin-top: 6px; */
+	margin-top: 6px;
 }
 
 .f1-step-icon {
 	display: inline-block; 
-/* 	width: 40px;  */
-/* 	height: 40px;  */
+	width: 40px; 
+	height: 40px; 
 	margin-top: 4px; 
-/* 	background: #ddd; */
+	background: #ddd;
 	font-size: 16px; 
 	color: #fff; 
 	line-height: 40px;
@@ -484,16 +494,16 @@ header {
 	border-radius: 50%;
 }
 .f1-step.activated .f1-step-icon {
-/* 	background: #fff;  */
-/* 	border: 1px solid #4D7F21;  */
-	color: #4D7F21; 
+	background: #fff; 
+	border: 1px solid #005fa0; 
+	color: #005fa0; 
 	line-height: 38px;
 }
 .f1-step.active .f1-step-icon {
 	width: 48px; 
 	height: 48px; 
 	margin-top: 0; 
-/* 	background: #4D7F21;  */
+	background: #005fa0; 
 	font-size: 22px; 
 	line-height: 48px;
 }
@@ -503,11 +513,11 @@ header {
 }
 
 .f1-step.activated p { 
-	color: #4D7F21; 
+	color: #005fa0; 
 }
 
 .f1-step.active p { 
-	color: #4D7F21;
+	color: #005fa0;
 /* 	color: #f35b3f;  */
 }
 
@@ -522,7 +532,7 @@ header {
 }
 
 .modal-title{
-    color: #4D7F21 !important;
+    color: #005fa0 !important;
 	font-weight: bold !important;
 }
 
@@ -544,7 +554,7 @@ header {
 .claseContenedorCuenta{
 	padding-top: 20px;
     border-radius: 16px 16px 16px 16px;
-    box-shadow:  6px 6px 21px -1px #4D7F21;
+    box-shadow:  6px 6px 21px -1px #005fa0;
 }
 
 .imagenRegistroSBS{
@@ -610,8 +620,8 @@ header {
 
    
 .table th{
-	border: #1d2b38 2px solid !important;
-    background: #1d2b38;
+	border: #019e84 2px solid !important;
+    background: #019e84;
     color: white;
     border-radius: 65px 0px 0px 65px !important;
     padding-left: 3rem;
@@ -621,12 +631,13 @@ header {
 }
 
 .table td{
-	border: #1d2b38 1px solid !important;
+	border: #019e84 2px solid !important;
 	border-radius: 0px 65px 65px 0px !important;
 /* 	padding-left: 6rem; */
     padding-right: 6rem;
     padding-top: 0.3rem;
     padding-bottom: 0.3rem;
+    color: #005fa0;
 }
 
 .table {
@@ -637,7 +648,7 @@ header {
 /*Para el check del correo*/
 
 .claseValorAliasCuentaCliente {
-	color: #4D7F21 !important;
+	color: #005fa0 !important;
 	font-weight: bold !important;
 }
 
@@ -667,18 +678,18 @@ header {
 }
 
 .enlaceCuentas{
-	color: #ED0600;
+	color: #019e84;
 	font-weight: bold;
 }
 
 .enlaceCuentas:hover{
-	color: #ED0600 !important; 
+	color: #005fa0 !important; 
 }
 
 .claseTituloPaso{
 	font-size: 1.2rem;
 	font-weight: bold;
-	color: #1d2b38;
+	color: #005fa0;
 	margin-top: 45px;
 }
 
@@ -694,7 +705,7 @@ header {
 .cursorPointer{
 	cursor: pointer;
 	font-weight: bold !important;
-	color: #4D7F21 !important;
+	color: #005fa0 !important;
 }
 
 /* .claseMensajeSeleccionarCuenta{ */
@@ -735,7 +746,8 @@ header {
 }
 
 .btn-success:hover {
-    background-color: #4D7F21 !important;
+    background-color: #019e84 !important;
+    border-color: #019e84 !important;
 }
 
 /* Inicio Estilos cupon */

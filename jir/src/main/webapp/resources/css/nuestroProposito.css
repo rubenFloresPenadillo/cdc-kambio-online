@@ -1,6 +1,6 @@
 
 #nuestroProposito{
-	background: #1d2b38 !important;
+	background: #019e84 !important;
 	color: #fff;
 	padding: 60px;
 }
@@ -9,8 +9,14 @@
 	width: 300px;
 }
 
+@media (max-width:767px) {
+	#nuestroProposito img{
+		margin-top: 60px;
+	}
+}
+
 #nuestroProposito .contenedorImagen{
-	text-align: right;
+	text-align: center;
 }
 
 

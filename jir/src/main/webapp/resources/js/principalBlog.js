@@ -26,7 +26,7 @@ $(document).ready(function() {
 
 
 function enlaceWhatsapp() {
-	 var win = window.open('https://api.whatsapp.com/send?phone=51939722555&text=Hola,%20solicito%20información%20acerca%20de%20', '_blank');
+	 var win = window.open('https://api.whatsapp.com/send?phone=51992278011&text=Hola,%20solicito%20información%20acerca%20de%20', '_blank');
 	 win.focus();  
 }
 

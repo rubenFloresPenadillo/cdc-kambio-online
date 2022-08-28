@@ -257,12 +257,13 @@ section {
 }
 
 .btn-primary-kli:hover {
-    background-color: #426C1C !important;
-    border-bottom: 3px solid #426C1C !important;
+    background-color: #019e84 !important;
+    border-bottom: 1px solid #019e84 !important;
+    border-color: #019e84;
 }
 
 .claseDetalleSustento{
- 	padding: 20vh;
+ 	padding: 15vh;
 }
 
 .claseDetalleSustento h5{
@@ -299,7 +300,7 @@ section {
 /*     right: 0; */
     height: 100%;
     width: 100%;
-	background-image: url(../../resources/imagenes/isotipo-preciso-contorno.png) !important;
+	background-image: url(../../resources/imagenes/iconoJirehPlusTransparente.png) !important;
     background: rgba(255, 255, 255, 1);
     background-position: bottom;
     background-repeat: no-repeat;

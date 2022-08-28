@@ -106,7 +106,7 @@ function countA(){
 }
 
 function enlaceWhatsapp() {
-	 var win = window.open('https://api.whatsapp.com/send?phone=51939722555&text=Hola,%20solicito%20información%20acerca%20de%20', '_blank');
+	 var win = window.open('https://api.whatsapp.com/send?phone=51992278011&text=Hola,%20solicito%20información%20acerca%20de%20', '_blank');
 	 win.focus();  
 }
 
@@ -114,7 +114,7 @@ function enlaceWhatsapp() {
 
 function calcularValorEnvio(){
 	
-	var mostrarCompra = document.getElementById("idFormPrincipal:idMostrarCompra").value;
+	var mostrarCompra = document.getElementById("idFormCalculadora:idMostrarCompra").value;
 	
 	var isTrueMostrarCompra = (mostrarCompra == 'true');
 	
@@ -144,7 +144,7 @@ function calcularValorEnvio(){
 
 function calcularValorRecibo(){
 	
-	var mostrarCompra = document.getElementById("idFormPrincipal:idMostrarCompra").value;
+	var mostrarCompra = document.getElementById("idFormCalculadora:idMostrarCompra").value;
 	
 //	alert(mostrarCompra);
 	
@@ -199,7 +199,7 @@ function validarContieneEspacio(cadena) {
 
 function enviar(event) {
 	
-//	$("[id='idFormPrincipal:idMensajeResultadoProceso']").css("display","none");
+//	$("[id='idFormCalculadora:idMensajeResultadoProceso']").css("display","none");
 	
 	$("#idMensajeResultado").empty(); // elimina el contenido del div
 	$("#idMensajeResultado").removeClass( "alert alert-danger" )
@@ -212,35 +212,35 @@ function enviar(event) {
 	
 	/*Remueves los errores si es que hubieran*/
 	
-	$("[id='idFormPrincipal:idTxtCorreoElectronico']").removeClass( "claseErrorFormulario");
+	$("[id='idFormCalculadora:idTxtCorreoElectronico']").removeClass( "claseErrorFormulario");
 	
 	/*Captura valores*/
 
-    var idTxtCorreoElectronico = $("[id='idFormPrincipal:idTxtCorreoElectronico']").val();
+    var idTxtCorreoElectronico = $("[id='idFormCalculadora:idTxtCorreoElectronico']").val();
     
     if(!idTxtCorreoElectronico.trim()){
     	$("#idMensajeCorreoElectronico").text("El correo es obligatorio.");
     	$("#idMensajeCorreoElectronico").addClass( "alert alert-danger claseMensajeResultado" )
         $("#idMensajeCorreoElectronico").removeClass( "hidden" );
     	$("#idMensajeCorreoElectronico").fadeOut(6000);
-    	$("[id='idFormPrincipal:idTxtCorreoElectronico']").focus().select();
-    	$("[id='idFormPrincipal:idTxtCorreoElectronico']").addClass( "claseErrorFormulario" );
+    	$("[id='idFormCalculadora:idTxtCorreoElectronico']").focus().select();
+    	$("[id='idFormCalculadora:idTxtCorreoElectronico']").addClass( "claseErrorFormulario" );
     	event.preventDefault();
     } else if(!validarCorreo(idTxtCorreoElectronico)){
     	$("#idMensajeCorreoElectronico").text("El correo no es válido.");
     	$("#idMensajeCorreoElectronico").addClass( "alert alert-danger claseMensajeResultado" )
         $("#idMensajeCorreoElectronico").removeClass( "hidden" );
     	$("#idMensajeCorreoElectronico").fadeOut(6000);
-    	$("[id='idFormPrincipal:idTxtCorreoElectronico']").focus().select();
-    	$("[id='idFormPrincipal:idTxtCorreoElectronico']").addClass( "claseErrorFormulario" );
+    	$("[id='idFormCalculadora:idTxtCorreoElectronico']").focus().select();
+    	$("[id='idFormCalculadora:idTxtCorreoElectronico']").addClass( "claseErrorFormulario" );
     	event.preventDefault();
     } else if(validarContieneEspacio(idTxtCorreoElectronico)){
     	$("#idMensajeCorreoElectronico").text("El correo no puede contener espacios en blanco.");
     	$("#idMensajeCorreoElectronico").addClass( "alert alert-danger claseMensajeResultado" )
         $("#idMensajeCorreoElectronico").removeClass( "hidden" );
     	$("#idMensajeCorreoElectronico").fadeOut(6000);
-    	$("[id='idFormPrincipal:idTxtCorreoElectronico']").focus().select();
-    	$("[id='idFormPrincipal:idTxtCorreoElectronico']").addClass( "claseErrorFormulario" );
+    	$("[id='idFormCalculadora:idTxtCorreoElectronico']").focus().select();
+    	$("[id='idFormCalculadora:idTxtCorreoElectronico']").addClass( "claseErrorFormulario" );
     	event.preventDefault();
     } else{
     	ejecutarEnviarSuscripcion();

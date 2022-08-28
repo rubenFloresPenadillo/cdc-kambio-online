@@ -47,6 +47,7 @@ public class ServiceOperacionClienteImpl  implements ServiceOperacionCliente{
         tpOperaClienEntidad.setCodUnicOperClie(tpOperaClienDto.getCodUnicOperClie());
         tpOperaClienEntidad.getTpClien().setCodClie(tpOperaClienDto.getTpClien().getCodClie());
         tpOperaClienEntidad.getTpClien().getTpUsuar().setCodUsua(tpOperaClienDto.getTpClien().getTpUsuar().getCodUsua());
+        tpOperaClienEntidad.getTpCuentBancoByCodCuenBancClieOrig().getTpBanco().setCodBanc(tpOperaClienDto.getTpCuentBancoByCodCuenBancClieOrig().getTpBanco().getCodBanc());
         tpOperaClienEntidad.getTpCuentBancoByCodCuenBancClieOrig().setCodCuenBanc(tpOperaClienDto.getTpCuentBancoByCodCuenBancClieOrig().getCodCuenBanc());
         tpOperaClienEntidad.getTpCuentBancoByCodCuenBancClieReci().setCodCuenBanc(tpOperaClienDto.getTpCuentBancoByCodCuenBancClieReci().getCodCuenBanc());
         tpOperaClienEntidad.getTpCuentBancoByCodCuenBancCome().setCodCuenBanc(tpOperaClienDto.getTpCuentBancoByCodCuenBancCome().getCodCuenBanc());
@@ -142,6 +143,8 @@ public class ServiceOperacionClienteImpl  implements ServiceOperacionCliente{
 			resultado.setValCambCompCupo((Double) temporal[12]);
 			resultado.setValCambVentCupo((Double) temporal[13]);
 			resultado.setCodTranBanc((String) temporal[14]);
+			resultado.getTpCuentBancoByCodCuenBancClieOrig().getTpBanco().setCodBanc((Integer) temporal[15]);
+			resultado.getTpCuentBancoByCodCuenBancClieOrig().setCodCuenBanc((Integer) temporal[16]);
 		}
 
 		return resultado;

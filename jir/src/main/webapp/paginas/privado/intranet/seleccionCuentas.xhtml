@@ -21,24 +21,24 @@
 				</div>
 				<div class="f1-step active">
 					<div class="f1-step-icon">
-<!-- 						<i class="fas fa-calculator"></i>  -->
-						<img class="claseIconoPasos" src="../../../resources/imagenes/1-cotiza.png" alt="cotiza"/>
+						<i class="fas fa-calculator"></i> 
+<!-- 						<img class="claseIconoPasos" src="../../../resources/imagenes/1-cotiza.png" alt="cotiza"/> -->
 					</div>
-<!-- 					<p>1</p> -->
+					<p>1</p>
 				</div>
 				<div class="f1-step">
 					<div class="f1-step-icon">
-<!-- 						<i class="fas fa-location-arrow"></i>  -->
-						<img class="claseIconoPasos" src="../../../resources/imagenes/2-transfiere.png" alt="cotiza"/>
+						<i class="fas fa-location-arrow"></i> 
+<!-- 						<img class="claseIconoPasos" src="../../../resources/imagenes/2-transfiere.png" alt="cotiza"/> -->
 					</div>
-<!-- 					<p>2</p> -->
+					<p>2</p>
 				</div>
 				<div class="f1-step">
 					<div class="f1-step-icon">
-<!-- 						<i class="fas fa-check"></i>  -->
-						<img class="claseIconoPasos" src="../../../resources/imagenes/3-recibe-tu-cambio.png" alt="cotiza"/>
+						<i class="fas fa-check"></i> 
+<!-- 						<img class="claseIconoPasos" src="../../../resources/imagenes/3-recibe-tu-cambio.png" alt="cotiza"/> -->
 					</div>
-<!-- 					<p>3</p> -->
+					<p>3</p>
 				</div>
 			</div>
 		</div>
@@ -80,8 +80,8 @@
 							<div class="datosEnvioRecibo">
 								<p:outputLabel value="Tu envías" />
 							</div>
-							<h:graphicImage styleClass="imagenBanderaCalculadora" value="../../../resources/imagenes/monedaSolesBandera120x50.png" rendered="#{!mAlias.mostrarCompra}"/>
-							<h:graphicImage styleClass="imagenBanderaCalculadora" value="../../../resources/imagenes/monedaDolaresBandera120x50.png" rendered="#{mAlias.mostrarCompra}"/>
+							<h:graphicImage styleClass="imagenBanderaCalculadora" value="../../../resources/imagenes/monedaSolesBandera120x50Circular.png" rendered="#{!mAlias.mostrarCompra}"/>
+							<h:graphicImage styleClass="imagenBanderaCalculadora" value="../../../resources/imagenes/monedaDolaresBandera120x50Circular.png" rendered="#{mAlias.mostrarCompra}"/>
 							<p:inputText class="form-control inputCalculadora inputSuperior" id="idInputSuperior"
 								value="#{mAlias.cantidadEnvio}"  onkeyup="$(this).val($(this).val().replace(/[^0-9.,]/g, ''));">
 								<p:ajax event="keyup" listener="#{mAlias.cargarValoresEnvioReciboA}" update="idInputInferior, idContenedorOrigenFondos" 
@@ -96,8 +96,8 @@
 							<div class="datosEnvioRecibo">
 								<p:outputLabel value="Tu recibes" />
 							</div>
-							<h:graphicImage styleClass="imagenBanderaCalculadora" value="../../../resources/imagenes/monedaDolaresBandera120x50.png" rendered="#{!mAlias.mostrarCompra}"/>	
-							<h:graphicImage styleClass="imagenBanderaCalculadora" value="../../../resources/imagenes/monedaSolesBandera120x50.png" rendered="#{mAlias.mostrarCompra}"/>
+							<h:graphicImage styleClass="imagenBanderaCalculadora" value="../../../resources/imagenes/monedaDolaresBandera120x50Circular.png" rendered="#{!mAlias.mostrarCompra}"/>	
+							<h:graphicImage styleClass="imagenBanderaCalculadora" value="../../../resources/imagenes/monedaSolesBandera120x50Circular.png" rendered="#{mAlias.mostrarCompra}"/>
 							<p:inputText class="form-control inputCalculadora inputInferior" id="idInputInferior"
 								value="#{mAlias.cantidadRecibo}"  onkeyup="$(this).val($(this).val().replace(/[^0-9.,]/g, ''));" >
 								<p:ajax event="keyup" listener="#{mAlias.cargarValoresEnvioReciboB}" update="idInputSuperior, idContenedorOrigenFondos"
