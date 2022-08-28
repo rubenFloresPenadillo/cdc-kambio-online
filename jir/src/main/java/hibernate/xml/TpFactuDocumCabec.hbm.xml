@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 17 ago. 2022 04:53:44 by Hibernate Tools 5.2.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="hibernate.xml.TpFactuDocumCabec" optimistic-lock="version" polymorphism="implicit" schema="public" select-before-update="false" table="tp_factu_docum_cabec">
+        <id name="codFactDocuCabec" type="java.lang.Integer">
+            <column name="cod_fact_docu_cabec"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="codOperClie" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="cod_oper_clie"/>
+        </property>
+        <property generated="never" lazy="false" name="tipoDeComprobante" optimistic-lock="true" type="short" unique="false">
+            <column name="tipo_de_comprobante" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="serie" optimistic-lock="true" type="string" unique="false">
+            <column length="4" name="serie" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="numero" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="numero" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="sunatTransaction" optimistic-lock="true" type="short" unique="false">
+            <column name="sunat_transaction" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="clienteTipoDeDocumento" optimistic-lock="true" type="string" unique="false">
+            <column length="1" name="cliente_tipo_de_documento" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="clienteNumeroDeDocumento" optimistic-lock="true" type="string" unique="false">
+            <column length="15" name="cliente_numero_de_documento" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="clienteDenominacion" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="cliente_denominacion" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="clienteDireccion" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="cliente_direccion" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="clienteEmail" optimistic-lock="true" type="string" unique="false">
+            <column length="250" name="cliente_email"/>
+        </property>
+        <property generated="never" lazy="false" name="clienteEmail1" optimistic-lock="true" type="string" unique="false">
+            <column length="250" name="cliente_email_1"/>
+        </property>
+        <property generated="never" lazy="false" name="clienteEmail2" optimistic-lock="true" type="string" unique="false">
+            <column length="250" name="cliente_email_2"/>
+        </property>
+        <property generated="never" lazy="false" name="fechaDeEmision" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="29" name="fecha_de_emision" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="fechaDeVencimiento" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="29" name="fecha_de_vencimiento"/>
+        </property>
+        <property generated="never" lazy="false" name="moneda" optimistic-lock="true" type="short" unique="false">
+            <column name="moneda" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="tipoDeCambio" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="tipo_de_cambio" precision="17" scale="17"/>
+        </property>
+        <property generated="never" lazy="false" name="porcentajeDeIgv" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="porcentaje_de_igv" precision="17" scale="17"/>
+        </property>
+        <property generated="never" lazy="false" name="descuentoGlobal" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="descuento_global" precision="17" scale="17"/>
+        </property>
+        <property generated="never" lazy="false" name="totalDescuento" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="total_descuento" precision="17" scale="17"/>
+        </property>
+        <property generated="never" lazy="false" name="totalAnticipo" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="total_anticipo" precision="17" scale="17"/>
+        </property>
+        <property generated="never" lazy="false" name="totalGravada" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="total_gravada" precision="17" scale="17"/>
+        </property>
+        <property generated="never" lazy="false" name="totalInafecta" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="total_inafecta" precision="17" scale="17"/>
+        </property>
+        <property generated="never" lazy="false" name="totalExonerada" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="total_exonerada" precision="17" scale="17"/>
+        </property>
+        <property generated="never" lazy="false" name="totalIgv" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="total_igv" precision="17" scale="17"/>
+        </property>
+        <property generated="never" lazy="false" name="totalGratuita" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="total_gratuita" precision="17" scale="17"/>
+        </property>
+        <property generated="never" lazy="false" name="totalOtrosCargos" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="total_otros_cargos" precision="17" scale="17"/>
+        </property>
+        <property generated="never" lazy="false" name="totalIsc" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="total_isc" precision="17" scale="17"/>
+        </property>
+        <property generated="never" lazy="false" name="total" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="total" not-null="true" precision="17" scale="17"/>
+        </property>
+        <property generated="never" lazy="false" name="percepcionTipo" optimistic-lock="true" type="java.lang.Short" unique="false">
+            <column name="percepcion_tipo"/>
+        </property>
+        <property generated="never" lazy="false" name="percepcionBaseImponible" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="percepcion_base_imponible" precision="17" scale="17"/>
+        </property>
+        <property generated="never" lazy="false" name="totalPercepcion" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="total_percepcion" precision="17" scale="17"/>
+        </property>
+        <property generated="never" lazy="false" name="totalIncluidoPercepcion" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="total_incluido_percepcion" precision="17" scale="17"/>
+        </property>
+        <property generated="never" lazy="false" name="detraccion" optimistic-lock="true" type="java.lang.Short" unique="false">
+            <column name="detraccion"/>
+        </property>
+        <property generated="never" lazy="false" name="observaciones" optimistic-lock="true" type="string" unique="false">
+            <column length="1000" name="observaciones"/>
+        </property>
+        <property generated="never" lazy="false" name="documentoQueSeModificaTipo" optimistic-lock="true" type="java.lang.Short" unique="false">
+            <column name="documento_que_se_modifica_tipo"/>
+        </property>
+        <property generated="never" lazy="false" name="documentoQueSeModificaSerie" optimistic-lock="true" type="string" unique="false">
+            <column length="4" name="documento_que_se_modifica_serie"/>
+        </property>
+        <property generated="never" lazy="false" name="documentoQueSeModificaNumero" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="documento_que_se_modifica_numero"/>
+        </property>
+        <property generated="never" lazy="false" name="tipoDeNotaDeCredito" optimistic-lock="true" type="java.lang.Short" unique="false">
+            <column name="tipo_de_nota_de_credito"/>
+        </property>
+        <property generated="never" lazy="false" name="tipoDeNotaDeDebito" optimistic-lock="true" type="java.lang.Short" unique="false">
+            <column name="tipo_de_nota_de_debito"/>
+        </property>
+        <property generated="never" lazy="false" name="enviarAutomaticamenteALaSunat" optimistic-lock="true" type="java.lang.Short" unique="false">
+            <column name="enviar_automaticamente_a_la_sunat"/>
+        </property>
+        <property generated="never" lazy="false" name="enviarAutomaticamenteAlCliente" optimistic-lock="true" type="java.lang.Short" unique="false">
+            <column name="enviar_automaticamente_al_cliente"/>
+        </property>
+        <property generated="never" lazy="false" name="codigoUnico" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="codigo_unico"/>
+        </property>
+        <property generated="never" lazy="false" name="condicionesDePago" optimistic-lock="true" type="string" unique="false">
+            <column length="250" name="condiciones_de_pago"/>
+        </property>
+        <property generated="never" lazy="false" name="medioDePago" optimistic-lock="true" type="string" unique="false">
+            <column length="250" name="medio_de_pago"/>
+        </property>
+        <property generated="never" lazy="false" name="placaVehiculo" optimistic-lock="true" type="string" unique="false">
+            <column length="8" name="placa_vehiculo"/>
+        </property>
+        <property generated="never" lazy="false" name="ordenCompraServicio" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="orden_compra_servicio"/>
+        </property>
+        <property generated="never" lazy="false" name="formatoDePdf" optimistic-lock="true" type="string" unique="false">
+            <column length="6" name="formato_de_pdf"/>
+        </property>
+        <property generated="never" lazy="false" name="repuestaEnlace" optimistic-lock="true" type="string" unique="false">
+            <column length="250" name="repuesta_enlace"/>
+        </property>
+        <property generated="never" lazy="false" name="repuestaAceptadaPorSunat" optimistic-lock="true" type="java.lang.Short" unique="false">
+            <column name="repuesta_aceptada_por_sunat"/>
+        </property>
+        <property generated="never" lazy="false" name="repuestaSunatDescription" optimistic-lock="true" type="string" unique="false">
+            <column length="1000" name="repuesta_sunat_description"/>
+        </property>
+        <property generated="never" lazy="false" name="repuestaSunatNote" optimistic-lock="true" type="string" unique="false">
+            <column length="1000" name="repuesta_sunat_note"/>
+        </property>
+        <property generated="never" lazy="false" name="repuestaSunatResponsecode" optimistic-lock="true" type="string" unique="false">
+            <column length="1000" name="repuesta_sunat_responsecode"/>
+        </property>
+        <property generated="never" lazy="false" name="repuestaSunatSoapError" optimistic-lock="true" type="string" unique="false">
+            <column length="1000" name="repuesta_sunat_soap_error"/>
+        </property>
+        <property generated="never" lazy="false" name="repuestaAnulado" optimistic-lock="true" type="java.lang.Short" unique="false">
+            <column name="repuesta_anulado"/>
+        </property>
+        <property generated="never" lazy="false" name="repuestaPdfZipBase64" optimistic-lock="true" type="string" unique="false">
+            <column length="1000" name="repuesta_pdf_zip_base64"/>
+        </property>
+        <property generated="never" lazy="false" name="repuestaXmlZipBase64" optimistic-lock="true" type="string" unique="false">
+            <column length="1000" name="repuesta_xml_zip_base64"/>
+        </property>
+        <property generated="never" lazy="false" name="repuestaCdrZipBase64" optimistic-lock="true" type="string" unique="false">
+            <column length="1000" name="repuesta_cdr_zip_base64"/>
+        </property>
+        <property generated="never" lazy="false" name="repuestaCadenaParaCodigoQr" optimistic-lock="true" type="string" unique="false">
+            <column length="250" name="repuesta_cadena_para_codigo_qr"/>
+        </property>
+        <property generated="never" lazy="false" name="repuestaCodigoHash" optimistic-lock="true" type="string" unique="false">
+            <column length="250" name="repuesta_codigo_hash"/>
+        </property>
+        <property generated="never" lazy="false" name="repuestaEnlaceDelPdf" optimistic-lock="true" type="string" unique="false">
+            <column length="300" name="repuesta_enlace_del_pdf"/>
+        </property>
+        <property generated="never" lazy="false" name="repuestaEnlaceDelXml" optimistic-lock="true" type="string" unique="false">
+            <column length="300" name="repuesta_enlace_del_xml"/>
+        </property>
+        <property generated="never" lazy="false" name="repuestaEnlaceDelCdr" optimistic-lock="true" type="string" unique="false">
+            <column length="300" name="repuesta_enlace_del_cdr"/>
+        </property>
+        <property generated="never" lazy="false" name="repuestaErrors" optimistic-lock="true" type="string" unique="false">
+            <column length="250" name="repuesta_errors"/>
+        </property>
+        <property generated="never" lazy="false" name="repuestaCodigoError" optimistic-lock="true" type="string" unique="false">
+            <column length="3" name="repuesta_codigo_error"/>
+        </property>
+        <property generated="never" lazy="false" name="desCortDocuGene" optimistic-lock="true" type="string" unique="false">
+            <column length="8" name="des_cort_docu_gene" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="codEstaDocu" optimistic-lock="true" type="java.lang.Short" unique="false">
+            <column name="cod_esta_docu"/>
+        </property>
+        <property generated="never" lazy="false" name="menDetaDocu" optimistic-lock="true" type="string" unique="false">
+            <column length="250" name="men_deta_docu"/>
+        </property>
+        <property generated="never" lazy="false" name="indEsta" optimistic-lock="true" type="short" unique="false">
+            <column name="ind_esta" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="usuApliCrea" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="usu_apli_crea" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="fecCreaRegi" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="29" name="fec_crea_regi" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="usuApliModi" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="usu_apli_modi"/>
+        </property>
+        <property generated="never" lazy="false" name="fecModiRegi" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="29" name="fec_modi_regi"/>
+        </property>
+    </class>
+</hibernate-mapping>

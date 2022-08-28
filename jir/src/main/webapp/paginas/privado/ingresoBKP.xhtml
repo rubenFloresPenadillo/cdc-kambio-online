@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<!-- Required meta tags -->
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+<link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.css" />
+
+<!-- <script type="text/javascript" src="../../resources/js/jquery-3.2.1.min.js"></script> -->
+<script type="text/javascript" src="../../resources/js/popper.min.js"></script>
+<script type="text/javascript" src="../../resources/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../resources/js/principalIngreso.js"></script>
+
+<!-- Iconos del formulario login y registro -->
+<link rel="stylesheet" type="text/css" href="../../resources/css/all.css"/>
+<link rel="stylesheet" type="text/css" href="../../resources/css/login.css" />
+<link rel="stylesheet" type="text/css" href="../../resources/css/fontello.css" />
+
+
+
+<title>Ingreso</title>
+</h:head>
+<h:body>
+
+	<ui:param name="mAlias" value="#{ingresoBean}" />
+	
+	<main>
+
+	<section id="seccionLogin">
+		<div class="contenedor row">
+			<div class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-5">
+				<a href="../../"> <img class="imagenLogoPaginaLogin"
+					src="../../resources/imagenes/logoJirehPlusOficial.png" />
+				</a> <label class="seccionRegistrateYa">¡ TRABAJAMOS PARA TI !</label>
+			</div>
+
+			<div class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-7">
+				<div class="col-lg-12 main-section">
+					<div class="modal-content formContenidoIngreso">
+						<div class="col-lg-12 user-img">
+							<img src="../../resources/imagenes/login.png" />
+						</div>
+
+						<div class="col-12 form-input">
+							<h:form id="idFormIngreso" method="post" role="form" class="form-horizontal">
+
+								<div class="form-group">
+									<i class="fas fa-at"></i> 
+									<p:inputText id="idTxtEmail" class="form-control" value="#{mAlias.usuarioFormulario.ideUsuaEmai}"/>
+									<p:watermark for="idTxtEmail" value="Ingrese correo" />
+								</div>
+								<div class="form-group">
+									<i class="pi pi-lock" style="font-size: 2rem"></i>
+									<p:password id="idTxtPassword1" class="form-control" value="#{mAlias.usuarioFormulario.codClav}"/>
+									<p:watermark for="idTxtPassword1" value="Ingrese password" />
+								</div>
+								
+								<div id="idMensajeResultado" > </div>
+								
+								<p:outputPanel id="idMensajeResultadoProceso" >
+									<p:outputPanel styleClass="alert alert-danger" rendered="#{not empty mAlias.resultadoProcesoError}"> 
+										<p:outputLabel value="#{mAlias.resultadoProcesoError}" />
+									</p:outputPanel>
+								</p:outputPanel>
+								
+								<p:remoteCommand name="metodoRemotoEnviarFormulario" actionListener="#{mAlias.validar()}" update="idMensajeResultadoProceso" />
+								<p:commandButton onclick="enviar(event);" styleClass="btn btn-success btn-enviar"  value="Ingresar" />
+
+							</h:form>
+						</div>
+
+						<div class="col-12 forgot">
+							<a href="#">¿Oldido su Contraseña?</a>
+						</div>
+
+					</div>
+
+					<div class="col-12 contenidoEnlaceRegistro">
+						<p>
+							¿No tienes una cuenta? <a href="../privado/registro.xhtml">Creala
+								aquí</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	</main>
+
+</h:body>
+
+</html>

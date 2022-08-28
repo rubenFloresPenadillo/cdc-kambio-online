@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+		<!-- Required meta tags -->
+		<title>Libro de Reclamaciones o Quejas</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+			
+		<link rel="shortcut icon" href="../../resources/imagenes/favicon.ico" />	
+		<link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.css" />
+
+<!-- 		<script type="text/javascript"   src="../../resources/js/jquery-3.2.1.slim.min.js"></script> -->
+		<script type="text/javascript"   src="../../resources/js/popper.min.js"></script>
+		<script type="text/javascript"   src="../../resources/js/bootstrap.min.js"></script>
+		<script type="text/javascript"   src="../../resources/js/principalLibroReclamacion.js"></script>
+		<script type="text/javascript"   src="../../resources/js/eskju.jquery.scrollflow.min.js"></script>
+		
+		
+		<link rel="stylesheet" type="text/css" href="../../resources/css/all.css"/>
+<!-- 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"/> -->
+		
+		<link rel="stylesheet" type="text/css" href="../../resources/css/fontello.css"/> 
+		<link rel="stylesheet" type="text/css" href="../../resources/css/estilosLibroReclamacion.css"/> 
+		
+</h:head>
+<h:body>
+
+<header>
+		
+		<ui:param name="mAlias" value="#{libroReclamacionBean}" />
+		
+
+		<div class="contenedor">
+			<a  href="../../index.xhtml">
+				<img class="imagenLogo" src="../../resources/imagenes/logoJirehPlus.png" alt="Logo JirehPlus"/>
+			</a>
+			
+			<h:selectBooleanCheckbox  id="menu-bar"/>
+			<label class="icon-menu" for="menu-bar"></label> 
+
+			<nav class="menu">
+				<ul>
+					<li onclick="window.location.href='../../index.xhtml'">
+						<a href="../../index.xhtml" class="claseInicioMarcado" >Inicio</a> 
+					</li>
+					<li onclick="window.location.href='nosotros.xhtml'">
+						<a href="nosotros.xhtml">Nosotros</a> 
+					</li>
+<!-- 					<li> -->
+<!-- 						<a href="#">Blog</a> -->
+<!-- 					</li> -->
+					<li onclick="window.location.href='contacto.xhtml'">
+						<a href="contacto.xhtml" class="claseContactoMarcado" >Contacto</a> 
+					</li>
+					<li>
+						<a href="#">Ayuda</a> 
+					</li>
+					<li onclick="window.location.href='paginas/privado/ingreso.xhtml'">
+						<a class="btn btn-inicia-sesion botonIniciarOperacionGeneral" href="paginas/privado/ingreso.xhtml">INICIAR SESIÓN</a> 
+					</li>
+					<li onclick="window.location.href='paginas/privado/registro.xhtml'">
+						<a class="btn btn-registrate  botonIniciarOperacionGeneral" href="paginas/privado/registro.xhtml">REGISTRARME</a> 
+					</li>	
+				</ul>
+<!-- 				<p:commandButton class="btn btn-warning botonIniciarOperacionGeneral icon-right-dir" value="INICIAR OPERACIÓN" /> -->
+			</nav>
+
+		</div>
+</header>
+
+		<!-- Modal Confirmacion Guardar Datos-->
+		<div class="modal fade" id="idModalConfirmacionGuardar" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body"> ¿Está seguro de los datos a enviar?</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal" onclick="ejecutarGuardarDatos();">Aceptar</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal" >Cancelar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	<h:form id="idFormLibroReclamacion" method="post" role="form" class="form-horizontal">
+	
+		<p:remoteCommand name="ejecutarGuardarDatos" actionListener="#{mAlias.procesarGuardarDatos()}" update="idFormLibroReclamacion"/>
+		
+		<main>
+
+			<section id="seccionLibroReclamacion" class="claseSeccionLibroReclamacion scrollflow -slide-top -opacity">
+				<h2>Registra tu reclamo o queja</h2>
+				<div class="line-shape"></div>
+				<div class="contenedor contenedorTitulo">
+
+					<div class="row">
+						
+						<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="form-group">
+								<p:outputPanel  styleClass="alert claseCampoObligatorios"> 
+									Los campos con * son obligatorios.
+								</p:outputPanel>
+							</div>
+						</div>
+						
+					</div>
+					
+					
+					<div class="row">
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+		
+								<p:outputLabel value="Tipo de persona *" />
+		
+								<h:selectOneMenu id="idTipoPersona" styleClass="custom-select form-control claseComboFormulario" 
+									value="#{mAlias.reclamoFormulario.tpTipoPerso.codTipoPers}" >
+									<f:selectItem itemLabel="Seleccione..." itemValue="-1"  />
+									<f:selectItems value="#{mAlias.listaComboTipoPerso}" />
+								</h:selectOneMenu>
+								
+								<div id="idMensajeResultadoTipoPersona" > </div>
+		
+							</div>
+						</div>
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Nombres *" />
+								<p:inputText id="idTxtNombres" styleClass="form-control" value="#{mAlias.reclamoFormulario.valNombPers}" />
+								<div id="idMensajeResultadoNombres" > </div>
+							</div>
+						</div>
+		
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Apellidos *" />
+								<p:inputText id="idTxtApellidos" styleClass="form-control" value="#{mAlias.reclamoFormulario.valApelPers}" />
+								<div id="idMensajeResultadoApellidos" > </div>
+							</div>
+						</div>			
+					</div>
+					
+					
+					<div class="row">
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Razon Social" />
+								<p:inputText id="idTxtRazonSocial" styleClass="form-control" value="#{mAlias.reclamoFormulario.valRazoSociPers}" />
+								<div id="idMensajeResultadoRazonSocial" > </div>
+							</div>
+						</div>
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="RUC" />
+								<p:inputText id="idTxtRuc" styleClass="form-control" value="#{mAlias.reclamoFormulario.valDocuEmpr}" />
+								<div id="idMensajeResultadoRuc" > </div>
+							</div>
+						</div>
+		
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+		
+								<p:outputLabel value="Tipo de documento *" />
+		
+								<h:selectOneMenu id="idTipoDocumento" styleClass="custom-select form-control claseComboFormulario" 
+									value="#{mAlias.reclamoFormulario.tpTipoDocumPerso.codTipoDocuPers}" >
+									<f:selectItem itemLabel="Seleccione..." itemValue="-1"  />
+									<f:selectItems value="#{mAlias.listaComboTipoDocumentosPerso}" />
+								</h:selectOneMenu>
+								
+								<div id="idMensajeResultadoTipoDocumento" > </div>
+		
+							</div>
+						</div>		
+					</div>
+					
+					<div class="row">
+					
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Nro documento *" />
+								<p:inputText id="idTxtDocumento" styleClass="form-control" value="#{mAlias.reclamoFormulario.valDocuPers}" />
+								<div id="idMensajeResultadoDocumento" > </div>
+							</div>
+						</div>
+						
+					    <div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Correo eléctronico *" />
+								<p:inputText id="idTxtEmail" styleClass="form-control" value="#{mAlias.reclamoFormulario.valEmaiCont}"/>
+								<div id="idMensajeResultadoEmail" > </div>
+							</div>
+						</div>
+						
+						
+					    <div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Teléfono de Contacto *" />
+								<p:inputText id="idTxtTelefono" styleClass="form-control" value="#{mAlias.reclamoFormulario.valCeluCont}"/>
+								<div id="idMensajeResultadoTelefono" > </div>
+							</div>
+						</div>						
+					
+					</div>
+					
+					<div class="row">
+		
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+		
+								<p:outputLabel value="Tipo de servicio *" />
+		
+								<h:selectOneMenu id="idTipoServicio" styleClass="custom-select form-control claseComboFormulario" 
+									value="#{mAlias.reclamoFormulario.valTipoServCont}" >
+									<f:selectItem itemLabel="Seleccione..." itemValue="-1"  />
+									<f:selectItem itemLabel="COMPRA" itemValue="1"  />
+									<f:selectItem itemLabel="VENTA" itemValue="2"  />
+								</h:selectOneMenu>
+								
+								<div id="idMensajeResultadoTipoServicio" > </div>
+		
+							</div>
+						</div>
+		
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Monto Cambiado *" />
+								<p:inputText id="idTxtMontoCambiado" styleClass="form-control" value="#{mAlias.reclamoFormulario.valMontCamb}"/>
+								<div id="idMensajeResultadoMontoCambiado" > </div>
+							</div>
+						</div>	
+						
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+								<p:outputLabel value="Codigo único de operación *" />
+								<p:inputText id="idTxtCodigoOperacion" styleClass="form-control" value="#{mAlias.reclamoFormulario.codUnicOperClie}"/>
+								<div id="idMensajeResultadoCodigoOperacion" > </div>
+							</div>
+						</div>	
+						
+					</div>
+					
+					<div class="row">
+						
+						<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6">
+							<div class="form-group">
+								<p class="claseReclamoOQueja"><strong>¿Qué es un reclamo?</strong> Es una disconformidad frente a una mala atención del proveedor, pero que no guarda relación directa con el producto o servicio adquirido.
+								</p> 
+								
+							</div>
+						</div>
+						
+						<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6">
+							<div class="form-group">
+								<p class="claseReclamoOQueja"><strong>¿Qué es un queja?</strong> Se produce cuando no estás conforme con el producto adquirido o servicio brindado. El proveedor tiene la obligación de darte una respuesta.
+								</p> 
+							</div>
+						</div>
+						
+					</div>
+					
+					<div class="row">
+					
+						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<div class="form-group">
+		
+								<p:outputLabel value="¿Es un Reclamo o Queja? *" />
+		
+								<h:selectOneMenu id="idTipoReclamo" styleClass="custom-select form-control claseComboFormulario" 
+									value="#{mAlias.reclamoFormulario.valTipoReclQuej}" >
+									<f:selectItem itemLabel="Seleccione..." itemValue="-1"  />
+									<f:selectItem itemLabel="RECLAMO" itemValue="1" />
+									<f:selectItem itemLabel="QUEJA" itemValue="2" />
+								</h:selectOneMenu>
+								
+								<div id="idMensajeResultadoTipoReclamo" > </div>
+		
+							</div>
+						</div>
+						
+						<div class="column col-xs-12 col-sm-12s col-md-8 col-lg-8">
+							<div class="form-group">
+								<p:outputLabel value="Descripción del Reclamo o Queja *" />
+								<p:inputTextarea  rows="5" cols="30" id="idTxtDescripcionReclamo" styleClass="form-control claseIngresoDatos"  maxlength="600"
+									value="#{mAlias.reclamoFormulario.valDescReclQuej}" autoResize="true"/>
+							 	<p:watermark for="idTxtDescripcionReclamo" value="Escriba el detalle..." />
+								<div id="idMensajeDescripcionReclamo" > </div>
+							</div>
+						</div>
+						
+								
+					</div>
+					
+					<div class="row">
+						
+						<div class="column col-xs-12 col-sm-12s col-md-12 col-lg-12">
+							<div class="form-group">
+								<h:selectBooleanCheckbox id = "idCheckRespuestaCorreo" class="claseCheckReclamacion" /> 
+								<p:outputLabel class="claseTextoCheckReclamo" value="Autorizo el envio de la respuesta a mi correo electrónico." />
+								<div id="idMensajeResultadoRespuestaCorreo" > </div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						
+						<div class="column col-xs-12 col-sm-12s col-md-12 col-lg-12">
+							<div class="form-group">
+								<h:selectBooleanCheckbox id = "idCheckTitularidad" class="claseCheckReclamacion" /> 
+								<p:outputLabel class="claseTextoCheckReclamo" value="Declaro ser el titular del servicio y acepto el contenido del presente formulario manifestando bajo declaración jurada la veracidad de los hechos descritos." />
+								<div id="idMensajeResultadoCheckTitularidad" > </div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6">
+							<div class="form-group">
+									<div id="idMensajeResultado" > </div>
+							</div>
+						</div>
+						
+						<div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6 text-right">
+							<div class="form-group">
+									<p:commandButton   onclick="enviar(event);" styleClass="btn btn-success btn-guardar-datos"  value="ENVIAR INFORMACIÓN"/>
+							</div>
+						</div>
+					
+					</div>
+					
+				</div>
+				
+				
+				<!-- Modal Guardar Reclamo o Queja Exitoso -->
+				<div class="modal fade" id="idModalGuardarReclamoExito"
+					tabindex="-1" role="dialog">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">Registro exitoso, en los próximos minutos te llegará un correo con los datos de dicho registro, te daremos respuesta a la brevedad.</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-success" data-dismiss="modal" onclick="location.href='../../'">Aceptar</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Modal Actualizar Banco Exitoso -->
+				<div class="modal fade" id="idModalDatosActualizaExito"
+					tabindex="-1" role="dialog">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">Tus datos han sido actualizados con éxito.</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-success" data-dismiss="modal" onclick="ejecutarIrAInicioOperacion();">Realizar una operación</button>
+							</div>
+						</div>
+					</div>
+				</div>
+	
+				<!-- Modal Error-->
+				<p:outputPanel id="idMensajeResultadoProceso">
+					<div class="modal fade" id="idModalErrorSistema" tabindex="-1" role="dialog">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title mensajeTituloError">¡ Mensaje del Sistema - ERROR !</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body mensajeCuerpoError">
+									#{mAlias.resultadoProcesoError} <strong>Comuníquese con el área de Soporte.</strong>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</p:outputPanel>
+
+    		</section>
+
+		</main>
+		
+		
+		<!-- Footer -->
+		<ui:include src="/footer.xhtml" />
+		  
+		  <ui:include src="/estatus.xhtml" />
+		  
+		  <!-- Modal Guardar Banco Exitoso -->
+			<div class="modal fade" id="idModalEnviarMensajeoExito" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">Tu mensaje se envió de forma exitosa.</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		
+			<!-- Modal Error-->
+			<div class="modal fade" id="idModalErrorSistema" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title mensajeTituloError">¡ Mensaje del Sistema - ERROR !</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body mensajeCuerpoError">#{mAlias.resultadoProcesoError} <strong>Comuníquese con el área de Soporte.</strong></div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		  
+	</h:form>	
+<button onclick="enlaceWhatsapp();" id="myBtn" title="Escribenos" />
+</h:body>
+</html>

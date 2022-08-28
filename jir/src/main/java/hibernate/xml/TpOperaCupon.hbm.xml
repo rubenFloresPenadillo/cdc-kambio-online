@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 17 ago. 2022 04:53:44 by Hibernate Tools 5.2.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="hibernate.xml.TpOperaCupon" optimistic-lock="version" polymorphism="implicit" schema="public" select-before-update="false" table="tp_opera_cupon">
+        <comment>TABLA MAESTRO PARA CUPONES</comment>
+        <id name="codOperCupo" type="java.lang.Integer">
+            <column name="cod_oper_cupo"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="hibernate.xml.TpCupon" embed-xml="true" fetch="select" insert="true" name="tpCupon" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="cod_cupo" not-null="true">
+                <comment>VALOR NUMERICO QUE REPRESENTA LA RELACION CON LA TABLA TP_CUPON</comment>
+            </column>
+        </many-to-one>
+        <many-to-one class="hibernate.xml.TpOperaClien" embed-xml="true" fetch="select" insert="true" name="tpOperaClien" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="cod_oper_clie" not-null="true">
+                <comment>VALOR NUMERICO QUE REPRESENTA LA RELACION CON LA TABLA TP_OPERA_CLIEN</comment>
+            </column>
+        </many-to-one>
+        <property generated="never" lazy="false" name="nomCupoUsad" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="nom_cupo_usad" not-null="true">
+                <comment>NOMBRE DEL CUPON QUE SE UTILIZO EN ESTA OPERACION</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="monDescCupoUsad" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="mon_desc_cupo_usad" not-null="true" precision="17" scale="17">
+                <comment>MONTO ASOCIADO AL DESCUENTO PARA EL CUPON Y QUE SE UTILIZO EN ESTA OPERACION</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="indEsta" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="ind_esta" not-null="true">
+                <comment>ESTADO EN EL QUE SE ENCUENTRA EL REGISTRO, ACTIVO = 1 E INACTIVO = 0</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="usuApliCrea" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="usu_apli_crea" not-null="true">
+                <comment>USUARIO DE APLICACION QUE REALIZO LA CREACION DEL REGISTRO</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="fecCreaRegi" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="29" name="fec_crea_regi" not-null="true">
+                <comment>FECHA DE CREACION DEL REGISTRO</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="usuApliModi" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="usu_apli_modi">
+                <comment>USUARIO DE APLICACION QUE REALIZO LA ACTUALIZACION DEL REGISTRO</comment>
+            </column>
+        </property>
+        <property generated="never" lazy="false" name="fecModiRegi" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="29" name="fec_modi_regi">
+                <comment>FECHA DE MODIFICACION DEL REGISTRO</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

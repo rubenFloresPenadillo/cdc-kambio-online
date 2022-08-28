@@ -1,0 +1,19 @@
+
+.claseTextoTransferencia{
+	width: 250px !important;
+	height: 57px !important;
+	margin-top: 20px !important;
+}
+
+.claseItemsBancos img{
+	width: 65px;
+	margin: 8px;
+}
+
+.claseContenedorItemBancos {
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+}
+
