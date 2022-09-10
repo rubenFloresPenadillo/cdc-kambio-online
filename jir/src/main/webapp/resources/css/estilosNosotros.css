@@ -81,6 +81,15 @@ header {
 	}
 }
 
+
+@media (max-width:768px) {
+	.claseMapaNosotros{
+		width: 330px !important;
+	}
+}
+
+
+
 .imagenLogo{
 	float: left;
 	margin-top: 5px;

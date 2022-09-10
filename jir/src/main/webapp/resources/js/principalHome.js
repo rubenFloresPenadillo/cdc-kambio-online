@@ -114,7 +114,7 @@ function enlaceWhatsapp() {
 
 function calcularValorEnvio(){
 	
-	var mostrarCompra = document.getElementById("idFormCalculadora:idMostrarCompra").value;
+	var mostrarCompra = document.getElementById("idFormPrincipal:idMostrarCompra").value;
 	
 	var isTrueMostrarCompra = (mostrarCompra == 'true');
 	
@@ -132,7 +132,7 @@ function calcularValorEnvio(){
 //		alert('entro al else');
 		var dataSuperior = parseFloat($('.inputSuperior').val());
 		var dataTipoCambioVenta = parseFloat($('.claseVenta').text());
-		var resultado = dataSuperior / dataTipoCambioVenta;
+		var resultado = dataSuperior * dataTipoCambioVenta;
 		if(!isNaN(resultado)){
 			$('.inputInferior').val(Math.round(resultado * 100) / 100);
 		}else{
@@ -144,7 +144,7 @@ function calcularValorEnvio(){
 
 function calcularValorRecibo(){
 	
-	var mostrarCompra = document.getElementById("idFormCalculadora:idMostrarCompra").value;
+	var mostrarCompra = document.getElementById("idFormPrincipal:idMostrarCompra").value;
 	
 //	alert(mostrarCompra);
 	
@@ -162,7 +162,7 @@ function calcularValorRecibo(){
 	}else{
 		var dataInferior = parseFloat($('.inputInferior').val());
 		var dataTipoCambioVenta = parseFloat($('.claseVenta').text());
-		var resultado = dataInferior * dataTipoCambioVenta;
+		var resultado = dataInferior / dataTipoCambioVenta;
 		if(!isNaN(resultado)){
 			$('.inputSuperior').val(Math.round(resultado * 100) / 100);
 		}else{

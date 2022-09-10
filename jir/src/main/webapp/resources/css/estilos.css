@@ -552,16 +552,17 @@ figure {
 
 @media (min-width: 768px) {
 	.change-money-mod-alt {
-	    max-width: 24rem;
+/* 	    max-width: 24rem; */
 	    margin: 1rem auto 0;
 	}
+	
 }
 
-@media (min-width: 1200px) {
-	.change-money-mod-alt {
- 		margin-right: 20px;
-	}
-}
+/* @media (min-width: 1200px) { */
+/* 	.change-money-mod-alt { */
+/*  		margin-right: 20px; */
+/* 	} */
+/* } */
 
 
 .change-money-mod-alt {
@@ -620,6 +621,22 @@ figure {
     font: bold;
     text-align: left;
 }
+
+.tc-active-compra {
+    color: #6ab32d;
+    font-weight: bold;
+}
+
+
+.tc-active-venta {
+    color: #004aad;
+    font-weight: bold;
+}
+
+.claseMontoCompraVenta{
+	font-size: 1.2rem; 	
+}
+
 
 .change-money-mod-alt .interchange-mod form {
     position: relative;
@@ -863,7 +880,7 @@ form.custom-form label span {
 
 
 .logoImg {
-    width: 35px;
+    width: 55px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -897,7 +914,11 @@ form.custom-form label span {
 
 @media (max-width: 767px){
 	#bancosEntidades{
-		margin-top: 560px !important;
+		margin-top: 920px !important;
+	}
+	
+	.claseItemTransferenciasBancos{
+		margin-bottom: 100px;
 	}
 }
 
@@ -964,6 +985,20 @@ section.supported-banks .other-banks {
 	padding-right: 0 !important;
 }
 
+.mejor-cotizacion{
+	color: #fff;
+	font-size: 0.9rem;
+}
+
+.mejor-cotizacion a {
+    color: #fff !important;
+/*     text-decoration: none; */
+}
+
+.mejor-cotizacion a:hover {
+    color: #fff !important;
+}
+
 .registroSBSHome{
 	max-width: 500px; 
 	padding: 10px; 
@@ -1002,13 +1037,17 @@ section.supported-banks .other-banks {
 		padding-left: 35px;
 	}
 	
-	.claseItemTransferenciasBancos{
-		margin-top: 80px;
-	}
-	
 	.comoFunciona-item{
 		margin-top: 50px !important;
 		margin-bottom: 50px !important;
+	}
+	
+	.mejor-cotizacion {
+	    color: #00AC4A;
+	}
+	
+	.mejor-cotizacion a{
+	    color: #00AC4A !important;
 	}
 }
 
@@ -1029,7 +1068,7 @@ section.supported-banks .other-banks {
 		display: none;
 	}	
 	.text-encasa{
-		margin-top: 40px;
+		margin-top: 100px;
 	}
 /* 	.header-content-icon-desktop{ */
 /* 		display: none; */

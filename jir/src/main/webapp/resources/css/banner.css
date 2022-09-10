@@ -90,9 +90,7 @@
 @media 	(max-width: 768px) {
 	
 	.filaBannerContenido {
-		margin-top: 100px ;
-		padding-left: 30px;
-		padding-right: 30px;
+		margin-top: 200px;
 	}
 	
 	.text-encasa h4{
@@ -108,9 +106,9 @@
 
 @media 	(max-width: 400px) {
 	
-	.filaBannerContenido {
-		margin-top: -250px;
-	}
+/* 	.filaBannerContenido { */
+/* 		margin-top: -250px; */
+/* 	} */
 	
 	#banner h2{
 		font-size: 26px !important;
@@ -210,7 +208,7 @@
 .claseTextoEnvioRecibo{
 	color: #004aad !important;
 	font-weight: bold;
-	font-size: 0.9em;
+	font-size: 1rem;
 }
 
 .contenedora{
@@ -237,10 +235,10 @@
 .imagenBanderaCalculadora{
 	position: absolute;
 /* 	font-size: 20px; */
-	padding-top: 25px;
+	padding-top: 33px;
 	left: 25px;
 	z-index: 2;
-	width: 95px;
+	width: 150px;
 }
 
 .enlaceImagenCambioBandera{
@@ -264,6 +262,7 @@
 	color: #004aad;
 	position: absolute;
     background: #FAFAFA;
+    padding-top: 20px;
 }
 
 .inputCalculadora:focus{
@@ -277,9 +276,13 @@
 
 @media (max-width: 650px){
 	.imagenBanderaCalculadora{
-		width: 60px ;
+		width: 95px ;
 		padding-top: 34px;
-/* 		left: 15px; */
+		left: 10px !important;
+	}
+	
+	.claseTextoEnvioRecibo{
+		font-size: 0.75rem;
 	}
 	
 	.imagenCambioBandera{
@@ -410,12 +413,12 @@
 
 
 .claseColorSecundarioBanner{
-	color: #019e84;
+	color: #00AC4A;
 	font-weight: bold;
 }
 
 .claseColorBanner{
-	background: #fff;
+	color: #fff;
 /* 	border-radius: 12px 12px 12px 12px; */
 }
 
@@ -429,6 +432,7 @@
 
 .claseSubtituloBanner {
 	text-align: left;
+	font-size: 1.1rem;
 }
 
 .claseSegundoSubtituloBanner{

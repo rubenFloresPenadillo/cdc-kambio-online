@@ -138,7 +138,8 @@ public class PrincipalBean implements Serializable{
         		cantidadRecibo = cantidadRecibo.setScale(2, RoundingMode.HALF_UP);
         		
         	}else {
-        		cantidadRecibo = cantidadEnvio.divide(new BigDecimal(tipoCambioVentaDolar), 2, RoundingMode.HALF_UP);
+        		cantidadRecibo = cantidadEnvio.multiply(new BigDecimal(tipoCambioVentaDolar));
+        		cantidadRecibo = cantidadRecibo.setScale(2, RoundingMode.HALF_UP);
         	}
     	}
     	
@@ -163,12 +164,12 @@ public class PrincipalBean implements Serializable{
     	mostrarCompra = !mostrarCompra;
     	if(mostrarCompra) {
     		tipoCambioUsado = new Double(tipoCambioCompraDolar);
-    		textoDolarSolSuperior = "DÓLARES";
-    		textoDolarSolInferior = "  SOLES";
+//    		textoDolarSolSuperior = "DÓLARES";
+//    		textoDolarSolInferior = "  SOLES";
     	}else {
     		tipoCambioUsado = new Double(tipoCambioVentaDolar);
-    		textoDolarSolSuperior = "  SOLES";
-    		textoDolarSolInferior = "DÓLARES";
+//    		textoDolarSolSuperior = "  SOLES";
+//    		textoDolarSolInferior = "DÓLARES";
     	}
     	
     	cargarValoresEnvioReciboA();
