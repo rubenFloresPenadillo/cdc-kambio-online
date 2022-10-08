@@ -9,7 +9,7 @@ $(document).ready(function() {
 
 
 function enlaceWhatsapp() {
-	 var win = window.open('https://api.whatsapp.com/send?phone=51992278011&text=Hola,%20solicito%20información%20acerca%20de%20', '_blank');
+	 var win = window.open('https://api.whatsapp.com/send?phone=51992278011&text=Hola%20JirehPlus!%20He%20visto%20sus%20servicios%20desde%20su%20plataforma%20web%20y%20tengo%20una%20consulta.', '_blank');
 	 win.focus();  
 }
 

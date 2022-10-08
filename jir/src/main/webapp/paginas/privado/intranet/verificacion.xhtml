@@ -43,11 +43,11 @@
 	<h:form id="idFormVerificacion" method="post" role="form" class="form-horizontal mt-4" enctype="multipart/form-data">
 			
 			
-			<div class="row col-xs-12 col-sm-12 col-md-5 col-lg-4 justify-content-center mx-auto">
+			<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 justify-content-center mx-auto">
 					<p:outputPanel id="idContenedorConstanciaTransferencia" styleClass="w-100">
-						<p:outputPanel rendered="#{mAlias.mostrarCampoOperacion}">
+						<p:outputPanel rendered="#{mAlias.mostrarCampoOperacion}" styleClass="row col-xs-12 col-sm-12 col-md-12 col-lg-12 justify-content-center mx-auto">
 							
-								<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<div class="column col-12 col-sm-12 col-md-7 col-lg-5 col-xl-4">
 									<div class="form-group">
 										<p:outputLabel value="Número de operación" styleClass="font-weight-bold"/>
 										<p:inputText id="idTxtCodigoOperacion" styleClass="form-control" value="#{mAlias.operacionClienteFormulario.codTranBanc}"/>
@@ -55,7 +55,22 @@
 										<p:tooltip for="idTxtCodigoOperacion" value="Este número de operación lo puede ubicar dentro de la constancia de transferencia de su entidad bancaria" position="bottom"/>
 										<div id="idMensajeCodigoOperacion" > </div>
 									</div>
-								</div>			
+								</div>
+								
+								<div class="column col-12 col-sm-12 col-md-7 col-lg-1 col-xl-1 text-center">
+									<div class="form-group">
+										<p:outputLabel value="ó" styleClass="font-weight-bold"/>
+									</div>
+								</div>
+								
+								
+								<div class="column col-12 col-sm-12 col-md-7 col-lg-4 col-xl-5">
+									<div class="form-group">
+										<p:outputLabel value="Constancia de transferencia" styleClass="font-weight-bold"/> <br></br>
+										<p:fileUpload styleClass="claseCargaArchivo" value="#{mAlias.fileConstancia}" mode="simple" skinSimple="true" 
+											 accept="image/*" label="Selecciona imagen"/>
+									</div>
+								</div>				
 							
 						</p:outputPanel>
 						
@@ -74,12 +89,12 @@
 			<div class="row col-xs-12 col-sm-12 col-md-10 col-lg-10 justify-content-center mx-auto">
 			
 			
-				<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center">
+				<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center d-none d-sm-none d-md-none d-lg-block">
 					<img class="imagenMoney"
 						src="../../../resources/imagenes/money.png" alt="Enviar a verificación" />
 				</div>
 			
-				<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-6">
 				
 					<div class="row mt-2 mb-2">
 						<p>Después de que hayas realizado la transferencia a nuestra cuenta, necesitamos comprobarla con el Banco para poder transferir  <strong>#{mAlias.cadenaDivisaCantidadRecibo}</strong> a tu cuenta. Realizaremos la transferencia a la siguiente cuenta:</p>
@@ -106,7 +121,7 @@
 							
 						</div>
 			
-						<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6">	
+						<div class="column col-xs-12 col-sm-6 col-md-6 col-lg-6 p-0">	
 							<div class="form-group margenCuenta">
 								<p class="clasesCamposFormulario claseEtiquetaFormulario" >Número de cuenta</p>
 								<p:outputLabel value="#{mAlias.cuentaClienteUsoDetalle.valCuenBanc}"/>
@@ -174,11 +189,11 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title mensajeTituloError">¡ Mensaje del Sistema - ERROR !</h5>
+					<h5 class="modal-title">¡ Mensaje del Sistema !</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
-				<div class="modal-body mensajeCuerpoError"><strong>#{mAlias.resultadoProcesoError}</strong> Comuníquese con el área de Soporte.</div>
+				<div class="modal-body"><strong>#{mAlias.resultadoProcesoError}</strong></div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
 				</div>

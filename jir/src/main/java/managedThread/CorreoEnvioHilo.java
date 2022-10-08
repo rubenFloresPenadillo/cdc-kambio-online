@@ -213,7 +213,7 @@ public class CorreoEnvioHilo implements Runnable {
     	datamodel.put("paramFechaCreacion", fechaDeRegistro);
     	datamodel.put("parametroComercio", parametroComercio);
     	
-    	String asunto = "Registro de Queja o Reclamo - "+CadenasType.NOMBRE_COMERCIO.getValor();
+    	String asunto = "Registro de Queja o Reclamo para Cliente - "+CadenasType.NOMBRE_COMERCIO.getValor();
     	NotificacionUtil.enviarCorreo(datamodel, PlantillasType.PLANTILLA_ENVIAR_REGISTRO_RECLAMO_CLIENTE.getNombre(), asunto, emailDestino);
     	
 	}

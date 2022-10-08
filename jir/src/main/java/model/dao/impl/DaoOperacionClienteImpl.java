@@ -148,6 +148,10 @@ public class DaoOperacionClienteImpl implements DaoOperacionCliente {
 					sbOperacionCliente.append(", toc.codTranBanc = :codTranBanc");
 				}
 				
+				if(!ValidacionesString.esNuloOVacio(tpOperaClien.getRutImagTranBanc())) {
+					sbOperacionCliente.append(", toc.rutImagTranBanc = :rutImagTranBanc");
+				}
+				
 				if(!ValidacionesString.esNuloOVacio(tpOperaClien.getCodUnicOperClie())) {
 					sbOperacionCliente.append(", toc.codUnicOperClie = :codUnicOperClie");
 				}
@@ -180,6 +184,10 @@ public class DaoOperacionClienteImpl implements DaoOperacionCliente {
 				
 				if(!ValidacionesString.esNuloOVacio(tpOperaClien.getCodTranBanc())) {
 					queryOperacionCliente.setParameter("codTranBanc", tpOperaClien.getCodTranBanc());
+				}
+				
+				if(!ValidacionesString.esNuloOVacio(tpOperaClien.getRutImagTranBanc())) {
+					queryOperacionCliente.setParameter("rutImagTranBanc", tpOperaClien.getRutImagTranBanc());
 				}
 				
 				if(!ValidacionesString.esNuloOVacio(tpOperaClien.getCodUnicOperClie())) {
@@ -309,7 +317,7 @@ public class DaoOperacionClienteImpl implements DaoOperacionCliente {
         sb.append("toc.tpClien.valRazoSociPers, toc.tpClien.tpTipoDocumPerso.tpTipoPerso.codTipoPers, toc.tpCuentBancoByCodCuenBancClieOrig.codCuenBanc, toc.tpCuentBancoByCodCuenBancCome.codCuenBanc, toc.tpCuentBancoByCodCuenBancClieReci.codCuenBanc, ");
         sb.append("toc.fecInicOper, toc.fecVeriOper, toc.fecFinaOper, toc.usuApliFinaOper, toc.fecCancOper, toc.usuApliCancOper, toc.valTextComeCanc, toc.tpClien.tpUsuar.codUsuaPadr, toc.tpClien.valNombPerf, toc.tpClien.valDocuEmpr, ");
         sb.append("toc.codCupoUsad, toc.nomCupoUsad, toc.monDescCupoUsad, toc.valCambCompCupo, toc.valCambVentCupo, toc.codTranBanc, toc.tpClien.valTelePers, toc.numOperBancCome, ");
-        sb.append("toc.tpClien.valDocuPers, toc.tpClien.tpTipoDocumPerso.codTipoDocuPers, toc.tpClien.valDirePers ");
+        sb.append("toc.tpClien.valDocuPers, toc.tpClien.tpTipoDocumPerso.codTipoDocuPers, toc.tpClien.valDirePers, toc.rutImagTranBanc ");
         sb.append(" from TpOperaClien toc");  
         sb.append(" where 1=1 ");
         sb.append(" and toc.indEsta = :indEsta ");

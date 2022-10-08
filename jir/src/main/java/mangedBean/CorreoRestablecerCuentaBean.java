@@ -99,6 +99,9 @@ public class CorreoRestablecerCuentaBean {
 					if (result.startsWith(CadenasType.INDICADOR_PROCESO_OK.getValor())) {
 						
 //						enviarCorreoActivacionCuenta(enlaceActivaCuenta.toString());
+						LoggerUtil.getInstance().getLogger().info("Correo usuario: "+usuarioFormulario.getIdeUsuaEmai());
+						LoggerUtil.getInstance().getLogger().info("ValTokeRestCuen UUID: "+usuarioFormulario.getValTokeRestCuen());
+						LoggerUtil.getInstance().getLogger().info("FecCreaTokeRestCuen: "+usuarioFormulario.getFecCreaTokeRestCuen());
 						
 						LoggerUtil.getInstance().getLogger().info("Iniciando Hilo Principal");
 						

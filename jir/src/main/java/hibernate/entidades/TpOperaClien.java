@@ -295,7 +295,7 @@ public class TpOperaClien implements java.io.Serializable {
 		this.codTranBanc = codTranBanc;
 	}
 
-	@Column(name = "rut_imag_tran_banc", length = 40)
+	@Column(name = "rut_imag_tran_banc", length = 400)
 	public String getRutImagTranBanc() {
 		return this.rutImagTranBanc;
 	}

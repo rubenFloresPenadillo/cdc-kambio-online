@@ -22,7 +22,6 @@
 	<link rel="stylesheet" type="text/css" href="../../resources/css/all.css"/>
 	<link rel="stylesheet" type="text/css" href="../../resources/css/login.css" />
 	<link rel="stylesheet" type="text/css" href="../../resources/css/fontello.css" />
-
 	<title>Ingreso</title>
 	
 </h:head>
@@ -79,7 +78,9 @@
 								<div class="form-group mt-4">
 									<p:outputLabel value="Contraseña"  styleClass="claseBold" />
 									<i class="pi pi-lock" style="font-size: 1rem"></i> 
-									<p:password id="idTxtPassword1" class="form-control" value="#{mAlias.usuarioFormulario.codClav}"/>
+									<p:password id="idTxtPassword1" class="form-control" value="#{mAlias.usuarioFormulario.codClav}">
+										<i id="iconoOjoPassword1" class="pi pi-eye-slash claseIconoOjo" style="font-size: 1rem" onclick="mostrarContrasena('idFormIngreso','idTxtPassword1', this);"></i>
+									</p:password>
 									<p:watermark for="idTxtPassword1" value="Excribe tu contraseña" />
 								</div>
 								

@@ -188,3 +188,9 @@ function enviarDatosReporte(event) {
 //    	ejecutarReporte();
     }
 }
+
+
+function mostrarImagenConstancia(){
+	$('#idModalMostrarImagenConstancia').modal({backdrop: 'static', keyboard: false})  
+	$('#idModalMostrarImagenConstancia').modal('show');
+}

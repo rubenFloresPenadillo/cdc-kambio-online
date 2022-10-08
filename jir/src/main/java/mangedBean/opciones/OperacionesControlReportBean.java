@@ -261,8 +261,8 @@ public class OperacionesControlReportBean {
         j1.setCellValue(new HSSFRichTextString("Cliente Recibe"));
         k1.setCellValue(new HSSFRichTextString("Operaci贸n"));
         l1.setCellValue(new HSSFRichTextString("Tipo de Cambio"));
-        m1.setCellValue(new HSSFRichTextString("Cup贸n Aplicado"));
-        n1.setCellValue(new HSSFRichTextString("Desct. Cup贸n"));
+        m1.setCellValue(new HSSFRichTextString("Cup髇 Aplicado"));
+        n1.setCellValue(new HSSFRichTextString("Plus de Cup髇"));
         o1.setCellValue(new HSSFRichTextString("Estado"));   
         p1.setCellValue(new HSSFRichTextString("Motivo Cancelaci贸n"));
         q1.setCellValue(new HSSFRichTextString("Fecha Cancelaci贸n"));

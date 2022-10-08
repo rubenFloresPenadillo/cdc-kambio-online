@@ -47,3 +47,15 @@ function enviar(event) {
     }
 }
 
+ function mostrarContrasena(nombreFormulario, idInputPassword, iconoOjoPassword){
+      var tipo = document.getElementById(nombreFormulario+':'+idInputPassword);
+      if(tipo.type == "password"){
+         tipo.type = "text";
+		 $('#'+iconoOjoPassword.id).removeClass( "pi-eye-slash" )
+         $('#'+iconoOjoPassword.id).addClass( "pi-eye" );
+      }else{
+          tipo.type = "password";
+		  $('#'+iconoOjoPassword.id).removeClass( "pi-eye" )
+          $('#'+iconoOjoPassword.id).addClass( "pi-eye-slash" );
+      }
+  }

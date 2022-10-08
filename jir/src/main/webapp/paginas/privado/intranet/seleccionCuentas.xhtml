@@ -53,23 +53,23 @@
 			<div class="column col-xs-12 col-sm-9 col-md-7 col-lg-4">
 				
 
-				<p:outputPanel styleClass="row claseSeccionTipoCambio">
+				<p:outputPanel styleClass="row claseSeccionTipoCambio" id="idSeccionTipoDeCambio">
 
 					<div class="claseCompraVenta">
-						<p:outputLabel styleClass="claseEtiquetaCompraVenta" value="Venta:"/>
-						<p:outputLabel styleClass="claseEtiquetaValorCompraVenta" value="#{mAlias.tipoCambioVentaDolar}"/>
+						<p:outputLabel styleClass="claseEtiquetaCompraVenta #{mAlias.mostrarCompra eq true ? 'tc-inactive' : 'tc-active-venta'}" value="Venta:"/>
+						<p:outputLabel styleClass="claseEtiquetaValorCompraVenta #{mAlias.mostrarCompra eq true ? 'tc-inactive' : 'tc-active-venta'}" value="#{mAlias.tipoCambioVentaDolar}"/>
 					</div>
 					
 					<div class="claseCompraVenta">
-						<p:outputLabel styleClass="claseEtiquetaCompraVenta" value="Compra:"/> 
-						<p:outputLabel styleClass="claseEtiquetaValorCompraVenta" value="#{mAlias.tipoCambioCompraDolar}"/>
+						<p:outputLabel styleClass="claseEtiquetaCompraVenta #{mAlias.mostrarCompra eq true ? 'tc-active-compra' : 'tc-inactive'}" value="Compra:"/> 
+						<p:outputLabel styleClass="claseEtiquetaValorCompraVenta #{mAlias.mostrarCompra eq true ? 'tc-active-compra' : 'tc-inactive'}" value="#{mAlias.tipoCambioCompraDolar}"/>
 					</div>
 
 				</p:outputPanel>
 				
 				<p:outputPanel class="seccionCalculadora" id="idSeccionCalculadora">
 			
-					<p:remoteCommand name="metodoRemotoRotarVista"  actionListener="#{mAlias.rotarVista}" update="idSeccionCalculadora, idSeccionTipoCambioUso" />
+					<p:remoteCommand name="metodoRemotoRotarVista"  actionListener="#{mAlias.rotarVista}" update="idSeccionCalculadora, idSeccionTipoCambioUso, idSeccionAplicarCupon, idSeccionTipoDeCambio, idSeccionTipoCambioUso" />
 					<h:link styleClass="enlaceImagenCambioBandera" title="Rotar vista" outcome="#" onclick="metodoRemotoRotarVista();">
 						<h:graphicImage styleClass="imagenCambioBandera" value="../../../resources/imagenes/cambiarBanderas.png" />
 					</h:link>
@@ -119,10 +119,10 @@
 				</p:outputPanel>
 				
 				
-				<p:outputPanel class="row setup-content justify-content-center">
+				<p:outputPanel class="row setup-content justify-content-center" id="idSeccionAplicarCupon">
 				
 					<p:outputPanel class="column col-xs-12 col-sm-12 col-md-10 col-lg-10 setup-content justify-content-center alert alert-info" role="alert" rendered="#{mAlias.indAplicoCupon}">
-					  Cupón <strong>#{mAlias.operacionClienteFormulario.nomCupoUsad}</strong> aplicado. Descuento de <strong> s/. #{mAlias.operacionClienteFormulario.monDescCupoUsad} </strong>
+					  Cupón <strong>#{mAlias.operacionClienteFormulario.nomCupoUsad}</strong> aplicado. Tienes un #{mAlias.operacionClienteFormulario.cadenaDescuentoOPlusCupon} de <strong> s/. #{mAlias.operacionClienteFormulario.monDescCupoUsad} </strong> en tu tipo de cambio.
 					</p:outputPanel>
 					
 					<p:outputPanel class="column col-xs-12 col-sm-12 col-md-10 col-lg-10 setup-content justify-content-center" rendered="#{!mAlias.indAplicoCupon}">

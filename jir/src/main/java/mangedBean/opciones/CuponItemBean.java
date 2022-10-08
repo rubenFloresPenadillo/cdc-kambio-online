@@ -83,6 +83,7 @@ public class CuponItemBean {
 			cuponItem.setIndEsta(RegistroActivoType.ACTIVO.getLlave());
 			cuponItem.setIndReutClie(RegistroActivoType.INACTIVO.getLlave());
 			cuponItem.setFecInicVige(new Date());
+			cuponItem.setFecFinaVige(new Date());
 		}
 		
 		

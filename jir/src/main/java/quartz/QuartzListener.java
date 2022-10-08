@@ -25,7 +25,7 @@ public class QuartzListener extends QuartzInitializerListener {
             Scheduler schedulerCancelaOperacion = factory.getScheduler();
             JobDetail jobDetailCancelaOperacion = JobBuilder.newJob(FinalizaTransaccion.class).build();
             Trigger triggerCancelaOperacion = TriggerBuilder.newTrigger().withIdentity("TrgCancelaOperacionIniciada").withSchedule(
-                    CronScheduleBuilder.cronSchedule("0 0/30 * * * ? *")).startNow().build();
+                    CronScheduleBuilder.cronSchedule("0 0/10 * * * ? *")).startNow().build();
             schedulerCancelaOperacion.scheduleJob(jobDetailCancelaOperacion, triggerCancelaOperacion);
             schedulerCancelaOperacion.start();
             
@@ -33,9 +33,9 @@ public class QuartzListener extends QuartzInitializerListener {
             Scheduler schedulerFacturacionElectronica = factory.getScheduler();
             JobDetail jobDetailFacturacionElectronica = JobBuilder.newJob(FacturacionElectronica.class).build();
             Trigger triggerFacturacionElectronica = TriggerBuilder.newTrigger().withIdentity("TrgEnvioComprobantesElectronicos").withSchedule(
-                    CronScheduleBuilder.cronSchedule("0 0/3 * * * ? *")).startNow().build();
+                    CronScheduleBuilder.cronSchedule("0 0/30 * * * ? *")).startNow().build();
             schedulerFacturacionElectronica.scheduleJob(jobDetailFacturacionElectronica, triggerFacturacionElectronica);
-            schedulerFacturacionElectronica.start();
+//            schedulerFacturacionElectronica.start();
  
         } catch (Exception e) {
             ctx.log("Error en el job.", e);

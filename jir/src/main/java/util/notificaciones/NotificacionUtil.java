@@ -38,8 +38,10 @@ public class NotificacionUtil {
     public static final String NOMBRE_SERVICIO = "JirehPlus"; // nombre de propietario
     public static final String EMAIL_SERVICIO = "no-reply@casadecambiodigitalperu.com"; // propietario de cuenta
     public static final String PASSWORD= "casadecambiodigitalperu2022@"; // password de propietario
-    public static final String EMAIL_CONTACTO_COMERCIO = "icreandope@gmail.com"; // propietario de cuenta, correo del comercio a donde le llegara el correo de contacto del cliente
-    public static final String EMAIL_PERSONAL_COMERCIO = "rubito_htp08@hotmail.com"; // email personal 
+    public static final String EMAIL_CONTACTO_COMERCIO = "operaciones@jirehplus.com"; // propietario de cuenta, correo del comercio
+    public static final String EMAIL_FORMULARIO_CONTACTO_COMERCIO = "contacto@jirehplus.com"; // Donde le llegara el correo del formulario de contacto del cliente
+    public static final String EMAIL_PERSONAL_COMERCIO = "jirehfintech@gmail.com"; // email personal del comercio
+//    public static final String EMAIL_PERSONAL_COMERCIO = "icreandope@gmail.com";
     
 
 	public static String freemarkerDo(Map<String, String> datamodel, String basePath, String template) throws IOException, TemplateException {
@@ -84,7 +86,7 @@ public class NotificacionUtil {
 			message.setFrom(new InternetAddress(EMAIL_SERVICIO,valorDelFrom));
 			// Set To: header field of the header.
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(correoDestino));
-			message.setRecipients(Message.RecipientType.BCC, InternetAddress.parse(EMAIL_CONTACTO_COMERCIO+","+EMAIL_PERSONAL_COMERCIO));
+//			message.setRecipients(Message.RecipientType.BCC, InternetAddress.parse(EMAIL_CONTACTO_COMERCIO+","+EMAIL_PERSONAL_COMERCIO));
 			// Set Subject: header field
 			message.setSubject(asunto);
 			// This mail has 2 part, the BODY and the embedded image
@@ -137,15 +139,15 @@ public class NotificacionUtil {
 			email.setFrom(EMAIL_SERVICIO, valorDelFrom);
             email.setSubject(asunto);
             email.setMsg(cuerpoMensaje);
-            email.addTo(EMAIL_CONTACTO_COMERCIO);
+            email.addTo(EMAIL_FORMULARIO_CONTACTO_COMERCIO);
             email.addTo(EMAIL_PERSONAL_COMERCIO);
             email.send(); // enviar email
             
-			LoggerUtil.getInstance().getLogger().info("Mensaje enviado con exito a: "+EMAIL_CONTACTO_COMERCIO+", plantilla: "+nombrePlantilla);
+			LoggerUtil.getInstance().getLogger().info("Mensaje enviado con exito a: "+EMAIL_FORMULARIO_CONTACTO_COMERCIO+", plantilla: "+nombrePlantilla);
 			LoggerUtil.getInstance().getLogger().info("Mensaje enviado con exito a: "+EMAIL_PERSONAL_COMERCIO+", plantilla: "+nombrePlantilla);
 		} catch (EmailException e ) {
 			e.printStackTrace();
-	        LoggerUtil.getInstance().getLogger().error("nombrePlantilla: "+nombrePlantilla+" correoDestino: "+EMAIL_CONTACTO_COMERCIO+" error: "+e.getMessage());
+	        LoggerUtil.getInstance().getLogger().error("nombrePlantilla: "+nombrePlantilla+" correoDestino: "+EMAIL_FORMULARIO_CONTACTO_COMERCIO+" error: "+e.getMessage());
 	        LoggerUtil.getInstance().getLogger().error(e);
 		}
 	}

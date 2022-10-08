@@ -130,7 +130,7 @@
 
 			<div class="row justify-content-center">
 				
-				<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-3">
+				<div class="column col-xs-12 col-sm-12 col-md-12 col-lg-6">
 					<div class="form-group">
 					
 						<p:outputPanel rendered="#{!mAlias.indOperacionEnCurso}"  > 
@@ -138,7 +138,7 @@
 						</p:outputPanel>
 						
 						<p:outputPanel rendered="#{!mAlias.indOperacionEnCurso}"  styleClass="text-center mt-3 mb-3"> 
-							Completa todos los campos, son obligatorios.
+							Completa todos los campos que son obligatorios.
 						</p:outputPanel>
 						
 						<p:outputPanel rendered="#{mAlias.indOperacionEnCurso}"  styleClass="alert claseCampoObligatorios"> 
@@ -151,17 +151,15 @@
 			</div>
 			
 			<div class="row justify-content-center">
-				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+				<div class="column col-xs-12 col-sm-12 col-md-5 col-lg-4 col-xl-3">
 					<div class="form-group">
-						<p:outputLabel value="Primer Nombre *" />
+						<p:outputLabel value="Primer Nombre *" styleClass="mt-3"/>
 						<p:inputText id="idTxtNombre1" styleClass="form-control" value="#{mAlias.clienteFormulario.valPrimNombPers}" disabled="#{mAlias.codigoCliente ne null}"/>
 						<p:watermark for="idTxtNombre1" value="Ingresa tu primer nombre" />
 						<div id="idMensajeResultadoNombre1" > </div>
 					</div>
 				</div>
-			</div>	
-			<div class="row justify-content-center">
-				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+				<div class="column col-xs-12 col-sm-12 col-md-5 col-lg-4 col-xl-3">
 					<div class="form-group">
 						<p:outputLabel value="Segundo Nombre" styleClass="mt-3"/>
 						<p:inputText id="idTxtNombre2" styleClass="form-control" value="#{mAlias.clienteFormulario.valSeguNombPers}" disabled="#{mAlias.codigoCliente ne null}"/>
@@ -169,31 +167,29 @@
 						<div id="idMensajeResultadoNombre2" > </div>
 					</div>
 				</div>
-			</div>
+			</div>	
+
 			<div class="row justify-content-center">
-				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+				<div class="column col-xs-12 col-sm-12 col-md-5 col-lg-4 col-xl-3">
 					<div class="form-group">
 						<p:outputLabel value="Primer Apellido *" styleClass="mt-3"/>
 						<p:inputText id="idTxtApellido1" styleClass="form-control" value="#{mAlias.clienteFormulario.valPrimApelPers}" disabled="#{mAlias.codigoCliente ne null}"/>
 						<p:watermark for="idTxtApellido1" value="Ingresa tu primer apellido" />
 						<div id="idMensajeResultadoApellido1" > </div>
 					</div>
-				</div>			
-			</div>
-			
-			<div class="row justify-content-center">
-				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+				</div>
+				<div class="column col-xs-12 col-sm-12 col-md-5 col-lg-4 col-xl-3">
 					<div class="form-group">
 						<p:outputLabel value="Segundo Apellido *" styleClass="mt-3"/>
 						<p:inputText id="idTxtApellido2" styleClass="form-control"  value="#{mAlias.clienteFormulario.valSeguApelPers}" disabled="#{mAlias.codigoCliente ne null}"/>
 						<p:watermark for="idTxtApellido2" value="Ingresa tu segundo apellido" />
 						<div id="idMensajeResultadoApellido2" > </div>
 					</div>
-				</div>
+				</div>		
 			</div>
 			
 			<div class="row justify-content-center">	
-				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+				<div class="column col-xs-12 col-sm-12 col-md-5 col-lg-4 col-xl-3">
 					<div class="form-group">
 
 						<p:outputLabel value="Tipo de documento *" styleClass="mt-3"/>
@@ -209,11 +205,7 @@
 
 					</div>
 				</div>
-			</div>
-			
-			
-			<div class="row justify-content-center">
-				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+				<div class="column col-xs-12 col-sm-12 col-md-5 col-lg-4 col-xl-3">
 					<div class="form-group">
 						<p:outputLabel value="Documento *" styleClass="mt-3"/>
 						<p:inputText id="idTxtDocumento" styleClass="form-control" value="#{mAlias.clienteFormulario.valDocuPers}" disabled="#{mAlias.codigoCliente ne null}"/>
@@ -221,14 +213,12 @@
 						<div id="idMensajeResultadoDocumento" > </div>
 					</div>
 				</div>
-							
 			</div>
-
 
 			<div class="row justify-content-center">
 			
 			
-				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+				<div class="column col-xs-12 col-sm-12 col-md-5 col-lg-4 col-xl-3">
 					<div class="form-group">
 						<p:outputLabel value="Fecha de nacimiento *" styleClass="mt-3"/>
 						<div class="form-group">
@@ -258,11 +248,7 @@
 						
 					</div>
 				</div>
-				
-		  </div>	
-		  
-		  <div class="row justify-content-center">
-				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+				<div class="column col-xs-12 col-sm-12 col-md-5 col-lg-4 col-xl-3">
 					<div class="form-group">
 						<p:outputLabel value="Nacionalidad *" styleClass="mt-3"/>
 
@@ -274,10 +260,10 @@
 						<div id="idMensajeResultadoNacionalidad" > </div>
 					</div>
 				</div>
-		  </div>
-		  
+		  </div>	
+
 		  <div class="row justify-content-center">		
-				<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+				<div class="column col-xs-12 col-sm-12 col-md-5 col-lg-4 col-xl-3">
 					<div class="form-group">
 						<p:outputLabel value="País (Residencia) *" styleClass="mt-3"/>
 						
@@ -285,35 +271,38 @@
 							value="#{mAlias.clienteFormulario.tpPaisByCodPaisResi.codPais}">
 							<f:selectItem itemLabel="Seleccione..." itemValue="-1"/>
 							<f:selectItems value="#{mAlias.listaComboPais}" />
-							<p:ajax update="idSeccionUbigeo" event="change" listener="#{mAlias.asignarMostrarSelecionUbigeo}" />
+							<p:ajax update="idSeccionUbigeoProvinciaDistrito, idSeccionUbigeoDepartamento" event="change" listener="#{mAlias.asignarMostrarSelecionUbigeo}" />
 						</h:selectOneMenu>
 						<div id="idMensajeResultadoPais" > </div>
 					</div>
 					
 				</div>
+					
+				<div class="column col-xs-12 col-sm-12 col-md-5 col-lg-4 col-xl-3">
+						
+					<p:outputPanel id="idSeccionUbigeoDepartamento"> 
+						<p:outputPanel rendered="#{mAlias.mostrarSelecionUbigeo}">
+							<div class="form-group">
+										<p:outputLabel value="Departamento (Residencia) *" styleClass="mt-3"/>
+										<h:selectOneMenu id="idComboDepartamento" styleClass="custom-select form-control claseComboFormulario" value="#{mAlias.valorCodigoDepartamento}">
+											<f:selectItem itemLabel="Seleccione..." itemValue="-1"/>
+											<f:selectItems value="#{mAlias.listaComboDepartamentos}" />
+											<p:ajax update="idComboProvincia,idComboDistrito" event="change" listener="#{mAlias.asignarProvincias}" />
+										</h:selectOneMenu>
+										<div id="idMensajeResultadoDepartamento" > </div>
+							</div>
+						</p:outputPanel>
+					</p:outputPanel>	
+				</div>
+
 			</div>
 		
-			<p:outputPanel id="idSeccionUbigeo">
+			<p:outputPanel id="idSeccionUbigeoProvinciaDistrito">
 			
 				<p:outputPanel rendered="#{mAlias.mostrarSelecionUbigeo}">
-				
-					<div class="row justify-content-center">
-		
-						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
-							<div class="form-group">
-								<p:outputLabel value="Departamento (Residencia) *" styleClass="mt-3"/>
-								<h:selectOneMenu id="idComboDepartamento" styleClass="custom-select form-control claseComboFormulario" value="#{mAlias.valorCodigoDepartamento}">
-									<f:selectItem itemLabel="Seleccione..." itemValue="-1"/>
-									<f:selectItems value="#{mAlias.listaComboDepartamentos}" />
-									<p:ajax update="idComboProvincia,idComboDistrito" event="change" listener="#{mAlias.asignarProvincias}" />
-								</h:selectOneMenu>
-								<div id="idMensajeResultadoDepartamento" > </div>
-							</div>
-						</div>
-					</div>
 					
 					<div class="row justify-content-center">	
-						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+						<div class="column col-xs-12 col-sm-12 col-md-5 col-lg-4 col-xl-3">
 							<div class="form-group">
 								<p:outputLabel value="Provincia (Residencia) *" styleClass="mt-3"/>
 								<h:selectOneMenu id="idComboProvincia" styleClass="custom-select form-control claseComboFormulario" value="#{mAlias.valorCodigoProvincia}">
@@ -324,10 +313,8 @@
 								<div id="idMensajeResultadoProvincia" > </div>
 							</div>
 						</div>
-					</div>	
-					
-					<div class="row justify-content-center">
-						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+						
+						<div class="column col-xs-12 col-sm-12 col-md-5 col-lg-4 col-xl-3">
 							<div class="form-group">
 								<p:outputLabel value="Distrito (Residencia) *" styleClass="mt-3"/>
 								<h:selectOneMenu id="idComboDistrito" styleClass="custom-select form-control claseComboFormulario" value="#{mAlias.valorCodigoDistrito}">
@@ -338,7 +325,9 @@
 							</div>
 						</div>
 						
-					</div>
+						
+					</div>	
+					
 				</p:outputPanel>
 			</p:outputPanel>
 			
@@ -346,7 +335,7 @@
 			<div class="row justify-content-center">
 					
 					
-					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+					<div class="column col-xs-12 col-sm-12 col-md-5 col-lg-4 col-xl-3">
 						<div class="form-group">
 							<p:outputLabel value="Dirección *" styleClass="mt-3"/>
 							<p:inputText id="idTxtDireccion"  styleClass="form-control" value="#{mAlias.clienteFormulario.valDirePers}" />
@@ -354,9 +343,8 @@
 							<div id="idMensajeResultadoDireccion" > </div>
 						</div>
 					</div>
-			</div>	
-			<div class="row justify-content-center">	
-					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+					
+					<div class="column col-xs-12 col-sm-12 col-md-5 col-lg-4 col-xl-3">
 						<div class="form-group">
 							<p:outputLabel value="Teléfono *" styleClass="mt-3"/>
 							<p:inputText id="idTxtTelefono" styleClass="form-control" value="#{mAlias.clienteFormulario.valTelePers}"/>
@@ -364,13 +352,13 @@
 							<div id="idMensajeResultadoTelefono" > </div>
 						</div>
 					</div>
-			</div>
-				
+					
+			</div>	
 		
 			<div class="row justify-content-center">
 					
 					
-					<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+					<div class="column col-xs-12 col-sm-12 col-md-10 col-lg-8 col-xl-6">
 						<div class="form-group">
 							<p:outputLabel value="¿Es usted una Persona Expuesta Políticamente (P.E.P.)?" styleClass="mt-3"/>
 							
@@ -389,7 +377,7 @@
 			<p:outputPanel id="idPanelContenedorDatosPep">
 						<p:outputPanel rendered="#{mAlias.mostrarDatosSeleccionPep}">
 							<div class="row justify-content-center">
-								<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+								<div class="column col-xs-12 col-sm-12 col-md-5 col-lg-4 col-xl-3">
 									<div class="form-group">
 										<p:outputLabel value="Institución *" styleClass="mt-3"/>
 										<p:inputText id="idTxtInstitucion" styleClass="form-control" value="#{mAlias.clienteFormulario.valPepoInst}"/>
@@ -397,9 +385,8 @@
 										<div id="idMensajeResultadoInstitucion" > </div>
 									</div>
 								</div>
-							</div>	
-							<div class="row justify-content-center">
-								<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-3">
+								
+								<div class="column col-xs-12 col-sm-12 col-md-5 col-lg-4 col-xl-3">
 									<div class="form-group">
 										<p:outputLabel value="Rol *" styleClass="mt-3"/>
 										<p:inputText id="idTxtRol" styleClass="form-control" value="#{mAlias.clienteFormulario.valPepoRol}"/>
@@ -407,7 +394,9 @@
 										<div id="idMensajeResultadoRol" > </div>
 									</div>
 								</div>
-							</div>
+								
+							</div>	
+							
 						</p:outputPanel>
 			</p:outputPanel>
 			

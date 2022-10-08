@@ -44,6 +44,7 @@ public class TpOperaClienDto implements java.io.Serializable {
 	private Date fecModiRegi;
 	private Date fecFiltroDesde;
 	private Date fecFiltroHasta;
+	private String cadenaDescuentoOPlusCupon;
 	
 	public TpOperaClienDto() {
 		tpClien = new TpClienDto();
@@ -308,4 +309,12 @@ public class TpOperaClienDto implements java.io.Serializable {
 		this.numOperBancCome = numOperBancCome;
 	}
 
+	public String getCadenaDescuentoOPlusCupon() {
+		return cadenaDescuentoOPlusCupon;
+	}
+
+	public void setCadenaDescuentoOPlusCupon(String cadenaDescuentoOPlusCupon) {
+		this.cadenaDescuentoOPlusCupon = cadenaDescuentoOPlusCupon;
+	}
+	
 }

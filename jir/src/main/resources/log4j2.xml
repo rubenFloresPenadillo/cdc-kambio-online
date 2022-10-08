@@ -4,8 +4,8 @@
 
 <Configuration>
 	<Properties>
-<!--          <Property name="BASE_DIR">D:/cdcBases/jirehPlusBase/log</Property> -->
-         <Property name="BASE_DIR">/etc/jirehPlusBase/log</Property>
+         <Property name="BASE_DIR">D:/cdcBases/jirehPlusBase/log</Property>
+<!--          <Property name="BASE_DIR">/etc/jirehPlusBase/log</Property> -->
     </Properties>
     <Appenders>
     	<Console name="console" >

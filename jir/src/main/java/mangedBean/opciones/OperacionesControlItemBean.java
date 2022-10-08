@@ -1,24 +1,38 @@
 package mangedBean.opciones;
 
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import file.util.FileUtil;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpSession;
 
 import org.primefaces.PrimeFaces;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 import cadenas.util.ValidacionesString;
 import dto.TpCuentBancoDto;
 import dto.TpFactuDocumCabecDto;
 import dto.TpFactuDocumDetalDto;
 import dto.TpOperaClienDto;
+import file.util.FileUtil;
 import hibernate.entidades.TpFactuDocumDetal;
 import loggerUtil.LoggerUtil;
 import managedThread.CorreoEnvioHilo;
@@ -38,6 +52,7 @@ import util.types.NumerosType;
 import util.types.PaginasPrivadasType;
 import util.types.PlantillasType;
 import util.types.RegistroActivoType;
+import util.types.RutasBaseType;
 import util.types.TipoDocumentoElectronicoType;
 import util.types.TipoOperacionCambioType;
 
@@ -61,6 +76,7 @@ public class OperacionesControlItemBean {
 //	private List<SelectItem> listaComboIndiCuentaPropia;
 	
 	private List<SelectItem> listaComboNuevoEstado;
+	private String generaImagenGrafica;
 	
 	private Boolean indicadorModoConsulta;
 	public OperacionesControlItemBean() {
@@ -72,6 +88,7 @@ public class OperacionesControlItemBean {
 		indicadorModoConsulta = Boolean.FALSE;
 		resultadoProcesoExito = CadenasType.VACIO.getValor();
 		resultadoProcesoError = CadenasType.VACIO.getValor();
+		generaImagenGrafica = CadenasType.VACIO.getValor();
 		System.out.println("Entro al constructor OperacionesControlItemBean");
 	}
 	
@@ -130,9 +147,25 @@ public class OperacionesControlItemBean {
     	
     	getListaCargarListaComboEstadosNuevos();
     	asignarValoresDinamicos();
+    	cargarImagenConstancia();
     	
     }
 
+    public void cargarImagenConstancia() {
+       if(!ValidacionesString.esNuloOVacio(operacionControlItem.getRutImagTranBanc())) {
+    	   File targetFile = new File(RutasBaseType.RUTA_BASE_CONTANCIAS_OPERACIONES.getValor()+operacionControlItem.getCodUnicOperClie()+CadenasType.SLASH.getValor()+operacionControlItem.getRutImagTranBanc());
+    	   Path path = targetFile.toPath();
+    	   String mimeType;
+    		try {
+    			mimeType = Files.probeContentType(path);
+    			generaImagenGrafica = "data:"+mimeType+";base64,"+FileUtil.fileToBase64(targetFile);	
+    		} catch (IOException e) {
+    			LoggerUtil.getInstance().getLogger().error("Ocurrio un error al mostrar el archivo: "+e.getMessage());
+    			
+    		}
+    	   
+       }
+    }
     
 	public void getListaCargarListaComboEstadosNuevos() {
     	listaComboNuevoEstado = new ArrayList<SelectItem>();
@@ -565,6 +598,16 @@ public class OperacionesControlItemBean {
 	public void setIndMostrarListaCambiarEstado(Boolean indMostrarListaCambiarEstado) {
 		this.indMostrarListaCambiarEstado = indMostrarListaCambiarEstado;
 	}
+
+	public String getGeneraImagenGrafica() {
+		return generaImagenGrafica;
+	}
+
+	public void setGeneraImagenGrafica(String generaImagenGrafica) {
+		this.generaImagenGrafica = generaImagenGrafica;
+	}
+
+	
     
 	
 }

@@ -316,12 +316,23 @@
 							</div>
 						</div>
 						
-						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
-							<div class="form-group">
-								<p:outputLabel value="Codigo de Operación Bancaria" styleClass="claseTituloAlternativaPrimaria"/>
-								<p:inputText  styleClass="form-control" value="#{mAlias.operacionControlItem.codTranBanc}" disabled="true"/>
-							</div>
-						</div>	
+						
+							<p:outputPanel rendered="#{mAlias.operacionControlItem.codTranBanc ne null}"  styleClass="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+								<div class="form-group">
+									<p:outputLabel value="Codigo de Operación Bancaria" styleClass="claseTituloAlternativaPrimaria"/>
+									<p:inputText  styleClass="form-control" value="#{mAlias.operacionControlItem.codTranBanc}" disabled="true"/>
+								</div>
+							</p:outputPanel>
+							
+						
+						
+							<p:outputPanel rendered="#{not empty mAlias.generaImagenGrafica}"  styleClass="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
+								<div class="form-group">
+									<p:outputLabel value="Constancia de operación" styleClass="claseTituloAlternativaPrimaria"/> <br></br>	
+									<p:commandButton styleClass="form-control btn botonCheck icon-search" title="Consultar" type="button" onclick="mostrarImagenConstancia();"/>	
+								</div>
+							</p:outputPanel>
+							
 						
 	
 				</div>
@@ -496,7 +507,7 @@
 						
 						<div class="column col-xs-12 col-sm-12 col-md-4 col-lg-4">
 							<div class="form-group">
-								<p:outputLabel value="Desct. Cupón" styleClass="claseTituloAlternativaSecundaria"/>
+								<p:outputLabel value="Plus de Cupón" styleClass="claseTituloAlternativaSecundaria"/>
 								<p:inputText id="idTxtDesctCupon" styleClass="form-control" value="#{mAlias.operacionControlItem.monDescCupoUsad eq null ? '-' : mAlias.operacionControlItem.monDescCupoUsad}" disabled="true"/>
 							</div>
 						</div>	
@@ -706,7 +717,25 @@
 				</div>
 			</div>
 		</div>
-		
+
+		<!-- Modal verImagenConstancia-->
+		<div class="modal fade" id="idModalMostrarImagenConstancia" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Constancia de Operación</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body claseCuerpoImagenConstancia"> 
+						<h:graphicImage value="#{mAlias.generaImagenGrafica}" styleClass="claseImagenConstancia"/> 
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" data-dismiss="modal" >Cerrar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+				
 
 	</section>
 

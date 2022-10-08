@@ -26,8 +26,8 @@ public enum CadenasType {
 	BACK_SLASH("\\"),
 	CADENA_USUARIO("U"),
 	CADENA_USUARIO_SISTEMA("SYSTEM_APP"),
-	CORREO_DE_ADMINISTRACION("icreandope@gmail.com"), // LLevara la gestion del libro de reclamaciones
-	DOMINIO_WEB("www.jirehplus.com"),
+	CORREO_DE_ADMIN_LIBRO_RECLAMACIONES("contacto@jirehplus.com"), // LLevara la gestion del libro de reclamaciones
+	DOMINIO_WEB("https://www.jirehplus.com"),
 //	DOMINIO_WEB("http://localhost:8080/pdi"),
 	NOMBRE_COMERCIO("JirehPlus");
 	

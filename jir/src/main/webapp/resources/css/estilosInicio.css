@@ -69,13 +69,6 @@ header {
     box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
 }
 
-
-@media (min-width: 1024px){
-	header {
-	    height: 90px !important;
-	}
-}
-
 @media (min-width: 1024px){
 	.menu {
 	    top: 90px !important;
@@ -129,6 +122,7 @@ header {
 	.contenedorImagenTransferencia{
 		 margin-top: 15px !important;
 	}
+
 }
 
 .contenedorImagenSeguridad{
@@ -603,6 +597,7 @@ header {
 		width: 200px;
 	    margin-top: 10px !important;
 	}
+
 }
 
 @media 	(max-width: 520px) {	
@@ -927,5 +922,68 @@ header {
 }
 
 .imagenMoney{
-	width: 350px;
+	width: 305px;
 }
+
+.tc-inactive {
+    text-align: left;
+    color: #ccc;
+}
+
+.tc-active-compra {
+    color: #004aad;
+    font-weight: bold;
+}
+
+
+.tc-active-venta {
+    color: #004aad;
+    font-weight: bold;
+}
+
+
+/* .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { */
+/*     border: 1px solid #aed0ea; */
+/*     background: #d7ebf9 url(/jir/javax.faces.resource/images/ui-bg_glass_80_d7ebf9_1x400.png.xhtml?ln=primefaces-cupertino&v=10.0.0&e=10.0.0) 50% 50% repeat-x; */
+/*     font-weight: bold; */
+/*     color: #2779aa; */
+/* } */
+
+
+
+.ui-state-default .ui-icon {
+    background-image: url(/jir/javax.faces.resource/images/ui-icons_3d80b3_256x240.png.xhtml?ln=primefaces-cupertino&v=10.0.0&e=10.0.0);
+}
+
+.ui-icon .ui-button-text-icon-left {
+    position: absolute;
+    top: 50%;
+    margin-top: -8px;
+}
+
+.ui-icon-plusthick {
+    background-position: -32px -128px;
+}
+
+.ui-icon {
+    width: 16px;
+    height: 16px;
+/*     background-image: url(/jir/javax.faces.resource/images/ui-icons_72a7cf_256x240.png.xhtml?ln=primefaces-cupertino&v=10.0.0&e=10.0.0); */
+}
+
+.claseCargaArchivo > span:first-child {
+    border: 1px solid #aed0ea;
+    background: #d7ebf9 url(/jir/javax.faces.resource/images/ui-bg_glass_80_d7ebf9_1x400.png.xhtml?ln=primefaces-cupertino&v=10.0.0&e=10.0.0) 50% 50% repeat-x;
+    font-weight: bold;
+    color: #2779aa;
+    border-radius: 65px 65px 65px 65px !important;
+	padding: 0.375rem 0.75rem;
+}
+
+.claseCargaArchivo {
+	display: block !important;
+}
+
+
+
+

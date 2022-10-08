@@ -23,9 +23,9 @@
 <link rel="stylesheet" type="text/css" href="../../resources/css/fontello.css" />
 
 
-
 <title>Restablece Cuenta - Enlace</title>
 </h:head>
+
 <h:body>
 
 	<ui:param name="mAlias" value="#{correoRestablecerCuentaBean}" />
@@ -34,41 +34,47 @@
 
 	<section id="seccionLogin">
 	
+	
 		<div class="contenedor row">
-			<div class="claseContieneImagen text-center col-xs-12 col-sm-12 col-md-5 col-lg-4">
-				<a href="../../" class="d-none d-sm-block d-sm-none d-md-block"> 
-				<img class="imagenLogoPaginaLogin"
-					src="../../resources/imagenes/logoJirehPlusOficial.png" alt="Logo JirehPlus"/>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<a  href="../../index.xhtml">
+					<img class="imagenLogo" src="../../resources/imagenes/logoJirehPlus.png" alt="Logo Web"/>
 				</a>
+			</div>
+		</div>
+		
+		<div class="contenedor row">
+			
+			<div class="claseDetalleSustento col-xs-10 col-sm-9 col-md-6 col-lg-7 imagenLineasLogo d-none d-sm-none d-md-none d-lg-none d-xl-block">
+				<h5 >Tu seguridad</h5>
+				<p >Trabajamos para brindarte experiencias <span class="claseColorSecundarioBanner">seguras,</span><br></br> eres nuestra prioridad.</p>
 				
-				<a href="../../" class="d-block d-sm-none"> 
-				<img class="imagenLogoHorizontalPaginaLogin"
-					src="../../resources/imagenes/logoJirehPlus.png" alt="Logo JirehPlus"/>
-				</a>
-
-				<label class="seccionRegistrateYa">¡ RESTABLECE TU CUENTA !</label>
+				<h5 class="mt-5">Tus Operaciones</h5>
+				<p >Al cambiar tus dólares con nosotros<span class="claseColorSecundarioBanner"> ya estas ahorrando </span> <br></br>  con el mejor tipo de cambio.</p>
+				
+				<h5 class="mt-5">Acceso 100% facil</h5>
+				<p >Puedes hacer tus operaciones desde la comodidad<span class="claseColorSecundarioBanner"><br></br>de tu casa, oficina </span> o cualquier otro lugar</p>
 			</div>
 
-			<div class="claseContieneLogin text-center col-xs-12 col-sm-12 col-md-7 col-lg-4">
-				
-				<label class="claseMensajePerdioPassword">¿Perdiste tu contraseña? Por favor ingresa tu correo electrónico. Recibirás un enlace para crear una nueva contraseña.</label>
-				
+			<div class="claseContieneLogin text-center col-xs-10 col-sm-9 col-md-6 col-lg-5">
 				<div class="col-lg-12 main-section">
 					<div class="modal-content formContenidoIngreso">
-					
-						
-						<div class="col-lg-12 user-img">
-							<img src="../../resources/imagenes/correoEnviado128x128.png" alt="Login"/>
-						</div>
-
+	
 						<div class="col-12 form-input">
 							<h:form id="idFormIngreso" method="post" role="form" class="form-horizontal">
-								
-								
+
 								<div class="form-group">
-									<i class="pi pi-envelope" style="font-size: 2rem"></i> 
+								
+									<h5 class="claseRegistrate">¡Restablece tu <span class="claseColorSecundarioBanner">Cuenta!</span></h5>
+									 
+									<div class="col-12 forgot claseSubtituloRegistrate">
+										 ¿Perdiste tu contraseña? Por favor ingresa tu correo electrónico. <span class="claseColorSecundarioBanner">Recibirás un enlace para crear una nueva contraseña.</span>
+									</div>
+									
+									<p:outputLabel value="Correo" styleClass="claseBold" />
+									<i class="pi pi-envelope" style="font-size: 1rem"></i> 
 									<p:inputText id="idTxtEmail" class="form-control" value="#{mAlias.usuarioFormulario.ideUsuaEmai}"/>
-									<p:watermark for="idTxtEmail" value="Ingrese correo" />
+									<p:watermark for="idTxtEmail" value="Ingresa tu correo" />
 								</div>
 								
 								<div id="idMensajeResultado" > </div>
@@ -79,17 +85,21 @@
 									</p:outputPanel>
 								</p:outputPanel>
 								
-								<p:remoteCommand name="metodoRemotoEnviarFormulario" actionListener="#{mAlias.validar()}" update="idMensajeResultadoProceso" />
-								<p:commandButton onclick="enviar(event);" styleClass="btn btn-primary-kli botonIniciarOperacionGeneral"  value="Restablecer cuenta" />
-
+								<div class="form-group mt-4">
+									<p:remoteCommand name="metodoRemotoEnviarFormulario" actionListener="#{mAlias.validar()}" update="idMensajeResultadoProceso" />
+									<p:commandButton onclick="enviar(event);" styleClass="btn btn-primary-kli botonFormularioLogin"  value="Restablecer cuenta" />
+								</div>
+								
 								<ui:include src="../../estatus.xhtml" />
 							</h:form>
 						</div>
-						
-						<div class="col-12 forgot">
+
+						<div class="col-12 forgot claseOmitirEnlace">
 							<a href="../privado/ingreso.xhtml">¿Deseas iniciar sesión?</a>
 						</div>
+
 					</div>
+					
 
 				</div>
 			</div>

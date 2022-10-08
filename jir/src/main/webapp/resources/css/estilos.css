@@ -914,7 +914,7 @@ form.custom-form label span {
 
 @media (max-width: 767px){
 	#bancosEntidades{
-		margin-top: 920px !important;
+		margin-top: 1120px !important;
 	}
 	
 	.claseItemTransferenciasBancos{
@@ -987,7 +987,14 @@ section.supported-banks .other-banks {
 
 .mejor-cotizacion{
 	color: #fff;
-	font-size: 0.9rem;
+	font-size: 1.3rem;
+	border-radius: 35px 0px 35px 0px;
+	-moz-border-radius: 35px 0px 35px 0px;
+	-webkit-border-radius: 35px 0px 35px 0px;
+	border: 5px solid #00AC4A;
+	margin-bottom: 1rem;
+	margin-top: 1rem !important;
+	margin: auto !important;
 }
 
 .mejor-cotizacion a {
@@ -1044,11 +1051,14 @@ section.supported-banks .other-banks {
 	
 	.mejor-cotizacion {
 	    color: #00AC4A;
+	    margin-top: 20px !important;
 	}
 	
 	.mejor-cotizacion a{
 	    color: #00AC4A !important;
 	}
+	
+	
 }
 
 @media (min-width: 1120px){
@@ -1068,7 +1078,7 @@ section.supported-banks .other-banks {
 		display: none;
 	}	
 	.text-encasa{
-		margin-top: 100px;
+		margin-top: 280px;
 	}
 /* 	.header-content-icon-desktop{ */
 /* 		display: none; */
@@ -1090,6 +1100,11 @@ section.supported-banks .other-banks {
 	.imagenLogo{
 		margin-top: 0 !important;
 	}
+	
+	.claseTextoItemElegirnos{ 
+		text-align: center;
+		margin-top: 2rem;
+	}	
 }
 
 

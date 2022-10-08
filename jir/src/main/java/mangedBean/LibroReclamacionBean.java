@@ -112,15 +112,14 @@ public class LibroReclamacionBean {
         	
         	LoggerUtil.getInstance().getLogger().info("Iniciando Hilos Principal Envio Reclamo");
         	
+			CorreoEnvioHilo hiloEnvioReclamoBean2 = new CorreoEnvioHilo(PlantillasType.PLANTILLA_ENVIAR_REGISTRO_RECLAMO_ADMIN , "hiloEnvioReclamoBean2", reclamoFormulario, CadenasType.CORREO_DE_ADMIN_LIBRO_RECLAMACIONES.getValor());
 			CorreoEnvioHilo hiloEnvioReclamoBean1 = new CorreoEnvioHilo(PlantillasType.PLANTILLA_ENVIAR_REGISTRO_RECLAMO_CLIENTE , "hiloEnvioReclamoBean1", reclamoFormulario, reclamoFormulario.getValEmaiCont());
-			CorreoEnvioHilo hiloEnvioReclamoBean2 = new CorreoEnvioHilo(PlantillasType.PLANTILLA_ENVIAR_REGISTRO_RECLAMO_ADMIN , "hiloEnvioReclamoBean2", reclamoFormulario, CadenasType.CORREO_DE_ADMINISTRACION.getValor());
- 
 			
-			Thread nuevoHiloEnvioCorreo1 = new Thread(hiloEnvioReclamoBean1);
 			Thread nuevoHiloEnvioCorreo2 = new Thread(hiloEnvioReclamoBean2);
+			Thread nuevoHiloEnvioCorreo1 = new Thread(hiloEnvioReclamoBean1);
 			 
-			nuevoHiloEnvioCorreo1.start();
 			nuevoHiloEnvioCorreo2.start();
+			nuevoHiloEnvioCorreo1.start();
 			
 			LoggerUtil.getInstance().getLogger().info("Finalizando Hilos Principal Envio Reclamo");
 			

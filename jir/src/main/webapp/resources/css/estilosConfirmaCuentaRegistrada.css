@@ -202,16 +202,6 @@ section {
 	}
 }
 
-
-/* @media 	(min-width: 768px) { */
-/* 	.claseContieneImagen{ */
-/* 		margin-top: 190px; */
-/* 	} */
-/* 	.claseContieneLogin{ */
-/* 		margin-top: 100px; */
-/* 	} */
-/* } */
-
 .seccionRegistrateYa{
 	display: block;
 	margin-bottom: 30px;
@@ -398,4 +388,8 @@ section {
 
 .claseBold{
 	font-weight: bold;
+}
+
+.claseContieneLogin{
+	margin-top: 50px;
 }

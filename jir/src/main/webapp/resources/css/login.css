@@ -186,7 +186,12 @@ section {
 	}
 }
 
-
+.claseContieneLogin{
+	padding-right: 5px !important;
+    padding-left: 5px !important;
+}
+	
+	
 @media 	(min-width: 768px) {
 	.claseContieneImagen{
 		margin-top: 190px;
@@ -326,4 +331,39 @@ section {
 .forgot {
     padding: 5px 0 25px;
     margin-top: 25px;
+}
+
+@media 	(max-width: 575px) {
+	.claseIconoOjo:before {
+	    margin-left: 80%;
+	    cursor: pointer;
+	}
+}
+
+@media screen and (min-width: 576px) and  (max-width: 767px) {	
+	.claseIconoOjo:before {
+	    margin-left: 82%;
+	    cursor: pointer;
+	}
+}
+
+@media screen and (min-width: 768px) and  (max-width: 991px) {	
+	.claseIconoOjo:before {
+	    margin-left: 80%;
+	    cursor: pointer;
+	}
+}
+
+@media screen and (min-width: 992px) and  (max-width: 1199px) {	
+	.claseIconoOjo:before {
+	    margin-left: 82%;
+	    cursor: pointer;
+	}
+}
+
+@media 	(min-width: 1200px) {
+	.claseIconoOjo:before {
+	    margin-left: 84%;
+	    cursor: pointer;
+	}
 }

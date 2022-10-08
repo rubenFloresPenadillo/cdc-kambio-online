@@ -6,7 +6,7 @@ $(document).ready(function() {
 });
 
 function enlaceWhatsappVerificacion() {
-	 var win = window.open('https://api.whatsapp.com/send?phone=51992278011&text=Hola,%20adjunto%20mi%20comprobante%20', '_blank');
+	 var win = window.open('https://api.whatsapp.com/send?phone=51992278011&text=Hola%20JirehPlus!%20He%20visto%20sus%20servicios%20desde%20su%20plataforma%20web%20y%20tengo%20una%20consulta.', '_blank');
 	 win.focus();  
 }
 
@@ -211,3 +211,6 @@ function confirmaAplicaCuponError(){
 	$('#idModalAplicaCuponError').modal('show');
 }
 
+function asignarSaltoLineaConstancia(){
+	$('<br />').insertAfter('.claseCargaArchivo > span:first-child');
+}

@@ -1,6 +1,10 @@
 package mangedBean;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
@@ -23,10 +27,12 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.primefaces.PrimeFaces;
 import org.primefaces.model.file.UploadedFile;
+import org.primefaces.shaded.commons.io.IOUtils;
 
 import cadenas.util.ValidacionesString;
 import dto.TpBancoDto;
@@ -56,6 +62,7 @@ import service.impl.ServiceOrigenFondoImpl;
 import service.impl.ServiceParametroGeneralImpl;
 import service.impl.ServiceTipoCambioImpl;
 import service.impl.ServiceUsuarioImpl;
+import util.constantes.Constants;
 import util.sesion.ConeccionSesion;
 import util.types.CadenasType;
 import util.types.DivisaType;
@@ -66,6 +73,7 @@ import util.types.ParametroGeneralType;
 import util.types.PerfilesType;
 import util.types.PlantillasType;
 import util.types.RegistroActivoType;
+import util.types.RutasBaseType;
 
 @ManagedBean(name="inicioBean")
 @ViewScoped
@@ -74,11 +82,17 @@ public class InicioBean {
 	private static final int CANTIDAD_ENVIO_INICIAL = 100;
 	private static final String BASE_CODIGOS = "123456789abcdefghijklmnopqrstuvwxyz";
 	private static final String MOTIVO_CANCELACION_CLIENTE_DESDE_REALIZAR_TRANSFERENCIA = "Desistio desde realiza la transferencia";
+	private static final String CUPON_APLICA_PLUS = "plus";
+	private static final String CUPON_APLICA_DESCUENTO = "descuento";
 	private static final Integer LONGITUD_CODIGO = 7;
 	private String resultadoProcesoError;
 	private Double tipoCambioCompraDolar;
 	private Double tipoCambioVentaDolar;
 	private Double tipoCambioUsado;
+	private Double tipoCambioCompraDolarOriginalAntesCupon;
+	private Double tipoCambioVentaDolarOriginalAntesCupon;
+//	private Double tipoCambioUsadoOriginalAntesCupon;
+	
 	private BigDecimal cantidadEnvio;
 	private BigDecimal cantidadRecibo;
 	private Boolean mostrarCompra;
@@ -123,7 +137,7 @@ public class InicioBean {
 	private Boolean indAplicoCupon;
 	private Boolean mostrarCampoOperacion;
 	private Boolean mostrarCampoSubeImagenOperacion;
-	private UploadedFile file;
+	private UploadedFile fileConstancia;
 	
 	public InicioBean() {
 		
@@ -411,6 +425,9 @@ public class InicioBean {
 			
 		}
     	
+    	/* Por defecto los valores antes del cupon toman los valores iniciales*/
+    	tipoCambioCompraDolarOriginalAntesCupon = tipoCambioCompraDolar;
+    	tipoCambioVentaDolarOriginalAntesCupon = tipoCambioVentaDolar;
     }
     
     public void getTipoCambioDolar() {
@@ -510,6 +527,12 @@ public class InicioBean {
     // Los montons al rotar se calculan en base a la cantidad de envio
     public void rotarVista() {
     	mostrarCompra = !mostrarCompra;
+    	/*Se borrar la aplicacion de cupon*/
+    	indAplicoCupon = Boolean.FALSE;
+    	operacionClienteFormulario.setNomCupoUsad(CadenasType.VACIO.getValor());
+    	tipoCambioCompraDolar = tipoCambioCompraDolarOriginalAntesCupon;
+    	tipoCambioVentaDolar = tipoCambioVentaDolarOriginalAntesCupon;
+    	
     	if(mostrarCompra) {
     		tipoCambioUsado = new Double(tipoCambioCompraDolar);
     	}else {
@@ -852,16 +875,23 @@ public class InicioBean {
 //	}
 	
 	
+	public void saveImage(InputStream inputStream, File ImageFile) throws IOException {
+	    OutputStream outputStream=new FileOutputStream(ImageFile);
+	    IOUtils.copy(inputStream, outputStream);
+	}
+	
+	
     public void confirmarVerificacion() {
 //		mostrarCuentas = Boolean.TRUE;
 //		mostrartransferencia = Boolean.FALSE;		
 //		mostrarVerificacion = Boolean.FALSE;
     	
     	// Actualiza 
-    	if (!ValidacionesString.esNuloOVacio(operacionClienteFormulario.getCodTranBanc())) {
+    	
+    	
+    	if (!ValidacionesString.esNuloOVacio(operacionClienteFormulario.getCodTranBanc()) || !ValidacionesString.esNuloOVacio(fileConstancia.getFileName())) {
+
     		ServiceOperacionCliente serviceOperacionClienteCodigo = new ServiceOperacionClienteImpl();
-        	
-//        	String codigoGenerado = generarCodigoUnico();
         	
         	BigInteger codigoGenerado = serviceOperacionClienteCodigo.getCodigoUnicoOperacion();
         	
@@ -876,18 +906,36 @@ public class InicioBean {
     		operacionClienteFormulario.setCodUnicOperClie(String.format("%06d" , codigoGenerado));
     		operacionClienteFormulario.setFecVeriOper(new Date());
     		
-        	String result = serviceOperacionCliente.actualizarEstadoOperacionCliente(operacionClienteFormulario);
-
+    		String result = CadenasType.VACIO.getValor();
+    		
+    		if(!ValidacionesString.esNuloOVacio(fileConstancia.getFileName())) {
+        		try {
+        	    	
+        	        String rutaCompleta = RutasBaseType.RUTA_BASE_CONTANCIAS_OPERACIONES.getValor()+operacionClienteFormulario.getCodUnicOperClie()+CadenasType.SLASH.getValor()+fileConstancia.getFileName();
+        	        File archivoNuevo = new File(rutaCompleta);
+        	        File carpeta = archivoNuevo.getParentFile();
+	        	    // Creamos los directorios solo si no existen
+	        	    if (!carpeta.exists()){
+	        	         carpeta.mkdirs();
+	        	    }
+        	        InputStream inputStream=fileConstancia.getInputStream();
+        	        saveImage(inputStream, archivoNuevo);
+        	        operacionClienteFormulario.setRutImagTranBanc(fileConstancia.getFileName());
+        		}
+    	        catch(IOException e) {
+    	            resultadoProcesoError = "Ocurrio un error al cargar el archivo: "+e.getMessage();
+    	            LoggerUtil.getInstance().getLogger().error(resultadoProcesoError);
+    	            result = "No se ha subido el archivo, por favor en este caso ingrese solo el Número de operación.";
+    	        }  
+    		}
+    		
+    		if (ValidacionesString.esNuloOVacio(result)){
+    			result =  serviceOperacionCliente.actualizarEstadoOperacionCliente(operacionClienteFormulario);
+    		}
+        	
         	if(result.startsWith(CadenasType.INDICADOR_PROCESO_OK.getValor())) {
-        		
-//        		if (file != null) {
-//                    FacesMessage message = new FacesMessage("Successful", file.getFileName() + " is uploaded.");
-//                    LoggerUtil.getInstance().getLogger().info("Satisfactorio" + file.getFileName() + " esta en el back.");
-//                    FacesContext.getCurrentInstance().addMessage(null, message);
-//                }
-        		
+
         		PrimeFaces.current().executeScript("operacionVerificacionExitosa();");
-//        		enviarCorreoRegistroOperacion();
         		
     			LoggerUtil.getInstance().getLogger().info("Iniciando Hilo Principal");
 
@@ -903,8 +951,9 @@ public class InicioBean {
         		resultadoProcesoError = result;
         		PrimeFaces.current().executeScript("operacionVerificacionError();");
         	}
+        	
     	}else {
-    		resultadoProcesoError = "El codigo de operaciÃ³n bancaria es obligatorio, por favor verifique";
+    		resultadoProcesoError = "Por favor ingrese el número de operación o la imagen de la constancia de transferencia.";
     		PrimeFaces.current().executeScript("operacionIngresoDatos();");
     	}
     	
@@ -1001,7 +1050,10 @@ public class InicioBean {
     
     public void aplicaDescuentoPorTipoOperacion(TpCuponDto tpCuponDto) {
     	
-    	BigDecimal tipoCambioCompraDolarDesc = (new BigDecimal(tipoCambioCompraDolar - tpCuponDto.getMonDescCupo())).setScale(4, RoundingMode.HALF_UP);
+    	tipoCambioCompraDolarOriginalAntesCupon = tipoCambioCompraDolar;
+    	tipoCambioVentaDolarOriginalAntesCupon = tipoCambioVentaDolar;
+    	
+    	BigDecimal tipoCambioCompraDolarDesc = (new BigDecimal(tipoCambioCompraDolar + tpCuponDto.getMonDescCupo())).setScale(4, RoundingMode.HALF_UP);
     	BigDecimal tipoCambioVentaDolarDesc = (new BigDecimal(tipoCambioVentaDolar - tpCuponDto.getMonDescCupo())).setScale(4, RoundingMode.HALF_UP);
     	
     	if (ElementosTablasType.TIPO_SERVICIO_COMPRA.getIdElemento().equals(tpCuponDto.getCodTipoOperApli())) {
@@ -1020,12 +1072,25 @@ public class InicioBean {
     
     public void recalculaMontosConCupon() {
     	
+//    	tipoCambioUsadoOriginalAntesCupon = tipoCambioUsado;
+    	
     	if(mostrarCompra) {
     		tipoCambioUsado = new Double(tipoCambioCompraDolar);
+    		operacionClienteFormulario.setCadenaDescuentoOPlusCupon(CUPON_APLICA_PLUS);
+    		cargarValoresEnvioReciboA();
     	}else {
     		tipoCambioUsado = new Double(tipoCambioVentaDolar);
+    		operacionClienteFormulario.setCadenaDescuentoOPlusCupon(CUPON_APLICA_DESCUENTO);
+    		cargarValoresEnvioReciboB();
     	}
-    	cargarValoresEnvioReciboA();
+    	
+    }
+    
+    public void cargarArchivo() {
+        if (fileConstancia != null) {
+            FacesMessage message = new FacesMessage("Successful", fileConstancia.getFileName() + " is uploaded.");
+            FacesContext.getCurrentInstance().addMessage(null, message);
+        }
     }
     
     public void procesarCerrarSesion() {
@@ -1321,14 +1386,12 @@ public class InicioBean {
 		this.mostrarCampoSubeImagenOperacion = mostrarCampoSubeImagenOperacion;
 	}
 
-	public UploadedFile getFile() {
-		return file;
+	public UploadedFile getFileConstancia() {
+		return fileConstancia;
 	}
 
-	public void setFile(UploadedFile file) {
-		this.file = file;
+	public void setFileConstancia(UploadedFile fileConstancia) {
+		this.fileConstancia = fileConstancia;
 	}
-	
-	
 
 }

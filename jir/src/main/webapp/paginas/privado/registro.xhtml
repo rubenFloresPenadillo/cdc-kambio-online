@@ -42,7 +42,7 @@
 		</div>
 		<div class="contenedor row align-items-center justify-content-center">
 			
-			<div class="claseDetalleSustento col-xs-12 col-sm-12 col-md-5 col-lg-8 imagenLineasLogo">
+			<div class="claseDetalleSustento col-xs-12 col-sm-12 col-md-5 col-lg-8 imagenLineasLogo d-none d-sm-none d-md-none d-lg-none d-xl-block">
 				<h5 >Cotiza tu operación</h5>
 				<p >Utiliza la calculadora para verificar el <span class="claseColorSecundarioBanner">tipo de cambio  </span><br></br> en tiempo real.</p>
 				
@@ -90,14 +90,19 @@
 								<div class="form-group mt-4">
 									<p:outputLabel value="Contraseña"  styleClass="claseBold" />
 									<i class="pi pi-lock" style="font-size: 1rem"></i> 
-									<p:password id="idTxtPassword1" class="form-control" value="#{mAlias.usuarioFormulario.codClav}"/>
+									<p:password id="idTxtPassword1" class="form-control" value="#{mAlias.usuarioFormulario.codClav}">
+										<i id="iconoOjoPassword1" class="pi pi-eye-slash claseIconoOjo" style="font-size: 1rem" onclick="mostrarContrasena('idFormRegistro','idTxtPassword1', this);"></i> 
+									</p:password>
+										
 									<p:watermark for="idTxtPassword1" value="Escribe una contraseña" />
 										
 								</div>
 								<div class="form-group mt-4">
 									<p:outputLabel value="Confirma tu contraseña"  styleClass="claseBold" />
 									<i class="pi pi-lock" style="font-size: 1rem"></i> 
-									<p:password id="idTxtPassword2" class="form-control" value="#{mAlias.usuarioFormulario.codClavConf}"/>
+									<p:password id="idTxtPassword2" class="form-control" value="#{mAlias.usuarioFormulario.codClavConf}">
+										<i id="iconoOjoPassword2" class="pi pi-eye-slash claseIconoOjo" style="font-size: 1rem" onclick="mostrarContrasena('idFormRegistro','idTxtPassword2', this);"></i> 
+									</p:password>
 									<p:watermark for="idTxtPassword2" value="Confirma tu contraseña" />
 									
 								</div>

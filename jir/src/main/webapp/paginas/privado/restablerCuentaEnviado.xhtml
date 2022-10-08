@@ -33,39 +33,64 @@
 	<main>
 
 	<section id="seccionLogin">
+	
+	
+		<div class="contenedor row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<a  href="../../index.xhtml">
+					<img class="imagenLogo" src="../../resources/imagenes/logoJirehPlus.png" alt="Logo Web"/>
+				</a>
+			</div>
+		</div>
+		
 		<div class="contenedor row">
 			
-			<div class="claseContieneImagen text-center col-xs-12 col-sm-12 col-md-5 col-lg-4">
-				<a href="../../" class="d-none d-sm-block d-sm-none d-md-block"> 
-				<img class="imagenLogoPaginaLogin"
-					src="../../resources/imagenes/logoJirehPlusOficial.png" alt="Logo JirehPlus"/>
-				</a>
+			<div class="claseDetalleSustento col-xs-10 col-sm-9 col-md-6 col-lg-7 imagenLineasLogo d-none d-sm-none d-md-none d-lg-none d-xl-block">
+				<h5 >Tu seguridad</h5>
+				<p >Trabajamos para brindarte experiencias <span class="claseColorSecundarioBanner">seguras,</span><br></br> eres nuestra prioridad.</p>
 				
-				<a href="../../" class="d-block d-sm-none"> 
-				<img class="imagenLogoHorizontalPaginaLogin"
-					src="../../resources/imagenes/logoJirehPlus.png" alt="Logo JirehPlus"/>
-				</a>
-
-<!-- 				<label class="seccionRegistrateYa">¡ ACTIVACIÓN DE CUENTA !</label> -->
+				<h5 class="mt-5">Tus Operaciones</h5>
+				<p >Al cambiar tus dólares con nosotros<span class="claseColorSecundarioBanner"> ya estas ahorrando </span> <br></br>  con el mejor tipo de cambio.</p>
+				
+				<h5 class="mt-5">Acceso 100% facil</h5>
+				<p >Puedes hacer tus operaciones desde la comodidad<span class="claseColorSecundarioBanner"><br></br>de tu casa, oficina </span> o cualquier otro lugar</p>
 			</div>
 
-			<div class="claseContieneLogin text-center col-xs-12 col-sm-12 col-md-7 col-lg-4">
-				<div class="col-lg-12">
-					<label class="seccionRegistrateYa">¡ TE HEMOS ENVIADO UN ENLACE PARA RESTABLECER TU CONTRASEÑA !</label>
-					<label class="claseMensajeActivacion">El enlace fue enviado al correo #{mAlias.ideUsuaEmai}</label>
-				</div>
-				
-				<div class="col-lg-12">
-					<img 
-					src="../../resources/imagenes/candadoSeguridad200x200.png" alt="Enlace enviado" />
-				</div>
-				
-				<div class="col-lg-12">
-<!-- 					<p:commandButton  styleClass="btn btn-success btn-enviar"  value="Ingresar"  -->
-<!-- 					 	action="../../index?faces-redirect=true" /> -->
-					 <a href="../../paginas/privado/ingreso.xhtml" class="btn btn-success btn-enviar">Ir al login</a>	
-				</div>				
+			<div class="claseContieneLogin text-center col-xs-10 col-sm-9 col-md-6 col-lg-5">
+				<div class="col-lg-12 main-section">
+					<div class="modal-content formContenidoIngreso">
+	
+						<div class="col-12 form-input">
+<!-- 							<h:form id="idFormIngreso" method="post" role="form" class="form-horizontal"> -->
 
+								<div class="form-group">
+								
+									<h5 class="claseRegistrate">¡Te hemos enviado un enlace para restablecer tu <span class="claseColorSecundarioBanner">Contraseña!</span></h5>
+									 
+									<div class="col-12 forgot claseSubtituloRegistrate">
+										 El enlace fue enviado al correo <span class="claseColorSecundarioBanner">#{mAlias.ideUsuaEmai}</span>
+									</div>
+									<div class="col-lg-12 text-center">
+										<img src="../../resources/imagenes/candadoSeguridad200x200.png" alt="Enlace enviado" />
+									</div>
+									
+								</div>
+								
+								<div id="idMensajeResultado" > </div>
+								
+								
+<!-- 								<ui:include src="../../estatus.xhtml" /> -->
+<!-- 							</h:form> -->
+						</div>
+
+						<div class="col-12 forgot claseOmitirEnlace">
+							<a href="../privado/ingreso.xhtml">¿Deseas iniciar sesión?</a>
+						</div>
+
+					</div>
+					
+
+				</div>
 			</div>
 		</div>
 	</section>

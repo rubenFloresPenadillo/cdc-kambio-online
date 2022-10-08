@@ -43,12 +43,12 @@
 
 	<h:form id="idFormTransferencia" method="post" role="form" class="form-horizontal row justify-content-center">
 	
-		<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 mt-4">	
+		<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 mt-4 d-none d-sm-none d-md-none d-lg-block">	
 			<img class="imagenPersonajeTransferencia"
 						src="../../../resources/imagenes/personaje-transferencia.png" alt="Realizar transferencia" />
 		</div>
 		
-		<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 mt-4">	
+		<div class="col-xs-12 col-sm-12 col-md-11 col-lg-5 mt-4">	
 		
 			<div id="idDetalleOperacionGrande" class="d-sm-block d-md-block mx-auto">
 			
@@ -78,7 +78,7 @@
 					      <td>#{mAlias.operacionClienteFormulario.nomCupoUsad eq '' ? '-' : mAlias.operacionClienteFormulario.nomCupoUsad}</td>
 					    </tr>
 					    <tr class="espacio">
-					      <th scope="row">Descuento cupón</th>
+					      <th scope="row">Plus de cupón</th>
 					      <td>#{mAlias.operacionClienteFormulario.monDescCupoUsad eq null ? '-' : mAlias.operacionClienteFormulario.monDescCupoUsad}</td>
 					    </tr>
 				    </p:outputPanel>
@@ -145,7 +145,7 @@
 			
 			<div class="col text-right col-xs-12 col-sm-6 col-md-6 col-lg-6">
 				<p:commandButton class="btn btn-success botonIniciaOperacion icon-ok" value="Ya envie el dinero"  
-					actionListener="#{mAlias.validarTransferencia}" update="idPanelGeneral" onclick="window.scrollTo(0,0)"/>
+					actionListener="#{mAlias.validarTransferencia}" update="idPanelGeneral" onclick="window.scrollTo(0,0)" oncomplete="asignarSaltoLineaConstancia()"/>
 			</div>
 			
 		</div>

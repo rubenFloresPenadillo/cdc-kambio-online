@@ -93,6 +93,7 @@ public class ServiceOperacionClienteImpl  implements ServiceOperacionCliente{
 		tpOperaClienEntidad.setMonDescCupoUsad(tpOperaClienDto.getMonDescCupoUsad());
 		tpOperaClienEntidad.setCodTranBanc(tpOperaClienDto.getCodTranBanc());
 		tpOperaClienEntidad.setNumOperBancCome(tpOperaClienDto.getNumOperBancCome());
+		tpOperaClienEntidad.setRutImagTranBanc(tpOperaClienDto.getRutImagTranBanc());
 		
 		if (tpOperaClienDto.getFecVeriOper() != null) {
 			tpOperaClienEntidad.setFecVeriOper(tpOperaClienDto.getFecVeriOper());
@@ -206,6 +207,7 @@ public class ServiceOperacionClienteImpl  implements ServiceOperacionCliente{
 			dto.getTpClien().setValDocuPers((String) temp[38]);
 			dto.getTpClien().getTpTipoDocumPerso().setCodTipoDocuPers((Integer) temp[39]);
 			dto.getTpClien().setValDirePers((String) temp[40]);
+			dto.setRutImagTranBanc((String) temp[41]);
 			
 			
 			//toc.tpClien.valDocuPers, toc.tpClien.tpTipoDocumPerso.codTipoDocuPers, toc.tpClien.valDirePers

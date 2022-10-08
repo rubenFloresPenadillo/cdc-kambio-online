@@ -40,8 +40,8 @@ public class ServiceTipoCambioImpl  implements ServiceTipoCambio{
 		entidad.getTpDivisByCodDivi().setCodDivi(tpTipoCambiDto.getTpDivisByCodDivi().getCodDivi());
 		entidad.getTpDivisByCodDiviCamb().setCodDivi(tpTipoCambiDto.getTpDivisByCodDiviCamb().getCodDivi());
 		
-		LoggerUtil.getInstance().getLogger().info("Log 1 "+tpTipoCambiDto.getTpDivisByCodDivi().getCodDivi());
-		LoggerUtil.getInstance().getLogger().info("Log 2 "+tpTipoCambiDto.getTpDivisByCodDiviCamb().getCodDivi());
+//		LoggerUtil.getInstance().getLogger().info("Log 1 "+tpTipoCambiDto.getTpDivisByCodDivi().getCodDivi());
+//		LoggerUtil.getInstance().getLogger().info("Log 2 "+tpTipoCambiDto.getTpDivisByCodDiviCamb().getCodDivi());
 		
 		entidad = daoTipoCambio.getTipoCambio(entidad);
 

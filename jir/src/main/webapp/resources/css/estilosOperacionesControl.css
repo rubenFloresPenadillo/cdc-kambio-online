@@ -527,6 +527,17 @@ table.dataTable {
 	border: none !important;
 }
 
+.claseImagenConstancia{
+	width: 100%;
+/*     max-height: 450px; */
+}
+
+
+.claseCuerpoImagenConstancia{
+    overflow-y: scroll;
+    max-height: 600px;
+}
+   
 /* span button{ */
 /* 	margin-left: 2px !important; */
 /* } */

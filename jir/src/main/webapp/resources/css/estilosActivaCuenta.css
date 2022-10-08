@@ -198,7 +198,11 @@ section {
 	}
 }
 
-
+.claseContieneLogin{
+	padding-right: 5px !important;
+	padding-left: 5px !important;
+}
+	
 @media 	(min-width: 768px) {
 	.claseContieneImagen{
 		margin-top: 190px;
@@ -208,11 +212,6 @@ section {
 	}
 }
 
-/* @media 	(max-width: 768px) { */
-/* 	.claseContieneLogin{ */
-/* 		margin-top: 50px; */
-/* 	} */
-/* } */
 
 .seccionRegistrateYa{
 	display: block;
